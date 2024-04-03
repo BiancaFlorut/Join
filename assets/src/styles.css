@@ -1,6 +1,17 @@
+body {
+    margin: 0;
+}
 nav {
     background-color: #2A3647;
     display: flex;
     width: 16.1%;
     height: 100%;
+    flex-direction: column;
+}
+.logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
 }
