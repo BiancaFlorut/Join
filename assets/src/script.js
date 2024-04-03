@@ -1,3 +1,6 @@
+const STORAGE_TOKEN = 'A4FWT6VNANE57F3YJWY8RKAO2BLJ7XU20BKY7G0X';
+const STORAGE_URL = ' https://remote-storage.developerakademie.org/item';
+
 async function init() {
     await includeHTML(); // hier wird auf includeHTML gewartet, bis es komplett fertig ist, ohne das await werden beide fast zeitgleich verarbeitet und führt zu fehlermeldungen
     document.getElementById('headline').innerHTML = 'Herzlich willkommen!'; // soll die Überschrift im header ändern
