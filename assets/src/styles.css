@@ -7,17 +7,17 @@ nav {
     width: 16.1%;
     height: 100%;
     flex-direction: column;
+    justify-content: space-between;
 }
-span {
+nav span {
     color: #CDCDCD;
     font-size: 19px;
 }
 .logo {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 33%;
+    height: 23%;
 }
 .nav-container {
     width: 100%;
@@ -25,17 +25,19 @@ span {
     flex-direction: column;
 }
 .nav-bar {
-    padding: 8px 25%;
+    display: flex;
+    align-items: center;
     gap: 8px;
+    padding: 8px 25%;
 }
 .links-left {
     display: flex;
     flex-direction: column;
     padding: 8px 25%;
+    margin-bottom: 25%;
 }
 .links-left a {
     text-decoration: none;
     color: #CDCDCD;
-    padding: 8px 0;
-    height: 30%;
+    margin: 8px 0;
 }
