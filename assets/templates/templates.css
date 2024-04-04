@@ -1,3 +1,12 @@
+/*
+|///////////////////////////////////////////////////////|
+|                                                       |
+|                                                       |
+|-------------------->navigationbar<--------------------|
+|                                                       |
+|                                                       |
+|///////////////////////////////////////////////////////|
+*/
 nav {
     background-color: #2A3647;
     display: flex;
@@ -5,6 +14,8 @@ nav {
     height: 100vh;
     flex-direction: column;
     justify-content: space-between;
+    position: fixed;
+    left: 0;
 }
 nav span {
     color: #CDCDCD;
@@ -20,12 +31,21 @@ nav span {
     width: 100%;
     height: 33%;
     flex-direction: column;
+    display: flex;
+    justify-content: center;
+}
+.nav-bar-container {
+    display: flex;
+    justify-content: center;
+}
+.nav-bar-container:hover {
+    background-color: blue;
 }
 .nav-bar {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 25%;
+    padding: 8px;
     margin: 8px 0;
     cursor: pointer;
 }
@@ -39,4 +59,60 @@ nav span {
     text-decoration: none;
     color: #CDCDCD;
     margin: 8px 0;
+}
+.links-left a:hover {
+    color:  #29abe2;
+}
+/*
+|//////////////////////////////////////////////////////////|
+|                                                          |
+|                                                          |
+|-------------------->header & content<--------------------|
+|                                                          |
+|                                                          |
+|//////////////////////////////////////////////////////////|
+*/
+h1 {
+    font-weight: 100;
+}
+.content-section {
+    width: 83.9%;
+    position: absolute;
+    right: 0;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    background-color: white !important;
+    height: 100px;
+    width: 83.9%;
+    box-shadow: 0 5px 5px #CDCDCD;
+}
+.header-right {
+    display: flex;
+    align-items: center;
+    height: 56px;
+    padding-right: 32px;
+}
+.header-right a {
+    padding-right: 24px;
+}
+.header-left {
+    padding-left: 120px;
+}
+.user {
+    width: 56px;
+    height: 56px;
+    border-radius: 29px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content {
+    height: 100%;
+    margin-top: 100px;
 }
