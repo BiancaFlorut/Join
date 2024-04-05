@@ -1,24 +1,3 @@
-@font-face {
-  font-family: "Inter-Regular";
-  src: url("../fonts/Inter-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Inter-Bold";
-  src: url("../fonts/Inter-Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Poppins";
-  src: url("../fonts/Poppins-Regular.ttf");
-  font-weight: normal;
-  font-style: normal;
-}
-
 html {
   width: 100%;
   height: 100%;
@@ -131,15 +110,15 @@ form {
 }
 
 .person {
-  background-image: url("../img/person.svg");
+  background-image: url("../../img/person.svg");
 }
 
 .mail {
-  background-image: url("../img/mail.svg");
+  background-image: url("../../img/mail.svg");
 }
 
 .lock {
-  background-image: url("../img/lock.svg");
+  background-image: url("../../img/lock.svg");
 }
 
 .visibility_area_container {
@@ -192,6 +171,7 @@ form {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: 16px;
 }
 
 .checkbox {
@@ -216,11 +196,16 @@ form {
 }
 
 .error_area {
-  height: 14px;
-  padding-top: 8px;
+  padding-top: 10px;
   font-family: "Poppins";
   color: #ff8190;
   font-size: 12px;
+  height: 14px;
   width: 100%;
   padding-bottom: 24px;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
 }
