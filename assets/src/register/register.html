@@ -3,21 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="../img/logo_small.svg" type="image/x-icon" />
+    <link rel="shortcut icon" href="../../img/logo_small.svg" type="image/x-icon" />
     <link rel="stylesheet" href="register.css" />
+    <link rel="stylesheet" href="../styles.css" />
     <script src="register.js"></script>
     <title>Sign up</title>
   </head>
   <body>
-    <div class="logo"><img src="../img/logo_small.svg" alt="" /></div>
+    <div class="logo"><img src="../../img/logo_small.svg" alt="" /></div>
     <div class="register_container">
       <div class="back_link_area">
-        <a class="back_link" href="login.html"
+        <a class="back_link" href="../log_in/log_in.html"
           ><img
             class="back_icon"
-            src="../img/arrow-left-line-hover.svg"
-            onmouseover="changeSrc(this, '../img/arrow-left-line-hover.svg')"
-            onmouseout="changeSrc(this, '../img/arrow-left-line.svg')"
+            src="../../img/arrow-left-line-hover.svg"
+            onmouseover="changeSrc(this, '../../img/arrow-left-line-hover.svg')"
+            onmouseout="changeSrc(this, '../../img/arrow-left-line.svg')"
             alt=""
         /></a>
       </div>
@@ -26,7 +27,7 @@
         <div class="header">
           <div class="title">
             <h1>Sign up</h1>
-            <img src="../img/line.svg" alt="line" />
+            <img src="../../img/line.svg" alt="line" />
           </div>
         </div>
         <div class="inputs_container">
@@ -36,14 +37,14 @@
             <input id="password" class="input_area lock" placeholder="Password" type="password" />
             <div id="passwordEyeIcon" class="visibility_area_container">
               <div class="visibility_icon_container">
-                <img class="visibility_icon" src="../img/visibility_off.svg" onclick="togglePassword(this, 'password')" alt="" />
+                <img class="visibility_icon" src="../../img/visibility_off.svg" onclick="togglePassword(this, 'password')" alt="" />
               </div>
             </div>
           </div>
           <div class="visibility_area">
             <input id="confirmPassword" class="input_area lock" placeholder="Confirm Password" type="password" />
             <div id="confirmPasswordEyeIcon" class="visibility_area_container">
-              <div class="visibility_icon_container"><img class="visibility_icon" src="../img/visibility_off.svg" onclick="togglePassword(this, 'confirmPassword')" alt="" /></div>
+              <div class="visibility_icon_container"><img class="visibility_icon" src="../../img/visibility_off.svg" onclick="togglePassword(this, 'confirmPassword')" alt="" /></div>
             </div>
           </div>
         </div>
@@ -52,10 +53,11 @@
         </div>
         <div class="checkbox_area">
           <div class="checkbox">
-            <img id="checkbox" src="../img/checkbox.svg" alt="checkbox" onmouseover="mouseOver(this)" onmouseout="mouseBeside(this)" onclick="togglePrivacyPolicy(this)" />
+            <img id="checkbox" src="../../img/checkbox.svg" alt="checkbox" onmouseover="mouseOver(this)" onmouseout="mouseBeside(this)" onclick="togglePrivacyPolicyIcon(this)" />
             <span for="privacyPolicy">I accept the <a class="privacy_link" href="privacy_policy.html">Privacy policy</a></span>
           </div>
         </div>
+        <div class="centered"><button class="bold_21">Sign up</button></div>
       </form>
     </div>
   </body>
