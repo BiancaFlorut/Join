@@ -46,6 +46,7 @@ nav span {
     padding: 8px;
     margin: 8px 0;
     cursor: pointer;
+    width: 130px;
 }
 .links-left {
     display: flex;
@@ -94,7 +95,17 @@ header {
     padding-right: 32px;
 }
 .header-right a {
-    padding-right: 24px;
+    margin: 24px;
+    transition: 125ms;
+    height: 20px;
+    width: 20px;
+}
+/* .header-right a:hover {
+    transform: rotate(360deg);
+} */
+.header-right a img:hover {
+    width: 24px;
+    height: 24px;
 }
 .header-left {
     padding-left: 120px;
@@ -102,11 +113,17 @@ header {
 .user {
     width: 56px;
     height: 56px;
-    border-radius: 29px;
-    border: 2px solid black;
+    border-radius: 50%;
+    border: 3px solid #2A3647;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #29abe2;
+    font-weight: 600;
+    font-size: 24px;
+}
+.user:hover {
+    background-color: #e2e6ec;
 }
 .content {
     background-color: #f0f0f0;
