@@ -44,3 +44,7 @@ button {
 button:hover {
   background-color: rgba(41, 171, 226, 1);
 }
+
+.d_none {
+  display: none;
+}

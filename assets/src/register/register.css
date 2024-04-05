@@ -196,10 +196,11 @@ form {
 }
 
 .error_area {
-  padding-top: 8px;
+  padding-top: 10px;
   font-family: "Poppins";
   color: #ff8190;
   font-size: 12px;
+  height: 14px;
   width: 100%;
   padding-bottom: 24px;
 }
