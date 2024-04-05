@@ -14,8 +14,6 @@ nav {
     height: 100vh;
     flex-direction: column;
     justify-content: space-between;
-    position: fixed;
-    left: 0;
 }
 nav span {
     color: #CDCDCD;
@@ -77,19 +75,17 @@ h1 {
 }
 .content-section {
     flex: 1;
-    margin-left: 232px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 232px;
-    background-color: white !important;
+    background-color: white;
     height: 100px;
-    box-shadow: 0 5px 5px #CDCDCD;
+    box-shadow: 0 5px 5px #CDCDCD !important;
 }
 .header-right {
     display: flex;
@@ -115,5 +111,7 @@ header {
 .content {
     background-color: #f0f0f0;
     height: 100%;
-    margin-top: 100px;
+    overflow-y: scroll;
+    flex: 1;
+    scrollbar-width: none;
 }
