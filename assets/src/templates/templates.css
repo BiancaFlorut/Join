@@ -14,8 +14,6 @@ nav {
     height: 100vh;
     flex-direction: column;
     justify-content: space-between;
-    position: fixed;
-    left: 0;
 }
 nav span {
     color: #CDCDCD;
@@ -48,6 +46,7 @@ nav span {
     padding: 8px;
     margin: 8px 0;
     cursor: pointer;
+    width: 130px;
 }
 .links-left {
     display: flex;
@@ -77,19 +76,17 @@ h1 {
 }
 .content-section {
     flex: 1;
-    margin-left: 232px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 232px;
-    background-color: white !important;
+    background-color: white;
     height: 100px;
-    box-shadow: 0 5px 5px #CDCDCD;
+    box-shadow: 0 5px 5px #CDCDCD !important;
 }
 .header-right {
     display: flex;
@@ -98,7 +95,17 @@ header {
     padding-right: 32px;
 }
 .header-right a {
-    padding-right: 24px;
+    margin: 24px;
+    transition: 125ms;
+    height: 20px;
+    width: 20px;
+}
+/* .header-right a:hover {
+    transform: rotate(360deg);
+} */
+.header-right a img:hover {
+    width: 24px;
+    height: 24px;
 }
 .header-left {
     padding-left: 120px;
@@ -106,14 +113,22 @@ header {
 .user {
     width: 56px;
     height: 56px;
-    border-radius: 29px;
-    border: 2px solid black;
+    border-radius: 50%;
+    border: 3px solid #2A3647;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #29abe2;
+    font-weight: 600;
+    font-size: 24px;
+}
+.user:hover {
+    background-color: #e2e6ec;
 }
 .content {
     background-color: #f0f0f0;
     height: 100%;
-    margin-top: 100px;
+    overflow-y: scroll;
+    flex: 1;
+    scrollbar-width: none;
 }
