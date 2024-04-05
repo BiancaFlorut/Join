@@ -36,6 +36,9 @@ nav span {
     display: flex;
     justify-content: center;
 }
+.selected-page {
+    background-color: #091931;
+}
 .nav-bar-container:hover {
     background-color: #2A3d59;
 }

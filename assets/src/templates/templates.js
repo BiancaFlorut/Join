@@ -36,3 +36,13 @@ function closePopupMenu() {
     let element = document.getElementById("popupMenuHeader");
     element.classList.add("d-none");
 }
+
+/**
+ * 
+ * 
+ * 
+ */
+function selectedPage() {
+    let element = document.getElementById(`${document.title}`);
+    element.classList.add("selected-page");
+}
