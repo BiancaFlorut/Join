@@ -33,7 +33,6 @@ button {
   border: none;
   font-size: 16px;
   color: #ffffff;
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 .bold_21 {
@@ -43,6 +42,7 @@ button {
 
 button:hover {
   background-color: rgba(41, 171, 226, 1);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 .d_none {
