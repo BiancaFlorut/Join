@@ -35,6 +35,7 @@ nav span {
 .nav-bar-container {
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 .selected-page {
     background-color: #091931;
@@ -48,7 +49,6 @@ nav span {
     gap: 8px;
     padding: 8px;
     margin: 8px 0;
-    cursor: pointer;
     width: 130px;
 }
 .links-left {
@@ -74,9 +74,6 @@ nav span {
 |                                                          |
 |//////////////////////////////////////////////////////////|
 */
-h1 {
-    font-weight: 100;
-}
 .content-section {
     flex: 1;
     height: 100vh;
@@ -111,6 +108,7 @@ header {
     height: 24px;
 }
 .header-left {
+    font-weight: 100;
     padding-left: 120px;
 }
 .user {
