@@ -10,7 +10,7 @@
 nav {
     background-color: #2A3647;
     display: flex;
-    width: 16.1%;
+    width: 232px;
     height: 100vh;
     flex-direction: column;
     justify-content: space-between;
@@ -39,7 +39,7 @@ nav span {
     justify-content: center;
 }
 .nav-bar-container:hover {
-    background-color: blue;
+    background-color: #2A3d59;
 }
 .nav-bar {
     display: flex;
@@ -76,9 +76,8 @@ h1 {
     font-weight: 100;
 }
 .content-section {
-    width: 83.9%;
-    position: absolute;
-    right: 0;
+    flex: 1;
+    margin-left: 232px;
 }
 header {
     display: flex;
@@ -86,9 +85,10 @@ header {
     align-items: center;
     position: fixed;
     top: 0;
+    right: 0;
+    left: 232px;
     background-color: white !important;
     height: 100px;
-    width: 83.9%;
     box-shadow: 0 5px 5px #CDCDCD;
 }
 .header-right {
@@ -113,6 +113,7 @@ header {
     align-items: center;
 }
 .content {
+    background-color: #f0f0f0;
     height: 100%;
     margin-top: 100px;
 }
