@@ -1,6 +1,10 @@
 let isCheckedPrivacyPolicy = false;
 let isPasswordVisible = false;
 const CHECKBOX_PATH = "../img/checkbox";
+
+/**
+ * 
+ */
 function togglePrivacyPolicy() {
   let checked = document.getElementById("privacyPolicy").value;
   console.log(checked);
