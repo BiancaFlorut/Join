@@ -78,7 +78,7 @@ function togglePassword(element, id) {
 /**
  * The function reads the form input data and stores it in the remote server and redirects the user to log in.
  */
-function register() {
+async function register() {
   if (isCheckedPrivacyPolicy) {
     const password = document.getElementById("password").value;
     const name = document.getElementById("name").value;
@@ -91,10 +91,14 @@ function register() {
     } else {
       console.log("push user on remote storage");
       users.push(user);
-      setItem("users", JSON.stringify(users));
+      await setItem("users", JSON.stringify(users));
+      getElementWithId('signUpSuccessfullyScreen').classList.remove('d_none');
+      setTimeout(function() { window.location.replace('../log_in/log_in.html')}, 1600);
     }
   }
 }
+
+
 
 /**
  * The function checks if the password is the same with the confirmed password. If not an error message is shown.

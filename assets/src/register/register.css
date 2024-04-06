@@ -7,6 +7,7 @@ body {
   margin: 0;
   background-color: #f6f7f8;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -208,4 +209,49 @@ form {
 .centered {
   display: flex;
   justify-content: center;
+}
+
+.dialog_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.185);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sign_up_successfully_container {
+  position: relative;
+  bottom: -4000px;
+  width: 100%;
+  animation: fromBottomToCenter 800ms forwards;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign_up_successfully {
+  background-color: rgba(42, 54, 71, 1);
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
+  font-size: 20px;
+  color: white;
+  border-radius: 20px;
+  padding: 25px;
+  width: max-content;
+}
+
+@keyframes fromBottomToCenter {
+  0% {
+    bottom: -4000px;
+  }
+
+  100% {
+    bottom: 0;
+  }
 }
