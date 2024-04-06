@@ -10,7 +10,7 @@
     <script src="../storage.js"></script>
     <title>Sign up</title>
   </head>
-  <body>
+  <body onload="init()">
     <div class="logo"><img src="../../img/logo_small.svg" alt="" /></div>
     <div class="register_container">
       <div class="back_link_area">
@@ -24,7 +24,7 @@
         /></a>
       </div>
 
-      <form onsubmit="register(); return;">
+      <form onsubmit="register(); return false">
         <div class="header">
           <div class="title">
             <h1>Sign up</h1>
@@ -32,10 +32,10 @@
           </div>
         </div>
         <div class="inputs_container">
-          <input id="name" class="input_area person" required placeholder="Name" type="text" />
-          <input id="email" class="input_area mail" required placeholder="Email" type="email" />
+          <input id="name" class="input_area person" required placeholder="Name" type="text" onchange="checkAllConditions()" />
+          <input id="email" class="input_area mail" required placeholder="Email" type="email" onchange="checkAllConditions()" />
           <div class="visibility_area">
-            <input id="password" required class="input_area lock" placeholder="Password" type="password" />
+            <input id="password" required class="input_area lock" placeholder="Password" type="password" onchange="onChange()" />
             <div id="passwordEyeIcon" class="visibility_area_container">
               <div class="visibility_icon_container">
                 <img class="visibility_icon" src="../../img/visibility_off.svg" onclick="togglePassword(this, 'password')" alt="" />
@@ -43,7 +43,7 @@
             </div>
           </div>
           <div class="visibility_area">
-            <input id="confirmPassword" required class="input_area lock" placeholder="Confirm Password" type="password" />
+            <input id="confirmPassword" required class="input_area lock" placeholder="Confirm Password" type="password" onchange="onChange()" />
             <div id="confirmPasswordEyeIcon" class="visibility_area_container">
               <div class="visibility_icon_container"><img class="visibility_icon" src="../../img/visibility_off.svg" onclick="togglePassword(this, 'confirmPassword')" alt="" /></div>
             </div>
@@ -58,7 +58,7 @@
             <span for="privacyPolicy">I accept the <a class="privacy_link" href="privacy_policy.html">Privacy policy</a></span>
           </div>
         </div>
-        <div class="centered"><button class="bold_21">Sign up</button></div>
+        <div class="centered"><button id="signUpButton" disabled class="bold_21">Sign up</button></div>
       </form>
     </div>
   </body>

@@ -16,7 +16,7 @@ async function getItem(key) {
  * The function saves data with the pair key value on the remote server.
  * 
  * @param {string} key 
- * @param {string} value 
+ * @param {JSON} value 
  * @returns a Promise
  */
 async function setItem(key, value) {
