@@ -4,15 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log in</title>
-    <link rel="shortcut icon" href="../../img/logo_small.svg" type="image/x-icon" />
+    <link rel="shortcut icon" href="../../../img/logo_small.svg" type="image/x-icon" />
     <link rel="stylesheet" href="../log_in_register.css" />
     <link rel="stylesheet" href="log_in.css" />
-    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../../styles.css" />
     <script src="log_in.js"></script>
-    <script src="../storage.js"></script>
+    <script src="../../storage.js"></script>
+    <script src="../log_in_register.js"></script>
   </head>
   <body>
-    <div class="logo"><img src="../../img/logo_small.svg" alt="" /></div>
+    <div class="logo"><img src="../../../img/logo_small.svg" alt="" /></div>
     <div class="header_container">
       <div class="header_log_in_">
         <div class="header_user_sign_up"><span class="not_user">Not a Join user?</span><button class="bold" onclick="window.location.replace('../register/register.html')">Sign up</button></div>
@@ -22,21 +23,31 @@
       <div class="log_in_container">
         <div class="title">
           <h1>Log in</h1>
-          <img src="../../img/line.svg" alt="" />
+          <img src="../../../img/line.svg" alt="" />
         </div>
         <form class="log_in_form" onsubmit="logIn(); return false;">
           <div class="log_in_inputs">
             <div class="log_in_text_inputs">
-              <input class="input_email" placeholder="Email" type="email" id="email" required />
+              <input id="email" class="input_area mail" required placeholder="Email" type="email" />
               <div class="input_password_container">
-                <input class="input_password" placeholder="Password" type="password" id="password" required />
+                <div class="visibility_area">
+                  <input id="password" required class="input_area lock" placeholder="Password" type="password" />
+                  <div id="passwordEyeIcon" class="visibility_area_container">
+                    <div class="visibility_icon_container">
+                      <img class="visibility_icon" src="../../../img/visibility_off.svg" onclick="togglePasswordSignIn(this, 'password')" alt="" />
+                    </div>
+                  </div>
+                </div>
                 <div class="error_area">
                   <span id="errorPasswordMessage" class="d_none">This field is required</span>
                 </div>
               </div>
             </div>
-            <div class="checkbox">
-              <img id="checkbox" src="../../img/checkbox.svg" alt="checkbox" onmouseover="mouseOver(this)" onmouseout="mouseBeside(this)" /><span class="text_remember">Remember me</span>
+            <div class="checkbox_area black_font">
+              <div class="checkbox">
+                <img id="checkbox" src="../../../img/checkbox.svg" alt="checkbox" onmouseover="mouseOver(this)" onmouseout="mouseBeside(this)" onclick="toggleRememberMe(this)" />
+                <span>Remember me</span>
+              </div>
             </div>
           </div>
 

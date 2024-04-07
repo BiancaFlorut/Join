@@ -1,9 +1,3 @@
-/* .logo {
-  position: absolute;
-  top: 80px;
-  left: 77px;
-} */
-
 .register_container {
   background-color: white;
   border-radius: 30px;
@@ -57,98 +51,16 @@ form {
   gap: 32px;
 }
 
-.input_area {
-  width: 422px;
-  border-radius: 10px;
-  border: 1px solid #d1d1d1;
-  padding: 12px 21px;
-  font-size: 20px;
-  background-origin: content-box;
-  background-position: center right;
-  background-repeat: no-repeat;
-}
-
-.input_area::placeholder {
-  color: #d1d1d1;
-}
-
-.input_area:focus {
-  outline: 1px solid rgba(41, 171, 226, 1);
-}
-
 .person {
-  background-image: url("../../img/person.svg");
+  background-image: url("../../../img/person.svg");
 }
 
-.mail {
-  background-image: url("../../img/mail.svg");
-}
-
-.lock {
-  background-image: url("../../img/lock.svg");
-}
-
-.visibility_area_container {
-  width: 100%;
-  display: none;
-  justify-content: flex-end;
-  padding: 0 21px;
-  position: relative;
-  box-sizing: border-box;
-  height: 100%;
-  align-items: center;
-  transform: translate(0, -100%);
-}
-
-.visibility_area {
-  position: relative;
-}
-
-.visibility_icon {
-  cursor: pointer;
-}
-
-.visibility_icon_container {
-  position: absolute;
-  transform: translate(0, -50%);
-  /* padding-bottom: 4px; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 24px;
-  padding: 13px 0;
-}
-
-#password:not(:placeholder-shown) {
-  background-image: none;
-}
 #confirmPassword:not(:placeholder-shown) {
   background-image: none;
 }
 
-#password:not(:placeholder-shown) ~ #passwordEyeIcon {
-  display: flex;
-}
 #confirmPassword:not(:placeholder-shown) ~ #confirmPasswordEyeIcon {
   display: flex;
-}
-
-.checkbox_area {
-  color: #a8a8a8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 16px;
-}
-
-.checkbox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.checkbox img {
-  padding-right: 4px;
 }
 
 .privacy_link {
