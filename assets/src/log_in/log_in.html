@@ -4,27 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Log in</title>
+    <link rel="shortcut icon" href="../../img/logo_small.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="../log_in_register.css" />
     <link rel="stylesheet" href="log_in.css" />
+    <link rel="stylesheet" href="../styles.css" />
     <script src="log_in.js"></script>
     <script src="../storage.js"></script>
   </head>
   <body>
-    <div class="header_log_in_">
-      <img class="logo_join" src="../../img/logo_small.svg" alt="logo join" />
-      <div class="header_user_sign_up">
-        <span class="not_user">Not a Join user?</span><button class="button_sign_up" onclick="window.location.replace('../register/register.html')">Sign up</button>
+    <div class="logo"><img src="../../img/logo_small.svg" alt="" /></div>
+    <div class="header_container">
+      <div class="header_log_in_">
+        <div class="header_user_sign_up"><span class="not_user">Not a Join user?</span><button class="bold" onclick="window.location.replace('../register/register.html')">Sign up</button></div>
       </div>
     </div>
     <div class="container">
       <div class="log_in_container">
-        <h1 class="log_in_headline">Log in</h1>
-        <img class="img_vector" src="../../img/Vector 5.svg" alt="" />
-        <form class="log_in_input" onsubmit="logIn(); return false;">
-          <input class="input_email" placeholder="Email" type="email" id="email" required />
-          <input class="input_password" placeholder="Password" type="password" id="password" required />
-          <div class="checkbox">
-            <img id="checkbox" src="../../img/checkbox.svg" alt="checkbox" onmouseover="mouseOver(this)" onmouseout="mouseBeside(this)" /><span class="text_remember">Remember me</span>
+        <div class="title">
+          <h1>Log in</h1>
+          <img src="../../img/line.svg" alt="" />
+        </div>
+        <form class="log_in_form" onsubmit="logIn(); return false;">
+          <div class="log_in_inputs">
+            <div class="log_in_text_inputs">
+              <input class="input_email" placeholder="Email" type="email" id="email" required />
+              <div class="input_password_container">
+                <input class="input_password" placeholder="Password" type="password" id="password" required />
+                <div class="error_area">
+                  <span id="errorPasswordMessage" class="d_none">This field is required</span>
+                </div>
+              </div>
+            </div>
+            <div class="checkbox">
+              <img id="checkbox" src="../../img/checkbox.svg" alt="checkbox" onmouseover="mouseOver(this)" onmouseout="mouseBeside(this)" /><span class="text_remember">Remember me</span>
+            </div>
           </div>
+
           <div class="button_center">
             <button class="button_log_in">Log in</button>
             <button class="button_guest">Guest Log in</button>
@@ -32,6 +47,6 @@
         </form>
       </div>
     </div>
-    <footer class="footer_log_in"><a class="text_policy" href="#">Privacy Policy</a><a class="text_notice" href="#">Legal notice</a></footer>
+    <footer class="footer_log_in"><a href="#">Privacy Policy</a><a href="#">Legal notice</a></footer>
   </body>
 </html>

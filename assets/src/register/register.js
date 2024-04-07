@@ -87,7 +87,7 @@ async function register() {
     const emails = getEmailArray();
     if (emails.includes(email)) {
       console.log("email already exists");
-      getElementWithId('email').style.border = '1px solid red';
+      getElementWithId('email').style.border = '1px solid rgba(255, 0, 31, 1)';
     } else {
       console.log("push user on remote storage");
       users.push(user);
@@ -108,9 +108,12 @@ function onChange() {
   const confirm = document.getElementById("confirmPassword");
   if (confirm.value == password.value) {
     document.getElementById("errorPasswordMessage").classList.add("d_none");
+    getElementWithId('confirmPassword').style.border = '1px solid #d1d1d1';
     confirm.setCustomValidity("");
   } else {
     document.getElementById("errorPasswordMessage").classList.remove("d_none");
+    getElementWithId('confirmPassword').style.border = '1px solid rgba(255, 0, 31, 1)';
+    confirm.setCustomValidity("");
   }
   checkAllConditions();
 }
