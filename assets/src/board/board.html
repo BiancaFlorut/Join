@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Board</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../templates/templates.css" />
+    <link rel="stylesheet" href="../board/board.css">
+    <script src="../templates/templates.js"></script>
+    <script src="../script.js"></script>
+    <script src="../board/board.js"></script>
+  </head>
+  <body onload="init(); updateHTML()">
+    <div w3-include-html="../templates/nav_bar_left.html"></div>
+    <section class="content-section">
+        <div class="shadow" w3-include-html="../templates/header.html"></div>
+        <div class="content">
+            <div class="header_board">
+                    <h1 class="h1_board">Board</h1>
+                <div class="input_button_header">
+                    <input class="input_board_find_task" type="text" placeholder="Find Task">
+                    <button class="bold_21 align_item_center">Add Task <img src="../../img/board_add.svg" alt="add"> </button>
+                </div>
+            </div>
+            <div class="column_title">
+                    <h2 class="h2_board">To do <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button"></h2>
+                    <h2 class="h2_board">In progress <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button"></h2>
+                    <h2 class="h2_board">Await feedback <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button"></h2>
+                    <h2 class="h2_board">Done</h2>
+            </div>
+            <div>
+                <div class="drag-area" id="open" ondrop="moveTo('open')" ondragleave="removeHighlight('open')" ondragover="allowDrop(event); highlight('open')"></div>
+                <div class="drag-area" id="closed" ondrop="moveTo('closed')" ondragleave="removeHighlight('closed')" ondragover="allowDrop(event); highlight('closed')"></div>
+                <div class="drag-area" id="open" ondrop="moveTo('open')" ondragleave="removeHighlight('open')" ondragover="allowDrop(event); highlight('open')"></div>
+                <div class="drag-area" id="closed" ondrop="moveTo('closed')" ondragleave="removeHighlight('closed')" ondragover="allowDrop(event); highlight('closed')"></div>
+            </div>
+        </div>
+      </section>
+  </body>
+</html>
