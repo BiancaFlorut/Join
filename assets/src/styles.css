@@ -75,6 +75,13 @@ button_line:invalid {
   cursor: auto;
 }
 
+h1 {
+  font-size: 62px;
+  font-weight: 700;
+  margin: 0;
+  font-family: "Inter-Bold", sans-serif;
+}
+
 .d_none {
   display: none;
 }

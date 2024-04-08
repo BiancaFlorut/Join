@@ -17,7 +17,7 @@
       <div class="shadow" w3-include-html="../templates/header.html"></div>
       <div class="content">
         <div class="header_board">
-          <h1 class="h1_board">Board</h1>
+          <h1>Board</h1>
           <div class="input_button_header">
             <input class="input_board_find_task" type="text" placeholder="Find Task" />
             <button class="button_board_add_task">Add Task <img src="../../img/board_add.svg" alt="add" /></button>
@@ -34,13 +34,6 @@
           <div class="drag-area" id="inProgress" ondrop="moveTo('inProgress')" ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')"></div>
           <div class="drag-area" id="awaitFeedback" ondrop="moveTo('awaitFeedback')" ondragleave="removeHighlight('awaitFeedback')" ondragover="allowDrop(event); highlight('awaitFeedback')"></div>
           <div class="drag-area" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')"></div>
-        </div>
-
-        <div class="board_add_task">
-          <div>
-            <h1 class="h1_add_task">Add Task</h1>
-            <img src="../../img/board_add_task_close.svg" alt="close" />
-          </div>
         </div>
       </div>
     </section>

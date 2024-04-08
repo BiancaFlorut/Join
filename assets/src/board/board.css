@@ -1,91 +1,87 @@
-.h1_board {
-    font-size: 61px;
-    font-weight: 700;
-}
-
-.input_board_find_task {
-    background: url(../../img/board_input_find_task_search.svg) no-repeat right;
-    display: flex;
-    border-radius: 10px;
-    border: 1px solid #a8a8a8;
-    padding: 8px 16px 8px 16px;
-    font-size: 20px;
-    font-weight: 400;
-    color: #d1d1d1;
+.content {
+  padding: 0 64px;
 }
 
 .header_board {
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 64px 0px 64px;
-}
-
-.input_button_header {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-}
-
-.button_board_add_task {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 21px;
-    font-weight: 700;
+  display: flex;
+  justify-content: space-between;
 }
 
 .column_title {
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 64px 0px 64px;
-}
-
-.h2_board {
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-    font-weight: 700;
-    color: #42526e;
-}
-
-.board_plus_button {
-    cursor: pointer;
-}
-
-.board_add_task {
-    background-color: #ffffff;
-    border-radius: 30px;
-    height: 870px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.h1_add_task {
-    font-size: 61px;
-    font-weight: 700;
+  display: flex;
+  justify-content: space-between;
 }
 
 .board_distribution {
-    display: flex;
-    justify-content: space-between;
-    padding: 0px 64px 0px 64px;
-    gap: 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.input_board_find_task {
+  background: url(../../img/board_input_find_task_search.svg) no-repeat right;
+  display: flex;
+  border-radius: 10px;
+  border: 1px solid #a8a8a8;
+  padding: 8px 16px 8px 16px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #d1d1d1;
+}
+
+.input_button_header {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.button_board_add_task {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.h2_board {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  color: #42526e;
+}
+
+.board_plus_button {
+  cursor: pointer;
+}
+
+.board_add_task {
+  background-color: #ffffff;
+  border-radius: 30px;
+  height: 870px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.h1_add_task {
+  font-size: 61px;
+  font-weight: 700;
 }
 
 .drag-area {
-    height: 500px;
-    width: 246px;
-    background-color: rgba(0, 0, 0, 0.1);
-    border: 1px dashed black;
+  height: 500px;
+  width: 246px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px dashed black;
 }
 
 .drag-area-highlight {
-    background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .todo {
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 24px;
-    padding: 16px;
-    margin: 10px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 24px;
+  padding: 16px;
+  margin: 10px;
 }
