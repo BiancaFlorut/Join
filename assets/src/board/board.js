@@ -34,6 +34,14 @@ function updateHTML() {
     }
 }
 
+function startDragging(id) {
+    currentDraggedElement = id;
+}
+
+function generateTodoHTML(element) {
+    return `<div draggable="true" ondragstart="startDragging(${element['id']})" class="todo">${element['title']}</div>`;
+}
+
 function allowDrop(ev) {
     ev.preventDefault();
 }
