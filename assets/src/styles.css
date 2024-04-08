@@ -46,12 +46,31 @@ button {
 
 button:hover {
   background-color: rgba(41, 171, 226, 1);
-  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
 button:disabled {
   background-color: rgba(42, 54, 71, 1);
   box-shadow: none;
+  cursor: auto;
+}
+
+.button_line {
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid rgba(9, 25, 49, 1);
+  color: rgba(9, 25, 49, 1);
+}
+
+.button_line:hover {
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(41, 171, 226, 1);
+  outline: 2px solid rgba(41, 171, 226, 1);
+  outline-offset: -2px;
+}
+
+button_line:invalid {
+  border: 1px solid rgba(42, 54, 71, 1);
+  box-shadow: none;
+  color: rgba(42, 54, 71, 1);
   cursor: auto;
 }
 

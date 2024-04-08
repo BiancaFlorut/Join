@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Log in</title>
     <link rel="shortcut icon" href="../../../img/logo_small.svg" type="image/x-icon" />
     <link rel="stylesheet" href="../log_in_register.css" />
     <link rel="stylesheet" href="log_in.css" />
@@ -11,6 +10,7 @@
     <script src="log_in.js"></script>
     <script src="../../storage.js"></script>
     <script src="../log_in_register.js"></script>
+    <title>Log in</title>
   </head>
   <body>
     <div class="logo"><img src="../../../img/logo_small.svg" alt="" /></div>
@@ -45,15 +45,24 @@
             </div>
             <div class="checkbox_area black_font">
               <div class="checkbox">
-                <img id="checkbox" src="../../../img/checkbox.svg" alt="checkbox" onmouseover="mouseOver(this)" onmouseout="mouseBeside(this)" onclick="toggleRememberMe(this)" />
+                <img
+                  id="checkboxRememberMe"
+                  src="../../../img/checkbox.svg"
+                  alt="checkbox"
+                  onmouseover="mouseOverRememberMe(this)"
+                  onmouseout="mouseBesideRememberMe(this)"
+                  onclick="toggleRememberMe(this)"
+                />
                 <span>Remember me</span>
               </div>
             </div>
           </div>
 
           <div class="button_center">
-            <button class="button_log_in">Log in</button>
-            <button class="button_guest">Guest Log in</button>
+            <button class="bold_21">Log in</button>
+            <div class="grow">
+              <button class="button_line bold_21" type="button" onclick="window.location.replace('../../summary/summary.html')">Guest Log in</button>
+            </div>
           </div>
         </form>
       </div>

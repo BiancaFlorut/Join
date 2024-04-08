@@ -17,16 +17,16 @@ function togglePasswordSignUp(element, id) {
 }
 
 function togglePrivacyPolicyIcon(checkbox) {
-  isCheckedPrivacyPolicy = toggleCheckbox(checkbox);
+  isCheckedPrivacyPolicy = toggleCheckbox(checkbox, isCheckedPrivacyPolicy);
   checkAllConditions();
 }
 
 function mouseOverSignUp(element) {
-  isCheckedPrivacyPolicy = mouseOver(element, isCheckedPrivacyPolicy);
+  mouseOver(element, isCheckedPrivacyPolicy);
 }
 
 function mouseBesideSignUp(element) {
-  isCheckedPrivacyPolicy = mouseBeside(element, isCheckedPrivacyPolicy);
+  mouseBeside(element, isCheckedPrivacyPolicy);
 }
 
 /**

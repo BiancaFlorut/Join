@@ -10,6 +10,14 @@ function toggleRememberMe(checkbox) {
     isRememberMeChecked = toggleCheckbox(checkbox, isRememberMeChecked);
 }
 
+function mouseOverRememberMe(element) {
+  mouseOver(element, isRememberMeChecked);
+}
+
+function mouseBesideRememberMe(element) {
+  mouseBeside(element, isRememberMeChecked);
+}
+
 function login() {
   let email = document.getElementById("email");
   let password = document.getElementById("password");
