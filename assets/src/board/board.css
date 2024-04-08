@@ -26,10 +26,12 @@
     gap: 32px;
 }
 
-.align_item_center {
+.button_board_add_task {
     display: flex;
     align-items: center;
     gap: 4px;
+    font-size: 21px;
+    font-weight: 700;
 }
 
 .column_title {
@@ -50,13 +52,30 @@
     cursor: pointer;
 }
 
+.board_add_task {
+    background-color: #ffffff;
+    border-radius: 30px;
+    height: 870px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.h1_add_task {
+    font-size: 61px;
+    font-weight: 700;
+}
+
+.board_distribution {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 64px 0px 64px;
+    gap: 24px;
+}
+
 .drag-area {
-    height: 200px;
+    height: 500px;
+    width: 246px;
     background-color: rgba(0, 0, 0, 0.1);
     border: 1px dashed black;
-    margin-bottom: 50px;
-    display: flex;
-    align-items: flex-start;
 }
 
 .drag-area-highlight {
@@ -66,7 +85,7 @@
 .todo {
     background-color: white;
     border: 1px solid black;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 24px;
+    padding: 16px;
     margin: 10px;
 }
