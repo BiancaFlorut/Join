@@ -54,20 +54,6 @@ let contactBert = {
     phone: 1234674564
 }
 
-let userAndu = {
-    email: 'andu@mail.com',
-    name: 'Andu',
-    password: '123',
-    contacts: [contactBert, contactMaria, contactAndrei],
-    tasks: [task, task2]
-}
-
-let contactAndu = {
-    name: 'Andu',
-    email: 'andu@mail.com',
-    phone: '12345'
-}
-
 let task = {
     title: 'Log In erstellen',
     description: 'Design und Funktionalität erstellen',
@@ -82,11 +68,25 @@ let task = {
 
 let task2 = {
     title: 'Board Seite',
-    description: 'Danten überstragung',
+    description: 'Daten Übertragung',
     assign_to: [contactAndrei, userMaria],
     due_date: 1712572885643,
     priority: 1, // 0 low, 1 medium, 2 urgent
     category: 'Technical Task',
     subtask: ['tasks erstellen', ['tasks löschen']],
     id: 'andu@mail.com1712572885643',
+}
+
+let userAndu = {
+    email: 'andu@mail.com',
+    name: 'Andu',
+    password: '123',
+    contacts: [contactBert, contactMaria, contactAndrei],
+    tasks: [task, task2]
+}
+
+let contactAndu = {
+    name: 'Andu',
+    email: 'andu@mail.com',
+    phone: '12345'
 }
