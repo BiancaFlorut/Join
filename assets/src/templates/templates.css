@@ -80,6 +80,7 @@ nav span {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: #f6f7f8;
 }
 header {
     display: flex;

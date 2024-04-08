@@ -1,0 +1,26 @@
+
+.summary {
+    padding: 106px 80px;
+}
+.summary-headline {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    width: 625px;
+    height: 73px;
+}
+.summary-headline h2 {
+    font-weight: 700;
+    font-size: 61px;
+    margin: 0 0;
+}
+.summary-headline p {
+    font-size: 27px;
+    font-weight: 400;
+    margin: 0 0;
+}
+.headline-decoration {
+    height: 59px;
+    width: 3px;
+    background-color: #29abe2;
+}

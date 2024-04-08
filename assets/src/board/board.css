@@ -1,0 +1,72 @@
+.h1_board {
+    font-size: 61px;
+    font-weight: 700;
+}
+
+.input_board_find_task {
+    background: url(../../img/board_input_find_task_search.svg) no-repeat right;
+    display: flex;
+    border-radius: 10px;
+    border: 1px solid #a8a8a8;
+    padding: 8px 16px 8px 16px;
+    font-size: 20px;
+    font-weight: 400;
+    color: #d1d1d1;
+}
+
+.header_board {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 64px 0px 64px;
+}
+
+.input_button_header {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.align_item_center {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.column_title {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 64px 0px 64px;
+}
+
+.h2_board {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: #42526e;
+}
+
+.board_plus_button {
+    cursor: pointer;
+}
+
+.drag-area {
+    height: 200px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px dashed black;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.drag-area-highlight {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.todo {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
