@@ -20,7 +20,7 @@
                     <h1 class="h1_board">Board</h1>
                 <div class="input_button_header">
                     <input class="input_board_find_task" type="text" placeholder="Find Task">
-                    <button class="bold_21 align_item_center">Add Task <img src="../../img/board_add.svg" alt="add"> </button>
+                    <button class="button_board_add_task">Add Task <img src="../../img/board_add.svg" alt="add"> </button>
                 </div>
             </div>
             <div class="column_title">
@@ -29,11 +29,16 @@
                     <h2 class="h2_board">Await feedback <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button"></h2>
                     <h2 class="h2_board">Done</h2>
             </div>
-            <div>
+            <div class="board_add_task">
+                <div>
+                <h1 class="h1_add_task">Add Task</h1><img src="../../img/board_add_task_close.svg" alt="close">
+                </div>
+            </div>
+            <div class="board_distribution">
                 <div class="drag-area" id="open" ondrop="moveTo('open')" ondragleave="removeHighlight('open')" ondragover="allowDrop(event); highlight('open')"></div>
                 <div class="drag-area" id="closed" ondrop="moveTo('closed')" ondragleave="removeHighlight('closed')" ondragover="allowDrop(event); highlight('closed')"></div>
-                <div class="drag-area" id="open" ondrop="moveTo('open')" ondragleave="removeHighlight('open')" ondragover="allowDrop(event); highlight('open')"></div>
-                <div class="drag-area" id="closed" ondrop="moveTo('closed')" ondragleave="removeHighlight('closed')" ondragover="allowDrop(event); highlight('closed')"></div>
+                <div class="drag-area" id="open1" ondrop="moveTo('open1')" ondragleave="removeHighlight('open1')" ondragover="allowDrop(event); highlight('open1')"></div>
+                <div class="drag-area" id="closed1" ondrop="moveTo('closed1')" ondragleave="removeHighlight('closed1')" ondragover="allowDrop(event); highlight('closed1')"></div>
             </div>
         </div>
       </section>
