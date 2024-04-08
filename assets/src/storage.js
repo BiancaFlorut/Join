@@ -20,6 +20,6 @@ async function getItem(key) {
  * @returns a Promise
  */
 async function setItem(key, value) {
-    const payload = {key, value, token: STORAGE_TOKEN};
+    const payload = {key: key, value: value, token: STORAGE_TOKEN};
     return fetch(STORAGE_URL, {method: 'POST', body: JSON.stringify(payload)});
 }
