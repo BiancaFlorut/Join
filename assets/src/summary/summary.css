@@ -8,7 +8,7 @@
 |/////////////////////////////////////////////////////////|
 */
 .summary {
-    padding: 106px 80px;
+    padding: 5%;
 }
 /*
 |//////////////////////////////////////////////////|
@@ -53,5 +53,12 @@
 .content-box {
     background-color: white;
     border-radius: 30px;
-    
 }
+.summary-content {
+    height: 562px;
+    width: 560px;
+    border: 1px solid black;
+}
+/* .summary-content-left-top {
+    width: ;
+} */
