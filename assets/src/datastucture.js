@@ -90,3 +90,5 @@ let contactAndu = {
     email: 'andu@mail.com',
     phone: '12345'
 }
+
+let users = [userAndrei, userAndu, userBert, userMaria, userMarian];

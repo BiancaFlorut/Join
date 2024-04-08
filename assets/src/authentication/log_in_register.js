@@ -73,6 +73,6 @@ function toggleCheckbox(checkbox, isToggled) {
 
 
 async function init() {
-  let usersResponse = await getItem("users");
+  let usersResponse = await getItemFromRemoteStorage("users");
   users = JSON.parse(usersResponse.data.value);
 }
