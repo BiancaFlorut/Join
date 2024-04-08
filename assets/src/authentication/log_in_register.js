@@ -70,3 +70,9 @@ function toggleCheckbox(checkbox, isToggled) {
   }
   return isToggled;
 }
+
+
+async function init() {
+  let usersResponse = await getItem("users");
+  users = JSON.parse(usersResponse.data.value);
+}

@@ -21,14 +21,8 @@ function mouseBesideRememberMe(element) {
 function login() {
   let email = document.getElementById("email");
   let password = document.getElementById("password");
-  let user = user.find((u) => u.email == email.value && u.password == password.value);
-}
-
-const urlParms = new URLSearchParams(window.location.search);
-const msg = urlParms.get("msg");
-
-if (msg) {
-  msgBox.innerHTML = msg;
-} else {
-  //display:none
+  let user = users.find((u) => u.email == email.value && u.password == password.value);
+  if (user) {
+    window.location.replace('../../summary/summary.html')
+  }
 }

@@ -6,11 +6,6 @@ function resetContent() {
   document.createElement("errorPasswordMessage").classList.add("d_none");
 }
 
-async function init() {
-  let usersResponse = await getItem("users");
-  users = JSON.parse(usersResponse.data.value);
-}
-
 function togglePasswordSignUp(element, id) {
   isPasswordVisible = togglePassword(element, id, isPasswordVisible); 
   checkAllConditions();
@@ -34,6 +29,7 @@ function mouseBesideSignUp(element) {
  */
 async function register() {
   if (isCheckedPrivacyPolicy) {
+    document.getElementById("signUpButton").disabled = true;
     const password = document.getElementById("password").value;
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
@@ -49,6 +45,7 @@ async function register() {
       getElementWithId('signUpSuccessfullyScreen').classList.remove('d_none');
       setTimeout(function() { window.location.replace('../log_in/log_in.html')}, 1600);
     }
+    document.getElementById("signUpButton").disabled = false;
   }
 }
 
