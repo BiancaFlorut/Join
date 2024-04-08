@@ -1,3 +1,8 @@
+/**
+ * this function integrates html templates
+ *
+ * @param {html-include} templates
+ */
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
@@ -10,4 +15,34 @@ async function includeHTML() {
             element.innerHTML = 'Page not found';
         }
     }
+}
+
+/**
+ * this function makes a menu appear, for this I delete the div a css class called d-none
+ *
+ * @param {class} class
+ */
+function openPopupMenu() {
+    let element = document.getElementById("popupMenuHeader");
+    element.classList.remove("d-none");
+}
+
+/**
+ * this function makes a menu disappear, for this I give the div a css class called d-none
+ *
+ * @param {class} class
+ */
+function closePopupMenu() {
+    let element = document.getElementById("popupMenuHeader");
+    element.classList.add("d-none");
+}
+
+/**
+ * 
+ * 
+ * 
+ */
+function selectedPage() {
+    let element = document.getElementById(`${document.title}`);
+    element.classList.add("selected-page");
 }
