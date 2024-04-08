@@ -68,10 +68,6 @@ function onChange() {
   checkAllConditions();
 }
 
-function getElementWithId(id) {
-  return document.getElementById(id);
-}
-
 function checkAllConditions() {
   if (getElementWithId("name").value && getElementWithId("password").value == getElementWithId("confirmPassword").value && getElementWithId("email").value && isCheckedPrivacyPolicy)
     getElementWithId("signUpButton").disabled = false;
