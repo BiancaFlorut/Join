@@ -9,6 +9,7 @@
 */
 .summary {
     padding: 5%;
+    height: 80%;
 }
 /*
 |//////////////////////////////////////////////////|
@@ -41,24 +42,86 @@
     width: 3px;
     background-color: #29abe2;
 }
+.summary-content {
+    padding-top: 30px;
+    height: 84%;
+    display: flex;
+    justify-content: space-between;
+}
 /*
-|/////////////////////////////////////////////////////|
-|                                                     |
-|                                                     |
-|-------------------->content box<--------------------|
-|                                                     |
-|                                                     |
-|/////////////////////////////////////////////////////|
+|//////////////////////////////////////////////////////////|
+|                                                          |
+|                                                          |
+|-------------------->content box left<--------------------|
+|                                                          |
+|                                                          |
+|//////////////////////////////////////////////////////////|
 */
+.summary-content-left {
+    display: flex;
+    width: 560px;
+    flex-direction: column;
+    justify-content: space-between; 
+}
 .content-box {
     background-color: white;
     border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.summary-content {
-    height: 562px;
-    width: 560px;
-    border: 1px solid black;
+.summary-content-left-top {
+    display: flex;
+    justify-content: space-between;
+    height: 30%;
 }
-/* .summary-content-left-top {
-    width: ;
-} */
+.summary-content-left-top-div {
+    display: flex;
+    gap: 18px;
+    width: 47%;
+}
+.content-number {
+    font-size: 64px;
+    font-weight: 600;
+}
+.summary-content-left-top-div span {
+    text-align: center;
+}
+.description {
+    font-size: 20px;
+    font-weight: 400;
+}
+.todo {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.summary-content-left-mid {
+    height: 30%;
+}
+.summary-content-left-bot {
+    height: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+.summary-content-left-bot-div {
+    width: 30%;
+}

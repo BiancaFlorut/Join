@@ -110,7 +110,8 @@ header {
     height: 24px;
 }
 .header-left {
-    font-weight: 100;
+    font-size: 20px;
+    font-weight: 400;
     padding-left: 120px;
 }
 .user {
