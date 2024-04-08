@@ -7,7 +7,7 @@ const STORAGE_URL = ' https://remote-storage.developerakademie.org/item';
  * @param {string} key 
  * @returns the value of the saved data with the key and token in json data structure {data, value, status}
  */
-async function getItem(key) {
+async function getItemFromRemoteStorage(key) {
     const URL = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
     return await fetch(URL).then(resp => resp.json());
 }
@@ -19,7 +19,7 @@ async function getItem(key) {
  * @param {JSON} value 
  * @returns a Promise
  */
-async function setItem(key, value) {
+async function setItemFromRemoteStorage(key, value) {
     const payload = {key: key, value: value, token: STORAGE_TOKEN};
     return fetch(STORAGE_URL, {method: 'POST', body: JSON.stringify(payload)});
 }
