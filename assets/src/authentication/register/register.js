@@ -41,7 +41,7 @@ async function register() {
     } else {
       console.log("push user on remote storage");
       users.push(user);
-      await setItemFromRemoteStorage("users", JSON.stringify(users));
+      await setItemToRemoteStorage("users", JSON.stringify(users));
       getElementWithId('signUpSuccessfullyScreen').classList.remove('d_none');
       setTimeout(function() { window.location.replace('../log_in/log_in.html')}, 1600);
     }

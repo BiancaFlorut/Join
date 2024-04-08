@@ -19,7 +19,7 @@ async function getItemFromRemoteStorage(key) {
  * @param {JSON} value 
  * @returns a Promise
  */
-async function setItemFromRemoteStorage(key, value) {
+async function setItemToRemoteStorage(key, value) {
     const payload = {key: key, value: value, token: STORAGE_TOKEN};
     return fetch(STORAGE_URL, {method: 'POST', body: JSON.stringify(payload)});
 }

@@ -24,7 +24,7 @@ async function logIn() {
   let user = users.find((u) => u.email == email.value && u.password == password.value);
   if (user) {
     console.log(user);
-    setItemFromRemoteStorage('actualUser', JSON.stringify(user));
+    setItemToRemoteStorage('actualUser', JSON.stringify(user));
     const response = await getItemFromRemoteStorage('actualUser');
     console.log(response);
     window.location.replace('../../summary/summary.html?email='+user.email);
