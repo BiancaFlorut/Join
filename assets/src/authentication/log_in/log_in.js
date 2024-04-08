@@ -18,11 +18,15 @@ function mouseBesideRememberMe(element) {
   mouseBeside(element, isRememberMeChecked);
 }
 
-function logIn() {
+async function logIn() {
   let email = document.getElementById("email");
   let password = document.getElementById("password");
   let user = users.find((u) => u.email == email.value && u.password == password.value);
   if (user) {
+    console.log(user);
+    setItem('actualUser', JSON.stringify(user));
+    const response = await getItem('actualUser');
+    console.log(response);
     window.location.replace('../../summary/summary.html?email='+user.email);
   }
   else {
