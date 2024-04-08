@@ -18,11 +18,15 @@ function mouseBesideRememberMe(element) {
   mouseBeside(element, isRememberMeChecked);
 }
 
-function login() {
+function logIn() {
   let email = document.getElementById("email");
   let password = document.getElementById("password");
   let user = users.find((u) => u.email == email.value && u.password == password.value);
   if (user) {
-    window.location.replace('../../summary/summary.html')
+    window.location.replace('../../summary/summary.html?email='+user.email);
+  }
+  else {
+    getElementWithId('errorPasswordMessage').classList.remove('d_none');
+    getElementWithId('password').style.border = '1px solid rgba(255, 0, 31, 1)';
   }
 }
