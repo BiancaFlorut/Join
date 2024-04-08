@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="storage.js"></script>
+    <script src="contacts.js"></script>
+    <title>Add_Tasks</title>
+    <link rel="icon" href="../../img/logo_small.svg" type="image/svg">
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../templates/templates.css" />
+    <link rel="stylesheet" href="./summary.css">
+    <script src="../templates/templates.js"></script>
+    <script src="../script.js"></script>
+    <script src="./summary.js"></script>
+  </head>
+  <body onload="init()">
+    <div w3-include-html="../templates/nav_bar_left.html"></div>
+
+    <section class="content-section">
+      <div class="shadow" w3-include-html="../templates/header.html"></div>
+      <div class="content">
+        <h2>add_tasks</h2>
+        <div id="content"></div>
+      </div>
+    </section>
+  </body>
+</html>
