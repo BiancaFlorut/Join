@@ -35,10 +35,11 @@ nav span {
 .nav-bar-container {
     display: flex;
     justify-content: center;
-    cursor: pointer;
+    text-decoration: none;
 }
 .selected-page {
     background-color: #091931;
+    filter: brightness(1.5);
 }
 .nav-bar-container:hover {
     background-color: #2A3d59;
@@ -135,8 +136,10 @@ header {
 }
 #popupMenuHeader {
     position: fixed;
-    height: 100%;
-    width: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 .user-popup-menu {
     height: 204px;
