@@ -6,9 +6,23 @@
     <script src="storage.js"></script>
     <script src="contacts.js"></script>
     <title>Contacts</title>
+    <link rel="icon" href="../../img/logo_small.svg" type="image/svg">
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="../templates/templates.css" />
+    <link rel="stylesheet" href="./summary.css">
+    <script src="../templates/templates.js"></script>
+    <script src="../script.js"></script>
+    <script src="./summary.js"></script>
   </head>
-  <body>
-    <h1>Contacts</h1>
-    <div id="content"></div>
+  <body onload="init()">
+    <div w3-include-html="../templates/nav_bar_left.html"></div>
+
+    <section class="content-section">
+      <div class="shadow" w3-include-html="../templates/header.html"></div>
+      <div class="content">
+        <h2>Contacts</h2>
+        <div id="content"></div>
+      </div>
+    </section>
   </body>
 </html>
