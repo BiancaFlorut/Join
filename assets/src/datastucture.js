@@ -1,7 +1,9 @@
 let user = {
     email: 'mail@bla.com',
     name: 'Maria',
-    password: '123'
+    password: '123',
+    contacts: [],
+    tasks: []
 }
 
 let contact = {
