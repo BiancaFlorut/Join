@@ -1,0 +1,157 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background-color: #f6f7f8;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-family: "Inter-Regular", sans-serif;
+  font-weight: 400;
+}
+
+.logo {
+  position: absolute;
+  top: 7.8%;
+  left: 7.5%;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+h1 {
+  font-size: 62px;
+  font-weight: 700;
+  margin: 0;
+  font-family: "Inter-Bold", sans-serif;
+}
+
+.footer_log_in {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  bottom: 75px;
+}
+
+a {
+  text-decoration: none;
+  color: #a8a8a8;
+}
+
+a:hover {
+  color: #29abe2;
+  font-weight: 700;
+  transform: scale(1.1);
+  z-index: 2;
+}
+
+.error_area {
+  padding-top: 10px;
+  font-family: "Poppins";
+  color: #ff8190;
+  font-size: 12px;
+  height: 14px;
+  width: 100%;
+  padding-bottom: 16px;
+}
+
+.input_area {
+  width: 422px;
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  padding: 12px 21px;
+  font-size: 20px;
+  background-origin: content-box;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+
+.input_area::placeholder {
+  color: #d1d1d1;
+}
+
+.input_area:focus {
+  outline: 1px solid rgba(41, 171, 226, 1);
+}
+
+.mail {
+  background-image: url("../../img/mail.svg");
+}
+
+.lock {
+  background-image: url("../../img/lock.svg");
+}
+
+.visibility_area {
+  position: relative;
+}
+
+.visibility_area_container {
+  width: 100%;
+  display: none;
+  justify-content: flex-end;
+  padding: 0 21px;
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  align-items: center;
+  transform: translate(0, -100%);
+}
+
+.visibility_icon {
+  cursor: pointer;
+}
+
+.visibility_icon_container {
+  position: absolute;
+  transform: translate(0, -50%);
+  /* padding-bottom: 4px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  padding: 13px 0;
+}
+
+#password:not(:placeholder-shown) {
+  background-image: none;
+}
+
+#password:not(:placeholder-shown) ~ #passwordEyeIcon {
+  display: flex;
+}
+
+.checkbox_area {
+  color: #a8a8a8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 16px;
+}
+
+.checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox img {
+  padding-right: 4px;
+}

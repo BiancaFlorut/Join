@@ -1,0 +1,77 @@
+.header_container {
+  position: relative;
+  width: 100%;
+}
+
+.header_log_in_ {
+  position: absolute;
+  top: 67px;
+  right: 8.5%;
+}
+
+.header_user_sign_up {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.not_user {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.log_in_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  padding: 48px 115px;
+  border-radius: 30px;
+  box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
+  gap: 32px;
+}
+
+.log_in_form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.log_in_inputs {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.log_in_text_inputs {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.error_area {
+  padding-top: 8px;
+  padding-bottom: 20px;
+  height: 12px;
+}
+
+.checkbox_area {
+  justify-content: flex-start;
+  padding-left: 39px;
+  padding-bottom: 0;
+}
+
+.black_font {
+  color: black;
+}
+
+.button_center {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  box-sizing: border-box;
+}
