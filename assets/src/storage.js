@@ -34,9 +34,14 @@ async function loadUsersFromServer() {
     return users;
   }
 
-  
+
 async function getUserFromServer(email) {
     let users = await loadUsersFromServer();
     let user = users.find(u => u.email == email);
     return user;
+}
+
+async function getTaskList(email) {
+    let user = await getUserFromServer(email);
+    return user.tasks;
 }

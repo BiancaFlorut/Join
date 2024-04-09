@@ -78,7 +78,8 @@ async function initBoard() {
   
   console.log(emailParameter);
   let user = await getUserFromServer(emailParameter);
-  console.log(user);
+  let tasks = await getTaskList(emailParameter);
+  console.log(tasks);
   updateHTML(); 
 }
 
