@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Board</title>
+    <link rel="shortcut icon" href="../../img/logo_small.svg" type="image/x-icon" />
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="../templates/templates.css" />
     <link rel="stylesheet" href="../board/board.css" />
+    <script src="../utility.js"></script>
     <script src="../templates/templates.js"></script>
     <script src="../script.js"></script>
     <script src="../board/board.js"></script>
@@ -17,18 +19,32 @@
       <div class="shadow" w3-include-html="../templates/header.html"></div>
       <div class="content">
         <div class="header_board">
-          <h1>Board</h1>
-          <div class="input_button_header">
-            <input class="input_board_find_task" type="text" placeholder="Find Task" />
-            <button class="button_board_add_task">Add Task <img src="../../img/board_add.svg" alt="add" /></button>
+          <div class="header_title_input">
+            <h1>Board</h1>
+            <div class="input_button_header">
+              <div>
+                <input id="searchInput" class="input_board_find_task" type="text" placeholder="Find Task" />
+                <div class="input_board_find_task_button_area">
+                  <div class="input_board_find_task_button" onclick="searchTask()">
+                    <img src="../../img/input_vertical_line.svg" alt="vertical line" />
+                    <img id="magnifyingGlassIcon" src="../../img/board_input_find_task_search.svg" alt="magnifying glass" />
+                  </div>
+                </div>
+              </div>
+
+              <button class="bold_21 button_board_add_task">Add Task <img src="../../img/board_add.svg" alt="add" /></button>
+            </div>
+          </div>
+          <div class="column_title_area">
+            <div class="column_title">
+              <h2 class="h2_board"><span>To do</span><img class="bold_21 board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
+              <h2 class="h2_board"><span>In progress</span> <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
+              <h2 class="h2_board"><span>Await feedback</span> <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
+              <h2 class="h2_board"><span>Done</span></h2>
+            </div>
           </div>
         </div>
-        <div class="column_title">
-          <h2 class="h2_board">To do <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
-          <h2 class="h2_board">In progress <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
-          <h2 class="h2_board">Await feedback <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
-          <h2 class="h2_board">Done</h2>
-        </div>
+
         <div class="board_distribution">
           <div class="drag-area" id="toDo" ondrop="moveTo('toDo')" ondragleave="removeHighlight('toDo')" ondragover="allowDrop(event); highlight('toDo')"></div>
           <div class="drag-area" id="inProgress" ondrop="moveTo('inProgress')" ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')"></div>
