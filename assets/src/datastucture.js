@@ -72,11 +72,11 @@ let task2 = {
     title: 'Board Seite',
     description: 'Daten Übertragung',
     assign_to: [contactAndrei, userMaria],
-    due_date: 1712572885643,
+    due_date: 1712572885642,
     priority: 1, // 0 low, 1 medium, 2 urgent
     category: 'Technical Task',
     subtasks: [{text: 'tasks erstellen', checked: true}, {text: 'tasks löschen', checked: false}],
-    id: 'andu@mail.com1712572885643',
+    id: 'andu@mail.com1712572885642',
 }
 
 let userAndu = {

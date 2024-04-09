@@ -75,7 +75,6 @@ function resetColumns() {
 async function initBoard() {
   let user = await getUserFromServer(emailParameter);
   tasks = await getTaskList(emailParameter);
-  
   console.log(tasks);
   updateHTML(); 
 }
@@ -95,41 +94,40 @@ function startDragging(id) {
   currentDraggedElement = id;
 }
 
-function generateSmallTaskHTML(element) {
-  const category = element.category;
+function generateSmallTaskHTML(card) {
+  const category = card.category;
   const colorClass = category.toLowerCase().replace(/ /g,'_') + '_bg_color';
   let subtasksHTML = '';
-  if (element.subtasks.length > 0) subtasksHTML = getSubTaskHTML(element.subtasks);
+  if (card.subtasks.length > 0) subtasksHTML = getSubTaskHTML(card);
   return /*html*/`
-    <div draggable="true" ondragstart="startDragging(${element["id"]})" class="card_small">
-    <div class="task_category ${colorClass}">${element.category}</div>
+    <div draggable="true" ondragstart="startDragging('${card["id"]}')" class="card_small">
+    <div class="task_category ${colorClass}">${card.category}</div>
     <div class="task_text_area">
-      <div class="task_header">${element["title"]}</div>
-      <div class="task_description">${element.description}</div>
+      <div class="task_header">${card["title"]}</div>
+      <div class="task_description">${card.description}</div>
     </div>` + subtasksHTML + `
 
     </div>`;
 }
 
-function getSubTaskHTML(subtasks) {
+function getSubTaskHTML(card) {
+  const subtasks = card.subtasks;
     let counter = 0;
     subtasks.forEach(subtask => {if (subtask.checked) {
       counter++;
     }});
 
     const subtaskSummary = counter + '/' + subtasks.length + 'Subtasks';
-    return /*html*/`
+    const progress = counter/subtasks.length * 100;
+    let html = /*html*/`
       <div class="subtasks_area">
         <div class="progress_bar">
-          <div id="progress_level" class='progress_bar_level'></div>
+          <div class='progress_bar_level' style="width: ${progress}%"></div>
         </div>
         <span class='subtasks_summary'>${subtaskSummary}</div>
       </div>
     `;
-}
-
-function setProgressLevel() {
-  // 
+    return html;
 }
 
 function allowDrop(ev) {
@@ -137,7 +135,9 @@ function allowDrop(ev) {
 }
 
 function moveTo(status) {
-  tasks[currentDraggedElement]["status"] = status;
+  let task = tasks.find( t => t.id == currentDraggedElement);
+  task.status = status;
+  // to do: save to the server!!!!
   updateHTML();
 }
 
