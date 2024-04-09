@@ -61,7 +61,7 @@ let task = {
     due_date: 1712572885643,
     priority: 1, // 0 low, 1 medium, 2 urgent
     category: 'Technical Task',
-    subtask: 'Sign in form',
+    subtasks: ['Sign in form', 'custom validation'],
     id: 'andu@mail.com1712572885643',
 }
 
@@ -73,7 +73,7 @@ let task2 = {
     due_date: 1712572885643,
     priority: 1, // 0 low, 1 medium, 2 urgent
     category: 'Technical Task',
-    subtask: ['tasks erstellen', ['tasks löschen']],
+    subtasks: ['tasks erstellen', 'tasks löschen'],
     id: 'andu@mail.com1712572885643',
 }
 
@@ -91,4 +91,4 @@ let contactAndu = {
     phone: '12345'
 }
 
-let users = [userAndrei, userAndu, userBert, userMaria, userMarian];
+users = [userAndrei, userAndu, userBert, userMaria, userMarian];

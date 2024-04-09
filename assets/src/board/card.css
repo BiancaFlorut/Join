@@ -1,0 +1,40 @@
+.todo {
+  background-color: white;
+  border-radius: 24px;
+  width: 100%;
+  min-height: 48px;
+  padding: 16px;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.08);
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.task_category {
+  font-size: 16px;
+  color: white;
+  border-radius: 8px;
+  padding: 4px 16px;
+}
+
+.user_story_bg_color {
+  background-color: rgba(0, 56, 255, 1);
+}
+
+.technical_task_bg_color {
+  background-color: rgba(31, 215, 193, 1);
+}
+
+.task_header {
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(42, 54, 71, 1);
+  padding-bottom: 8px;
+}
+
+.task_description {
+  font-weight: 400;
+  color: rgba(168, 168, 168, 1);
+}

@@ -2,68 +2,67 @@ let tasks = [
   {
     id: 0,
     title: "Putzen",
-    category: "awaitFeedback",
+    status: "awaitFeedback",
   },
   {
     id: 1,
     title: "Kochen",
-    category: "awaitFeedback",
+    status: "awaitFeedback",
   },
   {
     id: 2,
     title: "Einkaufen",
-    category: "done",
+    status: "done",
   },
   {
     id: 3,
     title: "Joggen",
-    category: "inProgress",
+    status: "inProgress",
   },
   {
     id: 4,
     title: "Schlafen",
-    category: "awaitFeedback",
+    status: "awaitFeedback",
   },
   {
     id: 5,
     title: "Putzen",
-    category: "awaitFeedback",
+    status: "awaitFeedback",
   },
   {
     id: 6,
     title: "Kochen",
-    category: "awaitFeedback",
+    status: "awaitFeedback",
   },
   {
     id: 7,
     title: "Einkaufen",
-    category: "done",
+    status: "done",
   },
   {
     id: 8,
     title: "Joggen",
-    category: "inProgress",
+    status: "inProgress",
   },
   {
     id: 9,
     title: "Schlafen",
-    category: "awaitFeedback",
+    status: "awaitFeedback",
   },
 ];
 
 let currentDraggedElement;
-let users;
 
 
 /**
- * The function is filtering the tasks in the according category they are assigned to.
+ * The function is filtering the tasks according to their status.
  * @returns JSON array 
  */
 function resetColumns() {
-  const toDo = tasks.filter((t) => t["category"] == "toDo");
-  const inProgress = tasks.filter((t) => t.category == "inProgress");
-  const awaitFeedback = tasks.filter((t) => t.category == "awaitFeedback");
-  const done = tasks.filter((t) => t["category"] == "done");
+  const toDo = tasks.filter((t) => t["status"] == "toDo" || !t.status);
+  const inProgress = tasks.filter((t) => t.status == "inProgress");
+  const awaitFeedback = tasks.filter((t) => t.status == "awaitFeedback");
+  const done = tasks.filter((t) => t["status"] == "done");
 
   return columns = [
     { name: "toDo", cards: toDo },
@@ -74,11 +73,9 @@ function resetColumns() {
 }
 
 async function initBoard() {
-  users = await loadUsersFromServer();
-  
-  console.log(emailParameter);
   let user = await getUserFromServer(emailParameter);
-  let tasks = await getContactList(emailParameter);
+  tasks = await getTaskList(emailParameter);
+  
   console.log(tasks);
   updateHTML(); 
 }
@@ -99,15 +96,29 @@ function startDragging(id) {
 }
 
 function generateTodoHTML(element) {
-  return `<div draggable="true" ondragstart="startDragging(${element["id"]})" class="todo">${element["title"]}</div>`;
+  const category = element.category;
+  const colorClass = category.toLowerCase().replace(/ /g,'_') + '_bg_color';
+  return /*html*/`
+    <div draggable="true" ondragstart="startDragging(${element["id"]})" class="todo">
+    <div class="task_category ${colorClass}">${element.category}</div>
+    <div class="task_text_area">
+      <div class="task_header">${element["title"]}</div>
+      <div class="task_description">${element.description}</div>
+      <div class="subtasks_area">
+        <div class="progress_bar">
+          
+        </div>
+      </div>
+    </div>
+    </div>`;
 }
 
 function allowDrop(ev) {
   ev.preventDefault();
 }
 
-function moveTo(category) {
-  tasks[currentDraggedElement]["category"] = category;
+function moveTo(status) {
+  tasks[currentDraggedElement]["status"] = status;
   updateHTML();
 }
 
