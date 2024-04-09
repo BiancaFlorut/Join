@@ -1,5 +1,3 @@
-const urlParams = new URLSearchParams(window.location.search);
-const myParam = urlParams.get('myParam');
 
 /**
  * Handy function to get element by id.
