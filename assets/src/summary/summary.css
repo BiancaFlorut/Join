@@ -70,7 +70,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
+    color: black;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
+.content-box:hover {
+    cursor: pointer;
+    transition: all 125ms ease-in-out;
+    scale: 1.08;
+    background-color: #2a3647;
+    color: white;
+}
+
 .summary-content-left-top {
     display: flex;
     justify-content: space-between;
