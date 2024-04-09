@@ -133,7 +133,7 @@ let contactEvaFischer = {
 let contactKlarkKent = {
     name: 'Klark Kent',
     email: 'klke@mail.er',
-    phone: '05555555555',
+    phone: '05555555555'
 }
 
 let contactDarkwingDuck = {
@@ -148,17 +148,6 @@ let contactGuest = {
     phone: '',
 }
 
-users = [userAndrei, userAndu, userBert, userMaria, userMarian];
-
-let userGuest = {
-    email: 'guest@guest.mail',
-    name: 'Guest',
-    lastname: '',
-    password: '',
-    contacts: [],
-    tasks: [], // Tasksnamen ändern?!?
-}
-
 let taskGuest1 = {
     title: 'Mama anrufen',
     description: 'Sinn des Lebens besprechen',
@@ -167,7 +156,7 @@ let taskGuest1 = {
     creation_date: 1712656863726, 
     priority: 2, // 0 low, 1 medium, 2 urgent
     status: 'toDo',
-    category: 'esoteric Task',
+    category: 'User Story',
     subtasks: [{text: 'nehme das Telefon', checked: false}, {text: 'wähle die Nummer', checked: false},],
     id: '1712656863726guest@guest.mail1712572885643',// erstellungszeitraum hinzufügen?!?
 }
@@ -210,3 +199,14 @@ let taskGuest4 = {
     subtasks: [{text: 'Establish CSS Methodology', checked: true}, {text: 'Setup Base Styles', checked: true}],
     id: '1712663942047guest@guest.mail1712572885643',// erstellungszeitraum hinzufügen?!? wie am anfang??
 }
+
+let userGuest = {
+    email: 'guest@guest.mail',
+    name: 'Guest',
+    lastname: '',
+    password: '',
+    contacts: [contactAntonMayer, contactBenediktZiegler, contactDarkwingDuck, contactDavidEisenberg, contactEmmanuelMauer, contactEvaFischer, contactKlarkKent, contactMarcelBauer],
+    tasks: [taskGuest1, taskGuest2, taskGuest3, taskGuest4], // Tasksnamen ändern?!?
+}
+
+users = [userAndrei, userAndu, userBert, userMaria, userMarian, userGuest];

@@ -6,7 +6,6 @@
   padding: 16px;
   box-sizing: border-box;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.08);
-  height: 260px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -58,4 +57,17 @@
   width: 50%;
   height: 100%;
   border-radius: 16px;
+}
+
+.no_tasks_to_do {
+  border: 1px dashed rgba(168, 168, 168, 1);
+  background-color: rgba(231, 231, 231, 1);
+  border-radius: 10px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+  color: rgba(168, 168, 168, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  width: 100%;
 }
