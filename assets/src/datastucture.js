@@ -63,8 +63,8 @@ let task = {
     priority: 1, // 0 low, 1 medium, 2 urgent
     status: 'awaitFeedback',
     category: 'Technical Task',
-    subtasks: ['Sign in form', 'custom validation'],
-    id: 'andu@mail.com1712572885643',// erstellungszeitraum hinzufügen?!?
+    subtasks: [{text: 'Sign in form', checked: true}, {text: 'custom validation', checked: true}],
+    id: 'andu@mail.com1712572885643',
 }
 
 
@@ -75,7 +75,7 @@ let task2 = {
     due_date: 1712572885643,
     priority: 1, // 0 low, 1 medium, 2 urgent
     category: 'Technical Task',
-    subtasks: ['tasks erstellen', 'tasks löschen'],
+    subtasks: [{text: 'tasks erstellen', checked: true}, {text: 'tasks löschen', checked: false}],
     id: 'andu@mail.com1712572885643',
 }
 

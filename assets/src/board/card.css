@@ -1,4 +1,4 @@
-.todo {
+.card_small {
   background-color: white;
   border-radius: 24px;
   width: 100%;
@@ -37,4 +37,25 @@
 .task_description {
   font-weight: 400;
   color: rgba(168, 168, 168, 1);
+}
+
+.progress_bar {
+  background-color: rgba(244, 244, 244, 1);
+  border-radius: 8px;
+  height: 8px;
+  width: 50%;
+}
+
+.subtasks_area {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 11px;
+}
+
+.progress_bar_level {
+  background-color: rgba(69, 137, 255, 1);
+  width: 50%;
+  height: 100%;
+  border-radius: 16px;
 }

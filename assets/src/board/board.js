@@ -87,7 +87,7 @@ function updateHTML() {
   const columns = resetColumns();
   columns.forEach((column) => {
     document.getElementById(`${column.name}`).innerHTML = "";
-    column.cards.forEach((card) => (document.getElementById(`${column.name}`).innerHTML += generateTodoHTML(card)));
+    column.cards.forEach((card) => (document.getElementById(`${column.name}`).innerHTML += generateSmallTaskHTML(card)));
   });
 }
 
@@ -95,22 +95,41 @@ function startDragging(id) {
   currentDraggedElement = id;
 }
 
-function generateTodoHTML(element) {
+function generateSmallTaskHTML(element) {
   const category = element.category;
   const colorClass = category.toLowerCase().replace(/ /g,'_') + '_bg_color';
+  let subtasksHTML = '';
+  if (element.subtasks.length > 0) subtasksHTML = getSubTaskHTML(element.subtasks);
   return /*html*/`
-    <div draggable="true" ondragstart="startDragging(${element["id"]})" class="todo">
+    <div draggable="true" ondragstart="startDragging(${element["id"]})" class="card_small">
     <div class="task_category ${colorClass}">${element.category}</div>
     <div class="task_text_area">
       <div class="task_header">${element["title"]}</div>
       <div class="task_description">${element.description}</div>
+    </div>` + subtasksHTML + `
+
+    </div>`;
+}
+
+function getSubTaskHTML(subtasks) {
+    let counter = 0;
+    subtasks.forEach(subtask => {if (subtask.checked) {
+      counter++;
+    }});
+
+    const subtaskSummary = counter + '/' + subtasks.length + 'Subtasks';
+    return /*html*/`
       <div class="subtasks_area">
         <div class="progress_bar">
-          
+          <div id="progress_level" class='progress_bar_level'></div>
         </div>
+        <span class='subtasks_summary'>${subtaskSummary}</div>
       </div>
-    </div>
-    </div>`;
+    `;
+}
+
+function setProgressLevel() {
+  // 
 }
 
 function allowDrop(ev) {
