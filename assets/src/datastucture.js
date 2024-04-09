@@ -93,6 +93,61 @@ let contactAndu = {
     phone: '12345'
 }
 
+// neue contacts
+let contactMarcelBauer = {
+    name: 'Marcel Bauer',
+    email: 'maba@mail.er',
+    phone: '0123789456',
+}
+
+let contactAntonMayer = {
+    name: 'Anton Mayer',
+    email: 'anma@mail.er',
+    phone: '0123456789',
+}
+
+let contactEmmanuelMauer = {
+    name: 'Emmanuel Mauer',
+    email: 'emma@mail.er',
+    phone: '0123456789',
+}
+
+let contactBenediktZiegler = {
+    name: 'Benedikt Ziegler',
+    email: 'bezi@mail.er',
+    phone: '02222222222',
+}
+
+let contactDavidEisenberg = {
+    name: 'David Eisenberg ',
+    email: 'daei@mail.er',
+    phone: '03333333333',
+}
+
+let contactEvaFischer = {
+    name: 'EvaFischer',
+    email: 'evfi@mail.er',
+    phone: '04444444444',
+}
+
+let contactKlarkKent = {
+    name: 'Klark Kent',
+    email: 'klke@mail.er',
+    phone: '05555555555',
+}
+
+let contactDarkwingDuck = {
+    name: 'Darkwing Duck',
+    email: 'dadu@mail.er',
+    phone: '06666666666',
+}
+
+let contactGuest = {
+    name: 'Guest',
+    email: 'guest@guest.mail',
+    phone: '',
+}
+
 users = [userAndrei, userAndu, userBert, userMaria, userMarian];
 
 let userGuest = {
@@ -108,24 +163,50 @@ let taskGuest1 = {
     title: 'Mama anrufen',
     description: 'Sinn des Lebens besprechen',
     assign_to: [contactBert, contactMaria],
-    due_date: 1712572885643, // Brauchen wir so etwas oder reicht ein datum? z.B 22.06.2024
+    due_date: 1712572885643,
     creation_date: 1712656863726, 
-    priority: 1, // 0 low, 1 medium, 2 urgent
+    priority: 2, // 0 low, 1 medium, 2 urgent
     status: 'toDo',
     category: 'esoteric Task',
-    subtasks: ['nehme das Telefon', 'wähle die Nummer'],
+    subtasks: [{text: 'nehme das Telefon', checked: false}, {text: 'wähle die Nummer', checked: false},],
     id: '1712656863726guest@guest.mail1712572885643',// erstellungszeitraum hinzufügen?!?
 }
 
 let taskGuest2 = {
-    title: '',
-    description: 'Sinn des Lebens besprechen',
-    assign_to: [contactBert, contactMaria],
-    due_date: 1712572885643, // Brauchen wir so etwas oder reicht ein datum? z.B 22.06.2024
-    creation_date: 1712656863726, 
+    title: 'Kochwelt Page & Recipe Recommender',
+    description: 'Build start page with recipe recommendation',
+    assign_to: [contactBert, contactMaria, contactDarkwingDuck],
+    due_date: 1712572885643,
+    creation_date: 1712662899038, 
     priority: 1, // 0 low, 1 medium, 2 urgent
-    status: 'toDo',
-    category: 'esoteric Task',
-    subtasks: ['nehme das Telefon', 'wähle die Nummer'],
-    id: '1712656863726guest@guest.mail1712572885643',// erstellungszeitraum hinzufügen?!?
+    status: 'awaitFeedback',
+    category: 'User Story',
+    subtasks: [{text: 'nehme das Telefon', checked: false}, {text: 'wähle die Nummer', checked: false}, {text: 'tasks löschen', checked: false}],
+    id: '1712662899038guest@guest.mail1712572885643',// erstellungszeitraum hinzufügen?!?
+}
+
+let taskGuest3 = {
+    title: 'CSS Architecture Planning',
+    description: 'Define CSS naming conventions and structure.',
+    assign_to: [contactBert, contactDarkwingDuck, contactKlarkKent, contactEmmanuelMauer],
+    due_date: 1712572885643,
+    creation_date: 1712664403850, 
+    priority: 0, // 0 low, 1 medium, 2 urgent
+    status: 'done',
+    category: 'Technical Task',
+    subtasks: [],
+    id: '1712664403850guest@guest.mail1712572885643',// erstellungszeitraum hinzufügen?!? wie am anfang??
+}
+
+let taskGuest4 = {
+    title: 'HTML Base Template Creation',
+    description: 'Create reusable HTML base templates...',
+    assign_to: [contactGuest, contactBenediktZiegler, contactKlarkKent, contactEmmanuelMauer],
+    due_date: 1712572885643,
+    creation_date: 1712663942047, 
+    priority: 2, // 0 low, 1 medium, 2 urgent
+    status: 'inProgress',
+    category: 'Technical Task',
+    subtasks: [{text: 'Establish CSS Methodology', checked: true}, {text: 'Setup Base Styles', checked: true}],
+    id: '1712663942047guest@guest.mail1712572885643',// erstellungszeitraum hinzufügen?!? wie am anfang??
 }
