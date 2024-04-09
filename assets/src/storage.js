@@ -23,3 +23,20 @@ async function setItemToRemoteStorage(key, value) {
     const payload = {key: key, value: value, token: STORAGE_TOKEN};
     return fetch(STORAGE_URL, {method: 'POST', body: JSON.stringify(payload)});
 }
+
+/**
+ * This function calls all the users form server and returns them.
+ * @returns JSON array
+ */
+async function loadUsersFromServer() {
+    const response = await getItemFromRemoteStorage('users');
+    let users = JSON.parse(response.data.value);
+    return users;
+  }
+
+  
+async function getUserFromServer(email) {
+    let users = await loadUsersFromServer();
+    let user = users.find(u => u.email == email);
+    return user;
+}

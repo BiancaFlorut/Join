@@ -1,3 +1,7 @@
+const urlParams = new URLSearchParams(window.location.search);
+const emailParameter = urlParams.get('email');
+
+
 /**
  * this function integrates html templates
  *
@@ -45,4 +49,11 @@ function closePopupMenu() {
 function selectedPage() {
     let element = document.getElementById(`${document.title}`);
     element.classList.add("selected-page");
+}
+/**
+ * the function sets the parameter query for board in order to load information from server for the logged user.
+ */
+function setParameterQuery() {
+    document.getElementById('Board').href = '../board/board.html?email=' + emailParameter;
+    document.getElementById('Contacts').href = '../contacts/contacts.html?email=' + emailParameter;
 }

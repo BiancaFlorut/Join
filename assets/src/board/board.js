@@ -2,12 +2,12 @@ let tasks = [
   {
     id: 0,
     title: "Putzen",
-    category: "toDo",
+    category: "awaitFeedback",
   },
   {
     id: 1,
     title: "Kochen",
-    category: "toDo",
+    category: "awaitFeedback",
   },
   {
     id: 2,
@@ -24,9 +24,36 @@ let tasks = [
     title: "Schlafen",
     category: "awaitFeedback",
   },
+  {
+    id: 5,
+    title: "Putzen",
+    category: "awaitFeedback",
+  },
+  {
+    id: 6,
+    title: "Kochen",
+    category: "awaitFeedback",
+  },
+  {
+    id: 7,
+    title: "Einkaufen",
+    category: "done",
+  },
+  {
+    id: 8,
+    title: "Joggen",
+    category: "inProgress",
+  },
+  {
+    id: 9,
+    title: "Schlafen",
+    category: "awaitFeedback",
+  },
 ];
 
 let currentDraggedElement;
+let users;
+
 
 /**
  * The function is filtering the tasks in the according category they are assigned to.
@@ -46,6 +73,14 @@ function resetColumns() {
   ];
 }
 
+async function initBoard() {
+  users = await loadUsersFromServer();
+  
+  console.log(emailParameter);
+  let user = await getUserFromServer(emailParameter);
+  console.log(user);
+  updateHTML(); 
+}
 
 /**
  * The function is updating the HTML for all the tasks.
@@ -77,8 +112,19 @@ function moveTo(category) {
 
 function highlight(id) {
   document.getElementById(id).classList.add("drag-area-highlight");
-}
+} 
 
 function removeHighlight(id) {
   document.getElementById(id).classList.remove("drag-area-highlight");
 }
+
+function searchTask(){
+    const search = getElementWithId('searchInput');
+    if (search.value) {
+        getElementWithId('magnifyingGlassIcon').src = '../../img/magnifying_glass_blue.svg';
+        console.log('.....search task: '+ search.value );
+        getElementWithId('magnifyingGlassIcon').src = '../../img/board_input_find_task_search.svg';
+    }
+    search.value = '';
+}
+

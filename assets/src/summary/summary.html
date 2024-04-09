@@ -27,22 +27,62 @@
           </div>
 
           <div class="summary-content">
-            <div class="summary-content-left">left
+            <div class="summary-content-left">
+              <div class="summary-content-left-top">
 
-              <div class="summary-content-left-top">top
-                <div class="summary-content-todo content-box">To-do</div>
-                <div class="summary-content-done content-box">Done</div>
-              </div>
+                <a href="../board/board.html" class="summary-content-left-top-div content-box" onmouseover="changeImg()">
+                  <img id="todoImg" src="../../img/todo.svg" alt="">
+                  <div class="counter">
+                    <span id="numberOfTodo" class="content-number">0</span>
+                    <span class="description">To-do</span> 
+                  </div>
+                </a>
 
-              <div>mid</div>
-              <div>
-                bot
-                <div>bot left</div>
-                <div>bot mid</div>
-                <div>bot right</div>
+                <a href="../board/board.html" class="summary-content-left-top-div content-box">
+                  <img src="../../img/done.svg" alt="">
+                  <div class="counter">
+                    <span id="numberOfDone" class="content-number">0</span>
+                    <span class="description">done</span> 
+                  </div>
+                </div>
+              </a>
+
+              <a href="../board/board.html" class="content-box summary-content-left-mid">
+                <div class="summary-content-left-mid-div">
+                  <img src="../../img/urgent.svg" alt="">
+                  <div class="counter">
+                    <span id="numberOfUrgent" class="content-number">0</span>
+                    <span>Urgent</span>
+                  </div>
+                </div>
+                <div class="mid-deco"></div>
+                <div class="deadline-div">
+                  <span id="deadline">placeholder</span>
+                  <span>Upcoming Deadline</span>
+                </div>
+              </a>
+
+              <div class="summary-content-left-bot">
+                <a href="../board/board.html" class="content-box summary-content-left-bot-div">
+                  <span id="TasksBoard" class="content-number">0</span>
+                  <span class="description">Tasks in Board</span>
+                </a>
+                <a href="../board/board.html" class="content-box summary-content-left-bot-div">
+                  <span id="TasksProgress" class="content-number">0</span>
+                  <span class="description">Tasks in Progress</span>
+                </a>
+                <a href="../board/board.html" class="content-box summary-content-left-bot-div">
+                  <span id="awaitingFeedback" class="content-number">0</span>
+                  <span class="description">Awaiting Feedback</span>
+                </a>
               </div>
             </div>
-            <div class="summary-content-right">right</div>
+
+            <div class="summary-content-right">
+              <span id="welcome">Good morning</span>
+              <span id="welcomeName">Sophia Müller</span>
+            </div>
+
           </div>
         </div>
       </div>
