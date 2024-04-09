@@ -32,7 +32,7 @@
 
                 <div class="summary-content-left-top-div content-box">
                   <img src="../../img/todo.svg" alt="">
-                  <div class="todo">
+                  <div class="counter">
                     <span id="numberOfTodo" class="content-number">0</span>
                     <span class="description">To-do</span> 
                   </div>
@@ -40,7 +40,7 @@
 
                 <div class="summary-content-left-top-div content-box">
                   <img src="../../img/done.svg" alt="">
-                  <div class="todo">
+                  <div class="counter">
                     <span id="numberOfDone" class="content-number">0</span>
                     <span class="description">done</span> 
                   </div>
@@ -48,21 +48,40 @@
               </div>
 
               <div class="content-box summary-content-left-mid">
-                <div>
-                  
+                <div class="summary-content-left-mid-div">
+                  <img src="../../img/urgent.svg" alt="">
+                  <div class="counter">
+                    <span id="numberOfUrgent" class="content-number">0</span>
+                    <span>Urgent</span>
+                  </div>
                 </div>
-                <div class="mid-deco">trennbalken</div>
-                <div>day, date etc</div>
+                <div class="mid-deco"></div>
+                <div class="deadline-div">
+                  <span id="deadline">placeholder</span>
+                  <span>Upcoming Deadline</span>
+                </div>
               </div>
 
               <div class="summary-content-left-bot">
-                <div class="content-box summary-content-left-bot-div">Tasks in Board</div>
-                <div class="content-box summary-content-left-bot-div">Tasks in Progress</div>
-                <div class="content-box summary-content-left-bot-div">Awaiting Feedback</div>
+                <div class="content-box summary-content-left-bot-div">
+                  <span id="TasksBoard" class="content-number">0</span>
+                  <span class="description">Tasks in Board</span>
+                </div>
+                <div class="content-box summary-content-left-bot-div">
+                  <span id="TasksProgress" class="content-number">0</span>
+                  <span class="description">Tasks in Progress</span>
+                </div>
+                <div class="content-box summary-content-left-bot-div">
+                  <span id="awaitingFeedback" class="content-number">0</span>
+                  <span class="description">Awaiting Feedback</span>
+                </div>
               </div>
             </div>
 
-            <div class="summary-content-right">placeholder(gm, ge, ga, gn, etc) placeholder</div>
+            <div class="summary-content-right">
+              <span id="welcome">Good morning</span>
+              <span id="welcomeName">Sophia Müller</span>
+            </div>
 
           </div>
         </div>

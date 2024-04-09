@@ -47,6 +47,7 @@
     height: 84%;
     display: flex;
     justify-content: space-between;
+    gap: 64px;
 }
 /*
 |//////////////////////////////////////////////////////////|
@@ -91,31 +92,31 @@
     font-size: 20px;
     font-weight: 400;
 }
-.todo {
+.counter {
     display: flex;
     flex-direction: column;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .summary-content-left-mid {
+    gap: 10%;
     height: 30%;
+}
+.summary-content-left-mid-div {
+    display: flex;
+    gap: 18px;
+    text-align: center;
+}
+.mid-deco {
+    height: 70%;
+    width: 2px;
+    background-color: #d1d1d1;
+}
+.deadline-div {
+    display: flex;
+    flex-direction: column;
+}
+#deadline {
+    font-size: 21px;
+    font-weight: 700;
 }
 .summary-content-left-bot {
     height: 30%;
@@ -124,4 +125,32 @@
 }
 .summary-content-left-bot-div {
     width: 30%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+/*
+|///////////////////////////////////////////////////////////|
+|                                                           |
+|                                                           |
+|-------------------->content box right<--------------------|
+|                                                           |
+|                                                           |
+|///////////////////////////////////////////////////////////|
+*/
+.summary-content-right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+#welcome {
+    font-size: 47px;
+    font-weight: 500;
+}
+#welcomeName {
+    font-size: 64px;
+    font-weight: 700;
+    color: #29abe2;
 }
