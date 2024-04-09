@@ -3,25 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="storage.js"></script>
-    <script src="contacts.js"></script>
+    <script src="../storage.js"></script>
+    <script src="../contacts/contacts.js"></script>
     <title>Contacts</title>
+    <link rel="icon" href="../../img/logo_small.svg" type="image/svg" />
     <link rel="icon" href="../../img/logo_small.svg" type="image/svg" />
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="../templates/templates.css" />
-    <link rel="stylesheet" href="./summary.css" />
+    <link rel="stylesheet" href="../summary/summary.css" />
+    <link rel="stylesheet" href="../contacts/contact.css" />
     <script src="../templates/templates.js"></script>
     <script src="../script.js"></script>
-    <script src="./summary.js"></script>
+    <script src="../summary/summary.js"></script>
   </head>
-  <body onload="init()">
+  <body onload="init(); contactList()">
     <div w3-include-html="../templates/nav_bar_left.html"></div>
 
     <section class="content-section">
       <div class="shadow" w3-include-html="../templates/header.html"></div>
       <div class="content">
-        <h2>Contacts</h2>
         <div id="content"></div>
+        <div class="contacts_header">
+          <h1 class="h1_contacts">Contacts</h1>
+          <img class="contacts_vector" src="../../img/contact_vector.svg" />
+          <h2 class="h2_contacts">Better with a team</h2>
+        </div>
       </div>
     </section>
   </body>

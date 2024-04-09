@@ -1,0 +1,27 @@
+.h1_contacts {
+    font-size: 61px;
+    font-weight: 700;
+}
+
+.h2_contacts {
+    font-size: 27px;
+    font-weight: 400;
+    color: #2a3647;
+}
+
+.contacts_header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.contact_card {
+    width: 500px;
+    height: 500px;
+}
+
+.contact_button_add_new {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
