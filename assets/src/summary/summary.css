@@ -81,7 +81,14 @@
     background-color: #2a3647;
     color: white;
 }
-
+.theme-img {
+    background-image: url(../../img/done.svg);
+    height: 70px;
+    width: 70px;
+}
+.theme-img:hover {
+    background-image: url(../../img/done_light.svg);
+}
 .summary-content-left-top {
     display: flex;
     justify-content: space-between;
