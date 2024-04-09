@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="../templates/templates.css" />
     <link rel="stylesheet" href="../board/board.css" />
     <script src="../utility.js"></script>
+    <script src="../storage.js"></script>
     <script src="../templates/templates.js"></script>
     <script src="../script.js"></script>
     <script src="../board/board.js"></script>
   </head>
-  <body onload="init(); updateHTML()">
+  <body onload="init(); initBoard();">
     <div w3-include-html="../templates/nav_bar_left.html"></div>
     <section class="content-section">
       <div class="shadow" w3-include-html="../templates/header.html"></div>

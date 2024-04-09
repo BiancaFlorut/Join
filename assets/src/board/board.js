@@ -52,6 +52,8 @@ let tasks = [
 ];
 
 let currentDraggedElement;
+let users;
+
 
 /**
  * The function is filtering the tasks in the according category they are assigned to.
@@ -71,6 +73,14 @@ function resetColumns() {
   ];
 }
 
+async function initBoard() {
+  users = await loadUsersFromServer();
+  
+  console.log(emailParameter);
+  let user = await getUserFromServer(emailParameter);
+  console.log(user);
+  updateHTML(); 
+}
 
 /**
  * The function is updating the HTML for all the tasks.
@@ -102,7 +112,7 @@ function moveTo(category) {
 
 function highlight(id) {
   document.getElementById(id).classList.add("drag-area-highlight");
-}
+} 
 
 function removeHighlight(id) {
   document.getElementById(id).classList.remove("drag-area-highlight");
@@ -117,3 +127,4 @@ function searchTask(){
     }
     search.value = '';
 }
+

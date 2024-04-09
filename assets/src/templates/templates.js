@@ -55,4 +55,5 @@ function selectedPage() {
  */
 function setParameterQuery() {
     document.getElementById('Board').href = '../board/board.html?email=' + emailParameter;
+    document.getElementById('Contacts').href = '../contacts/contacts.html?email=' + emailParameter;
 }
