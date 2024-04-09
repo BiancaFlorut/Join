@@ -45,3 +45,8 @@ async function getTaskList(email) {
     let user = await getUserFromServer(email);
     return user.tasks;
 }
+
+async function getContactList(email) {
+    let user = await getUserFromServer(email);
+    return user.contacts;
+}
