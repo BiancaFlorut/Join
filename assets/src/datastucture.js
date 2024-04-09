@@ -59,10 +59,12 @@ let task = {
     description: 'Design und Funktionalität erstellen',
     assign_to: [contactBert, contactMaria],
     due_date: 1712572885643,
+    creation_date: 1712656863726,
     priority: 1, // 0 low, 1 medium, 2 urgent
+    status: 'awaitFeedback',
     category: 'Technical Task',
     subtasks: ['Sign in form', 'custom validation'],
-    id: 'andu@mail.com1712572885643',
+    id: 'andu@mail.com1712572885643',// erstellungszeitraum hinzufügen?!?
 }
 
 
@@ -92,3 +94,38 @@ let contactAndu = {
 }
 
 users = [userAndrei, userAndu, userBert, userMaria, userMarian];
+
+let userGuest = {
+    email: 'guest@guest.mail',
+    name: 'Guest',
+    lastname: '',
+    password: '',
+    contacts: [],
+    tasks: [], // Tasksnamen ändern?!?
+}
+
+let taskGuest1 = {
+    title: 'Mama anrufen',
+    description: 'Sinn des Lebens besprechen',
+    assign_to: [contactBert, contactMaria],
+    due_date: 1712572885643, // Brauchen wir so etwas oder reicht ein datum? z.B 22.06.2024
+    creation_date: 1712656863726, 
+    priority: 1, // 0 low, 1 medium, 2 urgent
+    status: 'toDo',
+    category: 'esoteric Task',
+    subtasks: ['nehme das Telefon', 'wähle die Nummer'],
+    id: '1712656863726guest@guest.mail1712572885643',// erstellungszeitraum hinzufügen?!?
+}
+
+let taskGuest2 = {
+    title: '',
+    description: 'Sinn des Lebens besprechen',
+    assign_to: [contactBert, contactMaria],
+    due_date: 1712572885643, // Brauchen wir so etwas oder reicht ein datum? z.B 22.06.2024
+    creation_date: 1712656863726, 
+    priority: 1, // 0 low, 1 medium, 2 urgent
+    status: 'toDo',
+    category: 'esoteric Task',
+    subtasks: ['nehme das Telefon', 'wähle die Nummer'],
+    id: '1712656863726guest@guest.mail1712572885643',// erstellungszeitraum hinzufügen?!?
+}
