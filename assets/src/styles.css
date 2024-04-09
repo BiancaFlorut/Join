@@ -68,7 +68,7 @@ button:disabled {
   outline-offset: -2px;
 }
 
-button_line:invalid {
+.button_line:invalid {
   border: 1px solid rgba(42, 54, 71, 1);
   box-shadow: none;
   color: rgba(42, 54, 71, 1);
