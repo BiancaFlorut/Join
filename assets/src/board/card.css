@@ -71,3 +71,24 @@
   height: 48px;
   width: 100%;
 }
+
+.small_card_users_area {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contacts_icon {
+  height: 32px;
+  width: 32px;
+  border-radius: 45px;
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+}
+
+.overlapped_contact_icons {
+  display: flex;
+}

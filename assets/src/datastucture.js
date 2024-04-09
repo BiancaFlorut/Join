@@ -9,7 +9,8 @@ let userMaria = {
 let contactMaria = {
     email: 'mail@bla.com',
     name: 'Maria',
-    phone: 14674564
+    phone: 14674564,
+    color: '#fc71ff'
 }
 
 let userAndrei = {
@@ -23,7 +24,8 @@ let userAndrei = {
 let contactAndrei = {
     email: 'Andrei@bla.com',
     name: 'Andrei Müller',
-    phone: 1234674564
+    phone: 1234674564,
+    color: '#ffc701'
 }
 
 let userMarian = {
@@ -37,7 +39,8 @@ let userMarian = {
 let contactMarian = {
     email: 'Marian@bla.com',
     name: 'Marian Koch',
-    phone: 1234674564
+    phone: 1234674564,
+    color: '#0038ff'
 }
 
 let userBert = {
@@ -51,7 +54,8 @@ let userBert = {
 let contactBert = {
     email: 'Bertn@bla.com',
     name: 'Bert Loriot',
-    phone: 1234674564
+    phone: 1234674564,
+    color: '#c3ff2b'
 }
 
 let task = {
@@ -90,7 +94,8 @@ let userAndu = {
 let contactAndu = {
     name: 'Andu',
     email: 'andu@mail.com',
-    phone: '12345'
+    phone: '12345',
+    color: '#ffe62b'
 }
 
 // neue contacts
@@ -98,54 +103,63 @@ let contactMarcelBauer = {
     name: 'Marcel Bauer',
     email: 'maba@mail.er',
     phone: '0123789456',
+    color: '#ff7a00'
 }
 
 let contactAntonMayer = {
     name: 'Anton Mayer',
     email: 'anma@mail.er',
     phone: '0123456789',
+    color: '#ff5eb3'
 }
 
 let contactEmmanuelMauer = {
     name: 'Emmanuel Mauer',
     email: 'emma@mail.er',
     phone: '0123456789',
+    color: '#6e52ff'
 }
 
 let contactBenediktZiegler = {
     name: 'Benedikt Ziegler',
     email: 'bezi@mail.er',
     phone: '02222222222',
+    color: '#9327ff'
 }
 
 let contactDavidEisenberg = {
     name: 'David Eisenberg ',
     email: 'daei@mail.er',
     phone: '03333333333',
+    color: '#00bee8'
 }
 
 let contactEvaFischer = {
     name: 'EvaFischer',
     email: 'evfi@mail.er',
     phone: '04444444444',
+    color: '#1fd7c1'
 }
 
 let contactKlarkKent = {
     name: 'Klark Kent',
     email: 'klke@mail.er',
-    phone: '05555555555'
+    phone: '05555555555',
+    color: '#ff745e'
 }
 
 let contactDarkwingDuck = {
     name: 'Darkwing Duck',
     email: 'dadu@mail.er',
     phone: '06666666666',
+    color: '#ffa35e'
 }
 
 let contactGuest = {
     name: 'Guest',
     email: 'guest@guest.mail',
     phone: '',
+    color: '#ff4646'
 }
 
 let taskGuest1 = {

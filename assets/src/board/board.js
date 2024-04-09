@@ -91,8 +91,7 @@ function updateHTML() {
     document.getElementById(`${column.name}`).innerHTML = "";
     if (column.cards.length > 0) {
       column.cards.forEach((card) => (document.getElementById(`${column.name}`).innerHTML += generateSmallTaskHTML(card)));
-    }
-    else document.getElementById(`${column.name}`).innerHTML = getNoTasksToDoHTML();
+    } else document.getElementById(`${column.name}`).innerHTML = getNoTasksToDoHTML();
   });
 }
 
@@ -114,12 +113,12 @@ function generateSmallTaskHTML(task) {
         <div class="task_header">${task["title"]}</div>
         <div class="task_description">${task.description}</div>
       </div>` +
-      subtasksHTML +
-      /*html*/`
+    subtasksHTML +
+    /*html*/ `
       <div class='small_card_footer'>
-        <div class="small_card_users_area">`
-        + getAssignedToIconsHTML(task.assign_to) +
-        /*html*/`
+        <div class="small_card_users_area">` +
+    getAssignedToIconsHTML(task.assign_to) +
+    /*html*/ `
           <div class="small_task_priority"><img src="../../img/${priorityString}.svg" alt=""></div>
         </div>
       </div>
@@ -128,11 +127,17 @@ function generateSmallTaskHTML(task) {
 }
 
 function getAssignedToIconsHTML(contacts) {
-  return /*html*/`
-    <div>
-
-    </div>
-  `;
+  let html = /*html*/ `<div class="overlapped_contact_icons">`;
+  let shift = 0;
+  contacts.forEach((contact) => {
+    let initials = "";
+    const names = contact.name.split(" ");
+    names.forEach((name) => (initials += name.charAt(0)));
+    html += /*html*/ `<div class='contacts_icon' style="background-color: ${contact.color}; transform: translateX(${shift}px);">${initials}</div>`;
+    shift -= 10;
+  });
+  html += /*html*/`</div>`;
+  return html;
 }
 
 function getSubTaskHTML(card) {
@@ -159,9 +164,12 @@ function getSubTaskHTML(card) {
 
 function getTaskPriority(priority) {
   switch (priority) {
-    case 0: return 'priority_low';
-    case 1: return 'priority_medium';
-    case 2: return 'priority_urgent';
+    case 0:
+      return "priority_low";
+    case 1:
+      return "priority_medium";
+    case 2:
+      return "priority_urgent";
     default:
       break;
   }
