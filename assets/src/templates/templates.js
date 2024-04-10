@@ -59,7 +59,7 @@ function closePopupMenu() {
 }
 
 /**
- * 
+ * function to show where you are on the nav-bar
  * 
  * 
  */
@@ -74,3 +74,32 @@ function setParameterQuery() {
     document.getElementById('Board').href = '../board/board.html?email=' + emailParameter;
     document.getElementById('Contacts').href = '../contacts/contacts.html?email=' + emailParameter;
 }
+let initialLetters = [];
+/**
+ * function extract initials from a namestring
+ * 
+ * @param {*} name 
+ * @returns
+ */
+function extractFirstLetters(userName) {
+    let words = userName.split(' '); // zerlegt den Namen in "Wörter"
+     // Anfangsbuchstaben speichern
+    for (let i = 0; i < words.length; i++) { // Gehe durch jedes Wort im Namen
+        initialLetters.push(words[i].charAt(0)); // Füge den ersten Buchstaben des Wortes zum Array der Anfangsbuchstaben hinzu
+    }
+    return initialLetters.join(''); // Gib die Anfangsbuchstaben als String zurück
+}
+
+// kann später weg
+console.log(initialLetters)
+
+/**
+ * function to show the initials
+ * 
+ * @param {string}
+ */
+// function welcomeUser() {
+//     let initials = extractFirstLetters(userName)
+//     let welcome = document.getElementById('userInitials');
+//     welcome.innerHTML = `${initials}`;
+// }
