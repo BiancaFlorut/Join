@@ -1,7 +1,12 @@
 .content {
   padding: 0 64px;
   display: flex;
+}
+
+.visible_area {
+  display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .header_board {
@@ -56,7 +61,6 @@
   gap: 16px;
   padding: 8px 16px;
   transform: translateY(-100%);
-  cursor: pointer;
 }
 
 .column_title {
