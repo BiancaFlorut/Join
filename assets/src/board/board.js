@@ -165,15 +165,41 @@ function openTask(id) {
   showElement('bigCardView');
   let container = getElementWithId('bigCardContent');
   const task = tasks.find( t => t.id == id);
-
+  const d = new Date(task.due_date);
+  const formattedDate = d.toLocaleDateString('de-De').replaceAll('.', '/');
+  const priority = getTaskPriority(task.priority);
   container.innerHTML = /*html*/`
     <div class="big_card_header">
       <div class='big_card_category ${getCategoryClassColor(task.category)}'>${task.category}</div>
-      <div>
-
+      <div class="close_icon" onclick="closeBigCardView()">
+        <img src="../../img/close_black.svg" alt="close">
       </div>
     </div>
-  `
+    <h1>${task.title}</h1>
+    <span>${task.description}</span>
+    <div>
+      <span class="pr_25">Due Date:</span>
+      <span>${formattedDate}</span>
+    </div>
+    <div class='df_ac'>
+      <span class="pr_25">Priority:</span>
+      <div class='priority_area' >
+        <span class="pr_10" style="text-transform: capitalize;">${priority.split('_')[1]}</span>
+        <img src="../../img/${priority}.svg" alt="">
+      </div>
+    </div>
+    <span>Assigned To:</span>
+    <div>`
+      + getAssignedToHTML(task.assign_to) +
+    /*html*/`
+    </div>
+  `;
+}
+
+function getAssignedToHTML(array) {
+  return /*html*/`
+      
+  `;
 }
 
 function closeBigCardView(){
