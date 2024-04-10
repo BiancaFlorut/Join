@@ -4,7 +4,7 @@ let firstLetter = [];
 async function initContacts() {
     contacts = await getContactList(emailParameter);
     firstLetter = getFirstLetterArray(contacts);
-    console.log(contactList);
+    console.log(firstLetter);
 }
 
 function contactList(email) {
@@ -25,7 +25,7 @@ function contactList(email) {
 
 function getFirstLetterArray(array) {
     for (let i = 0; i < array.length; i++) {
-        const letter = array[i].charAt(0);
+        const letter = array[i].name.charAt(0);
 
         if (!firstLetter.includes(letter)) {
             firstLetter.push(letter);
