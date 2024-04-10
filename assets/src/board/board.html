@@ -20,38 +20,43 @@
     <section class="content-section">
       <div class="shadow" w3-include-html="../templates/header.html"></div>
       <div class="content">
-        <div class="header_board">
-          <div class="header_title_input">
-            <h1>Board</h1>
-            <div class="input_button_header">
-              <div>
-                <input id="searchInput" class="input_board_find_task" type="text" placeholder="Find Task" />
-                <div class="input_board_find_task_button_area">
-                  <div class="input_board_find_task_button" onclick="searchTask()">
-                    <img src="../../img/input_vertical_line.svg" alt="vertical line" />
-                    <img id="magnifyingGlassIcon" src="../../img/board_input_find_task_search.svg" alt="magnifying glass" />
+        <div class="visible_area">
+          <div class="header_board">
+            <div class="header_title_input">
+              <h1>Board</h1>
+              <div class="input_button_header">
+                <div>
+                  <input id="searchInput" class="input_board_find_task" type="text" placeholder="Find Task" onkeyup="searchTask()" />
+                  <div class="input_board_find_task_button_area">
+                    <div class="input_board_find_task_button">
+                      <img src="../../img/input_vertical_line.svg" alt="vertical line" />
+                      <img id="magnifyingGlassIcon" src="../../img/board_input_find_task_search.svg" alt="magnifying glass" />
+                    </div>
                   </div>
                 </div>
+                <button class="bold_21 button_board_add_task">Add Task <img src="../../img/board_add.svg" alt="add" /></button>
               </div>
-
-              <button class="bold_21 button_board_add_task">Add Task <img src="../../img/board_add.svg" alt="add" /></button>
+            </div>
+            <div class="column_title_area">
+              <div class="column_title">
+                <h2 class="h2_board"><span>To do</span><img class="bold_21 board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
+                <h2 class="h2_board"><span>In progress</span> <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
+                <h2 class="h2_board"><span>Await feedback</span> <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
+                <h2 class="h2_board"><span>Done</span></h2>
+              </div>
             </div>
           </div>
-          <div class="column_title_area">
-            <div class="column_title">
-              <h2 class="h2_board"><span>To do</span><img class="bold_21 board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
-              <h2 class="h2_board"><span>In progress</span> <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
-              <h2 class="h2_board"><span>Await feedback</span> <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
-              <h2 class="h2_board"><span>Done</span></h2>
-            </div>
+          <div class="board_distribution">
+            <div class="drag-area" id="toDo" ondrop="moveTo('toDo')" ondragleave="removeHighlight('toDo')" ondragover="allowDrop(event); highlight('toDo')"></div>
+            <div class="drag-area" id="inProgress" ondrop="moveTo('inProgress')" ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')"></div>
+            <div class="drag-area" id="awaitFeedback" ondrop="moveTo('awaitFeedback')" ondragleave="removeHighlight('awaitFeedback')" ondragover="allowDrop(event); highlight('awaitFeedback')"></div>
+            <div class="drag-area" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')"></div>
           </div>
         </div>
-
-        <div class="board_distribution">
-          <div class="drag-area" id="toDo" ondrop="moveTo('toDo')" ondragleave="removeHighlight('toDo')" ondragover="allowDrop(event); highlight('toDo')"></div>
-          <div class="drag-area" id="inProgress" ondrop="moveTo('inProgress')" ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')"></div>
-          <div class="drag-area" id="awaitFeedback" ondrop="moveTo('awaitFeedback')" ondragleave="removeHighlight('awaitFeedback')" ondragover="allowDrop(event); highlight('awaitFeedback')"></div>
-          <div class="drag-area" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')"></div>
+        <div id="bigCardView" class="big_card_area d_none" onclick="closeBigCardView()">
+          <div class="big_card">
+            <div class="big_card_content" id="bigCardContent"></div>
+          </div>
         </div>
       </div>
     </section>

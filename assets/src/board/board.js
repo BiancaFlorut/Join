@@ -1,55 +1,4 @@
-let tasks = [
-  {
-    id: 0,
-    title: "Putzen",
-    status: "awaitFeedback",
-  },
-  {
-    id: 1,
-    title: "Kochen",
-    status: "awaitFeedback",
-  },
-  {
-    id: 2,
-    title: "Einkaufen",
-    status: "done",
-  },
-  {
-    id: 3,
-    title: "Joggen",
-    status: "inProgress",
-  },
-  {
-    id: 4,
-    title: "Schlafen",
-    status: "awaitFeedback",
-  },
-  {
-    id: 5,
-    title: "Putzen",
-    status: "awaitFeedback",
-  },
-  {
-    id: 6,
-    title: "Kochen",
-    status: "awaitFeedback",
-  },
-  {
-    id: 7,
-    title: "Einkaufen",
-    status: "done",
-  },
-  {
-    id: 8,
-    title: "Joggen",
-    status: "inProgress",
-  },
-  {
-    id: 9,
-    title: "Schlafen",
-    status: "awaitFeedback",
-  },
-];
+let tasks = []; 
 
 let currentDraggedElement;
 
@@ -57,11 +6,11 @@ let currentDraggedElement;
  * The function is filtering the tasks according to their status.
  * @returns JSON array
  */
-function resetColumns() {
-  const toDo = tasks.filter((t) => t["status"] == "toDo" || !t.status);
-  const inProgress = tasks.filter((t) => t.status == "inProgress");
-  const awaitFeedback = tasks.filter((t) => t.status == "awaitFeedback");
-  const done = tasks.filter((t) => t["status"] == "done");
+function resetColumns(array) {
+  const toDo = array.filter((t) => t["status"] == "toDo" || !t.status);
+  const inProgress = array.filter((t) => t.status == "inProgress");
+  const awaitFeedback = array.filter((t) => t.status == "awaitFeedback");
+  const done = array.filter((t) => t["status"] == "done");
   return (columns = [
     { name: "toDo", cards: toDo },
     { name: "inProgress", cards: inProgress },
@@ -79,14 +28,14 @@ function getNoTasksToDoHTML() {
 async function initBoard() {
   tasks = await getTaskList(emailParameter);
   console.log(tasks);
-  updateHTML();
+  updateHTML(tasks);
 }
 
 /**
  * The function is updating the HTML for all the tasks.
  */
-function updateHTML() {
-  const columns = resetColumns();
+function updateHTML(array) {
+  const columns = resetColumns(array);
   columns.forEach((column) => {
     document.getElementById(`${column.name}`).innerHTML = "";
     if (column.cards.length > 0) {
@@ -101,13 +50,13 @@ function startDragging(id) {
 
 function generateSmallTaskHTML(task) {
   const category = task.category;
-  const colorClass = category.toLowerCase().replace(/ /g, "_") + "_bg_color";
+  const colorClass = getCategoryClassColor(category);
   let subtasksHTML = "";
   if (task.subtasks.length > 0) subtasksHTML = getSubTaskHTML(task);
   const priorityString = getTaskPriority(task.priority);
   return (
     /*html*/ `
-    <div draggable="true" ondragstart="startDragging('${task["id"]}')" class="card_small">
+    <div draggable="true" ondragstart="startDragging('${task["id"]}')" class="card_small" onclick="openTask('${task.id}')">
       <div class="task_category ${colorClass}">${task.category}</div>
       <div class="task_text_area">
         <div class="task_header">${task["title"]}</div>
@@ -124,6 +73,10 @@ function generateSmallTaskHTML(task) {
       </div>
     </div>`
   );
+}
+
+function getCategoryClassColor(category) {
+  return category.toLowerCase().replace(/ /g, "_") + "_bg_color";
 }
 
 function getAssignedToIconsHTML(contacts) {
@@ -148,7 +101,6 @@ function getSubTaskHTML(card) {
       counter++;
     }
   });
-
   const subtaskSummary = counter + "/" + subtasks.length + "Subtasks";
   const progress = (counter / subtasks.length) * 100;
   let html = /*html*/ `
@@ -183,7 +135,7 @@ function moveTo(status) {
   let task = tasks.find((t) => t.id == currentDraggedElement);
   task.status = status;
   // to do: save on the server!!!!
-  updateHTML();
+  updateHTML(tasks);
 }
 
 function highlight(id) {
@@ -198,8 +150,32 @@ function searchTask() {
   const search = getElementWithId("searchInput");
   if (search.value) {
     getElementWithId("magnifyingGlassIcon").src = "../../img/magnifying_glass_blue.svg";
-    console.log(".....search task: " + search.value);
+    let results = [];
+    tasks.forEach(task => {
+      if (task.title.toLowerCase().includes(search.value.toLowerCase()) || task.description.toLowerCase().includes(search.value.toLowerCase())){
+        results.push(task);
+      }
+    });
+    updateHTML(results)
     getElementWithId("magnifyingGlassIcon").src = "../../img/board_input_find_task_search.svg";
-  }
-  search.value = "";
+  } else updateHTML(tasks);
+}
+
+function openTask(id) {
+  showElement('bigCardView');
+  let container = getElementWithId('bigCardContent');
+  const task = tasks.find( t => t.id == id);
+
+  container.innerHTML = /*html*/`
+    <div class="big_card_header">
+      <div class='big_card_category ${getCategoryClassColor(task.category)}'>${task.category}</div>
+      <div>
+
+      </div>
+    </div>
+  `
+}
+
+function closeBigCardView(){
+  hideElement('bigCardView');
 }

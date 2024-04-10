@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  cursor: pointer;
 }
 
 .task_category {
@@ -16,6 +17,7 @@
   color: white;
   border-radius: 8px;
   padding: 4px 16px;
+  width: fit-content;
 }
 
 .user_story_bg_color {
@@ -91,4 +93,41 @@
 
 .overlapped_contact_icons {
   display: flex;
+}
+
+/* big card style for the task */
+
+.big_card_area {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.big_card {
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+}
+
+.big_card_content {
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.big_card_header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.big_card_category {
+  padding: 4px 24px;
+  border-radius: 8px;
+  font-size: 23px;
 }
