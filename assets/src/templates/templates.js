@@ -95,9 +95,6 @@ function extractFirstLetters(userName) {
     return initialLetters.join(''); // Gib die Anfangsbuchstaben als String zurück
 }
 
-// kann später weg
-console.log(initialLetters)
-
 /**
  * function to show the initials
  * 
