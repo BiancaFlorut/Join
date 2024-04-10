@@ -5,13 +5,55 @@ let urlEmail = params.get('email');
 // variables for page
 let user = [];
 let userName = user.name;
+let tasks = [];
 
 async function summaryInit() {
     // await getUserFromServer(urlEmail);
     await findUser();
+    await findTasks();
     welcomeUser();
     tasksInBoard();
+    numberOfTodo();
+    numberOfDone();
+    tasksProgress();
+    awaitingFeedback();
+    // updateTaskStatusCount("awaitFeedback");
+    // updateTaskStatusCount("inProgress");
+    // updateTaskStatusCount("done");
+    // updateTaskStatusCount("toDo");
 }
+
+function awaitingFeedback() {
+    let blubber = searchStatus(tasks, "awaitFeedback");
+    document.getElementById('awaitingFeedback').innerHTML = blubber.length;
+}
+
+function tasksProgress() {
+    let blubber = searchStatus(tasks, "inProgress");
+    document.getElementById('tasksProgress').innerHTML = blubber.length;
+}
+
+function numberOfDone() {
+    let blubber = searchStatus(tasks, "done");
+    document.getElementById('numberOfDone').innerHTML = blubber.length;
+}
+
+function numberOfTodo() {
+    let blubber = searchStatus(tasks, "toDo");
+    document.getElementById('numberOfTodo').innerHTML = blubber.length;
+}
+
+// function updateTaskStatusCount(status) {
+//     let elementStatus = searchStatus(tasks, status);
+//     document.getElementById(`${status}Count`).innerHTML = elementStatus.length;
+// }
+
+// function searchStatus(tasks, status) {
+//     return tasks.filter(task => task.status === status);
+// }
+
+// Verwendung der Funktion
+
 
 async function findUser() {
     let userServer = await getUserFromServer(urlEmail);
@@ -19,7 +61,12 @@ async function findUser() {
     user = user[0];
 }
 
-
+async function findTasks() {
+    let userTasks = await getTaskList(urlEmail);
+    tasks.push(userTasks);
+    tasks = tasks[0];
+    console.log(tasks);
+}
 
 
 /**
@@ -42,18 +89,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 /**
- * function looking for user with the same email-adress
- * 
- * 
+ * function show all tasks
  */
-// function findUserFromEmail(users, urlEmail) {
-//     for (let i = 0; i < users.length; i++) {
-//         if (users[i].email === urlEmail) {
-//             return users[i];
-//         }
-//     }
-//     return null; 
-// }
+function tasksInBoard() {
+    let allTasks = user.tasks;
+    let taskBoard = document.getElementById('tasksBoard');
+    taskBoard.innerHTML = allTasks.length;
+}
 
 /**
  * function to welcome the user
@@ -74,12 +116,6 @@ function welcomeUser() {
 |/////////////////////////////////////////////////////////////|
 */
 
-function tasksInBoard() {
-    let allTasks = user.tasks;
-    let taskBoard = document.getElementById('tasksBoard');
-    taskBoard.innerHTML = allTasks.length;
-}
-
-
-
-
+function searchStatus(tasks, status) {
+    return tasks.filter(task => task.status === status);
+   }

@@ -75,6 +75,7 @@ function selectedPage() {
  * the function sets the parameter query for board in order to load information from server for the logged user.
  */
 function setParameterQuery() {
+    // document.getElementById('Summary').href = '../board/board.html?email=' + emailParameter;
     document.getElementById('Board').href = '../board/board.html?email=' + emailParameter;
     document.getElementById('Contacts').href = '../contacts/contacts.html?email=' + emailParameter;
 }
