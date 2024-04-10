@@ -21,7 +21,6 @@ let initialLetters = [];
 
 function templatesInit() {
     extractFirstLetters();
-    showInitials();
 }
 
 /**
@@ -86,10 +85,12 @@ function setParameterQuery() {
  * @param {*} name 
  * @returns
  */
-function extractFirstLetters() {
-    let words = (user.name).split(''); // zerlegt den Namen in "Wörter"
+async function extractFirstLetters() {
+    let user = await getUserFromServer(emailParameter);
+    let words = (user.name).split(' '); // zerlegt den Namen in "Wörter"
     for (let i = 0; i < words.length; i++) { // Gehe durch jedes Wort im Namen
         initialLetters.push(words[i].charAt(0)); // Füge den ersten Buchstaben des Wortes zum Array der Anfangsbuchstaben hinzu
+        showInitials();
     }
     return initialLetters.join(''); // Gib die Anfangsbuchstaben als String zurück
 }
@@ -102,7 +103,7 @@ function extractFirstLetters() {
 function showInitials() {
     let welcome = document.getElementById('userInitials');
     welcome.innerHTML = ``;
-    for (let i = 0; i<initialLetters.length; i++) {
+    for (let i = 0; i < initialLetters.length; i++) {
         let element = initialLetters[i];
         welcome.innerHTML += `${element}`;
     }
