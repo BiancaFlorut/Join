@@ -1,5 +1,6 @@
 let tasks = []; 
 let user;
+const SUBTASK_CHECKBOX_PATH = '../../img/checkbox_board';
 
 let currentDraggedElement;
 
@@ -204,16 +205,16 @@ function openTask(id) {
     <div class="big_card_assigned_to_area">
       <span class="big_card_title">Subtasks</span>
       <div class="big_card_assigned_to_list">`
-        + getSubTaskForBigCardHTML(task.subtasks) +/*html*/`
+        + getSubTaskForBigCardHTML(task) +/*html*/`
       </div>
     </div>
     <div class='big_card_footer df_ac'>
-      <div class='big_card_delete df_ac' onmouseover="changeIdImgTheSrc('deleteIcon', '../../img/delete_blue.svg')" onmouseout="changeIdImgTheSrc('deleteIcon', '../../img/delete.svg')">
+      <div class='big_card_change df_ac' onmouseover="changeIdImgTheSrc('deleteIcon', '../../img/delete_blue.svg')" onmouseout="changeIdImgTheSrc('deleteIcon', '../../img/delete.svg')">
         <img id="deleteIcon" src="../../img/delete.svg" alt="delete">
         <span>Delete</span>
       </div>
       <img src="../../img/input_vertical_line.svg" alt="">
-      <div class='big_card_delete df_ac' onmouseover="changeIdImgTheSrc('editIcon', '../../img/edit_blue.svg')" onmouseout="changeIdImgTheSrc('editIcon', '../../img/edit.svg')">
+      <div class='big_card_change df_ac' onmouseover="changeIdImgTheSrc('editIcon', '../../img/edit_blue.svg')" onmouseout="changeIdImgTheSrc('editIcon', '../../img/edit.svg')">
         <img id="editIcon" src="../../img/edit.svg" alt="edit">
         <span>Edit</span>
       </div>
@@ -221,17 +222,16 @@ function openTask(id) {
   `;
 }
 
-function getSubTaskForBigCardHTML(subtasks) {
+function getSubTaskForBigCardHTML(task) {
+  let subtasks = task.subtasks;
   let html = '';
-  subtasks.forEach(subtask => {
-    const checkbox = subtask.checked ? '../../img/checkbox_board_checked.svg' : '../../img/checkbox_board.svg';
+  subtasks.forEach(function (subtask, index) {
+    const checkbox = subtask.checked ? SUBTASK_CHECKBOX_PATH +'_checked.svg' : SUBTASK_CHECKBOX_PATH + '.svg';
     html += /*html*/`
       <div class="big_card_subtask_area df_ac">
-        <img src="${checkbox}" alt="checkbox">
+        <img src="${checkbox}" alt="checkbox" onclick="toggleSubtaskCheckbox(this, '${task.id}', ${index})">
         <span>${subtask.text}</span>
-      </div>
-      
-    `
+      </div>`;
   });
   return html;
 }
@@ -258,4 +258,11 @@ function closeBigCardView(){
 
 function changeIdImgTheSrc(id, src) {
   changeSrc(getElementWithId(id), src);
+}
+
+function toggleSubtaskCheckbox(element, taskId, i) {
+  let task = tasks.find(t => t.id == taskId);
+  let isChecked = task.subtasks[i].checked;
+  task.subtasks[i].checked = toggleCheckbox(element, isChecked, SUBTASK_CHECKBOX_PATH);
+  //replace the task with the updated subtask then change the task for the assigned to contacts.
 }

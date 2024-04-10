@@ -12,7 +12,7 @@ function togglePasswordSignUp(element, id) {
 }
 
 function togglePrivacyPolicyIcon(checkbox) {
-  isCheckedPrivacyPolicy = toggleCheckbox(checkbox, isCheckedPrivacyPolicy);
+  isCheckedPrivacyPolicy = toggleCheckbox(checkbox, isCheckedPrivacyPolicy, CHECKBOX_PATH);
   checkAllConditions();
 }
 

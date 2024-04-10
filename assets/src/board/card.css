@@ -138,6 +138,12 @@
 
 .close_icon {
   cursor: pointer;
+  border-radius: 50px;
+  height: 32px;
+}
+
+.close_icon:hover {
+  background-color: rgba(238, 238, 238, 1);
 }
 
 .priority_area {
@@ -182,12 +188,16 @@
   background-color: rgba(238, 238, 238, 1);
 }
 
-.big_card_delete {
+.big_card_subtask_area img {
+  cursor: pointer;
+}
+
+.big_card_change {
   cursor: pointer;
   gap: 8px;
 }
 
-.big_card_delete:hover {
+.big_card_change:hover {
   color: rgba(41, 171, 226, 1);
   font-weight: 700;
 }

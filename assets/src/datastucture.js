@@ -75,7 +75,7 @@ let task = {
 let task2 = {
     title: 'Board Seite',
     description: 'Daten Übertragung',
-    assign_to: [contactAndrei, userMaria],
+    assign_to: [contactAndrei, contactMaria],
     due_date: 1717970400000, //June 10, 2024
     creation_date: 1712663942047,
     priority: 1, // 0 low, 1 medium, 2 urgent
