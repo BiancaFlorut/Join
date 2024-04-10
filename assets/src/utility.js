@@ -23,3 +23,13 @@ function hideElement(id) {
 function showElement(id) {
   getElementWithId(id).classList.remove('d_none');
 }
+
+/**
+ * The function changes the source path of the image element.
+ * 
+ * @param {img element Object} element
+ * @param {string} src
+ */
+function changeSrc(element, src) {
+  element.src = src;
+}

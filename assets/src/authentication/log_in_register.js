@@ -22,19 +22,9 @@ function mouseBeside(element, isToggled) {
 }
 
 /**
- * The function changes the source path of the image element.
- * 
- * @param {img element Object} element
- * @param {string} src
- */
-function changeSrc(element, src) {
-  element.src = src;
-}
-
-/**
  * This function toggles the visibility of the password in the password input by clicking on the eyed.
  * 
- * @param {img element} element on wich the event was targeted.
+ * @param {HTMLElement} element on wich the event was targeted.
  * @param {string} id of the password element.
  * @param {boolean} isToggled a boolean wich gives the state of the password as visible or not.
  * @returns {boolean} isToggled.

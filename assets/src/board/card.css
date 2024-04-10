@@ -170,6 +170,35 @@
   gap: 4px;
 }
 
+.big_card_subtask_area {
+  padding: 6px 16px;
+  width: fit-content;
+  border-radius: 30px;
+  font-size: 16px;
+  gap: 16px;
+}
+
+.big_card_subtask_area:hover {
+  background-color: rgba(238, 238, 238, 1);
+}
+
+.big_card_delete {
+  cursor: pointer;
+  gap: 8px;
+}
+
+.big_card_delete:hover {
+  color: rgba(41, 171, 226, 1);
+  font-weight: 700;
+}
+
+.big_card_footer {
+  gap: 8px;
+  color: rgba(42, 54, 71, 1);
+  font-size: 16px;
+  justify-content: flex-end;
+}
+
 .pr_10 {
   padding-right: 10px;
 }

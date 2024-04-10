@@ -201,10 +201,39 @@ function openTask(id) {
         + getAssignedToHTML(task.assign_to) +/*html*/`
       </div>
     </div>
-    <div>
+    <div class="big_card_assigned_to_area">
       <span class="big_card_title">Subtasks</span>
+      <div class="big_card_assigned_to_list">`
+        + getSubTaskForBigCardHTML(task.subtasks) +/*html*/`
+      </div>
+    </div>
+    <div class='big_card_footer df_ac'>
+      <div class='big_card_delete df_ac' onmouseover="changeIdImgTheSrc('deleteIcon', '../../img/delete_blue.svg')" onmouseout="changeIdImgTheSrc('deleteIcon', '../../img/delete.svg')">
+        <img id="deleteIcon" src="../../img/delete.svg" alt="delete">
+        <span>Delete</span>
+      </div>
+      <img src="../../img/input_vertical_line.svg" alt="">
+      <div class='big_card_delete df_ac' onmouseover="changeIdImgTheSrc('editIcon', '../../img/edit_blue.svg')" onmouseout="changeIdImgTheSrc('editIcon', '../../img/edit.svg')">
+        <img id="editIcon" src="../../img/edit.svg" alt="edit">
+        <span>Edit</span>
+      </div>
     </div>
   `;
+}
+
+function getSubTaskForBigCardHTML(subtasks) {
+  let html = '';
+  subtasks.forEach(subtask => {
+    const checkbox = subtask.checked ? '../../img/checkbox_board_checked.svg' : '../../img/checkbox_board.svg';
+    html += /*html*/`
+      <div class="big_card_subtask_area df_ac">
+        <img src="${checkbox}" alt="checkbox">
+        <span>${subtask.text}</span>
+      </div>
+      
+    `
+  });
+  return html;
 }
 
 function getAssignedToHTML(array) {
@@ -225,4 +254,8 @@ function getContactForBigCardHTML(contact) {
 
 function closeBigCardView(){
   hideElement('bigCardView');
+}
+
+function changeIdImgTheSrc(id, src) {
+  changeSrc(getElementWithId(id), src);
 }
