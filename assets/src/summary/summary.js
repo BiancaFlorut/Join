@@ -1,13 +1,26 @@
+// e-mail from href browser
 let url = window.location.href;
 let params = new URLSearchParams(new URL(url).search);
 let urlEmail = params.get('email');
-let user = findUserFromEmail(users, urlEmail);
-let userName = user.name
+// variables for page
+let user = [];
+let userName = user.name;
 
-function summaryInit() {
+async function summaryInit() {
+    // await getUserFromServer(urlEmail);
+    await findUser();
     welcomeUser();
     tasksInBoard();
 }
+
+async function findUser() {
+    let userServer = await getUserFromServer(urlEmail);
+    user.push(userServer);
+    user = user[0];
+}
+
+
+
 
 /**
  * function change die <img> src path, whenn we hover the mouse ofer the <a>
@@ -33,14 +46,14 @@ document.addEventListener('DOMContentLoaded', function() {
  * 
  * 
  */
-function findUserFromEmail(users, urlEmail) {
-    for (let i = 0; i < users.length; i++) {
-        if (users[i].email === urlEmail) {
-            return users[i];
-        }
-    }
-    return null; // Wenn kein Benutzer gefunden wird
-}
+// function findUserFromEmail(users, urlEmail) {
+//     for (let i = 0; i < users.length; i++) {
+//         if (users[i].email === urlEmail) {
+//             return users[i];
+//         }
+//     }
+//     return null; 
+// }
 
 /**
  * function to welcome the user
@@ -49,7 +62,7 @@ function findUserFromEmail(users, urlEmail) {
  */
 function welcomeUser() {
     let welcome = document.getElementById('welcomeName');
-    welcome.innerHTML = `${userName}`;
+    welcome.innerHTML = `${user.name}`;
 }
 /*
 |/////////////////////////////////////////////////////////////|
@@ -70,8 +83,3 @@ function tasksInBoard() {
 
 
 
-
-// kann später weg
-if (user) {
-    console.log("Benutzer gefunden:", user.name);
-}
