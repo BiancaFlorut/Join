@@ -6,6 +6,7 @@ let userName = user.name
 
 function summaryInit() {
     welcomeUser();
+    tasksInBoard();
 }
 
 /**
@@ -60,7 +61,11 @@ function welcomeUser() {
 |/////////////////////////////////////////////////////////////|
 */
 
-
+function tasksInBoard() {
+    let allTasks = user.tasks;
+    let taskBoard = document.getElementById('tasksBoard');
+    taskBoard.innerHTML = allTasks.length;
+}
 
 
 
