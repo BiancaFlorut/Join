@@ -261,8 +261,10 @@ function changeIdImgTheSrc(id, src) {
 }
 
 function toggleSubtaskCheckbox(element, taskId, i) {
-  let task = tasks.find(t => t.id == taskId);
+  let taskIndex = tasks.findIndex(t => t.id == taskId);
+  let task = tasks.find((t, index) => t.id == taskId);
   let isChecked = task.subtasks[i].checked;
-  task.subtasks[i].checked = toggleCheckbox(element, isChecked, SUBTASK_CHECKBOX_PATH);
+  tasks[taskIndex].subtasks[i].checked = toggleCheckbox(element, isChecked, SUBTASK_CHECKBOX_PATH);
+  updateHTML(tasks);
   //replace the task with the updated subtask then change the task for the assigned to contacts.
 }
