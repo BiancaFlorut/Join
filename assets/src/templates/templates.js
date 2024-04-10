@@ -17,7 +17,7 @@ const contactIconColors = [
     '#ff4646',
     '#ffbb2b',
 ];
-
+let initialLetters = [];
 
 /**
  * this function integrates html templates
@@ -74,7 +74,7 @@ function setParameterQuery() {
     document.getElementById('Board').href = '../board/board.html?email=' + emailParameter;
     document.getElementById('Contacts').href = '../contacts/contacts.html?email=' + emailParameter;
 }
-let initialLetters = [];
+
 /**
  * function extract initials from a namestring
  * 
@@ -98,8 +98,12 @@ console.log(initialLetters)
  * 
  * @param {string}
  */
-// function welcomeUser() {
-//     let initials = extractFirstLetters(userName)
-//     let welcome = document.getElementById('userInitials');
-//     welcome.innerHTML = `${initials}`;
-// }
+function showInitials() {
+    let welcome = document.getElementById('userInitials');
+    welcome.innerHTML = ``;
+    for (let i = 0; i<initialLetters.length; i++) {
+        let element = initialLetters[i];
+        welcome.innerHTML += `${element}`;
+        console.log(element);
+    }
+}
