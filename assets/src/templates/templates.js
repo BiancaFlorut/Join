@@ -19,6 +19,11 @@ const contactIconColors = [
 ];
 let initialLetters = [];
 
+function templatesInit() {
+    extractFirstLetters(userName);
+    showInitials();
+}
+
 /**
  * this function integrates html templates
  *
