@@ -20,8 +20,7 @@ const contactIconColors = [
 let initialLetters = [];
 
 function templatesInit() {
-    extractFirstLetters(userName);
-    showInitials();
+    extractFirstLetters();
 }
 
 /**
@@ -86,11 +85,12 @@ function setParameterQuery() {
  * @param {*} name 
  * @returns
  */
-function extractFirstLetters(userName) {
-    let words = userName.split(' '); // zerlegt den Namen in "Wörter"
-     // Anfangsbuchstaben speichern
+async function extractFirstLetters() {
+    let user = await getUserFromServer(emailParameter);
+    let words = (user.name).split(' '); // zerlegt den Namen in "Wörter"
     for (let i = 0; i < words.length; i++) { // Gehe durch jedes Wort im Namen
         initialLetters.push(words[i].charAt(0)); // Füge den ersten Buchstaben des Wortes zum Array der Anfangsbuchstaben hinzu
+        showInitials();
     }
     return initialLetters.join(''); // Gib die Anfangsbuchstaben als String zurück
 }
@@ -103,7 +103,7 @@ function extractFirstLetters(userName) {
 function showInitials() {
     let welcome = document.getElementById('userInitials');
     welcome.innerHTML = ``;
-    for (let i = 0; i<initialLetters.length; i++) {
+    for (let i = 0; i < initialLetters.length; i++) {
         let element = initialLetters[i];
         welcome.innerHTML += `${element}`;
     }
