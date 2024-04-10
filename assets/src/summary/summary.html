@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="../templates/templates.css" />
     <link rel="stylesheet" href="./summary.css" />
     <script src="../storage.js"></script>
-    <script src="../templates/templates.js"></script>
     <script src="../script.js"></script>
     <script src="../datastucture.js"></script>
     <script src="./summary.js"></script>
+    <script src="../templates/templates.js"></script>
   </head>
-  <body onload="init()">
+  <body onload="init(), summaryInit()">
     <div w3-include-html="../templates/nav_bar_left.html"></div>
 
     <section class="content-section">
@@ -80,8 +80,8 @@
             </div>
 
             <div class="summary-content-right">
-              <span id="welcome">Good morning</span>
-              <span id="welcomeName">Sophia Müller</span>
+              <span id="welcome">Good morning,</span>
+              <span id="welcomeName">Guest</span>
             </div>
 
           </div>
