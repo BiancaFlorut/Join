@@ -1,4 +1,5 @@
 let tasks = []; 
+let user;
 
 let currentDraggedElement;
 
@@ -29,6 +30,7 @@ async function initBoard() {
   tasks = await getTaskList(emailParameter);
   console.log(tasks);
   updateHTML(tasks);
+  user = await getUserFromServer(emailParameter);
 }
 
 /**
@@ -83,14 +85,19 @@ function getAssignedToIconsHTML(contacts) {
   let html = /*html*/ `<div class="overlapped_contact_icons">`;
   let shift = 0;
   contacts.forEach((contact) => {
-    let initials = "";
-    const names = contact.name.split(" ");
-    names.forEach((name) => (initials += name.charAt(0)));
+    let initials = getInitials(contact.name);
     html += /*html*/ `<div class='contacts_icon' style="background-color: ${contact.color}; transform: translateX(${shift}px);">${initials}</div>`;
     shift -= 10;
   });
   html += /*html*/`</div>`;
   return html;
+}
+
+function getInitials(name) {
+  let initials = '';
+  const names = name.split(" ");
+    names.forEach((name) => (initials += name.charAt(0)));
+    return initials;
 }
 
 function getSubTaskHTML(card) {
@@ -178,28 +185,42 @@ function openTask(id) {
     <h1>${task.title}</h1>
     <span>${task.description}</span>
     <div>
-      <span class="pr_25">Due Date:</span>
+      <span class="big_card_title">Due Date:</span>
       <span>${formattedDate}</span>
     </div>
     <div class='df_ac'>
-      <span class="pr_25">Priority:</span>
+      <span class="big_card_title">Priority:</span>
       <div class='priority_area' >
         <span class="pr_10" style="text-transform: capitalize;">${priority.split('_')[1]}</span>
         <img src="../../img/${priority}.svg" alt="">
       </div>
     </div>
-    <span>Assigned To:</span>
-    <div>`
-      + getAssignedToHTML(task.assign_to) +
-    /*html*/`
+    <div class="big_card_assigned_to_area">
+      <span class="big_card_title">Assigned To:</span>
+      <div class="big_card_assigned_to_list">`
+        + getAssignedToHTML(task.assign_to) +/*html*/`
+      </div>
+    </div>
+    <div>
+      <span class="big_card_title">Subtasks</span>
     </div>
   `;
 }
 
 function getAssignedToHTML(array) {
+  let html = '';
+  array.forEach(contact => html += getContactForBigCardHTML(contact));
+  return html;
+}
+
+function getContactForBigCardHTML(contact) {
+  let you = contact.name == user.name ? ' (You)' : ''; 
   return /*html*/`
-      
-  `;
+    <div class='big_card_assigned_to'>
+      <div class='contacts_icon' style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
+      <div>${contact.name + you}</div>
+    </div>
+  `
 }
 
 function closeBigCardView(){

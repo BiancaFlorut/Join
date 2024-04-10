@@ -146,8 +146,28 @@
   padding: 4px 18px;
 }
 
-.pr_25 {
+.big_card_assigned_to_area {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.big_card_assigned_to {
+  display: flex;
+  align-items: center;
+  padding: 7px 16px;
+  gap: 16px;
+}
+
+.big_card_title {
   padding-right: 25px;
+  color: rgba(42, 54, 71, 1);
+}
+
+.big_card_assigned_to_list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .pr_10 {
