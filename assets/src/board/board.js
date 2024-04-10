@@ -266,5 +266,7 @@ function toggleSubtaskCheckbox(element, taskId, i) {
   let isChecked = task.subtasks[i].checked;
   tasks[taskIndex].subtasks[i].checked = toggleCheckbox(element, isChecked, SUBTASK_CHECKBOX_PATH);
   updateHTML(tasks);
-  //replace the task with the updated subtask then change the task for the assigned to contacts.
+  //change the task for the assigned to contacts.
+  updateTasksFromUser(emailParameter, tasks);
+  updateContactsAboutTask(task.assign_to, taskId, tasks[taskId]);
 }

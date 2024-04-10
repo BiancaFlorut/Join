@@ -17,7 +17,7 @@ async function getItemFromRemoteStorage(key) {
  * 
  * @param {string} key 
  * @param {JSON} value 
- * @returns a Promise
+ * @returns {Promise}
  */
 async function setItemToRemoteStorage(key, value) {
     const payload = {key: key, value: value, token: STORAGE_TOKEN};
@@ -49,4 +49,49 @@ async function getTaskList(email) {
 async function getContactList(email) {
     let user = await getUserFromServer(email);
     return user.contacts;
+}
+
+
+/**
+ * This function sets the given array as a JSON array in the remote server with the key 'users'.
+ * @param {[]} array 
+ */
+async function setUsersOnRemoteServer(array) {
+    return await setItemToRemoteStorage('users', array);
+}
+
+
+async function updateTasksFromUser(userEmail, tasks) {
+    let user = await getUserFromServer(userEmail);
+    let users = await loadUsersFromServer();
+    let index = users.findIndex(u => u.email == userEmail); 
+    console.log('the index of: ', userEmail, ' is ', index);
+    user.tasks = tasks;
+    users[index] = user;
+    setUsersOnRemoteServer(users);
+}
+
+async function updateContactsAboutTask(contacts, taskId, newTask) {
+    let users = await loadUsersFromServer();
+    contacts.forEach(contact => {
+        const userIndex = users.findIndex( u => u.email == contact.email);
+        if (userIndex > 0){
+            let user = users[userIndex];
+            const taskIndex = user.tasks.findIndex( t => t.id == taskId);
+            if (taskId > 0) {
+                user.tasks[taskIndex] = newTask;
+                updateUserToRemoteServer(user);
+            }
+        }
+    });
+}
+
+async function updateUserToRemoteServer(user) {
+    let users = await loadUsersFromServer();
+    const userIndex = users.findIndex( u => u.email == user.email);
+    if (userIndex > 0) {
+        users[userIndex] = user;
+        setUsersOnRemoteServer(users);
+    }
+    return userIndex;
 }
