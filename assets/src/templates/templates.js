@@ -106,6 +106,5 @@ function showInitials() {
     for (let i = 0; i<initialLetters.length; i++) {
         let element = initialLetters[i];
         welcome.innerHTML += `${element}`;
-        console.log(element);
     }
 }
