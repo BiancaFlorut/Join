@@ -120,7 +120,6 @@ let contactEmmanuelMauer = {
     phone: '0123456789',
     color: '#6e52ff'
 }
-
 let contactBenediktZiegler = {
     name: 'Benedikt Ziegler',
     email: 'bezi@mail.er',
@@ -162,6 +161,8 @@ let contactGuest = {
     phone: '',
     color: '#ff4646'
 }
+
+
 
 let taskGuest1 = {
     title: 'Mama anrufen',
@@ -223,4 +224,27 @@ let userGuest = {
     tasks: [taskGuest1, taskGuest2, taskGuest3, taskGuest4], // Tasksnamen ändern?!?
 }
 
-users = [userAndrei, userAndu, userBert, userMaria, userMarian, userGuest];
+let userEmmanuelMauer = {
+    email: 'emma@mail.er',
+    name: 'Emmanuel Mauer',
+    password: '123',
+    contacts: [contactAntonMayer, contactBenediktZiegler, contactDarkwingDuck, contactDavidEisenberg, contactEvaFischer, contactKlarkKent, contactMarcelBauer, contactGuest],
+    tasks: [taskGuest4],
+}
+
+let userBenediktZiegler = {
+    email: 'bezi@mail.e',
+    name: 'Benedikt Ziegler',
+    password: '123',
+    contacts: [contactAntonMayer, contactDarkwingDuck, contactDavidEisenberg, contactEmmanuelMauer, contactEvaFischer, contactKlarkKent, contactMarcelBauer, contactGuest],
+    tasks: [taskGuest4],
+}
+let userKlarkKent = {
+    email: 'klke@mail.er',
+    name: 'Klark Kent',
+    password: '123',
+    contacts: [contactAntonMayer, contactBenediktZiegler, contactDarkwingDuck, contactDavidEisenberg, contactEmmanuelMauer, contactEvaFischer, contactMarcelBauer, contactGuest],
+    tasks: [taskGuest4],
+}
+
+users = [userAndrei, userAndu, userBert, userMaria, userMarian, userGuest, userKlarkKent, userBenediktZiegler, userEmmanuelMauer];

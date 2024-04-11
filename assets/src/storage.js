@@ -54,7 +54,7 @@ async function getContactList(email) {
 
 /**
  * This function sets the given array as a JSON array in the remote server with the key 'users'.
- * @param {[]} array 
+ * @param {JSON array} server response
  */
 async function setUsersOnRemoteServer(array) {
     return await setItemToRemoteStorage('users', array);
@@ -75,10 +75,10 @@ async function updateContactsAboutTask(contacts, taskId, newTask) {
     let users = await loadUsersFromServer();
     contacts.forEach(contact => {
         const userIndex = users.findIndex( u => u.email == contact.email);
-        if (userIndex > 0){
+        if (userIndex >= 0){
             let user = users[userIndex];
             const taskIndex = user.tasks.findIndex( t => t.id == taskId);
-            if (taskId > 0) {
+            if (taskIndex >= 0) {
                 user.tasks[taskIndex] = newTask;
                 updateUserToRemoteServer(user);
             }
