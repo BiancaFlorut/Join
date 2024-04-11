@@ -22,24 +22,27 @@ async function summaryInit() {
     // updateTaskStatusCount("done");
     // updateTaskStatusCount("toDo");
 }
+function searchTaskStatus(tasks, status) {
+    return tasks.filter(task => task.status === status);
+   }
 
 function awaitingFeedback() {
-    let blubber = searchStatus(tasks, "awaitFeedback");
+    let blubber = searchTaskStatus(tasks, "awaitFeedback");
     document.getElementById('awaitingFeedback').innerHTML = blubber.length;
 }
 
 function tasksProgress() {
-    let blubber = searchStatus(tasks, "inProgress");
+    let blubber = searchTaskStatus(tasks, "inProgress");
     document.getElementById('tasksProgress').innerHTML = blubber.length;
 }
 
 function numberOfDone() {
-    let blubber = searchStatus(tasks, "done");
+    let blubber = searchTaskStatus(tasks, "done");
     document.getElementById('numberOfDone').innerHTML = blubber.length;
 }
 
 function numberOfTodo() {
-    let blubber = searchStatus(tasks, "toDo");
+    let blubber = searchTaskStatus(tasks, "toDo");
     document.getElementById('numberOfTodo').innerHTML = blubber.length;
 }
 
@@ -47,12 +50,6 @@ function numberOfTodo() {
 //     let elementStatus = searchStatus(tasks, status);
 //     document.getElementById(`${status}Count`).innerHTML = elementStatus.length;
 // }
-
-// function searchStatus(tasks, status) {
-//     return tasks.filter(task => task.status === status);
-// }
-
-// Verwendung der Funktion
 
 
 async function findUser() {
@@ -116,6 +113,4 @@ function welcomeUser() {
 |/////////////////////////////////////////////////////////////|
 */
 
-function searchStatus(tasks, status) {
-    return tasks.filter(task => task.status === status);
-   }
+
