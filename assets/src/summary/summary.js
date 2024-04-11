@@ -11,6 +11,7 @@ async function summaryInit() {
     await findUser();
     await findTasks();
     welcomeUser();
+    greetUser();
     tasksInBoard();
     numberOfTodo();
     numberOfDone();
@@ -115,13 +116,29 @@ function tasksInBoard() {
 }
 
 /**
- * function to welcome the user
+ * function shows user name
  * 
  * @param {string}
  */
 function welcomeUser() {
     let welcome = document.getElementById('welcomeName');
     welcome.innerHTML = `${user.name}`;
+}
+
+/**
+ * this function welcomes the user depending on the time of day
+ */
+function greetUser() {
+    const currentHour = new Date().getHours();
+    let greeting;
+    if (currentHour < 12) {
+        greeting = "Good morning,";
+    } else if (currentHour < 18) {
+        greeting = "Welcome,";
+    } else {
+        greeting = "Good evening,";
+    }
+    document.getElementById('welcome').innerHTML = greeting;
 }
 /*
 |/////////////////////////////////////////////////////////////|
