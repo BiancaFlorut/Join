@@ -73,17 +73,37 @@ async function updateTasksFromUser(userEmail, tasks) {
 
 async function updateContactsAboutTask(contacts, taskId, newTask) {
     let users = await loadUsersFromServer();
-    contacts.forEach(contact => {
+    for (let indexContact = 0; indexContact < contacts.length; indexContact++) {
+        const contact = contacts[indexContact];
         const userIndex = users.findIndex( u => u.email == contact.email);
         if (userIndex >= 0){
             let user = users[userIndex];
             const taskIndex = user.tasks.findIndex( t => t.id == taskId);
             if (taskIndex >= 0) {
+                console.log('contact: ', user.name);
+                console.log('alte aufgabe ', user.tasks[taskIndex]);
                 user.tasks[taskIndex] = newTask;
-                updateUserToRemoteServer(user);
+                console.log('neue aufgabe ', user.tasks[taskIndex]);
+                const newTaskUserIndex =  await updateUserToRemoteServer(user);
+                console.log('user index task neu', newTaskUserIndex);
             }
         }
-    });
+    }
+    // contacts.forEach(contact => {
+    //     const userIndex = users.findIndex( u => u.email == contact.email);
+    //     if (userIndex >= 0){
+    //         let user = users[userIndex];
+    //         console.log('contact: ', user.name);
+    //         const taskIndex = user.tasks.findIndex( t => t.id == taskId);
+    //         if (taskIndex >= 0) {
+    //             console.log('alte aufgabe ', user.tasks[taskIndex]);
+    //             user.tasks[taskIndex] = newTask;
+    //             console.log('neue aufgabe ', user.tasks[taskIndex]);
+    //             const newTaskUserIndex =  updateUserToRemoteServer(user).then(console.log('user index task neu', newTaskUserIndex));
+    //         }
+    //     }
+    // });
+    
 }
 
 async function updateUserToRemoteServer(user) {
@@ -91,7 +111,7 @@ async function updateUserToRemoteServer(user) {
     const userIndex = users.findIndex( u => u.email == user.email);
     if (userIndex > 0) {
         users[userIndex] = user;
-        setUsersOnRemoteServer(users);
+        await setUsersOnRemoteServer(users);
     }
     return userIndex;
 }
