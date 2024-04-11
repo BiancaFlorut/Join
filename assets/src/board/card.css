@@ -116,15 +116,20 @@
   height: 84%;
 }
 
-.big_card_content {
+.big_card_scrollable_wrapper {
   padding: 48px 40px;
+  height: 89%;
+  overflow: hidden;
+}
+
+.big_card_content {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  height: 89%;
   font-size: 20px;
   scrollbar-width: none;
   overflow-y: auto;
+  height: 100%;
 }
 
 .big_card_header {
@@ -214,7 +219,6 @@
 }
 
 .big_card_edit_content_area {
-  height: 69%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -290,6 +294,24 @@
   padding: 0 2px;
 }
 
+.big_card_edit_assigned_to_custom_select {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.big_card_edit_contact_icons {
+  height: 42px;
+  width: 42px;
+}
+
+.big_card_edit_contacts_select {
+  gap: 16px;
+  width: 100%;
+  padding: 7px 16px;
+  box-sizing: border-box;
+}
+
 .pr_10 {
   padding-right: 10px;
 }
@@ -301,6 +323,10 @@
 
 .jc {
   justify-content: center;
+}
+
+.flex_1 {
+  flex: 1;
 }
 
 .flex_1_1_0px {
