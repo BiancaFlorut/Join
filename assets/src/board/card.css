@@ -111,6 +111,7 @@
 .big_card {
   background-color: white;
   border-radius: 30px;
+  width: 525px;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
 }
 
@@ -119,15 +120,100 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  font-size: 20px;
 }
 
 .big_card_header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .big_card_category {
   padding: 4px 24px;
   border-radius: 8px;
   font-size: 23px;
+  font-family: "Open Sans";
+}
+
+.close_icon {
+  cursor: pointer;
+  border-radius: 50px;
+  height: 32px;
+}
+
+.close_icon:hover {
+  background-color: rgba(238, 238, 238, 1);
+}
+
+.priority_area {
+  display: flex;
+  align-items: center;
+  padding: 4px 18px;
+}
+
+.big_card_assigned_to_area {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.big_card_assigned_to {
+  display: flex;
+  align-items: center;
+  padding: 7px 16px;
+  gap: 16px;
+}
+
+.big_card_title {
+  padding-right: 25px;
+  color: rgba(42, 54, 71, 1);
+}
+
+.big_card_assigned_to_list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.big_card_subtask_area {
+  padding: 6px 16px;
+  width: fit-content;
+  border-radius: 30px;
+  font-size: 16px;
+  gap: 16px;
+}
+
+.big_card_subtask_area:hover {
+  background-color: rgba(238, 238, 238, 1);
+}
+
+.big_card_subtask_area img {
+  cursor: pointer;
+}
+
+.big_card_change {
+  cursor: pointer;
+  gap: 8px;
+}
+
+.big_card_change:hover {
+  color: rgba(41, 171, 226, 1);
+  font-weight: 700;
+}
+
+.big_card_footer {
+  gap: 8px;
+  color: rgba(42, 54, 71, 1);
+  font-size: 16px;
+  justify-content: flex-end;
+}
+
+.pr_10 {
+  padding-right: 10px;
+}
+
+.df_ac {
+  display: flex;
+  align-items: center;
 }

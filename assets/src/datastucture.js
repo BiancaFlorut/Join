@@ -62,26 +62,27 @@ let task = {
     title: 'Log In erstellen',
     description: 'Design und Funktionalität erstellen',
     assign_to: [contactBert, contactMaria],
-    due_date: 1712972885643,
+    due_date: 1717970400000, //June 10, 2024
     creation_date: 1712656863726,
     priority: 1, // 0 low, 1 medium, 2 urgent
     status: 'awaitFeedback',
     category: 'Technical Task',
     subtasks: [{text: 'Sign in form', checked: true}, {text: 'custom validation', checked: true}],
-    id: '1712663942047andu@mail.com1712972885643',
+    id: '1712663942047andu@mail.com1717970400000',
 }
 
 
 let task2 = {
     title: 'Board Seite',
     description: 'Daten Übertragung',
-    assign_to: [contactAndrei, userMaria],
-    due_date: 1712972885643,
+    assign_to: [contactAndrei, contactMaria],
+    due_date: 1717970400000, //June 10, 2024
     creation_date: 1712663942047,
     priority: 1, // 0 low, 1 medium, 2 urgent
+    status: 'awaitFeedback',
     category: 'Technical Task',
     subtasks: [{text: 'tasks erstellen', checked: true}, {text: 'tasks löschen', checked: false}],
-    id: '1712663942047andu@mail.com1712972885643',
+    id: '1712663942047andu@mail.com1717970400000',
 }
 
 let userAndu = {
@@ -120,7 +121,6 @@ let contactEmmanuelMauer = {
     phone: '0123456789',
     color: '#6e52ff'
 }
-
 let contactBenediktZiegler = {
     name: 'Benedikt Ziegler',
     email: 'bezi@mail.er',
@@ -163,56 +163,58 @@ let contactGuest = {
     color: '#ff4646'
 }
 
+
+
 let taskGuest1 = {
     title: 'Mama anrufen',
     description: 'Sinn des Lebens besprechen',
     assign_to: [contactBert, contactMaria],
-    due_date: 1712972885643,
+    due_date: 1713909600000, // Wed Apr 24 2024 
     creation_date: 1712656863726, 
     priority: 2, // 0 low, 1 medium, 2 urgent
     status: 'toDo',
     category: 'User Story',
     subtasks: [{text: 'nehme das Telefon', checked: false}, {text: 'wähle die Nummer', checked: false},],
-    id: '1712656863726guest@guest.mail1712972885643',// erstellungszeitraum hinzufügen?!?
+    id: '1712656863726guest@guest.mail1713909600000',// erstellungszeitraum hinzufügen?!?
 }
 
 let taskGuest2 = {
     title: 'Kochwelt Page & Recipe Recommender',
     description: 'Build start page with recipe recommendation',
     assign_to: [contactBert, contactMaria, contactDarkwingDuck],
-    due_date: 1712972885643,
+    due_date: 1713564000000, // April 20, 2024
     creation_date: 1712662899038, 
     priority: 1, // 0 low, 1 medium, 2 urgent
     status: 'awaitFeedback',
     category: 'User Story',
     subtasks: [{text: 'nehme das Telefon', checked: false}, {text: 'wähle die Nummer', checked: false}, {text: 'tasks löschen', checked: false}],
-    id: '1712662899038guest@guest.mail1712972885643',// erstellungszeitraum hinzufügen?!?
+    id: '1712662899038guest@guest.mail1713564000000',// erstellungszeitraum hinzufügen?!?
 }
 
 let taskGuest3 = {
     title: 'CSS Architecture Planning',
     description: 'Define CSS naming conventions and structure.',
     assign_to: [contactBert, contactDarkwingDuck, contactKlarkKent, contactEmmanuelMauer],
-    due_date: 1712972885643,
+    due_date: 1714600800000, // May 2, 2024
     creation_date: 1712664403850, 
     priority: 0, // 0 low, 1 medium, 2 urgent
     status: 'done',
     category: 'Technical Task',
     subtasks: [],
-    id: '1712664403850guest@guest.mail1712972885643',// erstellungszeitraum hinzufügen?!? wie am anfang??
+    id: '1712664403850guest@guest.mail1714600800000',// erstellungszeitraum hinzufügen?!? wie am anfang??
 }
 
 let taskGuest4 = {
     title: 'HTML Base Template Creation',
     description: 'Create reusable HTML base templates...',
     assign_to: [contactGuest, contactBenediktZiegler, contactKlarkKent, contactEmmanuelMauer],
-    due_date: 1712972885643,
+    due_date: 1715292000000, // 10.05.2024
     creation_date: 1712663942047, 
     priority: 2, // 0 low, 1 medium, 2 urgent
     status: 'inProgress',
     category: 'Technical Task',
     subtasks: [{text: 'Establish CSS Methodology', checked: true}, {text: 'Setup Base Styles', checked: true}],
-    id: '1712663942047guest@guest.mail1712972885643',// erstellungszeitraum hinzufügen?!? wie am anfang??
+    id: '1712663942047guest@guest.mail1715292000000',// erstellungszeitraum hinzufügen?!? wie am anfang??
 }
 
 let userGuest = {
@@ -223,4 +225,27 @@ let userGuest = {
     tasks: [taskGuest1, taskGuest2, taskGuest3, taskGuest4], // Tasksnamen ändern?!?
 }
 
-users = [userAndrei, userAndu, userBert, userMaria, userMarian, userGuest];
+let userEmmanuelMauer = {
+    email: 'emma@mail.er',
+    name: 'Emmanuel Mauer',
+    password: '123',
+    contacts: [contactAntonMayer, contactBenediktZiegler, contactDarkwingDuck, contactDavidEisenberg, contactEvaFischer, contactKlarkKent, contactMarcelBauer, contactGuest],
+    tasks: [taskGuest4],
+}
+
+let userBenediktZiegler = {
+    email: 'bezi@mail.e',
+    name: 'Benedikt Ziegler',
+    password: '123',
+    contacts: [contactAntonMayer, contactDarkwingDuck, contactDavidEisenberg, contactEmmanuelMauer, contactEvaFischer, contactKlarkKent, contactMarcelBauer, contactGuest],
+    tasks: [taskGuest4],
+}
+let userKlarkKent = {
+    email: 'klke@mail.er',
+    name: 'Klark Kent',
+    password: '123',
+    contacts: [contactAntonMayer, contactBenediktZiegler, contactDarkwingDuck, contactDavidEisenberg, contactEmmanuelMauer, contactEvaFischer, contactMarcelBauer, contactGuest],
+    tasks: [taskGuest4],
+}
+
+users = [userAndrei, userAndu, userBert, userMaria, userMarian, userGuest, userKlarkKent, userBenediktZiegler, userEmmanuelMauer];

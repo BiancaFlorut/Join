@@ -7,7 +7,7 @@ function togglePasswordSignIn(element, id) {
 }
 
 function toggleRememberMe(checkbox) {
-    isRememberMeChecked = toggleCheckbox(checkbox, isRememberMeChecked);
+    isRememberMeChecked = toggleCheckbox(checkbox, isRememberMeChecked, CHECKBOX_PATH);
 }
 
 function mouseOverRememberMe(element) {

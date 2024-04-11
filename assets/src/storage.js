@@ -17,7 +17,7 @@ async function getItemFromRemoteStorage(key) {
  * 
  * @param {string} key 
  * @param {JSON} value 
- * @returns a Promise
+ * @returns {Promise}
  */
 async function setItemToRemoteStorage(key, value) {
     const payload = {key: key, value: value, token: STORAGE_TOKEN};
@@ -49,4 +49,69 @@ async function getTaskList(email) {
 async function getContactList(email) {
     let user = await getUserFromServer(email);
     return user.contacts;
+}
+
+
+/**
+ * This function sets the given array as a JSON array in the remote server with the key 'users'.
+ * @param {JSON array} server response
+ */
+async function setUsersOnRemoteServer(array) {
+    return await setItemToRemoteStorage('users', array);
+}
+
+
+async function updateTasksFromUser(userEmail, tasks) {
+    let user = await getUserFromServer(userEmail);
+    let users = await loadUsersFromServer();
+    let index = users.findIndex(u => u.email == userEmail); 
+    console.log('the index of: ', userEmail, ' is ', index);
+    user.tasks = tasks;
+    users[index] = user;
+    setUsersOnRemoteServer(users);
+}
+
+async function updateContactsAboutTask(contacts, taskId, newTask) {
+    let users = await loadUsersFromServer();
+    for (let indexContact = 0; indexContact < contacts.length; indexContact++) {
+        const contact = contacts[indexContact];
+        const userIndex = users.findIndex( u => u.email == contact.email);
+        if (userIndex >= 0){
+            let user = users[userIndex];
+            const taskIndex = user.tasks.findIndex( t => t.id == taskId);
+            if (taskIndex >= 0) {
+                console.log('contact: ', user.name);
+                console.log('alte aufgabe ', user.tasks[taskIndex]);
+                user.tasks[taskIndex] = newTask;
+                console.log('neue aufgabe ', user.tasks[taskIndex]);
+                const newTaskUserIndex =  await updateUserToRemoteServer(user);
+                console.log('user index task neu', newTaskUserIndex);
+            }
+        }
+    }
+    // contacts.forEach(contact => {
+    //     const userIndex = users.findIndex( u => u.email == contact.email);
+    //     if (userIndex >= 0){
+    //         let user = users[userIndex];
+    //         console.log('contact: ', user.name);
+    //         const taskIndex = user.tasks.findIndex( t => t.id == taskId);
+    //         if (taskIndex >= 0) {
+    //             console.log('alte aufgabe ', user.tasks[taskIndex]);
+    //             user.tasks[taskIndex] = newTask;
+    //             console.log('neue aufgabe ', user.tasks[taskIndex]);
+    //             const newTaskUserIndex =  updateUserToRemoteServer(user).then(console.log('user index task neu', newTaskUserIndex));
+    //         }
+    //     }
+    // });
+    
+}
+
+async function updateUserToRemoteServer(user) {
+    let users = await loadUsersFromServer();
+    const userIndex = users.findIndex( u => u.email == user.email);
+    if (userIndex > 0) {
+        users[userIndex] = user;
+        await setUsersOnRemoteServer(users);
+    }
+    return userIndex;
 }
