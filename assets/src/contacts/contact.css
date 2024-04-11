@@ -1,6 +1,16 @@
+.contacts_display_flex {
+    display: flex;
+}
+
 .h1_contacts {
     font-size: 61px;
     font-weight: 700;
+}
+
+.h1_add_contacts {
+    font-size: 61px;
+    font-weight: 700;
+    color: #ffffff;
 }
 
 .h2_contacts {
@@ -9,10 +19,21 @@
     color: #2a3647;
 }
 
+.h2_add_contacts {
+    font-size: 27px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
 .contacts_header {
     display: flex;
-    align-items: center;
     gap: 30px;
+    margin-left: 30px;
+    margin-top: 100px;
+}
+
+.contacts_vector {
+    height: 70px;
 }
 
 .contact_card {
@@ -30,4 +51,57 @@
     display: flex;
     align-items: center;
     gap: 16px;
+}
+
+.main_container_add_contact {
+    display: flex;
+    height: 600px;
+}
+
+.left_container_add_contacts {
+    background-color: #2a3647;
+    width: 460px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    padding: 66px 48px 66px 48px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.right_container_add_contacts {
+    background-color: #ffffff;
+    width: 740px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.border_radius {
+    background-color: #d1d1d1;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add_contact_close {
+    cursor: pointer;
+    width: 13px;
+    position: relative;
+    bottom: 80px;
+    left: 300px;
+}
+
+.add_contact_close:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.create_contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
