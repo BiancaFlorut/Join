@@ -79,6 +79,7 @@ let task2 = {
     due_date: 1717970400000, //June 10, 2024
     creation_date: 1712663942047,
     priority: 1, // 0 low, 1 medium, 2 urgent
+    status: 'awaitFeedback',
     category: 'Technical Task',
     subtasks: [{text: 'tasks erstellen', checked: true}, {text: 'tasks löschen', checked: false}],
     id: '1712663942047andu@mail.com1717970400000',
