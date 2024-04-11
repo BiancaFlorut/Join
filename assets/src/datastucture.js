@@ -234,7 +234,7 @@ let userEmmanuelMauer = {
 }
 
 let userBenediktZiegler = {
-    email: 'bezi@mail.e',
+    email: 'bezi@mail.er',
     name: 'Benedikt Ziegler',
     password: '123',
     contacts: [contactAntonMayer, contactDarkwingDuck, contactDavidEisenberg, contactEmmanuelMauer, contactEvaFischer, contactKlarkKent, contactMarcelBauer, contactGuest],
