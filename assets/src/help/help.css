@@ -16,7 +16,7 @@
 .guide {
     display: flex;
     padding: 2% 0 0;
-    gap: 1%;
+    gap: 3%;
 }
 .guide h3, p {
     margin-block-start: 0;
@@ -28,4 +28,7 @@
 }
 .padding-two-percent-top {
     padding: 2% 0 0;
+}
+.last-headline-three {
+    margin-block-end: 0;
 }
