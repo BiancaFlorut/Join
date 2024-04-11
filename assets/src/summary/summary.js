@@ -8,7 +8,6 @@ let userName = user.name;
 let tasks = [];
 
 async function summaryInit() {
-    // await getUserFromServer(urlEmail);
     await findUser();
     await findTasks();
     welcomeUser();
@@ -17,15 +16,18 @@ async function summaryInit() {
     numberOfDone();
     tasksProgress();
     awaitingFeedback();
+    awaitingUrgent();
+    // verkleinerung der Tasksuche:
     // updateTaskStatusCount("awaitFeedback");
     // updateTaskStatusCount("inProgress");
     // updateTaskStatusCount("done");
     // updateTaskStatusCount("toDo");
 }
+
 function searchTaskStatus(tasks, status) {
     return tasks.filter(task => task.status === status);
    }
-
+// zu kürzender code, bis nächstes grünes
 function awaitingFeedback() {
     let blubber = searchTaskStatus(tasks, "awaitFeedback");
     document.getElementById('awaitingFeedback').innerHTML = blubber.length;
@@ -45,11 +47,29 @@ function numberOfTodo() {
     let blubber = searchTaskStatus(tasks, "toDo");
     document.getElementById('numberOfTodo').innerHTML = blubber.length;
 }
-
+// verkleinerung der tasksuche
 // function updateTaskStatusCount(status) {
 //     let elementStatus = searchStatus(tasks, status);
 //     document.getElementById(`${status}Count`).innerHTML = elementStatus.length;
 // }
+
+/**
+ * function shows how many tasks have the priority Urgent
+ */
+function awaitingUrgent() {
+    let urgentElement = searchUrgentStatus(tasks, 2);
+    document.getElementById('numberOfUrgent').innerHTML = urgentElement.length;
+}
+
+/**
+ * function is a subfunction of awaitingUrgent(), it is a comparison function
+ * @param {*} tasks 
+ * @param {*} priority 
+ * @returns 
+ */
+function searchUrgentStatus(tasks, priority) {
+    return tasks.filter(task => task.priority === priority);
+}
 
 
 async function findUser() {
@@ -112,5 +132,3 @@ function welcomeUser() {
 |                                                             |
 |/////////////////////////////////////////////////////////////|
 */
-
-
