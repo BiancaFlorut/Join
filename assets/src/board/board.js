@@ -71,7 +71,7 @@ function generateSmallTaskHTML(task) {
         <div class="small_card_users_area">` +
     getAssignedToIconsHTML(task.assign_to) +
     /*html*/ `
-          <div class="small_task_priority"><img src="../../img/${priorityString}.svg" alt=""></div>
+          <div class="small_task_priority"><img src="../../img/priority_${priorityString}.svg" alt=""></div>
         </div>
       </div>
     </div>`
@@ -125,11 +125,11 @@ function getSubTaskHTML(card) {
 function getTaskPriority(priority) {
   switch (priority) {
     case 0:
-      return "priority_low";
+      return "low";
     case 1:
-      return "priority_medium";
+      return "medium";
     case 2:
-      return "priority_urgent";
+      return "urgent";
     default:
       break;
   }
@@ -142,7 +142,8 @@ function allowDrop(ev) {
 function moveTo(status) {
   let task = tasks.find((t) => t.id == currentDraggedElement);
   task.status = status;
-  // to do: save on the server!!!!
+  // save on server
+  updateContactsAboutTask(task.assign_to, task)
   updateHTML(tasks);
 }
 
@@ -192,8 +193,8 @@ function openTask(id) {
     <div class='df_ac'>
       <span class="big_card_title">Priority:</span>
       <div class='priority_area' >
-        <span class="pr_10" style="text-transform: capitalize;">${priority.split('_')[1]}</span>
-        <img src="../../img/${priority}.svg" alt="">
+        <span class="pr_10" style="text-transform: capitalize;">${priority}</span>
+        <img src="../../img/priority_${priority}.svg" alt="">
       </div>
     </div>
     <div class="big_card_assigned_to_area">
@@ -214,12 +215,98 @@ function openTask(id) {
         <span>Delete</span>
       </div>
       <img src="../../img/input_vertical_line.svg" alt="">
-      <div class='big_card_change df_ac' onmouseover="changeIdImgTheSrc('editIcon', '../../img/edit_blue.svg')" onmouseout="changeIdImgTheSrc('editIcon', '../../img/edit.svg')">
+      <div class='big_card_change df_ac' onclick="editTask('${task.id}')" onmouseover="changeIdImgTheSrc('editIcon', '../../img/edit_blue.svg')" onmouseout="changeIdImgTheSrc('editIcon', '../../img/edit.svg')">
         <img id="editIcon" src="../../img/edit.svg" alt="edit">
         <span>Edit</span>
       </div>
     </div>
   `;
+}
+
+function editTask(taskId) {
+  let container = getElementWithId('bigCardContent');
+  const task = tasks.find( t => t.id == taskId);
+  const priorityClass = getPriorityButtonsClasses(task.priority);
+  const due_date = new Date(task.due_date);
+  const valueDate = due_date.toISOString().split('T')[0];
+  const minDateValue = new Date().toISOString().split('T')[0];
+
+  let priorityClasses = ['', '', ''];
+  priorityClasses[task.priority] = priorityClass;
+  
+  let prioritySrcIcons = [''];
+
+  container.innerHTML = /*html*/`
+    <div class="big_card_header" style="justify-content: flex-end">
+      <div class="close_icon" onclick="closeBigCardView()">
+        <img src="../../img/close_black.svg" alt="close">
+      </div>
+    </div>
+    <div class="big_card_edit_content_area">
+      <div class='big_card_edit_input_area'>
+        <div class="big_card_edit_title">
+          <span class="big_card_edit_title_header">Title</span>
+          <input class='big_card_edit_title_input' type="text" value="${task.title}">
+          <span class="big_card_edit_error d_none">This field is required</span>
+        </div>
+        <div class="big_card_edit_title">
+          <span class="big_card_edit_title_header">Description</span>
+          <textarea class='big_card_edit_description_textarea'>${task.description}</textarea>
+          <span class="big_card_edit_error d_none">This field is required</span>
+        </div>
+        <div class="big_card_edit_title">
+          <span class="big_card_edit_title_header">Due Date</span>
+          <input type='date' value="${valueDate}" min="${minDateValue}" class='big_card_edit_title_input'>
+          <span class="big_card_edit_error d_none">This field is required</span>
+        </div>
+      </div>
+      <div class="big_card_edit_input_area">
+        <div class="big_card_edit_title">
+          <span class="big_card_edit_title_header_priority">Priority</span>
+          <div class="big_card_edit_priority_buttons df_ac">
+            <button id="buttonPriority2" class="button_priority flex_1_1_0px df_ac jc ${priorityClasses[2]}" onclick="togglePriorityTo('${taskId}', 2, this)">
+              <span>Urgent</span>
+              <img src="../../img/priority_urgent.svg" alt="">
+            </button>
+            <button id="buttonPriority1" class="button_priority flex_1_1_0px df_ac jc ${priorityClasses[1]}" onclick="togglePriorityTo('${taskId}', 1, this)">
+              <span>Medium</span>
+              <img src="../../img/priority_medium.svg" alt="">
+            </button>
+            <button id="buttonPriority0" class="button_priority flex_1_1_0px df_ac jc ${priorityClasses[0]}" onclick="togglePriorityTo('${taskId}', 0, this)">
+              <span>Low</span>
+              <img src="../../img/priority_low.svg" alt="">
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function togglePriorityTo(taskId, priorityValue, buttonElement) {
+  // let taskIndex = tasks.findIndex( (t) => t.id == taskId);
+  // tasks[taskIndex].priority = priorityValue;
+  resetPriorityButtons();
+  let classList = getPriorityButtonsClasses(priorityValue).split(' ');
+  buttonElement.classList.add(...classList);
+}
+
+function resetPriorityButtons() {
+  for (let i = 0; i < 3; i++) {
+    let classList = getElementWithId('buttonPriority' + i).classList;
+    classList.remove('clicked');
+    classList.remove(getTaskPriority(i));
+  }
+}
+
+function getPriorityButtonsClasses(priority) {
+  switch (priority) {
+    case 0: return 'low clicked';
+    case 1: return 'medium clicked';
+    case 2: return 'urgent clicked';
+    default:
+      return '';
+  }
 }
 
 function getSubTaskForBigCardHTML(task) {
@@ -267,6 +354,6 @@ function toggleSubtaskCheckbox(element, taskId, i) {
   tasks[taskIndex].subtasks[i].checked = toggleCheckbox(element, isChecked, SUBTASK_CHECKBOX_PATH);
   //change the task for the assigned to contacts.
   updateTasksFromUser(emailParameter, tasks);
-  updateContactsAboutTask(task.assign_to, taskId, tasks[taskIndex]);
+  updateContactsAboutTask(task.assign_to, tasks[taskIndex]);
   updateHTML(tasks);
 }
