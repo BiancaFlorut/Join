@@ -55,19 +55,21 @@ function numberOfTodo() {
 // }
 
 /**
- * function shows how many tasks have the priority Urgent
+ * function shows how many tasks have the priority Urgent and shows the next due date
  */
 function awaitingUrgent() {
     let urgentElement = searchUrgentStatus(tasks, 2);
     document.getElementById('numberOfUrgent').innerHTML = urgentElement.length;
+    let smallestDueDate = Math.min(...urgentElement.map(task => task.due_date));
+    let formattedDueDate = new Date(smallestDueDate).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+    document.getElementById('deadline').innerHTML = formattedDueDate;
 }
 
-/**
- * function is a subfunction of awaitingUrgent(), it is a comparison function
- * @param {*} tasks 
- * @param {*} priority 
- * @returns 
- */
+
 function searchUrgentStatus(tasks, priority) {
     return tasks.filter(task => task.priority === priority);
 }
