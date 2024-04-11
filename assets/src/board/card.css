@@ -113,6 +113,7 @@
   border-radius: 30px;
   width: 525px;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
+  height: 84%;
 }
 
 .big_card_content {
@@ -120,7 +121,10 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  height: 89%;
   font-size: 20px;
+  scrollbar-width: none;
+  overflow-y: auto;
 }
 
 .big_card_header {
@@ -209,6 +213,83 @@
   justify-content: flex-end;
 }
 
+.big_card_edit_content_area {
+  height: 69%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.big_card_edit_title {
+  display: flex;
+  flex-direction: column;
+}
+
+.big_card_edit_title_header {
+  color: rgba(42, 54, 71, 1);
+  margin-bottom: 8px;
+}
+
+.big_card_edit_title_header_priority {
+  color: rgba(66, 82, 110, 1);
+  font-weight: 700;
+  font-size: 19px;
+  margin-bottom: 8px;
+}
+
+.big_card_edit_title_input {
+  border-radius: 10px;
+  border: 1px solid rgba(209, 209, 209, 1);
+  padding: 12px 21px;
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 1);
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Inter-Regular";
+}
+
+.big_card_edit_title_input:focus {
+  outline: none;
+  border: 1px solid rgba(41, 171, 226, 1);
+}
+
+.big_card_edit_title_input:invalid {
+  border: 1px solid rgba(255, 129, 144, 1);
+}
+
+.big_card_edit_error {
+  color: rgba(255, 129, 144, 1);
+  font-size: 12px;
+  font-family: "Poppins";
+  margin-top: 4px;
+}
+
+.big_card_edit_input_area {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.big_card_edit_description_textarea {
+  border-radius: 10px;
+  border: 1px solid rgba(209, 209, 209, 1);
+  padding: 18px 16px;
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 1);
+  width: 100%;
+  height: 120px;
+  resize: vertical;
+  box-sizing: border-box;
+  font-family: "Inter-Regular";
+}
+
+.big_card_edit_priority_buttons {
+  gap: 16px;
+  display: flex;
+  padding: 0 2px;
+}
+
 .pr_10 {
   padding-right: 10px;
 }
@@ -216,4 +297,12 @@
 .df_ac {
   display: flex;
   align-items: center;
+}
+
+.jc {
+  justify-content: center;
+}
+
+.flex_1_1_0px {
+  flex: 1 1 0px;
 }

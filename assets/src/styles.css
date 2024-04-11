@@ -82,6 +82,52 @@ button:disabled {
   cursor: auto;
 }
 
+.button_priority {
+  border-radius: 10px;
+  padding: 16px 10px;
+  background-color: white;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: black;
+  font-family: "Inter-Regular";
+  font-size: 20px;
+}
+
+.button_priority:hover {
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  background-color: white;
+}
+
+.clicked {
+  color: white;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.clicked img {
+  filter: brightness(0) invert(1);
+}
+
+.urgent,
+.urgent:hover {
+  background-color: rgba(255, 61, 0, 1);
+  box-shadow: none;
+}
+
+.medium,
+.medium:hover {
+  background-color: rgba(255, 168, 0, 1);
+  box-shadow: none;
+}
+
+.low,
+.low:hover {
+  background-color: rgba(122, 226, 41, 1);
+  box-shadow: none;
+}
+
 h1 {
   font-size: 61px;
   font-weight: 700;

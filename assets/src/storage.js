@@ -71,14 +71,14 @@ async function updateTasksFromUser(userEmail, tasks) {
     setUsersOnRemoteServer(users);
 }
 
-async function updateContactsAboutTask(contacts, taskId, newTask) {
+async function updateContactsAboutTask(contacts, newTask) {
     let users = await loadUsersFromServer();
     for (let indexContact = 0; indexContact < contacts.length; indexContact++) {
         const contact = contacts[indexContact];
         const userIndex = users.findIndex( u => u.email == contact.email);
         if (userIndex >= 0){
             let user = users[userIndex];
-            const taskIndex = user.tasks.findIndex( t => t.id == taskId);
+            const taskIndex = user.tasks.findIndex( t => t.id == newTask.id);
             if (taskIndex >= 0) {
                 console.log('contact: ', user.name);
                 console.log('alte aufgabe ', user.tasks[taskIndex]);
@@ -88,22 +88,7 @@ async function updateContactsAboutTask(contacts, taskId, newTask) {
                 console.log('user index task neu', newTaskUserIndex);
             }
         }
-    }
-    // contacts.forEach(contact => {
-    //     const userIndex = users.findIndex( u => u.email == contact.email);
-    //     if (userIndex >= 0){
-    //         let user = users[userIndex];
-    //         console.log('contact: ', user.name);
-    //         const taskIndex = user.tasks.findIndex( t => t.id == taskId);
-    //         if (taskIndex >= 0) {
-    //             console.log('alte aufgabe ', user.tasks[taskIndex]);
-    //             user.tasks[taskIndex] = newTask;
-    //             console.log('neue aufgabe ', user.tasks[taskIndex]);
-    //             const newTaskUserIndex =  updateUserToRemoteServer(user).then(console.log('user index task neu', newTaskUserIndex));
-    //         }
-    //     }
-    // });
-    
+    }    
 }
 
 async function updateUserToRemoteServer(user) {
