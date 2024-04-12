@@ -14,6 +14,8 @@
     <script src="../templates/templates.js"></script>
     <script src="../script.js"></script>
     <script src="../board/board.js"></script>
+    <script src="./big_card.js"></script>
+    <script src="./edit_task.js"></script>
   </head>
   <body onload="init(); initBoard();">
     <div w3-include-html="../templates/nav_bar_left.html"></div>
@@ -38,24 +40,41 @@
               </div>
             </div>
             <div class="column_title_area">
-              <div class="column_title">
-                <h2 class="h2_board"><span>To do</span><img class="bold_21 board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
-                <h2 class="h2_board"><span>In progress</span> <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
-                <h2 class="h2_board"><span>Await feedback</span> <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
-                <h2 class="h2_board"><span>Done</span></h2>
-              </div>
+              <div class="column_title"></div>
             </div>
           </div>
           <div class="board_distribution">
-            <div class="drag-area" id="toDo" ondrop="moveTo('toDo')" ondragleave="removeHighlight('toDo')" ondragover="allowDrop(event); highlight('toDo')"></div>
-            <div class="drag-area" id="inProgress" ondrop="moveTo('inProgress')" ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')"></div>
-            <div class="drag-area" id="awaitFeedback" ondrop="moveTo('awaitFeedback')" ondragleave="removeHighlight('awaitFeedback')" ondragover="allowDrop(event); highlight('awaitFeedback')"></div>
-            <div class="drag-area" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')"></div>
+            <div class="board_column">
+              <div class="column_title">
+                <h2 class="h2_board"><span>To do</span><img class="bold_21 board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
+              </div>
+              <div class="drag-area" id="toDo" ondrop="moveTo('toDo')" ondragleave="removeHighlight('toDo')" ondragover="allowDrop(event); highlight('toDo')"></div>
+            </div>
+            <div class="board_column">
+              <div class="column_title">
+                <h2 class="h2_board"><span>In progress</span> <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
+              </div>
+              <div class="drag-area" id="inProgress" ondrop="moveTo('inProgress')" ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')"></div>
+            </div>
+            <div class="board_column">
+              <div class="column_title">
+                <h2 class="h2_board"><span>Await feedback</span> <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" /></h2>
+              </div>
+              <div class="drag-area" id="awaitFeedback" ondrop="moveTo('awaitFeedback')" ondragleave="removeHighlight('awaitFeedback')" ondragover="allowDrop(event); highlight('awaitFeedback')"></div>
+            </div>
+            <div class="board_column">
+              <div class="column_title">
+                <h2 class="h2_board"><span>Done</span></h2>
+              </div>
+              <div class="drag-area" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')"></div>
+            </div>
           </div>
         </div>
         <div id="bigCardView" class="big_card_area d_none" onclick="closeBigCardView()">
           <div class="big_card" onclick="event.stopPropagation();">
-            <div class="big_card_content" id="bigCardContent"></div>
+            <div class="big_card_scrollable_wrapper">
+              <div class="big_card_content" id="bigCardContent"></div>
+            </div>
           </div>
         </div>
       </div>

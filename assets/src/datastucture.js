@@ -2,6 +2,7 @@ let userMaria = {
     email: 'mail@bla.com',
     name: 'Maria',
     password: '123',
+    color: '#0038ff',
     contacts: [],
     tasks: []
 }
@@ -17,6 +18,7 @@ let userAndrei = {
     email: 'Andrei@bla.com',
     name: 'Andrei Müller',
     password: '123',
+    color: '#0038ff',
     contacts: [],
     tasks: []
 }
@@ -32,6 +34,7 @@ let userMarian = {
     email: 'Marian@bla.com',
     name: 'Marian Koch',
     password: '123',
+    color: '#0038ff',
     contacts: [],
     tasks: []
 }
@@ -47,6 +50,7 @@ let userBert = {
     email: 'Bertn@bla.com',
     name: 'Bert Loriot',
     password: '123',
+    color: '#0038ff',
     contacts: [],
     tasks: []
 }
@@ -89,6 +93,7 @@ let userAndu = {
     email: 'andu@mail.com',
     name: 'Andu',
     password: '123',
+    color: '#0038ff',
     contacts: [contactBert, contactMaria, contactAndrei],
     tasks: [task, task2]
 }
@@ -121,6 +126,7 @@ let contactEmmanuelMauer = {
     phone: '0123456789',
     color: '#6e52ff'
 }
+
 let contactBenediktZiegler = {
     name: 'Benedikt Ziegler',
     email: 'bezi@mail.er',
@@ -162,8 +168,6 @@ let contactGuest = {
     phone: '',
     color: '#ff4646'
 }
-
-
 
 let taskGuest1 = {
     title: 'Mama anrufen',
@@ -221,6 +225,7 @@ let userGuest = {
     email: 'guest@guest.mail',
     name: 'Guest',
     password: '',
+    color: '#0038ff',
     contacts: [contactAntonMayer, contactBenediktZiegler, contactDarkwingDuck, contactDavidEisenberg, contactEmmanuelMauer, contactEvaFischer, contactKlarkKent, contactMarcelBauer],
     tasks: [taskGuest1, taskGuest2, taskGuest3, taskGuest4], // Tasksnamen ändern?!?
 }
@@ -229,14 +234,16 @@ let userEmmanuelMauer = {
     email: 'emma@mail.er',
     name: 'Emmanuel Mauer',
     password: '123',
+    color: '#0038ff',
     contacts: [contactAntonMayer, contactBenediktZiegler, contactDarkwingDuck, contactDavidEisenberg, contactEvaFischer, contactKlarkKent, contactMarcelBauer, contactGuest],
     tasks: [taskGuest4],
 }
 
 let userBenediktZiegler = {
-    email: 'bezi@mail.e',
+    email: 'bezi@mail.er',
     name: 'Benedikt Ziegler',
     password: '123',
+    color: '#0038ff',
     contacts: [contactAntonMayer, contactDarkwingDuck, contactDavidEisenberg, contactEmmanuelMauer, contactEvaFischer, contactKlarkKent, contactMarcelBauer, contactGuest],
     tasks: [taskGuest4],
 }
@@ -244,6 +251,7 @@ let userKlarkKent = {
     email: 'klke@mail.er',
     name: 'Klark Kent',
     password: '123',
+    color: '#0038ff',
     contacts: [contactAntonMayer, contactBenediktZiegler, contactDarkwingDuck, contactDavidEisenberg, contactEmmanuelMauer, contactEvaFischer, contactMarcelBauer, contactGuest],
     tasks: [taskGuest4],
 }

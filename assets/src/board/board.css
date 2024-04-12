@@ -100,6 +100,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  flex: 1;
 }
 
 .board_plus_button {
@@ -124,4 +125,35 @@
 }
 
 .drag-area-highlight {
+  /* to do */
+}
+
+.board_column {
+  flex: 1 1 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1155px) {
+  .input_board_find_task {
+    width: 212px;
+  }
+}
+
+@media (max-width: 1188px) {
+  .board_distribution {
+    flex-direction: column;
+  }
+  .drag-area {
+    flex-direction: row;
+  }
+  .card_small {
+    width: 252px;
+  }
+}
+
+@media (max-width: 1188px) {
+  .header_board {
+    display: none;
+  }
 }

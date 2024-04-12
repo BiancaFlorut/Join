@@ -8,49 +8,14 @@ let userName = user.name;
 let tasks = [];
 
 async function summaryInit() {
-    // await getUserFromServer(urlEmail);
     await findUser();
     await findTasks();
     welcomeUser();
+    greetUser();
     tasksInBoard();
-    numberOfTodo();
-    numberOfDone();
-    tasksProgress();
-    awaitingFeedback();
-    // updateTaskStatusCount("awaitFeedback");
-    // updateTaskStatusCount("inProgress");
-    // updateTaskStatusCount("done");
-    // updateTaskStatusCount("toDo");
+    awaitingUrgent();
+    searchTasksInit();
 }
-function searchTaskStatus(tasks, status) {
-    return tasks.filter(task => task.status === status);
-   }
-
-function awaitingFeedback() {
-    let blubber = searchTaskStatus(tasks, "awaitFeedback");
-    document.getElementById('awaitingFeedback').innerHTML = blubber.length;
-}
-
-function tasksProgress() {
-    let blubber = searchTaskStatus(tasks, "inProgress");
-    document.getElementById('tasksProgress').innerHTML = blubber.length;
-}
-
-function numberOfDone() {
-    let blubber = searchTaskStatus(tasks, "done");
-    document.getElementById('numberOfDone').innerHTML = blubber.length;
-}
-
-function numberOfTodo() {
-    let blubber = searchTaskStatus(tasks, "toDo");
-    document.getElementById('numberOfTodo').innerHTML = blubber.length;
-}
-
-// function updateTaskStatusCount(status) {
-//     let elementStatus = searchStatus(tasks, status);
-//     document.getElementById(`${status}Count`).innerHTML = elementStatus.length;
-// }
-
 
 async function findUser() {
     let userServer = await getUserFromServer(urlEmail);
@@ -65,11 +30,44 @@ async function findTasks() {
     console.log(tasks);
 }
 
+function searchTasksInit() {
+    updateTaskCount("awaitFeedback", 'awaitingFeedback');
+    updateTaskCount("inProgress", 'tasksProgress');
+    updateTaskCount("done", 'numberOfDone');
+    updateTaskCount("toDo", 'numberOfTodo');
+}
+
+function searchTaskStatus(tasks, status) {
+    return tasks.filter(task => task.status === status);
+}
+
+function updateTaskCount(status, elementId) {
+    let elementStatus = searchTaskStatus(tasks, status);
+    document.getElementById(elementId).innerHTML = elementStatus.length;
+}
+
+/**
+ * function shows how many tasks have the priority Urgent and shows the next due date
+ */
+function awaitingUrgent() {
+    let urgentElement = searchUrgentStatus(tasks, 2);
+    document.getElementById('numberOfUrgent').innerHTML = urgentElement.length;
+    let smallestDueDate = Math.min(...urgentElement.map(task => task.due_date));
+    let formattedDueDate = new Date(smallestDueDate).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    });
+    document.getElementById('deadline').innerHTML = formattedDueDate;
+}
+
+
+function searchUrgentStatus(tasks, priority) {
+    return tasks.filter(task => task.priority === priority);
+}
 
 /**
  * function change die <img> src path, whenn we hover the mouse ofer the <a>
- * 
- * 
  */
 document.addEventListener('DOMContentLoaded', function() {
     function toggleImage(elementId, hoverSrc, originalSrc) {
@@ -95,13 +93,29 @@ function tasksInBoard() {
 }
 
 /**
- * function to welcome the user
+ * function shows user name
  * 
  * @param {string}
  */
 function welcomeUser() {
     let welcome = document.getElementById('welcomeName');
     welcome.innerHTML = `${user.name}`;
+}
+
+/**
+ * this function welcomes the user depending on the time of day
+ */
+function greetUser() {
+    const currentHour = new Date().getHours();
+    let greeting;
+    if (currentHour < 12) {
+        greeting = "Good morning,";
+    } else if (currentHour < 18) {
+        greeting = "Welcome,";
+    } else {
+        greeting = "Good evening,";
+    }
+    document.getElementById('welcome').innerHTML = greeting;
 }
 /*
 |/////////////////////////////////////////////////////////////|
@@ -112,5 +126,3 @@ function welcomeUser() {
 |                                                             |
 |/////////////////////////////////////////////////////////////|
 */
-
-

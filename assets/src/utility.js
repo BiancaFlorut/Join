@@ -71,3 +71,15 @@ function mouseBeside(element, isToggled) {
   if (isToggled) element.src = CHECKBOX_PATH + "_checked.svg";
   else element.src = CHECKBOX_PATH + ".svg";
 }
+
+/**
+ * Function takes the name and returns the first two letters.
+ * @param {string} name 
+ * @returns string
+ */
+function getInitials(name) {
+  let initials = '';
+  const names = name.split(" ");
+    names.forEach((name) => (initials += name.charAt(0)));
+    return initials;
+}
