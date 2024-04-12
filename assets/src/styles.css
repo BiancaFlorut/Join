@@ -166,6 +166,10 @@ h1 {
   align-items: center;
 }
 
+.cursor_pointer {
+  cursor: pointer;
+}
+
 .d_none {
   display: none;
 }
