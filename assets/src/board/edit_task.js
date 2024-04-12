@@ -1,5 +1,6 @@
 let editedTask;
 let allContacts;
+let istContactListOpen = false;
 
 function editTask(taskId) {
     let container = getElementWithId('bigCardContent');
@@ -59,6 +60,11 @@ function editTask(taskId) {
             <div class='big_card_edit_assigned_to_custom_select'>
               <div class="big_card_edit_assigned_to_content">
                 <input id="bigCardEdiSearchContact" type="text" class='big_card_edit_title_input' value='Select contacts to assign' readonly="readonly" onkeyup="searchContact()"/>
+                <div class="visibility_area_container df_ac">
+                    <div class="visibility_icon_container">
+                      <img class="visibility_icon" src="../../img/arrow_drop_down_down.svg" onclick="toggleContactsList(this)" alt="" />
+                    </div>
+                  </div>
                 <div id="bigCardEditContacts" class='big_card_edit_contacts df_ac d_none'> `
                   + getOptionForAssignedTo(allContacts, editedTask) + /*html*/`
                 </div>
@@ -81,6 +87,19 @@ function editTask(taskId) {
         this.setAttribute('readonly', '');
         getElementWithId('bigCardEditContacts').innerHTML = getOptionForAssignedTo(allContacts, editedTask);
       };
+  }
+
+  function toggleContactsList(element){
+    if (istContactListOpen) {
+        changeSrc(element, "../../img/arrow_drop_down_down.svg");
+        getElementWithId('bigCardEditContacts').classList.add('d_none');
+        istContactListOpen = false;
+    } else {
+        changeSrc(element, "../../img/arrow_drop_down_up.svg");
+        getElementWithId('bigCardEditContacts').classList.remove('d_none');
+        istContactListOpen = true;
+    }
+    
   }
 
   function searchContact() {

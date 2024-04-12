@@ -341,13 +341,12 @@
   gap: 8px;
 }
 
+.visibility_icon:hover {
+  background-color: rgba(238, 238, 238, 1);
+  border-radius: 30px;
+}
 .pr_10 {
   padding-right: 10px;
-}
-
-.df_ac {
-  display: flex;
-  align-items: center;
 }
 
 .jc {
