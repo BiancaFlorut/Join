@@ -1,4 +1,5 @@
 let editedTask;
+let allContacts;
 
 function editTask(taskId) {
     let container = getElementWithId('bigCardContent');
@@ -9,7 +10,6 @@ function editTask(taskId) {
     const minDateValue = new Date().toISOString().split('T')[0];
     let priorityClasses = ['', '', ''];
     priorityClasses[editedTask.priority] = priorityClass;
-    const userContact = {name: (user.name + ' (You)'), email: user.email, color: user.color};
     container.innerHTML = /*html*/`
       <div class="big_card_header" style="justify-content: flex-end">
         <div class="close_icon" onclick="closeBigCardView()">
@@ -58,19 +58,40 @@ function editTask(taskId) {
             <span class="big_card_edit_title_header">Assigned to</span>
             <div class='big_card_edit_assigned_to_custom_select'>
               <div class="big_card_edit_assigned_to_content">
-                <div class='big_card_edit_title_input'>Select contacts to assign</div>
-                <div class='big_card_edit_contacts df_ac'> `
-                  + getOptionForAssignedTo([...user.contacts, userContact], editedTask) + /*html*/`
+                <input id="bigCardEdiSearchContact" type="text" class='big_card_edit_title_input' value='Select contacts to assign' readonly="readonly" onkeyup="searchContact()"/>
+                <div id="bigCardEditContacts" class='big_card_edit_contacts df_ac d_none'> `
+                  + getOptionForAssignedTo(allContacts, editedTask) + /*html*/`
                 </div>
               </div>
             </div>
-            <div id="editAssignToIconsList" class="df_ac">`
+            <div id="editAssignToIconsList" class="big_card_edit_assigned_to_logos df_ac">`
               + getContactsLogoHTML(editedTask.assign_to) + /*html*/`
             </div>
           </div>
         </div>
       </div>
     `;
+    let element = getElementWithId('bigCardEdiSearchContact');
+    element.ondblclick = function(){
+        this.removeAttribute('readonly');
+        this.value = '';
+      };
+      element.onblur = function(){
+        this.value = 'Select contacts to assign';
+        this.setAttribute('readonly', '');
+        getElementWithId('bigCardEditContacts').innerHTML = getOptionForAssignedTo(allContacts, editedTask);
+      };
+  }
+
+  function searchContact() {
+    const searchToken = getElementWithId('bigCardEdiSearchContact').value;
+    const foundContacts = allContacts.filter(contact => contact.name.toLowerCase().includes(searchToken.toLowerCase()));
+    let container = getElementWithId('bigCardEditContacts');
+    container.innerHTML = getOptionForAssignedTo(foundContacts, editedTask);
+  }
+
+  function toggleSearchInput(){
+
   }
 
   function getPriorityButtonsClasses(priority) {
@@ -132,7 +153,7 @@ function editTask(taskId) {
  * @param {string} checked 
  */
   function selectContact(element, email, checked) {
-    const contact = user.contacts.find(c => c.email == email);
+    const contact = allContacts.find(c => c.email == email);
     if (checked == '_checked') {
         toggleCheckbox(getElementWithId(`${email}Checkbox`), true, CHECKBOX_PATH);
         checked = '';

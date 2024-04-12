@@ -1,6 +1,5 @@
 let tasks = []; 
 let user;
-let userContact;
 const SUBTASK_CHECKBOX_PATH = '../../img/checkbox_board';
 const CHECKBOX_PATH = '../../img/checkbox';
 
@@ -34,6 +33,8 @@ async function initBoard() {
   console.log(tasks);
   updateHTML(tasks);
   user = await getUserFromServer(emailParameter);
+  const userContact = {name: (user.name + ' (You)'), email: user.email, color: user.color};
+  allContacts = [...user.contacts, userContact];
 }
 
 /**
@@ -94,13 +95,6 @@ function getAssignedToIconsHTML(contacts) {
   });
   html += /*html*/`</div>`;
   return html;
-}
-
-function getInitials(name) {
-  let initials = '';
-  const names = name.split(" ");
-    names.forEach((name) => (initials += name.charAt(0)));
-    return initials;
 }
 
 function getSubTaskHTML(card) {
