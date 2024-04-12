@@ -251,6 +251,7 @@
   width: 100%;
   box-sizing: border-box;
   font-family: "Inter-Regular";
+  cursor: pointer;
 }
 
 .big_card_edit_title_input:focus {
@@ -343,8 +344,27 @@
 
 .visibility_icon:hover {
   background-color: rgba(238, 238, 238, 1);
-  border-radius: 30px;
+  border-radius: 50px;
 }
+
+.big_card_edit_subtask_input_icons {
+  gap: 4px;
+  cursor: pointer;
+}
+
+.big_card_edit_subtask_input_icons img:hover {
+  background-color: rgba(238, 238, 238, 1);
+  border-radius: 50px;
+}
+
+.big_card_edit_subtask_list {
+  margin: 0;
+}
+
+#bigCardEditSubtasks li {
+  margin-top: 8px;
+}
+
 .pr_10 {
   padding-right: 10px;
 }

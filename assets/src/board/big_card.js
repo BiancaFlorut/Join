@@ -88,6 +88,7 @@ function openTask(id) {
   }
   
   function closeBigCardView(){
+    editedTask = [];
     hideElement('bigCardView');
   }
   
