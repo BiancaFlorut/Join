@@ -65,9 +65,28 @@
     flex-direction: column;
     justify-content: center;
     align-items: baseline;
-    padding: 66px 48px 66px 48px;
+    padding: 66px 0px 66px 48px;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
+}
+
+.left_container_edit_contacts {
+    background-color: #2a3647;
+    width: 460px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    padding: 66px 0px 66px 48px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    gap: 12px;
+}
+
+.contacts_join_logo {
+    margin-bottom: 12px;
+    width: 54px;
+    height: 67px;
 }
 
 .right_container_add_contacts {
@@ -77,8 +96,15 @@
     border-bottom-right-radius: 30px;
 }
 
+.person_position {
+    position: relative;
+    top: 220px;
+    left: 60px;
+}
+
 .border_radius {
     background-color: #d1d1d1;
+    border: 3px solid #ffffff;
     width: 120px;
     height: 120px;
     border-radius: 50%;
@@ -92,7 +118,6 @@
     width: 13px;
     position: relative;
     bottom: 80px;
-    left: 300px;
 }
 
 .add_contact_close:hover {
@@ -102,6 +127,54 @@
 .create_contact {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     flex-direction: column;
+    padding-right: 40px;
+    gap: 32px;
 }
+
+.input_area {
+    width: 422px;
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
+    padding: 12px 21px;
+    font-size: 20px;
+    background-origin: content-box;
+    background-position: center right;
+    background-repeat: no-repeat;
+}
+
+.mail {
+    background-image: url("../../img/mail.svg");
+  }
+
+.person {
+    background-image: url("../../img/person.svg");
+  }
+
+.phone {
+    background-image: url("../../img/call.svg");
+}
+
+.contacts_button_cancel {
+    border: 1px solid #2a3647;
+    background-color: #ffffff;
+    color: #2a3647;
+}
+
+.add_contact_button_center {
+    display: flex;
+    justify-content: flex-end;
+    gap: 24px;
+    padding-right: 185px;
+    margin-top: 40px;
+}
+
+.edit_contact_button {
+    display: flex;
+    justify-content: flex-end;
+    gap: 24px;
+    padding-right: 262px;
+    margin-top: 40px;
+}
+  

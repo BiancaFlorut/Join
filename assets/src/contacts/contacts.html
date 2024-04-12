@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="../contacts/contact.css" />
     <script src="../templates/templates.js"></script>
     <script src="../script.js"></script>
-    <script src="../summary/summary.js"></script>
+    <script src="../datastucture.js"></script>
+    <script src="../utility.js"></script>
   </head>
   <body onload="init(); initContacts()">
     <div w3-include-html="../templates/nav_bar_left.html"></div>
@@ -24,12 +25,7 @@
       <div class="content contacts_display_flex">
         <div class="contact_card">
           <div>
-            <button class="contact_button_add_new bold_21">
-              Add new contact<img
-                src="../../img/contacts_person_add.svg"
-                alt="person_add"
-              />
-            </button>
+            <button class="contact_button_add_new bold_21">Add new contact<img src="../../img/contacts_person_add.svg" alt="person_add" /></button>
           </div>
           <div id="content"></div>
         </div>
@@ -38,30 +34,55 @@
           <img class="contacts_vector" src="../../img/contact_vector.svg" />
           <h2 class="h2_contacts">Better with a team</h2>
         </div>
-        <div class="d_none" id="contactsViewContact"></div>
-        <div class="main_container_add_contact" id="overlayAddContact">
-              <div class="left_container_add_contacts">
-                <img style="margin-bottom: 12px;" src="../../img/contacts_join_logo.svg" alt="join_logo" />
-                <h1 class="h1_add_contacts">Add contact</h1>
-                <h2 class="h2_add_contacts">Tasks are better with a team!</h2>
-                <img src="../../img/contacts_add_contact_vector_5.svg" alt="vector" />
-              </div>
-              <div class="right_container_add_contacts">
+        <div class="d_none" id="contactsViewContact">
+          <div class="main_container_add_contact" id="overlayAddContact">
+            <div class="left_container_add_contacts">
+              <img class="contacts_join_logo" src="../../img/contacts_join_logo.svg" alt="join_logo"/>
+              <h1 class="h1_add_contacts">Add contact</h1>
+              <h2 class="h2_add_contacts">Tasks are better with a team!</h2>
+              <img src="../../img/contacts_add_contact_vector_5.svg" alt="vector" />
+            </div>
+            <div class="right_container_add_contacts">
+              <div class="person_position">
                 <div class="border_radius">
                   <img src="../../img/contacts_add_contact_person.svg" alt="icon_person" />
                 </div>
-                <div class="create_contact">
-                  <img class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close">
-                  <input type="text" placeholder="Name">
-                  <input type="email" placeholder="Email">
-                  <input type="number" placeholder="Phone">
-                  <div>
-                  <button>Cancel <img src="../../img/board_add_task_close.svg" alt="icon_close"></button>
-                  <button>Create contact <img src="../../img/contacts_add_contact_check.svg" alt="icon_check"></button>
-                  </div>
+              </div>
+              <form class="create_contact">
+                <img class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
+                <input id="name" class="input_area person" required placeholder="Name" type="text" />
+                <input id="email" class="input_area mail"  required placeholder="Email" type="email"/>
+                <input id="phone" class="input_area phone" required placeholder="Phone" type="tel" />
+              </form>
+              <div class="add_contact_button_center">
+                <button class="contacts_button_cancel button_line">Cancel<img style="padding-left: 4px" src="../../img/board_add_task_close.svg" alt="icon_close" /></button>
+                <button class="bold">Create contact<img style="padding-left: 4px" src="../../img/contacts_add_contact_check.svg" alt="icon_check"/></button>
+              </div>
+          </div>
+          <div class="main_container_add_contact" id="overlayAddContact">
+            <div class="left_container_edit_contacts">
+              <img class="contacts_join_logo" src="../../img/contacts_join_logo.svg" alt="join_logo"/>
+              <h1 class="h1_add_contacts">Edit contact</h1>
+              <img src="../../img/contacts_add_contact_vector_5.svg" alt="vector" />
+            </div>
+            <div class="right_container_add_contacts">
+              <div class="person_position">
+                <div class="border_radius">
+                  <img src="../../img/contacts_add_contact_person.svg" alt="icon_person" />
                 </div>
               </div>
+              <form class="create_contact">
+                <img class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
+                <input id="name" class="input_area person" required placeholder="Name" type="text" />
+                <input id="email" class="input_area mail"  required placeholder="Email" type="email"/>
+                <input id="phone" class="input_area phone" required placeholder="Phone" type="tel" />
+              </form>
+              <div class="edit_contact_button">
+                <button class="contacts_button_cancel button_line">Delete</button>
+                <button class="bold">Save<img style="padding-left: 4px" src="../../img/contacts_add_contact_check.svg" alt="icon_check"/></button>
+              </div>
         </div>
+      </div>
       </div>
     </section>
   </body>
