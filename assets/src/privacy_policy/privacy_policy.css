@@ -10,3 +10,6 @@
 .privacy_policy {
     padding: 5%;
 }
+.privacy_policy span {
+    color: #29abe2;
+}
