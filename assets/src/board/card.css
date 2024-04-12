@@ -300,6 +300,9 @@
   box-sizing: border-box;
 }
 
+.big_card_edit_assigned_to_content {
+}
+
 .big_card_edit_contact_icons {
   height: 42px;
   width: 42px;
@@ -310,6 +313,24 @@
   width: 100%;
   padding: 7px 16px;
   box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.big_card_edit_contacts_select:hover {
+  background-color: rgba(238, 238, 238, 1);
+}
+
+.big_card_edit_contact_clicked {
+  background-color: rgba(42, 54, 71, 1);
+}
+
+.big_card_edit_contact_clicked:hover {
+  background-color: rgba(9, 25, 49, 1);
+}
+
+.big_card_edit_contacts {
+  height: 278px;
+  overflow-y: auto;
 }
 
 .pr_10 {
