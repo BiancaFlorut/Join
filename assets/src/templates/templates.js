@@ -80,7 +80,7 @@ function setParameterQuery() {
     document.getElementById('Summary').href = '../summary/summary.html?email=' + emailParameter;
     document.getElementById('Privacy Policy').href = '../privacy_policy/privacy_policy.html?email=' + emailParameter;
     document.getElementById('Add Task').href = '../add_task/add_task.html?email=' + emailParameter;
-    document.getElementById('Help').href = '../help/help.html?email=' + emailParameter;
+    // document.getElementById('Help').href = '../help/help.html?email=' + emailParameter;
     document.getElementById('Legal Notice').href = '../legal_notice/legal_notice.html?email=' + emailParameter;
 }
 
