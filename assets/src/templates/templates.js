@@ -122,3 +122,7 @@ function hiddenQuestionMark() {
         button.classList.add("d-none");
     }
 }
+
+function lastPage() {
+    window.history.back();
+}
