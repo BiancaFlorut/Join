@@ -3,11 +3,11 @@ let firstLetter = [];
 
 async function initContacts() {
     contacts = await getContactList(emailParameter);
+    contactListHTML();
     firstLetter = getFirstLetterArray(contacts);
-    console.log(firstLetter);
 }
 
-function contactList(email) {
+function contactListHTML() {
     let content = document.getElementById('content');
     content.innerHTML = '';
 
@@ -15,6 +15,8 @@ function contactList(email) {
         const email = contacts[i];
         content.innerHTML += `
         <div>
+        <div class='deine classe' style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
+        <div>${email.name}</div>
         <img src="../../img/contacts_add-new-vector.svg" alt="partition_wall">
         <div></div>
         </div>
