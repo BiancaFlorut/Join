@@ -1,5 +1,6 @@
 let tasks = []; 
 let user;
+let userContact;
 const SUBTASK_CHECKBOX_PATH = '../../img/checkbox_board';
 const CHECKBOX_PATH = '../../img/checkbox';
 
