@@ -1,0 +1,25 @@
+/*
+|//////////////////////////////////////////////////////////////|
+|                                                              |
+|                                                              |
+|-------------------->legal notice content<--------------------|
+|                                                              |
+|                                                              |
+|//////////////////////////////////////////////////////////////|
+*/
+.legal-notice {
+    padding: 5%;
+}
+.legal-notice span {
+    color: #29abe2;
+}
+.legal-notice h3, p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+.legal-notice h3 {
+    padding: 2% 0 0;
+}
+.padding-top-one {
+    padding: 1% 0 0;
+}
