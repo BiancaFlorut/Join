@@ -125,12 +125,46 @@ function cancelSubtaskEditInput() {
 
 function generateSubTaskListItems(subtasks) {
   let html = "";
-  subtasks.forEach((subtask) => {
+  subtasks.forEach((subtask, i) => {
     html += /*html*/ `
-            <li ondblclick="this.contentEditable=true" onblur="this.contentEditable=false">${subtask.text}</li>
+        <li class="df_ac big_card_edit_subtask" >
+                <span id="bigCardEditCardSubtaskText_${i}" ondblclick="editTasksSubtask(this, ${i})" class="big_card_edit_subtask flex_1">${subtask.text}</span>
+                <div id="bigCardEditCardIcons_${i}" class="df_ac big_card_edit_subtask_icons">
+                    <img src="../../img/edit.svg" alt="">
+                    <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
+                    <img src="../../img/delete.svg" alt="">
+                </div>
+        </li>
         `;
   });
   return html;
+}
+
+/**
+ * 
+ * @param {HTMLElement} element 
+ */
+function editTasksSubtask(element, i) {
+    element.parentElement.focus = element.parentElement.classList.add('big_card_edit_subtask_on_edit');
+    element.contentEditable=true;
+    getElementWithId('bigCardEditCardIcons_' + i).innerHTML = /*html*/`
+        <img src="../../img/delete.svg" alt="">
+        <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
+        <img src="../../img/confirm.svg" alt="" onclick="saveEditedSubtask('${element.id}')">
+    `;
+} 
+
+function saveEditedSubtask(id) {
+    const subtaskIndex = id.split('_');
+    editedTask.subtasks[subtaskIndex[1]].text = getElementWithId(id).innerHTML;
+    getElementWithId(id).parentElement.classList.remove('big_card_edit_subtask_on_edit');
+    getElementWithId(id).blur();
+    getElementWithId(id).contentEditable=false;
+    getElementWithId('bigCardEditCardIcons_' + subtaskIndex[1]).innerHTML = /*html*/`
+        <img src="../../img/edit.svg" alt="">
+        <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
+        <img src="../../img/delete.svg" alt="">
+    `;
 }
 
 function toggleContactsList(element) {

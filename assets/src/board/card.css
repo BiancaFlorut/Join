@@ -365,6 +365,35 @@
   margin-top: 8px;
 }
 
+.big_card_edit_subtask {
+  justify-content: space-between;
+  padding: 4px 16px;
+  cursor: pointer;
+}
+
+.big_card_edit_subtask_on_edit {
+  cursor: text;
+  border-bottom: 1px solid rgba(0, 93, 255, 1);
+}
+
+.big_card_edit_subtask:hover {
+  border-radius: 10px;
+  background-color: rgba(238, 238, 238, 1);
+}
+
+.big_card_edit_subtask_on_edit:hover {
+  border-radius: 0;
+  background-color: white;
+}
+
+.big_card_edit_subtask_on_edit img:hover {
+  cursor: pointer;
+}
+
+.big_card_edit_subtask:focus {
+  outline: none;
+}
+
 .pr_10 {
   padding-right: 10px;
 }
