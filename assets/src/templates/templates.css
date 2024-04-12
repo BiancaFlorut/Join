@@ -55,8 +55,10 @@ nav span {
 .links-left {
   display: flex;
   flex-direction: column;
-  padding: 8px 25%;
   margin-bottom: 25%;
+}
+.link {
+  padding: 8px 25%;
 }
 .links-left a {
   text-decoration: none;
