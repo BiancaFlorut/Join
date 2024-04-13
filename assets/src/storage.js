@@ -74,7 +74,6 @@ async function updateTasksFromUser(userEmail, tasks) {
 async function updateContactsAboutTask(newTask) {
     let users = await loadUsersFromServer();
     let contacts = newTask.assign_to;
-    console.log('die contacte werden jetzt informiert: ',contacts);
     for (let indexContact = 0; indexContact < contacts.length; indexContact++) {
         const contact = contacts[indexContact];
         const userIndex = users.findIndex( u => u.email == contact.email);
@@ -82,12 +81,8 @@ async function updateContactsAboutTask(newTask) {
             let user = users[userIndex];
             const taskIndex = user.tasks.findIndex( t => t.id == newTask.id);
             if (taskIndex >= 0) {
-                console.log('contact: ', user.name);
-                console.log('alte aufgabe ', user.tasks[taskIndex]);
                 user.tasks[taskIndex] = newTask;
-                console.log('neue aufgabe ', user.tasks[taskIndex]);
-                const newTaskUserIndex =  await updateUserToRemoteServer(user);
-                console.log('user index task neu', newTaskUserIndex);
+                await updateUserToRemoteServer(user);
             }
         }
     }    

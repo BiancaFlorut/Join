@@ -116,7 +116,7 @@ async function saveEditedTask(){
     console.log(editedTask);
     await updateContactsAboutTask(editedTask);
     closeBigCardView();
-    updateHTML(tasks);
+    initBoard();
 }
 
 function isDueDateValid() {
