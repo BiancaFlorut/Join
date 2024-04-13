@@ -22,18 +22,18 @@ function editTask(taskId) {
         <div class='big_card_edit_input_area'>
           <div class="big_card_edit_title">
             <span class="big_card_edit_title_header">Title</span>
-            <input class='big_card_edit_title_input' type="text" value="${editedTask.title}">
-            <span class="big_card_edit_error d_none">This field is required</span>
+            <input id="editedTaskTitleInput" class='big_card_edit_title_input' type="text" value="${editedTask.title}" onchange="isTitelValid()">
+            <span id="editedTaskTitleInputError" class="big_card_edit_error d_none">This field is required</span>
           </div>
           <div class="big_card_edit_title">
             <span class="big_card_edit_title_header">Description</span>
-            <textarea class='big_card_edit_description_textarea'>${editedTask.description}</textarea>
-            <span class="big_card_edit_error d_none">This field is required</span>
+            <textarea id="editedTaskDescriptionInput" class='big_card_edit_description_textarea' onchange="isDescriptionValid()">${editedTask.description}</textarea>
+            <span id="editedTaskDescriptionInputError" class="big_card_edit_error d_none">This field is required</span>
           </div>
           <div class="big_card_edit_title">
             <span class="big_card_edit_title_header">Due Date</span>
-            <input type='date' value="${valueDate}" min="${minDateValue}" class='big_card_edit_title_input'>
-            <span class="big_card_edit_error d_none">This field is required</span>
+            <input id="editedTaskDueDateInput" type='date' value="${valueDate}" min="${minDateValue}" class='big_card_edit_title_input' onchange="isDueDateValid()">
+            <span id="editedTaskDueDateInputError" class="big_card_edit_error d_none">This field is required</span>
           </div>
         </div>
         <div class="big_card_edit_input_area">
@@ -93,7 +93,7 @@ function editTask(taskId) {
           </div>
         </div>
         <div class="big_card_edit_ok_button">
-            <button class="bold_21 df_ac"><span>Ok</span><img src="../../img/confirm_white.svg" alt="confirm"></button>
+            <button class="bold_21 df_ac" onclick="saveEditedTask()"><span>Ok</span><img src="../../img/confirm_white.svg" alt="confirm"></button>
         </div>
     `;
   // do to: move the followings in the init function after the edit view is generated!!!!
@@ -107,6 +107,57 @@ function editTask(taskId) {
     this.removeAttribute("readonly");
     this.value = "";
   };
+}
+
+async function saveEditedTask(){
+    console.log('is title filled ',isTitelValid());
+    console.log('is description filled? ', isDescriptionValid());
+    console.log('is a date filled?', isDueDateValid());
+    console.log(editedTask);
+    await updateContactsAboutTask(editedTask);
+    closeBigCardView();
+    updateHTML(tasks);
+}
+
+function isDueDateValid() {
+    let dueDate = getElementWithId('editedTaskDueDateInput').value;
+    if (!dueDate) {
+        showElement('editedTaskDueDateInputError');
+        return false;
+    }
+    else {
+        hideElement('editedTaskDueDateInputError');
+        const date = Date.parse(new Date(dueDate));
+        editedTask.due_date = date;
+        return true;
+    }
+    
+}
+
+function isDescriptionValid() {
+    let description = getElementWithId('editedTaskDescriptionInput').value;
+    if (!isWhiteSpaceOnly(description)) {
+        editedTask.description = description;
+        hideElement('editedTaskDescriptionInputError');
+        return true;
+    } 
+    else {
+        showElement('editedTaskDescriptionInputError');
+        return false;
+    }
+}
+
+function isTitelValid(){
+    let title = getElementWithId('editedTaskTitleInput').value;
+    if (!isWhiteSpaceOnly(title)) {
+        editedTask.title = title;
+        hideElement('editedTaskTitleInputError');
+        return true;
+    } 
+    else {
+        showElement('editedTaskTitleInputError');
+        return false;
+    }
 }
 
 function toggleEditTasksSubtasks() {

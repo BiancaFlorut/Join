@@ -85,3 +85,12 @@ function getInitials(name) {
   });
   return initials;
 }
+
+/**
+ * This function check if the string parameter is only whitespace.
+ * @param {string} string 
+ * @returns boolean
+ */
+function isWhiteSpaceOnly(string) {
+  return string.replace(/\s/g, '').length == 0 ? true : false;
+}

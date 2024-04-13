@@ -103,6 +103,6 @@ function openTask(id) {
     tasks[taskIndex].subtasks[i].checked = toggleCheckbox(element, isChecked, SUBTASK_CHECKBOX_PATH);
     //change the task for the assigned to contacts.
     updateTasksFromUser(emailParameter, tasks);
-    updateContactsAboutTask(task.assign_to, tasks[taskIndex]);
+    updateContactsAboutTask(tasks[taskIndex]);
     updateHTML(tasks);
   }
