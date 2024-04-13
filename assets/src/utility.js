@@ -73,13 +73,15 @@ function mouseBeside(element, isToggled) {
 }
 
 /**
- * Function takes the name and returns the first two letters.
+ * Function takes the name and returns the first two letters. For the user, the name is with (You), and the function skips the '(' character.
  * @param {string} name 
  * @returns string
  */
 function getInitials(name) {
   let initials = '';
   const names = name.split(" ");
-    names.forEach((name) => (initials += name.charAt(0)));
-    return initials;
+  names.forEach((name) => {
+    initials += !(name.charAt(0) == '(') ? name.charAt(0) : '';
+  });
+  return initials;
 }
