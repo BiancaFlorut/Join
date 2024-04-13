@@ -289,6 +289,11 @@
   font-family: "Inter-Regular";
 }
 
+.big_card_edit_description_textarea:focus {
+  outline: none;
+  border: 1px solid rgba(41, 171, 226, 1);
+}
+
 .big_card_edit_priority_buttons {
   gap: 16px;
   display: flex;
@@ -359,6 +364,7 @@
 
 .big_card_edit_subtask_list {
   margin: 0;
+  padding-inline-start: 0;
 }
 
 #bigCardEditSubtasks li {
@@ -390,7 +396,7 @@
   cursor: pointer;
 }
 
-.big_card_edit_subtask:focus {
+.big_card_edit_subtask span:focus {
   outline: none;
 }
 
