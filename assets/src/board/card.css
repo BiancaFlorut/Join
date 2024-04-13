@@ -371,6 +371,10 @@
   margin-top: 8px;
 }
 
+#bigCardEditSubtasks li::marker {
+  margin: 0;
+}
+
 .big_card_edit_subtask {
   justify-content: space-between;
   padding: 4px 16px;
@@ -398,6 +402,16 @@
 
 .big_card_edit_subtask span:focus {
   outline: none;
+}
+
+.big_card_edit_ok_button {
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px;
+}
+
+.list_bullet {
+  padding-right: 8px;
 }
 
 .pr_10 {

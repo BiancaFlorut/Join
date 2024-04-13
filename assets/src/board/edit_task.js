@@ -79,7 +79,7 @@ function editTask(taskId) {
             </div>
         </div>
         <div class="big_card_edit_title">
-            <span class="big_card_edit_title_header">Subtask</span>
+            <span class="big_card_edit_title_header">Subtasks</span>
             <input id="bigCardEditSubtaskInput" class='big_card_edit_title_input cursor_pointer' onfocus="toggleEditTasksSubtasks()" placeholder='Add new subtask' type="text">
             <div class="visibility_area_container df_ac">
                 <div id="bigCardEditSubtaskInputIcons" class="visibility_icon_container df_ac big_card_edit_subtask_input_icons">
@@ -91,7 +91,10 @@ function editTask(taskId) {
     /*html*/ `
             </ul>
           </div>
-    </div>
+        </div>
+        <div class="big_card_edit_ok_button">
+            <button class="bold_21 df_ac"><span>Ok</span><img src="../../img/confirm_white.svg" alt="confirm"></button>
+        </div>
     `;
   // do to: move the followings in the init function after the edit view is generated!!!!
   editedTask.subtasks.forEach((subtask, i) => {
@@ -142,7 +145,8 @@ function generateSubTaskListItems(subtasks) {
     html += /*html*/ `
         <li>
             <div class="df_ac big_card_edit_subtask">
-                <span id="bigCardEditCardSubtaskText_${i}" ondblclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}', ${i})" class="flex_1">${subtask.text}</span>
+            <span class="list_bullet">&bull;</span>    
+            <span id="bigCardEditCardSubtaskText_${i}" ondblclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}', ${i})" class="flex_1">${subtask.text}</span>
                 <div id="bigCardEditCardIcons_${i}" class="df_ac big_card_edit_subtask_icons">
                     <img src="../../img/edit.svg" alt="" onclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}', ${i})">
                     <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
