@@ -113,13 +113,17 @@
   border-radius: 30px;
   width: 525px;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.16);
-  height: 84%;
+  max-height: 84%;
+  height: auto;
+  overflow: hidden;
+  display: flex;
 }
 
 .big_card_scrollable_wrapper {
   padding: 48px 40px;
-  height: 89%;
+  max-height: inherit;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .big_card_content {
@@ -129,7 +133,7 @@
   font-size: 20px;
   scrollbar-width: none;
   overflow-y: auto;
-  height: 100%;
+  max-height: 100%;
 }
 
 .big_card_header {
