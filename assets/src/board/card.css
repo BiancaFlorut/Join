@@ -124,6 +124,7 @@
   max-height: inherit;
   overflow: hidden;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .big_card_content {

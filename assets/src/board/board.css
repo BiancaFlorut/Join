@@ -263,4 +263,29 @@
     font-size: 16px;
     gap: 16px;
   }
+  .big_card_edit_content_area,
+  .big_card_edit_title_header_priority {
+    font-size: 16px;
+  }
+
+  .big_card_edit_content_area input {
+    font-size: 16px;
+    padding: 8px 21px;
+  }
+  .big_card_edit_description_textarea {
+    font-size: 16px;
+  }
+  .button_priority {
+    padding: 11px 7.5px;
+    font-size: 16px;
+  }
+  .button {
+    padding: 18px 10px;
+  }
+}
+
+@media (max-width: 380px) {
+  .big_card_edit_priority_buttons {
+    flex-direction: column;
+  }
 }
