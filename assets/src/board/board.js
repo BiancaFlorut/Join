@@ -139,7 +139,7 @@ function moveTo(status) {
   let task = tasks.find((t) => t.id == currentDraggedElement);
   task.status = status;
   // save on server
-  updateContactsAboutTask(task.assign_to, task)
+  updateContactsAboutTask(task);
   updateHTML(tasks);
 }
 
@@ -154,14 +154,12 @@ function removeHighlight(id) {
 function searchTask() {
   const search = getElementWithId("searchInput");
   if (search.value) {
-    getElementWithId("magnifyingGlassIcon").src = "../../img/magnifying_glass_blue.svg";
     let results = [];
     tasks.forEach(task => {
       if (task.title.toLowerCase().includes(search.value.toLowerCase()) || task.description.toLowerCase().includes(search.value.toLowerCase())){
         results.push(task);
       }
     });
-    updateHTML(results)
-    getElementWithId("magnifyingGlassIcon").src = "../../img/board_input_find_task_search.svg";
+    updateHTML(results);
   } else updateHTML(tasks);
 }
