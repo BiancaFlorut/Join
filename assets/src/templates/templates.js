@@ -21,6 +21,7 @@ let initialLetters = [];
 
 function templatesInit() {
     extractFirstLetters();
+    hiddenQuestionMark();
 }
 
 /**
@@ -77,7 +78,11 @@ function selectedPage() {
 function setParameterQuery() {
     document.getElementById('Board').href = '../board/board.html?email=' + emailParameter;
     document.getElementById('Contacts').href = '../contacts/contacts.html?email=' + emailParameter;
-    document.getElementById('Summary').href = '../summary/summary.html?email=' + emailParameter
+    document.getElementById('Summary').href = '../summary/summary.html?email=' + emailParameter;
+    document.getElementById('Privacy Policy').href = '../privacy_policy/privacy_policy.html?email=' + emailParameter;
+    document.getElementById('Legal Notice').href = '../legal_notice/legal_notice.html?email=' + emailParameter;
+    document.getElementById('Help').href = '../help/help.html?email=' + emailParameter;
+    // document.getElementById('Add Task').href = '../add_task/add_task.html?email=' + emailParameter;
 }
 
 /**
@@ -88,12 +93,12 @@ function setParameterQuery() {
  */
 async function extractFirstLetters() {
     let user = await getUserFromServer(emailParameter);
-    let words = (user.name).split(' '); // zerlegt den Namen in "Wörter"
-    for (let i = 0; i < words.length; i++) { // Gehe durch jedes Wort im Namen
-        initialLetters.push(words[i].charAt(0)); // Füge den ersten Buchstaben des Wortes zum Array der Anfangsbuchstaben hinzu
+    let words = (user.name).split(' '); 
+    for (let i = 0; i < words.length; i++) { 
+        initialLetters.push(words[i].charAt(0));
         showInitials();
     }
-    return initialLetters.join(''); // Gib die Anfangsbuchstaben als String zurück
+    return initialLetters.join(''); 
 }
 
 /**
@@ -108,4 +113,16 @@ function showInitials() {
         let element = initialLetters[i];
         welcome.innerHTML += `${element}`;
     }
+}
+
+function hiddenQuestionMark() {
+    let title = document.title;
+    if (title == "Help") {
+        let button = document.getElementById("Help");
+        button.classList.add("d-none");
+    }
+}
+
+function lastPage() {
+    window.history.back();
 }

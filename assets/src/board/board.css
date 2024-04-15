@@ -130,30 +130,168 @@
 
 .board_column {
   flex: 1 1 0px;
+  width: 0;
   display: flex;
   flex-direction: column;
 }
 
-@media (max-width: 1155px) {
+.input_board_find_task_button svg:hover {
+  background-color: rgba(238, 238, 238, 1);
+  border-radius: 45px;
+}
+
+.input_board_find_task_button svg:active #searchIcon {
+  fill: #29abe2;
+  transition: fill 200ms;
+}
+
+@media (max-width: 1170px) {
   .input_board_find_task {
     width: 212px;
   }
 }
 
-@media (max-width: 1188px) {
-  .board_distribution {
-    flex-direction: column;
+@media (min-width: 1060px) {
+  .mobile {
+    display: none;
   }
-  .drag-area {
-    flex-direction: row;
-  }
-  .card_small {
-    width: 252px;
+  .desktop {
+    display: flex;
   }
 }
 
-@media (max-width: 1188px) {
-  .header_board {
+@media (max-width: 1060px) {
+  .board_distribution {
+    flex-direction: column;
+    gap: 14px;
+  }
+  .drag-area {
+    flex-direction: row;
+    max-width: 100vh;
+    overflow-x: auto;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  .card_small {
+    min-width: 252px;
+    width: min-content;
+  }
+  .board_column {
+    width: 100%;
+  }
+  .header_title_input {
+    flex-direction: column;
+    padding-bottom: 24px;
+  }
+  .button_board_add_task span {
     display: none;
+  }
+  .mobile {
+    display: flex;
+  }
+  .desktop {
+    display: none;
+  }
+  .board_header_mobile {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .board_search_input_desktop {
+    width: 100%;
+  }
+
+  .input_board_find_task {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .content-section {
+    width: 100%;
+  }
+  .content {
+    padding: 0 16px;
+  }
+  .input_board_find_task {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  .input_board_find_task_button {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  .header_board {
+    padding-top: 48px;
+  }
+  .board_header_mobile {
+    padding-bottom: 40px;
+  }
+  h1 {
+    font-size: 47px;
+  }
+  .button_board_add_task {
+    padding: 3px;
+  }
+  .h2_board {
+    font-size: 27px;
+    color: rgba(42, 54, 71, 1);
+    font-family: "Inter-Bold";
+  }
+  .column_title {
+    padding-bottom: 6px;
+  }
+}
+
+@media (max-width: 555px) {
+  .big_card {
+    width: 100%;
+    max-height: fit-content;
+    display: flex;
+    justify-content: center;
+  }
+  h1 {
+    font-size: 36px;
+  }
+  .big_card_scrollable_wrapper {
+    padding: 32px 24px;
+  }
+  .big_card_category {
+    padding: 4px 16px;
+    font-size: 16px;
+  }
+  .big_card_content {
+    font-size: 16px;
+    gap: 16px;
+  }
+  .big_card_edit_content_area,
+  .big_card_edit_title_header_priority {
+    font-size: 16px;
+  }
+
+  .big_card_edit_content_area input {
+    font-size: 16px;
+    padding: 8px 21px;
+  }
+  .big_card_edit_description_textarea {
+    font-size: 16px;
+  }
+  .button_priority {
+    padding: 11px 7.5px;
+    font-size: 16px;
+  }
+  .button {
+    padding: 18px 10px;
+  }
+  .big_card_edit_input_area {
+    gap: 8px;
+  }
+  .big_card_edit_content_area {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .big_card_edit_priority_buttons {
+    flex-direction: column;
   }
 }

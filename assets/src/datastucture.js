@@ -1,12 +1,3 @@
-let userMaria = {
-    email: 'mail@bla.com',
-    name: 'Maria',
-    password: '123',
-    color: '#0038ff',
-    contacts: [],
-    tasks: []
-}
-
 let contactMaria = {
     email: 'mail@bla.com',
     name: 'Maria',
@@ -44,15 +35,6 @@ let contactMarian = {
     name: 'Marian Koch',
     phone: 1234674564,
     color: '#0038ff'
-}
-
-let userBert = {
-    email: 'Bertn@bla.com',
-    name: 'Bert Loriot',
-    password: '123',
-    color: '#0038ff',
-    contacts: [],
-    tasks: []
 }
 
 let contactBert = {
@@ -172,7 +154,7 @@ let contactGuest = {
 let taskGuest1 = {
     title: 'Mama anrufen',
     description: 'Sinn des Lebens besprechen',
-    assign_to: [contactBert, contactMaria],
+    assign_to: [contactBert, contactMaria, contactGuest],
     due_date: 1713909600000, // Wed Apr 24 2024 
     creation_date: 1712656863726, 
     priority: 2, // 0 low, 1 medium, 2 urgent
@@ -185,7 +167,7 @@ let taskGuest1 = {
 let taskGuest2 = {
     title: 'Kochwelt Page & Recipe Recommender',
     description: 'Build start page with recipe recommendation',
-    assign_to: [contactBert, contactMaria, contactDarkwingDuck],
+    assign_to: [contactBert, contactMaria, contactDarkwingDuck, contactGuest],
     due_date: 1713564000000, // April 20, 2024
     creation_date: 1712662899038, 
     priority: 1, // 0 low, 1 medium, 2 urgent
@@ -198,7 +180,7 @@ let taskGuest2 = {
 let taskGuest3 = {
     title: 'CSS Architecture Planning',
     description: 'Define CSS naming conventions and structure.',
-    assign_to: [contactBert, contactDarkwingDuck, contactKlarkKent, contactEmmanuelMauer],
+    assign_to: [contactBert, contactDarkwingDuck, contactKlarkKent, contactEmmanuelMauer, contactGuest],
     due_date: 1714600800000, // May 2, 2024
     creation_date: 1712664403850, 
     priority: 0, // 0 low, 1 medium, 2 urgent
@@ -219,6 +201,24 @@ let taskGuest4 = {
     category: 'Technical Task',
     subtasks: [{text: 'Establish CSS Methodology', checked: true}, {text: 'Setup Base Styles', checked: true}],
     id: '1712663942047guest@guest.mail1715292000000',// erstellungszeitraum hinzufügen?!? wie am anfang??
+}
+
+let userBert = {
+    email: 'Bertn@bla.com',
+    name: 'Bert Loriot',
+    password: '123',
+    color: '#0038ff',
+    contacts: [],
+    tasks: [taskGuest1]
+}
+
+let userMaria = {
+    email: 'mail@bla.com',
+    name: 'Maria',
+    password: '123',
+    color: '#0038ff',
+    contacts: [],
+    tasks: [taskGuest1]
 }
 
 let userGuest = {

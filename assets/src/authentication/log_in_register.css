@@ -103,33 +103,6 @@ a:hover {
   position: relative;
 }
 
-.visibility_area_container {
-  width: 100%;
-  display: none;
-  justify-content: flex-end;
-  padding: 0 21px;
-  position: relative;
-  box-sizing: border-box;
-  height: 100%;
-  align-items: center;
-  transform: translate(0, -100%);
-}
-
-.visibility_icon {
-  cursor: pointer;
-}
-
-.visibility_icon_container {
-  position: absolute;
-  transform: translate(0, -50%);
-  /* padding-bottom: 4px; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 24px;
-  padding: 13px 0;
-}
-
 #password:not(:placeholder-shown) {
   background-image: none;
 }
