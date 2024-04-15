@@ -243,4 +243,12 @@
         height: 40px;
         width: 40px;
     }
+    .summary-content-left-mid-div {
+        gap: 10px;
+        display: flex;
+        align-items: center;
+    }
+    .summary-content-left-mid {
+        gap: 5%;
+    }
 }
