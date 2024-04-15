@@ -130,3 +130,24 @@ a:hover {
 .checkbox img {
   padding-right: 4px;
 }
+
+.legal_notes {
+  display: flex;
+  gap: 32px;
+}
+
+@media (max-width: 1060px) {
+  .logo {
+    top: 4%;
+    left: 9%;
+  }
+}
+
+@media (max-width: 770px) {
+  h1 {
+    font-size: 47px;
+  }
+  .title img {
+    width: 88px;
+  }
+}
