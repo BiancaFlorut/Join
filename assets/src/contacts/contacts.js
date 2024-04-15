@@ -41,6 +41,20 @@ function getFirstLetterArray(array) {
     }
 }
 
+function contactName() {
+    document.getElementById('infoContact').style.display='flex';
+    document.getElementById('infoContact').innerHTML = `
+    <div>
+        <div></div>
+        <span>Contact Information</span>
+        <h3>Email</h3>
+        <div></div>
+        <h3>Phone</h3>
+        <div></div>
+    </div>
+    `;
+}
+
 function addContact() {
     document.getElementById('overlyContact').style.display='flex';
     document.getElementById('overlayEditContact').style.display='none';
@@ -48,8 +62,4 @@ function addContact() {
 
 function addClose() {
     document.getElementById('overlyContact').style.display='none';
-}
-
-function contactName() {
-    document.getElementById('infoContact').style.display='flex';
 }

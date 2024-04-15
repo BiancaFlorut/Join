@@ -124,7 +124,7 @@ let contactDavidEisenberg = {
 }
 
 let contactEvaFischer = {
-    name: 'EvaFischer',
+    name: 'Eva Fischer',
     email: 'evfi@mail.er',
     phone: '04444444444',
     color: '#1fd7c1'
