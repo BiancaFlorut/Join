@@ -25,12 +25,22 @@ async function logIn() {
   if (user) {
     console.log(user);
     setItemToRemoteStorage('actualUser', JSON.stringify(user));
-    const response = await getItemFromRemoteStorage('actualUser');
-    console.log(response);
+    await getItemFromRemoteStorage('actualUser');
+    if (isRememberMeChecked) localStorage.setItem(email.value, password.value);
+    else localStorage.setItem(email.value, '');
     window.location.replace('../../summary/summary.html?email='+user.email);
   }
   else {
     getElementWithId('errorPasswordMessage').classList.remove('d_none');
     getElementWithId('password').style.border = '1px solid rgba(255, 0, 31, 1)';
+  }
+}
+
+function checkEmail(inputElement) {
+  const email = inputElement.value;
+  const password = localStorage.getItem(email);
+  if (password) {
+    document.getElementById("password").value = password;
+    toggleRememberMe(getElementWithId('checkboxRememberMe'));
   }
 }

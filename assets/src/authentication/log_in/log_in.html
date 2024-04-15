@@ -69,7 +69,7 @@
         <form class="log_in_form" onsubmit="logIn(); return false">
           <div class="log_in_inputs">
             <div class="log_in_text_inputs">
-              <input id="email" class="input_area mail" required placeholder="Email" type="email" />
+              <input id="email" class="input_area mail" required placeholder="Email" type="email" onchange="checkEmail(this)" />
               <div class="input_password_container">
                 <div class="visibility_area">
                   <input id="password" required class="input_area lock" placeholder="Password" type="password" />
