@@ -188,6 +188,10 @@ header {
   transition: all 125ms ease-in-out;
   scale: 1.08;
 }
+.logo-mobile {
+  height: 62px;
+  display: none;
+}
 /*
 |////////////////////////////////////////////////////|
 |                                                    |
@@ -227,6 +231,25 @@ header {
   }
   .content-section {
     flex: none;
+  }
+  .header-left {
+    display: none;
+  }
+  .logo-mobile {
+    display: block;
+    padding: 0 0 0 32px;
+    height: 40px;
+  }
+  header {
+    height: 80px;
+  }
+  .header-right a {
+    display: none;
+  }
+  .user {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
   }
 }
 @media (max-width: 525px) {
