@@ -255,7 +255,8 @@ header {
 }
 @media (max-width: 525px) {
   .nav-container {
-    justify-content: space-between;
+    justify-content: space-evenly;
+    padding: 5px 0;
   }
   .nav-bar-container {
     width: 80px;
