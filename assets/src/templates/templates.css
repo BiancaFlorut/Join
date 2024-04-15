@@ -188,20 +188,77 @@ header {
   transition: all 125ms ease-in-out;
   scale: 1.08;
 }
-/*
-|///////////////////////////////////////////////////////|
-|                                                       |
-|                                                       |
-|-------------------->navbar bottom<--------------------|
-|                                                       |
-|                                                       |
-|///////////////////////////////////////////////////////|
-*/
-.nav-Bottom {
-  height: 80px;
-  width: 100%;
-  background-color: #2a3647;
+.logo-mobile {
+  height: 62px;
+  display: none;
 }
-.nav-bottom-nav-div {
-  display: flex;
+/*
+|////////////////////////////////////////////////////|
+|                                                    |
+|                                                    |
+|-------------------->responsive<--------------------|
+|                                                    |
+|                                                    |
+|////////////////////////////////////////////////////|
+*/
+@media (max-width: 1060px) {
+  nav {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    bottom: 0;
+    z-index: 5;
+  }
+  .nav-bar {
+    flex-direction: column;
+    padding: 0;
+  }
+  nav span {
+    font-size: 14px;
+  }
+  .nav-container {
+    flex-direction: unset;
+    height: 70px;
+    padding: 5px;
+  }
+  .nav-bar-container {
+    border-radius: 16px;
+  }
+  .logo {
+    display: none;
+  }
+  .links-left {
+    display: none;
+  }
+  .content-section {
+    flex: none;
+  }
+  .header-left {
+    display: none;
+  }
+  .logo-mobile {
+    display: block;
+    padding: 0 0 0 32px;
+    height: 40px;
+  }
+  header {
+    height: 80px;
+  }
+  .header-right a {
+    display: none;
+  }
+  .user {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+@media (max-width: 525px) {
+  .nav-container {
+    justify-content: space-evenly;
+    padding: 5px 0;
+  }
+  .nav-bar-container {
+    width: 80px;
+  }
 }
