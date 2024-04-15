@@ -8,7 +8,7 @@
 |/////////////////////////////////////////////////////////|
 */
 .summary {
-    padding: 5%;
+    padding: 30px;
     height: calc(100% - 100px);
 }
 /*
@@ -187,17 +187,26 @@
 |                                                    |
 |////////////////////////////////////////////////////|
 */
-@media (max-width: 1060px) {
+@media (max-width: 1130px) {
     body {
       flex-direction: column-reverse;
     }
     .summary {
-      height: calc(100% - 180px);
+      height: calc(100vh - 220px);
+      padding: 30px;
     }
 }
 @media (max-width: 725px) {
     .summary-content-right {
-        display: none;
+        /* display: none; */
+        display: flex;
+        align-items: center;
+        position: fixed;
+        top: 90px;
+        bottom: 80px;
+        left: 0;
+        right: 0;
+        background-color: white;
     }
     .summary-content-left {
         width: 100%;
@@ -251,4 +260,8 @@
     .summary-content-left-mid {
         gap: 5%;
     }
+}
+
+.d-none {
+    display: none;
 }

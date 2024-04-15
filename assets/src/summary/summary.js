@@ -17,6 +17,22 @@ async function summaryInit() {
     searchTasksInit();
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    let divElement = document.getElementById('summaryContentRight');
+    if (window.innerWidth <= 720) {
+        setTimeout(function() {
+            divElement.classList.add('d-none');
+        }, 2500);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    let divElement = document.getElementById('summaryContentRight');
+    if (window.innerWidth == 800) {
+        divElement.classList.remove('d-none');
+    }
+});
+
 async function findUser() {
     let userServer = await getUserFromServer(urlEmail);
     user.push(userServer);
