@@ -77,9 +77,10 @@ a:hover {
   border-radius: 10px;
   border: 1px solid #d1d1d1;
   padding: 12px 21px;
+  padding-right: 45px;
   font-size: 20px;
   background-origin: content-box;
-  background-position: center right;
+  background-position: center right -24px;
   background-repeat: no-repeat;
 }
 
@@ -88,7 +89,8 @@ a:hover {
 }
 
 .input_area:focus {
-  outline: 1px solid rgba(41, 171, 226, 1);
+  outline: none;
+  border: 1px solid rgba(41, 171, 226, 1);
 }
 
 .mail {
