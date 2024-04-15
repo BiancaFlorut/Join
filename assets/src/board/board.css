@@ -282,6 +282,12 @@
   .button {
     padding: 18px 10px;
   }
+  .big_card_edit_input_area {
+    gap: 8px;
+  }
+  .big_card_edit_content_area {
+    gap: 16px;
+  }
 }
 
 @media (max-width: 380px) {
