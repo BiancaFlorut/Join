@@ -194,10 +194,27 @@
     margin-top: 40px;
 }
 
+.profile_badge {
+    border-radius: 50%;
+    font-size: 12px;
+    color: #ffffff;
+    font-weight: 400;
+    background-color: #ff5eb3;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ffffff;
+}
+
 .contact_name {
     padding: 15px 24px;
     cursor: pointer;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 35px;
 }
 
 .contact_name:hover {

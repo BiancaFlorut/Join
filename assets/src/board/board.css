@@ -171,6 +171,7 @@
     overflow-x: auto;
     padding: 10px;
     box-sizing: border-box;
+    scrollbar-width: none;
   }
   .card_small {
     min-width: 252px;
@@ -287,6 +288,12 @@
   }
   .big_card_edit_content_area {
     gap: 16px;
+  }
+  .big_card_header {
+    padding-right: 0;
+  }
+  .big_card_edit_ok_button {
+    padding-right: 4px;
   }
 }
 
