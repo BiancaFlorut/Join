@@ -1,0 +1,33 @@
+/*
+|//////////////////////////////////////////////////////////|
+|                                                          |
+|                                                          |
+|-------------------->add Task content<--------------------|
+|                                                          |
+|                                                          |
+|//////////////////////////////////////////////////////////|
+*/
+.add_task {
+    padding: 5%;
+    max-width: 1210px;
+}
+.add_task span {
+    color: red;
+}
+.main_content {
+    display: flex;
+}
+.content_left {
+    width: 50%;
+    border-right: 1px solid #d1d1d1;
+}
+.content_right {
+    width: 50%;
+}
+.add_task_Bottom {
+    display: flex;
+    justify-content: space-between;
+}
+.add_task_buttons {
+    display: flex;
+}

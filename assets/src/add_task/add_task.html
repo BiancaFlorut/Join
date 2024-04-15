@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="storage.js"></script>
-    <script src="contacts.js"></script>
+    <script src="../storage.js"></script>
+    <script src="../contacts/contacts.js"></script>
     <title>Add Task</title>
     <link rel="icon" href="../../img/logo_small.svg" type="image/svg">
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="../templates/templates.css" />
-    <link rel="stylesheet" href="./summary.css">
+    <link rel="stylesheet" href="./add_task.css">
     <script src="../templates/templates.js"></script>
     <script src="../script.js"></script>
-    <script src="./summary.js"></script>
+    <script src="./add_task.js"></script>
   </head>
   <body onload="init()">
     <div w3-include-html="../templates/nav_bar_left.html"></div>
@@ -20,8 +20,43 @@
     <section class="content-section">
       <div class="shadow" w3-include-html="../templates/header.html"></div>
       <div class="content">
-        <h2>add_tasks</h2>
-        <div id="content"></div>
+        <div class="add_task">
+          <h1>Add Tasks</h1>
+          <div id="content" class="main_content">
+
+            <div class="content_left">
+              <p>Title<span>*</span></p>
+              <input type="text" placeholder="Enter a title">
+              <p>Description</p>
+              <input type="text" placeholder="Enter a Description">
+              <p>Assigned to</p>
+              <input type="text" placeholder="Select contacts to assign">
+            </div>
+
+            <div class="content_right">
+              <p>Due date<span>*</span></p>
+              <input type="text" placeholder="dd/mm/yyyy">
+              <p>Prio</p>
+              <div class="prio_div">
+                urgent
+                medium
+                low
+              </div>
+              <p>Category<span>*</span></p>
+              <input type="text" placeholder="Select task category">
+              <p>Subtasks</p>
+              <input type="text" placeholder="Add new subtask">
+            </div>
+
+          </div>
+          <div class="add_task_Bottom">
+            <p><span>*</span> This Field is required</p>
+            <div class="add_task_buttons">
+              <button>Clear x</button>
+              <button>Create Task</button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </body>
