@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     let divElement = document.getElementById('summaryContentRight');
-    if (window.innerWidth == 800) {
+    if (window.innerWidth >= 730) {
         divElement.classList.remove('d-none');
     }
 });
