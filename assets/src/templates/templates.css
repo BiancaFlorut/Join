@@ -188,3 +188,20 @@ header {
   transition: all 125ms ease-in-out;
   scale: 1.08;
 }
+/*
+|///////////////////////////////////////////////////////|
+|                                                       |
+|                                                       |
+|-------------------->navbar bottom<--------------------|
+|                                                       |
+|                                                       |
+|///////////////////////////////////////////////////////|
+*/
+.nav-Bottom {
+  height: 80px;
+  width: 100%;
+  background-color: #2a3647;
+}
+.nav-bottom-nav-div {
+  display: flex;
+}
