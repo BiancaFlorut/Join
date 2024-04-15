@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="../contacts/contact.css" />
     <script src="../templates/templates.js"></script>
     <script src="../script.js"></script>
-    <script src="../datastucture.js"></script>
     <script src="../utility.js"></script>
   </head>
   <body onload="init(); initContacts()">
@@ -25,16 +24,19 @@
       <div class="content contacts_display_flex">
         <div class="contact_card">
           <div>
-            <button class="contact_button_add_new bold_21">Add new contact<img src="../../img/contacts_person_add.svg" alt="person_add" /></button>
+            <div class="button_center">
+              <button onclick="addContact()" class="contact_button_add_new bold_21">Add new contact<img src="../../img/contacts_person_add.svg" alt="person_add" /></button>
+            </div>
+            <div id="content"></div>
           </div>
-          <div id="content"></div>
         </div>
         <div class="contacts_header">
           <h1 class="h1_contacts">Contacts</h1>
           <img class="contacts_vector" src="../../img/contact_vector.svg" />
           <h2 class="h2_contacts">Better with a team</h2>
         </div>
-        <div class="d_none" id="contactsViewContact">
+        <div class="info_contact" id="infoContact"></div>
+        <div class="view_contact" id="overlyContact">
           <div class="main_container_add_contact" id="overlayAddContact">
             <div class="left_container_add_contacts">
               <img class="contacts_join_logo" src="../../img/contacts_join_logo.svg" alt="join_logo"/>
@@ -49,7 +51,7 @@
                 </div>
               </div>
               <form class="create_contact">
-                <img class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
+                <img onclick="addClose()" class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
                 <input id="name" class="input_area person" required placeholder="Name" type="text" />
                 <input id="email" class="input_area mail"  required placeholder="Email" type="email"/>
                 <input id="phone" class="input_area phone" required placeholder="Phone" type="tel" />
@@ -59,7 +61,7 @@
                 <button class="bold">Create contact<img style="padding-left: 4px" src="../../img/contacts_add_contact_check.svg" alt="icon_check"/></button>
               </div>
           </div>
-          <div class="main_container_add_contact" id="overlayAddContact">
+          <div class="main_container_add_contact" id="overlayEditContact">
             <div class="left_container_edit_contacts">
               <img class="contacts_join_logo" src="../../img/contacts_join_logo.svg" alt="join_logo"/>
               <h1 class="h1_add_contacts">Edit contact</h1>

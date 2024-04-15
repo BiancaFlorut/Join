@@ -47,10 +47,26 @@
     overflow-y: scroll;
 }
 
+.button_center {
+    display: flex;
+    justify-content: center;
+}
+
 .contact_button_add_new {
     display: flex;
     align-items: center;
     gap: 16px;
+}
+
+.view_contact {
+    display: none;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
 }
 
 .main_container_add_contact {
@@ -176,5 +192,29 @@
     gap: 24px;
     padding-right: 262px;
     margin-top: 40px;
+}
+
+.contact_name {
+    padding: 15px 24px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.contact_name:hover {
+    background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
+}
+
+.light_blue {
+    color: #00bee8;
+}
+
+.info_contact {
+    display: none;
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    right: 570px;
+    top: 200px;
 }
   

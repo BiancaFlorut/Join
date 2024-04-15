@@ -15,9 +15,12 @@ function contactListHTML() {
         const email = contacts[i];
         content.innerHTML += `
         <div>
-        <div class='deine classe' style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
-        <div>${email.name}</div>
+        <div></div>
         <img src="../../img/contacts_add-new-vector.svg" alt="partition_wall">
+        <div onclick="contactName()" class="contact_name">
+            <span><b>${email.name}</b></span><br>
+            <span class="light_blue">${email.email}</span>
+        </div>    
         <div></div>
         </div>
         `;
@@ -34,4 +37,17 @@ function getFirstLetterArray(array) {
         }
         
     }
+}
+
+function addContact() {
+    document.getElementById('overlyContact').style.display='flex';
+    document.getElementById('overlayEditContact').style.display='none';
+}
+
+function addClose() {
+    document.getElementById('overlyContact').style.display='none';
+}
+
+function contactName() {
+    document.getElementById('infoContact').style.display='flex';
 }
