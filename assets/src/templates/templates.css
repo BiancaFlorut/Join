@@ -207,6 +207,7 @@ header {
     height: 80px;
     position: fixed;
     bottom: 0;
+    z-index: 5;
   }
   .nav-bar {
     flex-direction: column;
