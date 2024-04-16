@@ -68,6 +68,11 @@ nav span {
 .links-left a:hover {
   color: #29abe2;
 }
+.selected-page:hover {
+  background-color: #091931;
+  filter: brightness(1.5);
+  color: white;
+}
 /*
 |//////////////////////////////////////////////////////////|
 |                                                          |
@@ -104,9 +109,6 @@ header {
   height: 20px;
   width: 20px;
 }
-.header-right a:hover {
-  transform: rotate(360deg);
-}
 .header-right a img:hover {
   width: 24px;
   height: 24px;
@@ -135,7 +137,6 @@ header {
 .content {
   height: calc(100% - 80px);
   overflow-y: scroll;
-  /* flex: 1; */
   scrollbar-width: none;
 }
 #popupMenuHeader {
