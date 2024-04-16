@@ -44,7 +44,7 @@ function selectContact(element, email, checked) {
   checked = toggleSelectedContact(element, email, checked, addedTask);
   const arg1 = "'" + email + "'";
   const arg2 = "'" + checked + "'";
-  element.setAttribute("onclick", `selectContact(this, ${arg1}, ${arg2})`);
+  element.setAttribute("onmousedown", `simulateClick(event, this, ${arg1}, ${arg2})`);
   getElementWithId("editAssignToIconsList").innerHTML = getContactsLogoHTML(addedTask.assign_to);
 }
 
