@@ -273,6 +273,9 @@
     font-size: 16px;
     padding: 8px 21px;
   }
+  .visibility_icon_container {
+    padding: 7px;
+  }
   .big_card_edit_description_textarea {
     font-size: 16px;
   }

@@ -1,11 +1,12 @@
 function openTask(id) {
-    showElement('bigCardView');
-    let container = getElementWithId('bigCardContent');
-    const task = tasks.find( t => t.id == id);
-    const d = new Date(task.due_date);
-    const formattedDate = d.toLocaleDateString('de-De').replaceAll('.', '/');
-    const priority = getTaskPriority(task.priority);
-    container.innerHTML = /*html*/`
+  showElement("bigCardView");
+  let container = getElementWithId("bigCardContent");
+  const task = tasks.find((t) => t.id == id);
+  const d = new Date(task.due_date);
+  const dueDate = formateDate(d);
+  const priority = getTaskPriority(task.priority);
+  container.innerHTML =
+    /*html*/ `
       <div class="big_card_header">
         <div class='big_card_category ${getCategoryClassColor(task.category)}'>${task.category}</div>
         <div class="close_icon" onclick="closeBigCardView()">
@@ -16,7 +17,7 @@ function openTask(id) {
       <span>${task.description}</span>
       <div>
         <span class="big_card_title">Due Date:</span>
-        <span>${formattedDate}</span>
+        <span>${dueDate}</span>
       </div>
       <div class='df_ac'>
         <span class="big_card_title">Priority:</span>
@@ -27,14 +28,16 @@ function openTask(id) {
       </div>
       <div class="big_card_assigned_to_area">
         <span class="big_card_title">Assigned To:</span>
-        <div class="big_card_assigned_to_list">`
-          + getAssignedToHTML(task.assign_to) +/*html*/`
+        <div class="big_card_assigned_to_list">` +
+    getAssignedToHTML(task.assign_to) +
+    /*html*/ `
         </div>
       </div>
       <div class="big_card_assigned_to_area">
         <span class="big_card_title">Subtasks</span>
-        <div class="big_card_assigned_to_list">`
-          + getSubTaskForBigCardHTML(task) +/*html*/`
+        <div class="big_card_assigned_to_list">` +
+    getSubTaskForBigCardHTML(task) +
+    /*html*/ `
         </div>
       </div>
       <div class='big_card_footer df_ac'>
@@ -49,60 +52,72 @@ function openTask(id) {
         </div>
       </div>
     `;
-  }
-  
-  function getSubTaskForBigCardHTML(task) {
-    let subtasks = task.subtasks;
-    let html = '';
-    subtasks.forEach(function (subtask, index) {
-      const checkbox = subtask.checked ? SUBTASK_CHECKBOX_PATH +'_checked.svg' : SUBTASK_CHECKBOX_PATH + '.svg';
-      html += /*html*/`
+}
+
+function formateDate(date) {
+  const yyyy = date.getFullYear();
+  let mm = date.getMonth() + 1; // Months start at 0!
+  let dd = date.getDate();
+  if (dd < 10) dd = "0" + dd;
+  if (mm < 10) mm = "0" + mm;
+  return dd + "/" + mm + "/" + yyyy;
+}
+
+function getSubTaskForBigCardHTML(task) {
+  let subtasks = task.subtasks;
+  let html = "";
+  subtasks.forEach(function (subtask, index) {
+    const checkbox = subtask.checked ? SUBTASK_CHECKBOX_PATH + "_checked.svg" : SUBTASK_CHECKBOX_PATH + ".svg";
+    html += /*html*/ `
         <div class="big_card_subtask_area df_ac">
           <img src="${checkbox}" alt="checkbox" onclick="toggleSubtaskCheckbox(this, '${task.id}', ${index})">
           <span>${subtask.text}</span>
         </div>`;
-    });
-    return html;
-  }
-  
-  function getAssignedToHTML(array) {
-    let html = '';
-    array.forEach(contact => html += getContactForBigCardHTML(contact));
-    return html;
-  }
-  
-  function getContactForBigCardHTML(contact) {
-    let you = contact.name == user.name ? ' (You)' : ''; 
-    return /*html*/`
-      <div class='big_card_assigned_to'>`
-        + getContactLogoHTML(contact) + /*html*/`  
+  });
+  return html;
+}
+
+function getAssignedToHTML(array) {
+  let html = "";
+  array.forEach((contact) => (html += getContactForBigCardHTML(contact)));
+  return html;
+}
+
+function getContactForBigCardHTML(contact) {
+  let you = contact.name == user.name ? " (You)" : "";
+  return (
+    /*html*/ `
+      <div class='big_card_assigned_to'>` +
+    getContactLogoHTML(contact) +
+    /*html*/ `  
         <div>${contact.name + you}</div>
       </div>
-    `;
-  }
-  
-  function getContactLogoHTML(contact) {
-    return /*html*/`
+    `
+  );
+}
+
+function getContactLogoHTML(contact) {
+  return /*html*/ `
       <div class='contacts_icon' style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
     `;
-  }
-  
-  function closeBigCardView(){
-    editedTask = [];
-    hideElement('bigCardView');
-  }
-  
-  function changeIdImgTheSrc(id, src) {
-    changeSrc(getElementWithId(id), src);
-  }
-  
-  function toggleSubtaskCheckbox(element, taskId, i) {
-    let taskIndex = tasks.findIndex(t => t.id == taskId);
-    let task = tasks.find((t, index) => t.id == taskId);
-    let isChecked = task.subtasks[i].checked;
-    tasks[taskIndex].subtasks[i].checked = toggleCheckbox(element, isChecked, SUBTASK_CHECKBOX_PATH);
-    //change the task for the assigned to contacts.
-    updateTasksFromUser(emailParameter, tasks);
-    updateContactsAboutTask(tasks[taskIndex]);
-    updateHTML(tasks);
-  }
+}
+
+function closeBigCardView() {
+  editedTask = [];
+  hideElement("bigCardView");
+}
+
+function changeIdImgTheSrc(id, src) {
+  changeSrc(getElementWithId(id), src);
+}
+
+function toggleSubtaskCheckbox(element, taskId, i) {
+  let taskIndex = tasks.findIndex((t) => t.id == taskId);
+  let task = tasks.find((t, index) => t.id == taskId);
+  let isChecked = task.subtasks[i].checked;
+  tasks[taskIndex].subtasks[i].checked = toggleCheckbox(element, isChecked, SUBTASK_CHECKBOX_PATH);
+  //change the task for the assigned to contacts.
+  updateTasksFromUser(emailParameter, tasks);
+  updateContactsAboutTask(tasks[taskIndex]);
+  updateHTML(tasks);
+}

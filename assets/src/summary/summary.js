@@ -17,6 +17,21 @@ async function summaryInit() {
     searchTasksInit();
 }
 
+function toggleVisibilityBasedOnWidth() {
+    let divElement = document.getElementById('summaryContentRight');
+    if (window.innerWidth <= 720) {
+        setTimeout(function() {
+            divElement.classList.add('d-none');
+        }, 2500);
+    } else {
+        divElement.classList.remove('d-none');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', toggleVisibilityBasedOnWidth);
+
+window.addEventListener('resize', toggleVisibilityBasedOnWidth);
+
 async function findUser() {
     let userServer = await getUserFromServer(urlEmail);
     user.push(userServer);
@@ -117,12 +132,3 @@ function greetUser() {
     }
     document.getElementById('welcome').innerHTML = greeting;
 }
-/*
-|/////////////////////////////////////////////////////////////|
-|                                                             |
-|                                                             |
-|-------------------->ATTENTION: TESTAREA<--------------------|
-|                                                             |
-|                                                             |
-|/////////////////////////////////////////////////////////////|
-*/

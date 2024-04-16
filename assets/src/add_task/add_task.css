@@ -8,14 +8,15 @@
 |//////////////////////////////////////////////////////////|
 */
 .add_task {
-    padding: 5%;
-    max-width: 1210px;
+    padding: 80px;
+    max-width: 1000px;
 }
 .add_task span {
     color: red;
 }
 .main_content {
     display: flex;
+    padding: 64px 0 64px 0;
 }
 .content_left {
     width: 50%;
@@ -23,11 +24,24 @@
 }
 .content_right {
     width: 50%;
+    padding-left: 30px;
 }
-.add_task_Bottom {
+.add_task_bottom {
     display: flex;
     justify-content: space-between;
 }
 .add_task_buttons {
     display: flex;
+    gap: 16px;
+}
+label {
+    font-size: 20px;
+}
+input {
+    height: 48px;
+    width: 90%;
+    border-radius: 10px;
+    border-color: #d1d1d1;
+    color: #d1d1d1;
+    border-style: none;
 }

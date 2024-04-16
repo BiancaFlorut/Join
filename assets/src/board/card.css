@@ -93,6 +93,7 @@
 
 .overlapped_contact_icons {
   display: flex;
+  overflow: hidden;
 }
 
 /* big card style for the task */
@@ -117,6 +118,7 @@
   height: auto;
   overflow: hidden;
   display: flex;
+  z-index: 10;
 }
 
 .big_card_scrollable_wrapper {
