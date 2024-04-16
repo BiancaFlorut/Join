@@ -1,6 +1,8 @@
-let addTask = {assign_to: []};
+let addedTask = {assign_to: []};
 let isContactListOpen = false;
-let contact = [];
+let user;
+let allContacts;
+
 
 // function togglePriorityTo(priorityValue, buttonElement) {
     // addTask.priority = priorityValue;
@@ -19,10 +21,20 @@ let contact = [];
 
 async function initAddTask() {
     let container = getElementWithId("addTaskAssignedContacts");
-    contacts = await getContactList(emailParameter);
-  container.innerHTML = getOptionForAssignedTo(contacts, addTask);
+    user = await getUserFromServer(emailParameter);
+    const userContact = {name: (user.name + ' (You)'), email: user.email, color: user.color};
+    allContacts = [...user.contacts, userContact];
+  container.innerHTML = getOptionForAssignedTo(allContacts, addedTask);
 }
 
 function setToggleForTheContactList(imgElement, idList) {
     isContactListOpen = toggleContactsList(imgElement, idList, isContactListOpen);
 }
+
+function selectContact(element, email, checked) {
+    checked = toggleSelectedContact(element, email, checked, addedTask);
+    const arg1 = "'" + email + "'";
+    const arg2 = "'" + checked + "'";
+    element.setAttribute("onclick", `selectContact(this, ${arg1}, ${arg2})`);
+    getElementWithId("editAssignToIconsList").innerHTML = getContactsLogoHTML(addedTask.assign_to);
+  }

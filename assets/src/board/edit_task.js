@@ -235,11 +235,7 @@ function togglePriorityTo(priorityValue, buttonElement) {
 
 
 
-function getContactsLogoHTML(contacts) {
-  let html = "";
-  contacts.forEach((contact) => (html += getContactLogoForBigCardEditHTML(contact)));
-  return html;
-}
+
 
 function resetPriorityButtons() {
   for (let i = 0; i < 3; i++) {
@@ -249,6 +245,10 @@ function resetPriorityButtons() {
   }
 }
 
+function setToggleForTheContactList(imgElement, idList) {
+  istContactListOpen = toggleContactsList(imgElement, idList, istContactListOpen);
+}
+
 /**
  * This function selects an contact and add it in the editTask.assigned_to toggles the look and the checkbox
  * @param {HTMLDivElement} element
@@ -256,36 +256,9 @@ function resetPriorityButtons() {
  * @param {string} checked
  */
 function selectContact(element, email, checked) {
-  // getElementWithId("bigCardEdiSearchContact").onblur = '';
-  const contact = allContacts.find((c) => c.email == email);
-  checked = toggleSelectedContact(element, email, checked, contact);
+  checked = toggleSelectedContact(element, email, checked, editedTask);
   const arg1 = "'" + email + "'";
   const arg2 = "'" + checked + "'";
   element.setAttribute("onclick", `selectContact(this, ${arg1}, ${arg2})`);
   getElementWithId("editAssignToIconsList").innerHTML = getContactsLogoHTML(editedTask.assign_to);
-  // getElementWithId("bigCardEdiSearchContact").onblur = function () {
-  //   this.value = "Select contacts to assign";
-  //   this.setAttribute("readonly", "");
-  //   getElementWithId("bigCardEditContacts").innerHTML = getOptionForAssignedTo(allContacts, editedTask);
-  // };
-}
-
-function toggleSelectedContact(element, email, checked, contact) {
-  if (checked == "_checked") {
-    toggleCheckbox(getElementWithId(`${email}Checkbox`), true, CHECKBOX_PATH);
-    checked = "";
-    element.classList.remove("big_card_edit_contact_clicked");
-    const index = editedTask.assign_to.findIndex((c) => c.email == email);
-    editedTask.assign_to.splice(index, 1);
-  } else {
-    toggleCheckbox(getElementWithId(`${email}Checkbox`), false, CHECKBOX_PATH + "_white");
-    element.classList.add("big_card_edit_contact_clicked");
-    editedTask.assign_to.push(contact);
-    checked = "_checked";
-  }
-  return checked;
-}
-
-function setToggleForTheContactList(imgElement, idList) {
-  istContactListOpen = toggleContactsList(imgElement, idList, istContactListOpen);
 }
