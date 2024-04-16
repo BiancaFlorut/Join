@@ -46,6 +46,10 @@ function contactName() {
     document.getElementById('infoContact').innerHTML = `
     <div>
         <div></div>
+        <div>
+            <img onclick="editContact()" class="edit_contact_information" src="../../img/contacts_edit.svg">
+            <img class="delete_contact_information" src="../../img/contacts_delete.svg">
+        </div>
         <span>Contact Information</span>
         <h3>Email</h3>
         <div></div>
@@ -53,6 +57,10 @@ function contactName() {
         <div></div>
     </div>
     `;
+}
+
+function editContact() {
+    document.getElementById('overlayEditContact').style.display='flex';
 }
 
 function addContact() {

@@ -116,6 +116,7 @@
     position: relative;
     top: 220px;
     left: 60px;
+    width: 126px;
 }
 
 .border_radius {
@@ -230,5 +231,21 @@
     position: relative;
     right: 570px;
     top: 200px;
+}
+
+.edit_contact_information {
+    cursor: pointer;
+}
+
+.edit_contact_information:hover {
+    color:#00bee8;
+}
+
+.delete_contact_information {
+    cursor: pointer;
+}
+
+.delete_contact_information:hover {
+    color: #00bee8;
 }
   
