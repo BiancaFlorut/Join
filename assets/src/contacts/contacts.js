@@ -57,6 +57,10 @@ function contactName(email) {
     `;
 }
 
+function editContact() {
+    document.getElementById('overlayEditContact').style.display='flex';
+}
+
 function addContact() {
     document.getElementById('overlyContact').style.display='flex';
     document.getElementById('overlayEditContact').style.display='none';
