@@ -223,7 +223,7 @@
 }
 
 .light_blue {
-    color: #00bee8;
+    color: #007cee;
 }
 
 .info_contact {
@@ -247,5 +247,49 @@
 
 .delete_contact_information:hover {
     color: #00bee8;
+}
+
+.profile_contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    font-weight: 500;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    border: 3px solid #ffffff;
+}
+
+.contact_info_name {
+    font-size: 48px;
+    font-weight: 500;
+}
+
+.contact_info {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.email_header {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.email_contact {
+    font-size: 16px;
+    font-weight: 400;
+    color: #007cee;
+}
+
+.phone_header {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.phone_contact {
+    font-size: 16px;
+    font-weight: 400;
 }
   

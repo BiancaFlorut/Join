@@ -46,13 +46,13 @@ function contactName(email) {
     document.getElementById('infoContact').style.display='flex';
     document.getElementById('infoContact').innerHTML = `
     <div>
-        <div class="profile_badge" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
-        <div>${contact.name}</div>
-        <span>Contact Information</span>
-        <h3>Email</h3>
-        <div></div>
-        <h3>Phone</h3>
-        <div></div>
+        <div class="profile_contact" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
+        <div class="contact_info_name">${contact.name}</div>
+        <span class="contact_info">Contact Information</span>
+        <h3 class="email_header">Email</h3>
+        <div class="email_contact">${contact.email}</div>
+        <h3 class="phone_header">Phone</h3>
+        <div class="phone_contact">${contact.phone}</div>
     </div>
     `;
 }
