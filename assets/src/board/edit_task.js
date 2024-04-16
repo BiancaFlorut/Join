@@ -21,6 +21,7 @@ function setOnBlurFunctionOnEditedSubtask(i) {
   const iconsId = `bigCardEditCardIcons_${i}`;
   element.onblur = function () {
     element.onmouseout = hideElement(iconsId);
+    getElementWithId(iconsId).classList.add('d_none');
     cancelSubtaskEdit(subtaskELementId, i);
   };
 }
