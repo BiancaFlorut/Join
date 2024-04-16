@@ -17,17 +17,6 @@ async function summaryInit() {
     searchTasksInit();
 }
 
-// document.addEventListener('DOMContentLoaded', function() {
-//     let divElement = document.getElementById('summaryContentRight');
-//     if (window.innerWidth <= 720) {
-//         setTimeout(function() {
-//             divElement.classList.add('d-none');
-//         }, 2500);
-//     } else {
-//         divElement.classList.remove('d-none');
-//     }
-// })
-
 function toggleVisibilityBasedOnWidth() {
     let divElement = document.getElementById('summaryContentRight');
     if (window.innerWidth <= 720) {
