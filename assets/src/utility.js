@@ -147,6 +147,7 @@ function toggleContactsList(imgElement, contactsElementId, isContactListOpened) 
   }
 }
 
+
 function toggleSelectedContact(element, email, checked, task) {
   if (checked == "_checked") {
     toggleCheckbox(getElementWithId(`${email}Checkbox`), true, CHECKBOX_PATH);

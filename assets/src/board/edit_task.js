@@ -233,10 +233,6 @@ function togglePriorityTo(priorityValue, buttonElement) {
   buttonElement.classList.add(...classList);
 }
 
-
-
-
-
 function resetPriorityButtons() {
   for (let i = 0; i < 3; i++) {
     let classList = getElementWithId("buttonPriority" + i).classList;
