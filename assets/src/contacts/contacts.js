@@ -46,8 +46,12 @@ function contactName(email) {
     document.getElementById('infoContact').style.display='flex';
     document.getElementById('infoContact').innerHTML = `
     <div>
-        <div class="profile_contact" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
-        <div class="contact_info_name">${contact.name}</div>
+        <div>
+            <div class="profile_contact" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
+            <div class="contact_info_name">${contact.name}</div>
+            <img class="edit_delet" src="../../img/contacts_edit.svg">
+            <img class="edit_delet" src="../../img/contacts_delete.svg">
+        </div>
         <span class="contact_info">Contact Information</span>
         <h3 class="email_header">Email</h3>
         <div class="email_contact">${contact.email}</div>

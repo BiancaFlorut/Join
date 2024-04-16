@@ -233,20 +233,8 @@
     top: 200px;
 }
 
-.edit_contact_information {
+.edit_delet {
     cursor: pointer;
-}
-
-.edit_contact_information:hover {
-    color:#00bee8;
-}
-
-.delete_contact_information {
-    cursor: pointer;
-}
-
-.delete_contact_information:hover {
-    color: #00bee8;
 }
 
 .profile_contact {
