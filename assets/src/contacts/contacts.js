@@ -17,7 +17,7 @@ function contactListHTML() {
         <div>
         <div></div>
         <img src="../../img/contacts_add-new-vector.svg" alt="partition_wall">
-        <div onclick="contactName()" class="contact_name">
+        <div onclick="contactName('${contact.email}')" class="contact_name">
         <div class="profile_badge" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
             <div>
                 <span><b>${contact.name}</b></span><br>
@@ -41,15 +41,13 @@ function getFirstLetterArray(array) {
     }
 }
 
-function contactName() {
+function contactName(email) {
+    const contact = contacts.find(c=>c.email==email);
     document.getElementById('infoContact').style.display='flex';
     document.getElementById('infoContact').innerHTML = `
     <div>
-        <div></div>
-        <div>
-            <img onclick="editContact()" class="edit_contact_information" src="../../img/contacts_edit.svg">
-            <img class="delete_contact_information" src="../../img/contacts_delete.svg">
-        </div>
+        <div class="profile_badge" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
+        <div>${contact.name}</div>
         <span>Contact Information</span>
         <h3>Email</h3>
         <div></div>
