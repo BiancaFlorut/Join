@@ -1,7 +1,7 @@
 let tasks = []; 
 let user;
 const SUBTASK_CHECKBOX_PATH = '../../img/checkbox_board';
-const CHECKBOX_PATH = '../../img/checkbox';
+
 
 let currentDraggedElement;
 

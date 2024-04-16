@@ -34,20 +34,29 @@ async function register() {
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const user = { name, email, password };
-    const emails = getEmailArray();
-    if (emails.includes(email)) {
-      console.log("email already exists");
-      getElementWithId('email').style.border = '1px solid rgba(255, 0, 31, 1)';
-    } else {
+    if (!isEmailAlreadyRegistered(email)) {
       console.log("push user on remote storage");
       users.push(user);
       await setItemToRemoteStorage("users", JSON.stringify(users));
       getElementWithId('signUpSuccessfullyScreen').style.display = 'flex';
 
       setTimeout(function() { window.location.replace('../log_in/log_in.html')}, 1600);
-    }
+    } 
     document.getElementById("signUpButton").disabled = false;
   }
+}
+
+function isEmailAlreadyRegistered(email) {
+  const emails = getEmailArray();
+  if (emails.includes(email)) {
+    getElementWithId('email').style.border = '1px solid rgba(255, 0, 31, 1)';
+    getElementWithId('email').setCustomValidity('Email already exists!');
+    return true;
+}else {
+  getElementWithId('email').style.border = '1px solid green';
+  getElementWithId('email').setCustomValidity('');
+  return false;
+}
 }
 
 
@@ -70,7 +79,7 @@ function onChange() {
 }
 
 function checkAllConditions() {
-  if (getElementWithId("name").value && getElementWithId("password").value == getElementWithId("confirmPassword").value && getElementWithId("email").value && isCheckedPrivacyPolicy)
+  if (getElementWithId("name").value && getElementWithId("password").value == getElementWithId("confirmPassword").value && getElementWithId("email").value && isCheckedPrivacyPolicy && !isEmailAlreadyRegistered(getElementWithId('email')))
     getElementWithId("signUpButton").disabled = false;
   else document.getElementById("signUpButton").disabled = true;
 }

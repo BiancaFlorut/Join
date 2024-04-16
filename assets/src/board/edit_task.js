@@ -21,6 +21,7 @@ function setOnBlurFunctionOnEditedSubtask(i) {
   const iconsId = `bigCardEditCardIcons_${i}`;
   element.onblur = function () {
     element.onmouseout = hideElement(iconsId);
+    getElementWithId(iconsId).classList.add('d_none');
     cancelSubtaskEdit(subtaskELementId, i);
   };
 }
@@ -32,7 +33,7 @@ function initEvents() {
     this.value = "";
   };
   getElementWithId("bigCardEdiSearchContact").onblur = function () {
-    toggleContactsList(getElementWithId("bigCardEdiSearchIcon"));
+    istContactListOpen = toggleContactsList(getElementWithId("bigCardEdiSearchIcon"), "bigCardEditContacts", istContactListOpen);
     this.value = "Select contacts to assign";
     this.setAttribute("readonly", "");
     getElementWithId("bigCardEditContacts").innerHTML = getOptionForAssignedTo(allContacts, editedTask);
@@ -202,18 +203,6 @@ function saveEditedSubtask(id) {
   } else deleteEditTaskSubtask(id, i);
 }
 
-function toggleContactsList(element) {
-  if (istContactListOpen) {
-    changeSrc(element, "../../img/arrow_drop_down_down.svg");
-    getElementWithId("bigCardEditContacts").classList.add("d_none");
-    istContactListOpen = false;
-  } else {
-    changeSrc(element, "../../img/arrow_drop_down_up.svg");
-    getElementWithId("bigCardEditContacts").classList.remove("d_none");
-    istContactListOpen = true;
-  }
-}
-
 function searchContact() {
   changeSrc(getElementWithId("bigCardEdiSearchIcon"), "../../img/arrow_drop_down_up.svg");
   getElementWithId("bigCardEditContacts").classList.remove("d_none");
@@ -244,39 +233,16 @@ function togglePriorityTo(priorityValue, buttonElement) {
   buttonElement.classList.add(...classList);
 }
 
-function getOptionForAssignedTo(contacts, task) {
-  let html = "";
-  contacts.forEach((contact) => {
-    let checked = "";
-    if (task.assign_to.some((assignToContact) => assignToContact.email == contact.email)) {
-      checked = "_checked";
-    }
-    let logoHTML = getContactLogoForBigCardEditHTML(contact);
-    html += /*html*/ `
-        <div class="df_ac big_card_edit_contacts_select" onclick="selectContact(this, '${contact.email}', '${checked}')">${logoHTML}<span class="flex_1">${contact.name}</span><img id="${contact.email}Checkbox" src="${CHECKBOX_PATH}${checked}.svg" alt="checkbox"></div >
-      `;
-  });
-  return html;
-}
-
-function getContactsLogoHTML(contacts) {
-  let html = "";
-  contacts.forEach((contact) => (html += getContactLogoForBigCardEditHTML(contact)));
-  return html;
-}
-
-function getContactLogoForBigCardEditHTML(contact) {
-  return /*html*/ `
-    <div class='contacts_icon big_card_edit_contact_icons' style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
-    `;
-}
-
 function resetPriorityButtons() {
   for (let i = 0; i < 3; i++) {
     let classList = getElementWithId("buttonPriority" + i).classList;
     classList.remove("clicked");
     classList.remove(getTaskPriority(i));
   }
+}
+
+function setToggleForTheContactList(imgElement, idList) {
+  istContactListOpen = toggleContactsList(imgElement, idList, istContactListOpen);
 }
 
 /**
@@ -286,32 +252,9 @@ function resetPriorityButtons() {
  * @param {string} checked
  */
 function selectContact(element, email, checked) {
-  // getElementWithId("bigCardEdiSearchContact").onblur = '';
-  const contact = allContacts.find((c) => c.email == email);
-  checked = toggleSelectedContact(element, email, checked, contact);
+  checked = toggleSelectedContact(element, email, checked, editedTask);
   const arg1 = "'" + email + "'";
   const arg2 = "'" + checked + "'";
-  element.setAttribute("onclick", `selectContact(this, ${arg1}, ${arg2})`);
+  element.setAttribute("onmousedown", `simulateClick(event ,this, ${arg1}, ${arg2})`);
   getElementWithId("editAssignToIconsList").innerHTML = getContactsLogoHTML(editedTask.assign_to);
-  // getElementWithId("bigCardEdiSearchContact").onblur = function () {
-  //   this.value = "Select contacts to assign";
-  //   this.setAttribute("readonly", "");
-  //   getElementWithId("bigCardEditContacts").innerHTML = getOptionForAssignedTo(allContacts, editedTask);
-  // };
-}
-
-function toggleSelectedContact(element, email, checked, contact) {
-  if (checked == "_checked") {
-    toggleCheckbox(getElementWithId(`${email}Checkbox`), true, CHECKBOX_PATH);
-    checked = "";
-    element.classList.remove("big_card_edit_contact_clicked");
-    const index = editedTask.assign_to.findIndex((c) => c.email == email);
-    editedTask.assign_to.splice(index, 1);
-  } else {
-    toggleCheckbox(getElementWithId(`${email}Checkbox`), false, CHECKBOX_PATH + "_white");
-    element.classList.add("big_card_edit_contact_clicked");
-    editedTask.assign_to.push(contact);
-    checked = "_checked";
-  }
-  return checked;
 }

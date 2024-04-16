@@ -50,7 +50,7 @@ function generateEditedTaskHTML(valueDate, minDateValue, priorityClasses) {
                         <input id="bigCardEdiSearchContact" type="text" class='big_card_edit_title_input' value='Select contacts to assign' readonly="readonly" onkeyup="searchContact()"/>
                         <div class="visibility_area_container df_ac">
                             <div class="visibility_icon_container">
-                                <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/arrow_drop_down_down.svg" onclick="toggleContactsList(this)" alt="" />
+                                <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/arrow_drop_down_down.svg" onclick="setToggleForTheContactList(this, 'bigCardEditContacts')" alt="" />
                             </div>
                         </div>
                         <div id="bigCardEditContacts" class='big_card_edit_contacts df_ac d_none'> ` +

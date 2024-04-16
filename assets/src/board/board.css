@@ -151,7 +151,7 @@
   }
 }
 
-@media (min-width: 1060px) {
+@media (min-width: 1260px) {
   .mobile {
     display: none;
   }
@@ -160,7 +160,7 @@
   }
 }
 
-@media (max-width: 1060px) {
+@media (max-width: 1260px) {
   .board_distribution {
     flex-direction: column;
     gap: 14px;
