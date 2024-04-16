@@ -1,4 +1,6 @@
-let addTask;
+let addTask = {assign_to: []};
+let isContactListOpen = false;
+let contact = [];
 
 // function togglePriorityTo(priorityValue, buttonElement) {
     // addTask.priority = priorityValue;
@@ -14,3 +16,13 @@ let addTask;
 //       classList.remove(getTaskPriority(i));
 //     }
 //   }
+
+async function initAddTask() {
+    let container = getElementWithId("addTaskAssignedContacts");
+    contacts = await getContactList(emailParameter);
+  container.innerHTML = getOptionForAssignedTo(contacts, addTask);
+}
+
+function setToggleForTheContactList(imgElement, idList) {
+    isContactListOpen = toggleContactsList(imgElement, idList, isContactListOpen);
+}

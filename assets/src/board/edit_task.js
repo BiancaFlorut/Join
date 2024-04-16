@@ -33,7 +33,7 @@ function initEvents() {
     this.value = "";
   };
   getElementWithId("bigCardEdiSearchContact").onblur = function () {
-    toggleContactsList(getElementWithId("bigCardEdiSearchIcon"));
+    istContactListOpen = toggleContactsList(getElementWithId("bigCardEdiSearchIcon"), "bigCardEditContacts", istContactListOpen);
     this.value = "Select contacts to assign";
     this.setAttribute("readonly", "");
     getElementWithId("bigCardEditContacts").innerHTML = getOptionForAssignedTo(allContacts, editedTask);
@@ -203,18 +203,6 @@ function saveEditedSubtask(id) {
   } else deleteEditTaskSubtask(id, i);
 }
 
-function toggleContactsList(element) {
-  if (istContactListOpen) {
-    changeSrc(element, "../../img/arrow_drop_down_down.svg");
-    getElementWithId("bigCardEditContacts").classList.add("d_none");
-    istContactListOpen = false;
-  } else {
-    changeSrc(element, "../../img/arrow_drop_down_up.svg");
-    getElementWithId("bigCardEditContacts").classList.remove("d_none");
-    istContactListOpen = true;
-  }
-}
-
 function searchContact() {
   changeSrc(getElementWithId("bigCardEdiSearchIcon"), "../../img/arrow_drop_down_up.svg");
   getElementWithId("bigCardEditContacts").classList.remove("d_none");
@@ -245,31 +233,12 @@ function togglePriorityTo(priorityValue, buttonElement) {
   buttonElement.classList.add(...classList);
 }
 
-function getOptionForAssignedTo(contacts, task) {
-  let html = "";
-  contacts.forEach((contact) => {
-    let checked = "";
-    if (task.assign_to.some((assignToContact) => assignToContact.email == contact.email)) {
-      checked = "_checked";
-    }
-    let logoHTML = getContactLogoForBigCardEditHTML(contact);
-    html += /*html*/ `
-        <div class="df_ac big_card_edit_contacts_select" onclick="selectContact(this, '${contact.email}', '${checked}')">${logoHTML}<span class="flex_1">${contact.name}</span><img id="${contact.email}Checkbox" src="${CHECKBOX_PATH}${checked}.svg" alt="checkbox"></div >
-      `;
-  });
-  return html;
-}
+
 
 function getContactsLogoHTML(contacts) {
   let html = "";
   contacts.forEach((contact) => (html += getContactLogoForBigCardEditHTML(contact)));
   return html;
-}
-
-function getContactLogoForBigCardEditHTML(contact) {
-  return /*html*/ `
-    <div class='contacts_icon big_card_edit_contact_icons' style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
-    `;
 }
 
 function resetPriorityButtons() {
@@ -315,4 +284,8 @@ function toggleSelectedContact(element, email, checked, contact) {
     checked = "_checked";
   }
   return checked;
+}
+
+function setToggleForTheContactList(imgElement, idList) {
+  istContactListOpen = toggleContactsList(imgElement, idList, istContactListOpen);
 }
