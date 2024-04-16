@@ -8,14 +8,14 @@
 |//////////////////////////////////////////////////////|
 */
 .help {
-    padding: 5%;
+    padding: 30px;
 }
 .help span {
     color: #29abe2;
 }
 .guide {
     display: flex;
-    padding: 2% 0 0;
+    padding: 20px 0 0;
     gap: 3%;
 }
 .guide h3, p {
@@ -27,7 +27,7 @@
     font-weight: 700;
 }
 .padding-two-percent-top {
-    padding: 2% 0 0;
+    padding: 20px 0 0;
 }
 .last-headline-three {
     margin-block-end: 0;
