@@ -11,7 +11,7 @@
   padding: 80px;
   max-width: 1000px;
 }
-.add_task span {
+.required_star {
   color: red;
 }
 .main_content {
