@@ -108,6 +108,9 @@ textarea {
   .content_right {
     width: 100%;
   }
+  .add_task_bottom {
+    margin-top: 30px;
+  }
 }
 
 @media (max-width: 1130px) {
