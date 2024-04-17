@@ -199,12 +199,23 @@ h1 {
   cursor: pointer;
 }
 
+.big_card_edit_contacts_area {
+  position: relative;
+  width: 100%;
+}
+
 .big_card_edit_contacts {
-  height: 278px;
+  height: 298px;
+  padding-top: 20px;
   overflow-y: auto;
   gap: 2px;
   flex-direction: column;
   background-color: white;
+  box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: absolute;
+  width: 100%;
 }
 
 .big_card_edit_contacts_select {
