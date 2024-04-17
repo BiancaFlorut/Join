@@ -93,9 +93,13 @@ textarea {
   }
   .main_content {
     display: block;
+    height: calc(100% - 300px);
+    overflow-y: scroll;
+    scrollbar-width: none;
   }
   .add_task {
-    width: 485px;
+    padding: 32px;
+    height: 100%;
   }
   .content_left,
   .content_right {
@@ -103,6 +107,17 @@ textarea {
   }
 }
 
+@media (max-width: 1130px) {
+  .content-section {
+    flex: none;
+    height: calc(100vh - 80px);
+  }
+}
+@media (max-width: 600px) {
+  .add_task {
+    padding: 32px;
+  }
+}
 
 
 
