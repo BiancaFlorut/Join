@@ -91,7 +91,13 @@
 
               <div class="content_right_div">
                 <label for="addSubtasks">Subtasks</label>
-                <input class="add_content_input_text margin_10_20" id="addSubtasks" type="text" placeholder="Add new subtask" />
+                <input id="bigCardEditSubtaskInput" class="big_card_edit_title_input cursor_pointer" onfocus="toggleEditTasksSubtasks()" placeholder="Add new subtask" type="text" />
+                <div class="visibility_area_container df_ac">
+                  <div id="bigCardEditSubtaskInputIcons" class="visibility_icon_container df_ac big_card_edit_subtask_input_icons">
+                    <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/plus.svg" alt="" />
+                  </div>
+                </div>
+                <ul id="bigCardEditSubtasks" class="big_card_edit_subtask_list"></ul>
               </div>
             </div>
           </div>

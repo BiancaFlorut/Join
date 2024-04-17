@@ -232,3 +232,49 @@ function getPriorityButtonsClasses(priority) {
       return "";
   }
 }
+
+function toggleEditTasksSubtasks() {
+  getElementWithId("bigCardEditSubtaskInput").onblur = "";
+  let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
+  iconsContainer.innerHTML = /*html*/ `
+        <img src="../../img/cancel.svg" alt="" onclick="cancelSubtaskEditInput()">
+        <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
+        <img src="../../img/confirm.svg" alt="" onclick="confirmSubtaskEditInput()">
+    `;
+}
+
+function generateSubTaskListItems(subtasks) {
+  let html = "";
+  subtasks.forEach((subtask, i) => {
+    html += /*html*/ `
+        <li>
+            <div class="df_ac big_card_edit_subtask" >
+            <span class="list_bullet">&bull;</span>    
+            <span id="bigCardEditCardSubtaskText_${i}" ondblclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}', ${i})" onmouseover='showElement("bigCardEditCardIcons_${i}")' onmouseout="hideElement('bigCardEditCardIcons_${i}')" class="flex_1">${subtask.text}</span>
+                <div id="bigCardEditCardIcons_${i}" class="df_ac big_card_edit_subtask_icons d_none">
+                    <img src="../../img/edit.svg" alt="" onclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}', ${i})">
+                    <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
+                    <img src="../../img/delete.svg" alt="" onclick="deleteEditTaskSubtask('bigCardEditCardSubtaskText_${i}', ${i})">
+                </div>
+            </div>
+        </li>
+        `;
+  });
+  return html;
+}
+
+function cancelSubtaskEditInput() {
+  let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
+  iconsContainer.innerHTML = /*html*/ `
+        <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/plus.svg" alt="" />
+    `;
+  getElementWithId("bigCardEditSubtaskInput").value = "";
+  getElementWithId("bigCardEditSubtaskInput").onblur = function () {
+    let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
+    iconsContainer.innerHTML = /*html*/ `
+        <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/plus.svg" alt="" />
+    `;
+    getElementWithId("bigCardEditSubtaskInput").value = "";
+  };
+  getElementWithId("bigCardEditSubtaskInput").blur();
+}

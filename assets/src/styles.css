@@ -180,7 +180,6 @@ h1 {
   padding: 0 21px;
   position: relative;
   box-sizing: border-box;
-  height: 100%;
   align-items: center;
   transform: translate(0, -100%);
 }
@@ -199,14 +198,19 @@ h1 {
   cursor: pointer;
 }
 
+.visibility_icon:hover {
+  background-color: rgba(238, 238, 238, 1);
+  border-radius: 50px;
+}
+
 .big_card_edit_contacts_area {
   position: relative;
   width: 100%;
 }
 
 .big_card_edit_contacts {
-  height: 298px;
-  padding-top: 20px;
+  height: 288px;
+  padding-top: 10px;
   overflow-y: auto;
   gap: 2px;
   flex-direction: column;
@@ -288,6 +292,62 @@ h1 {
   padding: 0 2px;
 }
 
+.big_card_edit_subtask_input_icons {
+  gap: 4px;
+  cursor: pointer;
+}
+
+.big_card_edit_subtask_input_icons img:hover {
+  background-color: rgba(238, 238, 238, 1);
+  border-radius: 50px;
+}
+
+.big_card_edit_subtask_list {
+  margin: 0;
+  padding-inline-start: 0;
+}
+
+#bigCardEditSubtasks li {
+  margin-top: 8px;
+}
+
+#bigCardEditSubtasks li::marker {
+  margin: 0;
+}
+
+.big_card_edit_subtask {
+  justify-content: space-between;
+  padding: 4px 16px;
+  cursor: pointer;
+}
+
+.big_card_edit_subtask_on_edit {
+  cursor: text;
+  border-bottom: 1px solid rgba(0, 93, 255, 1);
+}
+
+.big_card_edit_subtask:hover {
+  border-radius: 10px;
+  background-color: rgba(238, 238, 238, 1);
+}
+
+.big_card_edit_subtask_on_edit:hover {
+  border-radius: 0;
+  background-color: white;
+}
+
+.big_card_edit_subtask_on_edit img:hover {
+  cursor: pointer;
+}
+
+.big_card_edit_subtask span:focus {
+  outline: none;
+}
+
+.list_bullet {
+  padding-right: 8px;
+}
+
 .df_ac {
   display: flex;
   align-items: center;
@@ -295,6 +355,22 @@ h1 {
 
 .cursor_pointer {
   cursor: pointer;
+}
+
+.pr_10 {
+  padding-right: 10px;
+}
+
+.jc {
+  justify-content: center;
+}
+
+.flex_1 {
+  flex: 1;
+}
+
+.flex_1_1_0px {
+  flex: 1 1 0px;
 }
 
 .d_none {

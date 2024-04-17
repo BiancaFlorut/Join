@@ -1,4 +1,4 @@
-let addedTask = { assign_to: [] };
+let addedTask = { assign_to: [], subtasks: [] };
 let isContactListOpen = false;
 let user;
 let allContacts;
@@ -62,4 +62,16 @@ function searchContact() {
 function togglePriorityTo(priorityValue, buttonElement) {
   addedTask.priority = priorityValue;
   togglePriority(priorityValue, buttonElement);
+}
+
+function confirmSubtaskEditInput() {
+  let newText = getElementWithId("bigCardEditSubtaskInput").value;
+  if (newText.length > 0) {
+    const subtask = { text: newText, checked: false };
+    addedTask.subtasks.push(subtask);
+  } else {
+    // delete the subtask
+  }
+  getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(addedTask.subtasks);
+  cancelSubtaskEditInput();
 }
