@@ -24,7 +24,7 @@
           <div id="content" class="main_content">
             <div class="content_left">
               <div>
-                <label for="addTitle">Title<span>*</span></label>
+                <label for="addTitle">Title<span class="required_red_star">*</span></label>
                 <input class="add_content_input_text margin_10_20" id="addTitle" type="text" placeholder="Enter a title" />
               </div>
               <div>
@@ -62,7 +62,7 @@
 
             <div class="content_right">
               <div class="content_right_div">
-                <label for="addDate">Due date<span>*</span></label>
+                <label for="addDate">Due date<span class="required_red_star">*</span></label>
                 <input class="add_content_input_text margin_10_20" id="addDate" type="date" placeholder="dd/mm/yyyy" />
               </div>
 
@@ -85,7 +85,7 @@
               </div>
 
               <div class="content_right_div">
-                <label for="addCategory">Category<span>*</span></label>
+                <label for="addCategory">Category<span class="required_red_star">*</span></label>
                 <input readonly class="add_content_input_text margin_10_20" id="addCategory" type="text" value="Select task category" />
               </div>
 
@@ -101,8 +101,9 @@
               </div>
             </div>
           </div>
+
           <div class="add_task_bottom">
-            <p><span>*</span> This Field is required</p>
+            <p><span class="required_red_star">*</span> This Field is required</p>
 
             <div class="add_task_buttons">
               <button class="button_line light_bold_20">Clear X</button>
