@@ -340,3 +340,7 @@ function setOnBlurFunctionOnEditedSubtask(i) {
     cancelSubtaskEdit(subtaskELementId);
   };
 }
+
+function scrollToTheBottomOfTheContainer(element) {
+  element.scrollTop = element.scrollHeight;
+}

@@ -73,6 +73,7 @@ function confirmSubtaskEditInput() {
     addedTask.subtasks.push(subtask);
   }
   getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(addedTask.subtasks);
+  scrollToTheBottomOfTheContainer(getElementWithId("content"));
   // addedTask.subtasks.forEach((subtask, i) => setOnBlurFunctionOnEditedSubtask(i));
   cancelSubtaskEditInput();
 }
