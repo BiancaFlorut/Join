@@ -24,7 +24,7 @@
           <div id="content" class="main_content">
             <div class="content_left">
               <div>
-                <label for="addTitle">Title<span>*</span></label>
+                <label for="addTitle">Title<span class="required_red_star">*</span></label>
                 <input class="add_content_input_text margin_10_20" id="addTitle" type="text" placeholder="Enter a title" />
               </div>
               <div>
@@ -49,7 +49,9 @@
                         <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/arrow_drop_down_down.svg" alt="" onclick="setToggleForTheContactList()" />
                       </div>
                     </div>
-                    <div id="addTaskAssignedContacts" class="big_card_edit_contacts df_ac d_none"></div>
+                    <div class="big_card_edit_contacts_area">
+                      <div id="addTaskAssignedContacts" class="big_card_edit_contacts df_ac d_none"></div>
+                    </div>
                   </div>
                 </div>
                 <div id="editAssignToIconsList" class="big_card_edit_assigned_to_logos df_ac"></div>
@@ -60,8 +62,8 @@
 
             <div class="content_right">
               <div class="content_right_div">
-                <label for="addDate">Due date<span>*</span></label>
-                <input class="add_content_input_text margin_10_20" id="addDate" type="date" placeholder="dd/mm/yyyy" />
+                <label for="addDueDate">Due date<span class="required_red_star">*</span></label>
+                <input id="addDueDate" class="add_content_input_text margin_10_20" id="addDate" type="date" placeholder="dd/mm/yyyy" />
               </div>
 
               <div class="content_right_div">
@@ -83,19 +85,31 @@
               </div>
 
               <div class="content_right_div">
-                <label for="addCategory">Category<span>*</span></label>
-                <input readonly class="add_content_input_text margin_10_20" id="addCategory" type="text" value="Select task category" />
+                <label for="addCategory">Category<span class="required_red_star">*</span></label>
+                <input id="addCategory" class="big_card_edit_title_input cursor_pointer" onclick="addNewCategory(this)" readonly placeholder="Select task category" type="text" />
+                <div class="visibility_area_container df_ac">
+                  <div id="addCategoryIcons" class="visibility_icon_container df_ac big_card_edit_subtask_input_icons">
+                    <img class="visibility_icon" src="../../img/arrow_drop_down_down.svg" alt="" onclick="toggleCategoryOptions()" />
+                  </div>
+                </div>
+                <div id="categoryContainer" class="category_container d_none"></div>
               </div>
 
               <div class="content_right_div">
                 <label for="addSubtasks">Subtasks</label>
-                <input class="add_content_input_text margin_10_20" id="addSubtasks" type="text" placeholder="Add new subtask" />
+                <input id="addSubtasks" class="big_card_edit_title_input cursor_pointer" onfocus="toggleEditTasksSubtasks()" placeholder="Add new subtask" type="text" />
+                <div class="visibility_area_container df_ac">
+                  <div id="bigCardEditSubtaskInputIcons" class="visibility_icon_container df_ac big_card_edit_subtask_input_icons">
+                    <img class="visibility_icon" src="../../img/plus.svg" alt="" onclick="toggleEditTasksSubtasks()" />
+                  </div>
+                </div>
+                <ul id="bigCardEditSubtasks" class="big_card_edit_subtask_list"></ul>
               </div>
-
             </div>
           </div>
+
           <div class="add_task_bottom">
-            <p><span>*</span> This Field is required</p>
+            <p><span class="required_red_star">*</span> This Field is required</p>
 
             <div class="add_task_buttons">
               <button class="button_line light_bold_20">Clear X</button>

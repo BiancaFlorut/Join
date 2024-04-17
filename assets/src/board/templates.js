@@ -55,7 +55,7 @@ function generateEditedTaskHTML(valueDate, minDateValue, priorityClasses) {
                             </div>
                         </div>
                         <div id="bigCardEditContacts" class='big_card_edit_contacts df_ac d_none'> ` +
-    getOptionForAssignedTo(allContacts, editedTask) +
+    getOptionForAssignedTo(user.contacts, editedTask, user.email) +
     /*html*/ `
                         </div>
                     </div>
@@ -68,10 +68,10 @@ function generateEditedTaskHTML(valueDate, minDateValue, priorityClasses) {
         </div>
         <div class="big_card_edit_title">
             <span class="big_card_edit_title_header">Subtasks</span>
-            <input id="bigCardEditSubtaskInput" class='big_card_edit_title_input cursor_pointer' onfocus="toggleEditTasksSubtasks()" placeholder='Add new subtask' type="text">
+            <input id="addSubtasks" class='big_card_edit_title_input cursor_pointer' onfocus="toggleEditTasksSubtasks()" placeholder='Add new subtask' type="text">
             <div class="visibility_area_container df_ac">
                 <div id="bigCardEditSubtaskInputIcons" class="visibility_icon_container df_ac big_card_edit_subtask_input_icons">
-                    <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/plus.svg" alt="" />
+                    <img class="visibility_icon" src="../../img/plus.svg" alt="" />
                 </div>
             </div>
             <ul id="bigCardEditSubtasks" class="big_card_edit_subtask_list">` +

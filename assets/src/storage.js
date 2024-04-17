@@ -97,3 +97,9 @@ async function updateUserToRemoteServer(user) {
     }
     return userIndex;
 }
+
+async function updateUserContactsToRemoteServer(email, contacts) {
+    let user = await getUserFromServer(email);
+    user.contacts = contacts;
+    await updateUserToRemoteServer(user);
+}

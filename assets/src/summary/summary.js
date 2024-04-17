@@ -16,7 +16,11 @@ async function summaryInit() {
     awaitingUrgent();
     searchTasksInit();
 }
-
+/**
+ * Function to toggle visibility of an element based on the window width.
+ *
+ * @return {void} No return value
+ */
 function toggleVisibilityBasedOnWidth() {
     let divElement = document.getElementById('summaryContentRight');
     if (window.innerWidth <= 720) {
@@ -32,12 +36,22 @@ document.addEventListener('DOMContentLoaded', toggleVisibilityBasedOnWidth);
 
 window.addEventListener('resize', toggleVisibilityBasedOnWidth);
 
+/**
+ * Function to find a user by fetching data from the server.
+ *
+ * @return {Promise<void>} Resolves when the user is found and updated.
+ */
 async function findUser() {
     let userServer = await getUserFromServer(urlEmail);
     user.push(userServer);
     user = user[0];
 }
 
+/**
+ * Asynchronously finds tasks for a user and updates the tasks array.
+ *
+ * @return {Promise<void>} A Promise that resolves when the tasks have been updated.
+ */
 async function findTasks() {
     let userTasks = await getTaskList(urlEmail);
     tasks.push(userTasks);
@@ -118,7 +132,9 @@ function welcomeUser() {
 }
 
 /**
- * this function welcomes the user depending on the time of day
+ * This function welcomes the user depending on the time of day
+ *
+ * @return {void} No return value
  */
 function greetUser() {
     const currentHour = new Date().getHours();

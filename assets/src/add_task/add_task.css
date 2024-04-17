@@ -11,7 +11,7 @@
   padding: 80px;
   max-width: 1000px;
 }
-.add_task span {
+.required_red_star {
   color: red;
 }
 .main_content {
@@ -78,6 +78,24 @@ textarea {
 .margin_10_20 {
   margin: 10px 0 20px 0;
 }
+.button_priority {
+  width: -webkit-fill-available;
+}
+
+.category_container {
+  background-color: white;
+  font-size: 20px;
+}
+
+.category {
+  padding: 12px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.category:hover {
+  background-color: #eeeeee;
+}
 /*
 |/////////////////////////////////////////////////////////////|
 |                                                             |
@@ -93,19 +111,59 @@ textarea {
   }
   .main_content {
     display: block;
+    height: calc(100% - 300px);
+    overflow-y: scroll;
+    scrollbar-width: none;
   }
   .add_task {
-    width: 485px;
+    padding: 32px;
+    height: calc(100vh - 164px);
   }
   .content_left,
   .content_right {
     width: 100%;
   }
+  .add_task_bottom {
+    margin-top: 30px;
+  }
 }
 
-
-
-
+@media (max-width: 1130px) {
+  .content-section {
+    flex: none;
+    height: calc(100vh - 80px);
+  }
+  .add_task {
+    height: calc(100vh - 192px);
+    padding: 32px 32px 0 32px;
+  }
+}
+@media (max-width: 600px) {
+  .light_bold_20 {
+    display: none;
+  }
+  .add_task h1 {
+    font-size: 47px;
+  }
+  .add_task label {
+    font-size: 16px;
+  }
+  .add_task input,
+  textarea {
+    font-size: 16px;
+    padding: 8px 21px;
+  }
+  .button_priority {
+    font-size: 16px;
+    height: 40px;
+  }
+  .button_priority span {
+    color: black;
+  }
+  .visibility_icon_container {
+    padding: 7px 0;
+  }
+}
 
 /* style for the imported elements form edit task please let them under your styles otherwise they will be overwritten */
 
