@@ -7,6 +7,11 @@ async function initContacts() {
     firstLetter = getFirstLetterArray(contacts);
 }
 
+/**
+ * Generates the HTML content for the contact list and appends it to the 'content' element.
+ *
+ * @return {void} This function does not return a value.
+ */
 function contactListHTML() {
     let content = document.getElementById('content');
     content.innerHTML = '';
@@ -49,7 +54,7 @@ function contactName(email) {
         <div>
             <div class="profile_contact" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
             <div class="contact_info_name">${contact.name}</div>
-            <img class="edit_delet" src="../../img/contacts_edit.svg">
+            <img onclick="editContact()" class="edit_delet" src="../../img/contacts_edit.svg">
             <img class="edit_delet" src="../../img/contacts_delete.svg">
         </div>
         <span class="contact_info">Contact Information</span>
@@ -65,10 +70,26 @@ function editContact() {
     document.getElementById('overlayEditContact').style.display='flex';
 }
 
-function addContact() {
+function addContact(name, email, phone) {
     document.getElementById('overlyContact').style.display='flex';
     document.getElementById('overlayEditContact').style.display='none';
+    document.getElementById('contactSucces').style.display='none';
+    const newContact = { name: name, email: email, phone: phone};
+    contacts.push(newContact);
+    // newContact.value = '';
+
+    console.log('Name:', name);
+    console.log('Email:', email);
+    console.log('Phone:', phone);
+
+    contactListHTML();
 }
+
+function contactSuccesfully() {
+    document.getElementById('overlyContact').style.display='none';
+    document.getElementById('contactSucces').style.display='flex';
+}
+
 
 function addClose() {
     document.getElementById('overlyContact').style.display='none';

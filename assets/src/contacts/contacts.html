@@ -50,7 +50,7 @@
                   <img src="../../img/contacts_add_contact_person.svg" alt="icon_person" />
                 </div>
               </div>
-              <form class="create_contact">
+              <form class="create_contact" onsubmit="event.preventDefault(); addContact(document.getElementById('name').value, document.getElementById('email').value, document.getElementById('phone').value);">
                 <img onclick="addClose()" class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
                 <input id="name" class="input_area person" placeholder="Name" type="text" />
                 <input id="email" class="input_area mail" placeholder="Email" type="email"/>
@@ -58,9 +58,10 @@
               </form>
               <div class="add_contact_button_center">
                 <button onclick="addClose()" class="contacts_button_cancel button_line">Cancel<img style="padding-left: 4px" src="../../img/board_add_task_close.svg" alt="icon_close" /></button>
-                <button disabled class="bold">Create contact<img style="padding-left: 4px" src="../../img/contacts_add_contact_check.svg" alt="icon_check"/></button>
+                <button onclick="contactSuccesfully()"tybe="submit" class="bold">Create contact<img style="padding-left: 4px" src="../../img/contacts_add_contact_check.svg" alt="icon_check"/></button>
               </div>
           </div>
+          <button class="d_none" id="contactSucces">Contact succesfully created</button>
           <div class="main_container_add_contact" id="overlayEditContact">
             <div class="left_container_edit_contacts">
               <img class="contacts_join_logo" src="../../img/contacts_join_logo.svg" alt="join_logo"/>
@@ -75,9 +76,9 @@
               </div>
               <form class="create_contact">
                 <img onclick="addClose()" class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
-                <input id="name" class="input_area person" required placeholder="Name" type="text" />
-                <input id="email" class="input_area mail"  required placeholder="Email" type="email"/>
-                <input id="phone" class="input_area phone" required placeholder="Phone" type="tel" />
+                <input id="editName" class="input_area person" required placeholder="Name" type="text" />
+                <input id="editEmail" class="input_area mail"  required placeholder="Email" type="email"/>
+                <input id="editPhone" class="input_area phone" required placeholder="Phone" type="tel" />
               </form>
               <div class="edit_contact_button">
                 <button class="contacts_button_cancel button_line">Delete</button>
