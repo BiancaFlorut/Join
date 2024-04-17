@@ -241,6 +241,7 @@ function getPriorityButtonsClasses(priority) {
  */
 function toggleEditTasksSubtasks() {
   getElementWithId("bigCardEditSubtaskInput").onblur = "";
+  getElementWithId("bigCardEditSubtaskInput").focus();
   let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
   iconsContainer.innerHTML = /*html*/ `
         <img src="../../img/cancel.svg" alt="" onclick="cancelSubtaskEditInput()">
@@ -278,7 +279,7 @@ function generateSubTaskListItems(subtasks) {
 function cancelSubtaskEditInput() {
   let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
   iconsContainer.innerHTML = /*html*/ `
-        <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/plus.svg" alt="" />
+        <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/plus.svg" alt="" onclick="toggleEditTasksSubtasks()"/>
     `;
   getElementWithId("bigCardEditSubtaskInput").value = "";
   getElementWithId("bigCardEditSubtaskInput").onblur = function () {
