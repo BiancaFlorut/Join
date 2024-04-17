@@ -35,6 +35,7 @@ async function initAddTask() {
     this.setAttribute("readonly", "");
     getElementWithId("addTaskAssignedContacts").innerHTML = getOptionForAssignedTo(allContacts, addedTask);
   };
+
 }
 
 function setToggleForTheContactList() {
@@ -67,13 +68,12 @@ function togglePriorityTo(priorityValue, buttonElement) {
 
 function confirmSubtaskEditInput() {
   let newText = getElementWithId("bigCardEditSubtaskInput").value;
-  if (newText.length > 0) {
+  if (!isWhiteSpaceOnly(newText)) {
     const subtask = { text: newText, checked: false };
     addedTask.subtasks.push(subtask);
-  } else {
-    // delete the subtask
   }
   getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(addedTask.subtasks);
+  // addedTask.subtasks.forEach((subtask, i) => setOnBlurFunctionOnEditedSubtask(i));
   cancelSubtaskEditInput();
 }
 
@@ -87,12 +87,19 @@ function cancelSubtaskEdit(id) {
 
 function saveEditedSubtask(id) {
   const i = getIndexFromId(id);
-  if (getElementWithId(id).innerHTML.length > 0) {
-    addedTask.subtasks[i].text = getElementWithId(id).innerHTML;
-    getElementWithId(id).parentElement.classList.remove("big_card_edit_subtask_on_edit");
-    getElementWithId(id).blur();
-    getElementWithId(id).contentEditable = false;
+  let element = getElementWithId(id);
+  const text = element.innerHTML;
+  if (!isWhiteSpaceOnly(text)) {
+    addedTask.subtasks[i].text = text;
+    element.parentElement.classList.remove("big_card_edit_subtask_on_edit");
+    element.contentEditable = false;
     getElementWithId("bigCardEditCardIcons_" + i).innerHTML = generateSubtaskHTML(i);
-    getElementWithId(id).blur();
-  } else deleteEditTaskSubtask(id, i);
+    element.blur();
+  } else deleteEditTaskSubtask(id);
+}
+
+function deleteEditTaskSubtask(id) {
+  const i = getIndexFromId(id);
+  addedTask.subtasks.splice(i, 1);
+  getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(addedTask.subtasks);
 }

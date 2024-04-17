@@ -15,19 +15,8 @@ function editTask(taskId) {
   initEvents();
 }
 
-function setOnBlurFunctionOnEditedSubtask(i) {
-  const subtaskELementId = `bigCardEditCardSubtaskText_${i}`;
-  let element = getElementWithId(subtaskELementId);
-  const iconsId = `bigCardEditCardIcons_${i}`;
-  element.onblur = function () {
-    element.onmouseout = hideElement(iconsId);
-    getElementWithId(iconsId).classList.add('d_none');
-    cancelSubtaskEdit(subtaskELementId);
-  };
-}
-
 function initEvents() {
-  editedTask.subtasks.forEach((subtask, i) => setOnBlurFunctionOnEditedSubtask(i));
+  // editedTask.subtasks.forEach((subtask, i) => setOnBlurFunctionOnEditedSubtask(i));
   getElementWithId("bigCardEdiSearchContact").ondblclick = function () {
     this.removeAttribute("readonly");
     this.value = "";
@@ -94,18 +83,17 @@ function isTitelValid() {
 
 function confirmSubtaskEditInput() {
   let newText = getElementWithId("bigCardEditSubtaskInput").value;
-  if (newText.length > 0) {
+  if (!isWhiteSpaceOnly(newText)) {
     const subtask = { text: newText, checked: false };
     editedTask.subtasks.push(subtask);
-  } else {
-    // delete the subtask
   }
   getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(editedTask.subtasks);
+  // editedTask.forEach((subtask, i) => setOnBlurFunctionOnEditedSubtask(i));
   cancelSubtaskEditInput();
 }
 
-function deleteEditTaskSubtask(id, i) {
-  let element = getElementWithId(id);
+function deleteEditTaskSubtask(id) {
+  const i = getIndexFromId(id);
   editedTask.subtasks.splice(i, 1);
   getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(editedTask.subtasks);
 }
@@ -119,16 +107,16 @@ function cancelSubtaskEdit(id) {
 }
 
 function saveEditedSubtask(id) {
-  const subtaskIndex = id.split("_");
-  const i = subtaskIndex[1];
-  if (getElementWithId(id).innerHTML.length > 0) {
-    editedTask.subtasks[i].text = getElementWithId(id).innerHTML;
-    getElementWithId(id).parentElement.classList.remove("big_card_edit_subtask_on_edit");
-    getElementWithId(id).blur();
-    getElementWithId(id).contentEditable = false;
+  const i = getIndexFromId(id);
+  let element = getElementWithId(id);
+  const text = element.innerHTML;
+  if (!isWhiteSpaceOnly(text)) {
+    editedTask.subtasks[i].text = text;
+    element.parentElement.classList.remove("big_card_edit_subtask_on_edit");
+    element.contentEditable = false;
     getElementWithId("bigCardEditCardIcons_" + i).innerHTML = generateSubtaskHTML(i);
-    getElementWithId(id).blur();
-  } else deleteEditTaskSubtask(id, i);
+    element.blur();
+  } else deleteEditTaskSubtask(id);
 }
 
 function searchContact() {

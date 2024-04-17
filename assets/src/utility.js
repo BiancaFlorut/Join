@@ -313,7 +313,7 @@ function generateSubtaskHTML(i) {
   return /*html*/ `
   <img src="../../img/edit.svg" alt="" onclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}')">
   <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
-  <img src="../../img/delete.svg" alt="" onclick="deleteEditTaskSubtask('bigCardEditCardSubtaskText_${i}', ${i})">
+  <img src="../../img/delete.svg" alt="" onclick="deleteEditTaskSubtask('bigCardEditCardSubtaskText_${i}')">
   `;
 }
 
@@ -328,4 +328,15 @@ function cancelEditSubtask(id, i) {
   element.contentEditable = false;
   getElementWithId("bigCardEditCardIcons_" + i).classList.add("d_none");
   getElementWithId("bigCardEditCardIcons_" + i).innerHTML = generateSubtaskHTML(i);
+}
+
+function setOnBlurFunctionOnEditedSubtask(i) {
+  const subtaskELementId = `bigCardEditCardSubtaskText_${i}`;
+  let element = getElementWithId(subtaskELementId);
+  const iconsId = `bigCardEditCardIcons_${i}`;
+  element.onblur = function () {
+    element.onmouseout = hideElement(iconsId);
+    getElementWithId(iconsId).classList.add('d_none');
+    cancelSubtaskEdit(subtaskELementId);
+  };
 }
