@@ -24,6 +24,7 @@ async function initAddTask() {
   const userContact = { name: user.name + " (You)", email: user.email, color: user.color };
   allContacts = [...user.contacts, userContact];
   container.innerHTML = getOptionForAssignedTo(allContacts, addedTask);
+  togglePriorityTo(1, getElementWithId("buttonPriority1"));
   getElementWithId("bigCardEdiSearchContact").ondblclick = function () {
     this.removeAttribute("readonly");
     this.value = "";

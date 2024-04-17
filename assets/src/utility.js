@@ -248,9 +248,9 @@ function generateSubTaskListItems(subtasks) {
   subtasks.forEach((subtask, i) => {
     html += /*html*/ `
         <li>
-            <div class="df_ac big_card_edit_subtask" >
+            <div class="df_ac big_card_edit_subtask" onmouseover='showElement("bigCardEditCardIcons_${i}")' onmouseout="hideElement('bigCardEditCardIcons_${i}')">
             <span class="list_bullet">&bull;</span>    
-            <span id="bigCardEditCardSubtaskText_${i}" ondblclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}', ${i})" onmouseover='showElement("bigCardEditCardIcons_${i}")' onmouseout="hideElement('bigCardEditCardIcons_${i}')" class="flex_1">${subtask.text}</span>
+            <span id="bigCardEditCardSubtaskText_${i}" ondblclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}', ${i})" class="flex_1">${subtask.text}</span>
                 <div id="bigCardEditCardIcons_${i}" class="df_ac big_card_edit_subtask_icons d_none">
                     <img src="../../img/edit.svg" alt="" onclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}', ${i})">
                     <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
