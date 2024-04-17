@@ -56,7 +56,6 @@ textarea {
   box-sizing: border-box;
   font-family: "Inter-Regular";
   cursor: pointer;
-  margin: 10px 0 20px 0;
 }
 .decoration_content {
   width: 1px;
@@ -75,6 +74,9 @@ textarea {
   min-width: 123px;
   margin: 10px 0 20px 0;
   justify-content: center;
+}
+.margin_10_20 {
+  margin: 10px 0 20px 0;
 }
 /*
 |/////////////////////////////////////////////////////////////|
