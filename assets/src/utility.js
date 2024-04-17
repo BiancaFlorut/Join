@@ -233,6 +233,12 @@ function getPriorityButtonsClasses(priority) {
   }
 }
 
+/**
+ * This function clears the blur event handler for the "bigCardEditSubtaskInput" element,
+ * and replaces the icons in "bigCardEditSubtaskInputIcons" container with edit mode icons. 
+ * The input is focused and the user can type the new subtask.
+ * @returns {void}
+ */
 function toggleEditTasksSubtasks() {
   getElementWithId("bigCardEditSubtaskInput").onblur = "";
   let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
@@ -243,6 +249,11 @@ function toggleEditTasksSubtasks() {
     `;
 }
 
+/**
+ * This function generates the html code with the edit icons for each subtask.
+ * @param {Array} subtasks 
+ * @returns string html
+ */
 function generateSubTaskListItems(subtasks) {
   let html = "";
   subtasks.forEach((subtask, i) => {
@@ -250,11 +261,9 @@ function generateSubTaskListItems(subtasks) {
         <li>
             <div class="df_ac big_card_edit_subtask" onmouseover='showElement("bigCardEditCardIcons_${i}")' onmouseout="hideElement('bigCardEditCardIcons_${i}')">
             <span class="list_bullet">&bull;</span>    
-            <span id="bigCardEditCardSubtaskText_${i}" ondblclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}', ${i})" class="flex_1">${subtask.text}</span>
-                <div id="bigCardEditCardIcons_${i}" class="df_ac big_card_edit_subtask_icons d_none">
-                    <img src="../../img/edit.svg" alt="" onclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}', ${i})">
-                    <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
-                    <img src="../../img/delete.svg" alt="" onclick="deleteEditTaskSubtask('bigCardEditCardSubtaskText_${i}', ${i})">
+            <span id="bigCardEditCardSubtaskText_${i}" ondblclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}')" class="flex_1">${subtask.text}</span>
+                <div id="bigCardEditCardIcons_${i}" class="df_ac big_card_edit_subtask_icons d_none">`
+                   + generateSubtaskHTML(i) + /*html*/ `
                 </div>
             </div>
         </li>
@@ -263,6 +272,9 @@ function generateSubTaskListItems(subtasks) {
   return html;
 }
 
+/**
+ * This function cancels the edit mode for the subtask input and sets blur function.
+ */
 function cancelSubtaskEditInput() {
   let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
   iconsContainer.innerHTML = /*html*/ `
@@ -277,4 +289,43 @@ function cancelSubtaskEditInput() {
     getElementWithId("bigCardEditSubtaskInput").value = "";
   };
   getElementWithId("bigCardEditSubtaskInput").blur();
+}
+
+/**
+ *
+ * @param {HTMLElement} element
+ */
+function editTasksSubtask(id) {
+  let element = getElementWithId(id);
+  const i = getIndexFromId(id);
+  element.parentElement.classList.add("big_card_edit_subtask_on_edit");
+  element.contentEditable = true;
+  element.focus();
+  getElementWithId("bigCardEditCardIcons_" + i).innerHTML = /*html*/ `
+        <img src="../../img/delete.svg" alt="" onclick="cancelSubtaskEdit('${id}', ${i})">
+        <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
+        <img src="../../img/confirm.svg" alt="" onclick="saveEditedSubtask('${element.id}')">
+    `;
+  getElementWithId(id).onmouseout = `showElement('bigCardEditCardIcons_${i}')`;
+}
+
+function generateSubtaskHTML(i) {
+  return /*html*/ `
+  <img src="../../img/edit.svg" alt="" onclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}')">
+  <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
+  <img src="../../img/delete.svg" alt="" onclick="deleteEditTaskSubtask('bigCardEditCardSubtaskText_${i}', ${i})">
+  `;
+}
+
+function getIndexFromId(id) {
+  const subtaskIndex = id.split("_");
+  return subtaskIndex[1];
+}
+
+function cancelEditSubtask(id, i) {
+  let element = getElementWithId(id);
+  element.parentElement.classList.remove("big_card_edit_subtask_on_edit");
+  element.contentEditable = false;
+  getElementWithId("bigCardEditCardIcons_" + i).classList.add("d_none");
+  getElementWithId("bigCardEditCardIcons_" + i).innerHTML = generateSubtaskHTML(i);
 }

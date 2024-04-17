@@ -76,3 +76,23 @@ function confirmSubtaskEditInput() {
   getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(addedTask.subtasks);
   cancelSubtaskEditInput();
 }
+
+function cancelSubtaskEdit(id) {
+  const i = getIndexFromId(id);
+  cancelEditSubtask(id, i);
+  const element = getElementWithId(id);
+  element.innerHTML = addedTask.subtasks[i].text;
+  element.blur();
+}
+
+function saveEditedSubtask(id) {
+  const i = getIndexFromId(id);
+  if (getElementWithId(id).innerHTML.length > 0) {
+    addedTask.subtasks[i].text = getElementWithId(id).innerHTML;
+    getElementWithId(id).parentElement.classList.remove("big_card_edit_subtask_on_edit");
+    getElementWithId(id).blur();
+    getElementWithId(id).contentEditable = false;
+    getElementWithId("bigCardEditCardIcons_" + i).innerHTML = generateSubtaskHTML(i);
+    getElementWithId(id).blur();
+  } else deleteEditTaskSubtask(id, i);
+}

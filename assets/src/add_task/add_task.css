@@ -133,7 +133,8 @@ textarea {
   .add_task label {
     font-size: 16px;
   }
-  .add_task input,textarea {
+  .add_task input,
+  textarea {
     font-size: 16px;
     padding: 8px 21px;
   }
@@ -144,10 +145,10 @@ textarea {
   .button_priority span {
     color: black;
   }
+  .visibility_icon_container {
+    padding: 7px 0;
+  }
 }
-
-
-
 
 /* style for the imported elements form edit task please let them under your styles otherwise they will be overwritten */
 

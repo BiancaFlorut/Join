@@ -22,7 +22,7 @@ function setOnBlurFunctionOnEditedSubtask(i) {
   element.onblur = function () {
     element.onmouseout = hideElement(iconsId);
     getElementWithId(iconsId).classList.add('d_none');
-    cancelSubtaskEdit(subtaskELementId, i);
+    cancelSubtaskEdit(subtaskELementId);
   };
 }
 
@@ -110,32 +110,10 @@ function deleteEditTaskSubtask(id, i) {
   getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(editedTask.subtasks);
 }
 
-/**
- *
- * @param {HTMLElement} element
- */
-function editTasksSubtask(id, i) {
-  let element = getElementWithId(id);
-  element.parentElement.classList.add("big_card_edit_subtask_on_edit");
-  element.contentEditable = true;
-  getElementWithId("bigCardEditCardIcons_" + i).innerHTML = /*html*/ `
-        <img src="../../img/delete.svg" alt="" onclick="cancelSubtaskEdit('${id}', ${i})">
-        <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
-        <img src="../../img/confirm.svg" alt="" onclick="saveEditedSubtask('${element.id}')">
-    `;
-  getElementWithId(id).onmouseout = `showElement('bigCardEditCardIcons_${i}')`;
-}
-
-function cancelSubtaskEdit(id, i) {
-  let element = getElementWithId(id);
-  element.parentElement.classList.remove("big_card_edit_subtask_on_edit");
-  element.contentEditable = false;
-  getElementWithId("bigCardEditCardIcons_" + i).classList.add("d_none");
-  getElementWithId("bigCardEditCardIcons_" + i).innerHTML = /*html*/ `
-    <img src="../../img/edit.svg" alt="" onclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}', ${i})">
-    <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
-    <img src="../../img/delete.svg" alt="" onclick="deleteEditTaskSubtask('bigCardEditCardSubtaskText_${i}', ${i})">
-    `;
+function cancelSubtaskEdit(id) {
+  const i = getIndexFromId(id);
+  cancelEditSubtask(id, i);
+  const element = getElementWithId(id);
   element.innerHTML = editedTask.subtasks[i].text;
   element.blur();
 }
@@ -148,11 +126,7 @@ function saveEditedSubtask(id) {
     getElementWithId(id).parentElement.classList.remove("big_card_edit_subtask_on_edit");
     getElementWithId(id).blur();
     getElementWithId(id).contentEditable = false;
-    getElementWithId("bigCardEditCardIcons_" + i).innerHTML = /*html*/ `
-        <img src="../../img/edit.svg" alt="" onclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}', ${i})">
-        <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
-        <img src="../../img/delete.svg" alt="" onclick="deleteEditTaskSubtask('bigCardEditCardSubtaskText_${i}', ${i})">
-    `;
+    getElementWithId("bigCardEditCardIcons_" + i).innerHTML = generateSubtaskHTML(i);
     getElementWithId(id).blur();
   } else deleteEditTaskSubtask(id, i);
 }

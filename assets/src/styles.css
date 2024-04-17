@@ -330,6 +330,7 @@ h1 {
 .big_card_edit_subtask_on_edit {
   cursor: text;
   border-bottom: 1px solid rgba(0, 93, 255, 1);
+  background-color: white;
 }
 
 .big_card_edit_subtask:hover {
