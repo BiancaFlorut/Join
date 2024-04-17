@@ -11,7 +11,7 @@
   padding: 80px;
   max-width: 1000px;
 }
-.required_star {
+.required_red_star {
   color: red;
 }
 .main_content {
