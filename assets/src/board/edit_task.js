@@ -213,37 +213,13 @@ function searchContact() {
   container.innerHTML = getOptionForAssignedTo(foundContacts, editedTask);
 }
 
-function getPriorityButtonsClasses(priority) {
-  switch (priority) {
-    case 0:
-      return "low clicked";
-    case 1:
-      return "medium clicked";
-    case 2:
-      return "urgent clicked";
-    default:
-      return "";
-  }
-}
-
 function togglePriorityTo(priorityValue, buttonElement) {
   editedTask.priority = priorityValue;
-  resetPriorityButtons();
-  let classList = getPriorityButtonsClasses(priorityValue).split(" ");
-  buttonElement.classList.add(...classList);
-}
-
-function resetPriorityButtons() {
-  for (let i = 0; i < 3; i++) {
-    let classList = getElementWithId("buttonPriority" + i).classList;
-    classList.remove("clicked");
-    classList.remove(getTaskPriority(i));
-  }
+  togglePriority(priorityValue, buttonElement);
 }
 
 function setToggleForTheContactList() {
   const imgElement = getElementWithId('bigCardEdiSearchIcon');
-  
   istContactListOpen = toggleContactsList(imgElement, 'bigCardEditContacts', 'bigCardEdiSearchContact', istContactListOpen);
 }
 

@@ -172,7 +172,6 @@ function toggleSelectedContact(element, email, checked, task) {
     element.classList.remove("big_card_edit_contact_clicked");
     const index = task.assign_to.findIndex((c) => c.email == email);
     task.assign_to.splice(index, 1);
-
   } else {
     toggleCheckbox(getElementWithId(`${email}Checkbox`), false, CHECKBOX_PATH + "_white");
     element.classList.add("big_card_edit_contact_clicked");
@@ -192,4 +191,44 @@ function getContactsLogoHTML(contacts) {
   let html = "";
   contacts.forEach((contact) => (html += getContactLogoForBigCardEditHTML(contact)));
   return html;
+}
+
+function togglePriority(priorityValue, buttonElement) {
+  resetPriorityButtons();
+  let classList = getPriorityButtonsClasses(priorityValue).split(" ");
+  buttonElement.classList.add(...classList);
+}
+
+function resetPriorityButtons() {
+  for (let i = 0; i < 3; i++) {
+    let classList = getElementWithId("buttonPriority" + i).classList;
+    classList.remove("clicked");
+    classList.remove(getTaskPriority(i));
+  }
+}
+
+function getPriorityButtonsClasses(priority) {
+  switch (priority) {
+    case 0:
+      return "low clicked";
+    case 1:
+      return "medium clicked";
+    case 2:
+      return "urgent clicked";
+    default:
+      return "";
+  }
+}
+
+function getTaskPriority(priority) {
+  switch (priority) {
+    case 0:
+      return "low";
+    case 1:
+      return "medium";
+    case 2:
+      return "urgent";
+    default:
+      break;
+  }
 }

@@ -271,6 +271,12 @@ h1 {
   border: 1px solid rgba(255, 129, 144, 1);
 }
 
+.big_card_edit_priority_buttons {
+  gap: 16px;
+  display: flex;
+  padding: 0 2px;
+}
+
 .df_ac {
   display: flex;
   align-items: center;

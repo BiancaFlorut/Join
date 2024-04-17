@@ -58,3 +58,8 @@ function searchContact() {
   let container = getElementWithId("addTaskAssignedContacts");
   container.innerHTML = getOptionForAssignedTo(foundContacts, addedTask);
 }
+
+function togglePriorityTo(priorityValue, buttonElement) {
+  addedTask.priority = priorityValue;
+  togglePriority(priorityValue, buttonElement);
+}
