@@ -193,20 +193,33 @@ function getContactsLogoHTML(contacts) {
   return html;
 }
 
+/**
+ * This function toggles the priority for a task and switches the style of the button.
+ * @param {number} priorityValue 0 - low, 1 - medium, 2 - urgent  
+ * @param {HTMLButtonElement} buttonElement 
+ */
 function togglePriority(priorityValue, buttonElement) {
   resetPriorityButtons();
   let classList = getPriorityButtonsClasses(priorityValue).split(" ");
   buttonElement.classList.add(...classList);
 }
 
+/**
+ * This function resets the unselected style of the task priority buttons
+ */
 function resetPriorityButtons() {
   for (let i = 0; i < 3; i++) {
     let classList = getElementWithId("buttonPriority" + i).classList;
-    classList.remove("clicked");
-    classList.remove(getTaskPriority(i));
+    classList.remove(...getPriorityButtonsClasses(i).split(' '));
+
   }
 }
 
+/**
+ * This function returns the style classes of the priority buttons.
+ * @param {number} priority 0 - low, 1 - medium, 2 - urgent  
+ * @returns string that represents the style classes for the priority buttons
+ */
 function getPriorityButtonsClasses(priority) {
   switch (priority) {
     case 0:
@@ -217,18 +230,5 @@ function getPriorityButtonsClasses(priority) {
       return "urgent clicked";
     default:
       return "";
-  }
-}
-
-function getTaskPriority(priority) {
-  switch (priority) {
-    case 0:
-      return "low";
-    case 1:
-      return "medium";
-    case 2:
-      return "urgent";
-    default:
-      break;
   }
 }

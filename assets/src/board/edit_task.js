@@ -236,3 +236,21 @@ function selectContact(element, email, checked) {
   element.setAttribute("onmousedown", `simulateClick(event ,this, ${arg1}, ${arg2})`);
   getElementWithId("editAssignToIconsList").innerHTML = getContactsLogoHTML(editedTask.assign_to);
 }
+
+/**
+ * This function return the according string name for the path source of the icon.
+ * @param {number} priority  0 - low, 1 - medium, 2 - urgent  .
+ * @returns string name for the priority source path.
+ */
+function getTaskPriority(priority) {
+  switch (priority) {
+    case 0:
+      return "low";
+    case 1:
+      return "medium";
+    case 2:
+      return "urgent";
+    default:
+      break;
+  }
+}
