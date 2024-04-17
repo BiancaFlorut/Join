@@ -27,7 +27,6 @@ function showElement(id) {
 
 /**
  * The function changes the source path of the image element.
- *
  * @param {HTMLImageElement} element
  * @param {string} src
  */
@@ -37,7 +36,6 @@ function changeSrc(element, src) {
 
 /**
  * This function simulates the behavior of a checkbox by clicking on an img element given hier as a parameter (checkbox) and changes its state as checked or not.
- *
  * @param {HTMLImageElement} checkbox - the element wich represents the checkbox.
  * @param {boolean} isToggled - a boolean wich gives the state of the checkbox as checked or not.
  * @returns {boolean} isToggled.
@@ -55,7 +53,6 @@ function toggleCheckbox(checkbox, isToggled, path) {
 
 /**
  * This function changes the image source of the checkbox when the mouse is over the image and simulates the hover effect but only the mouseOver.
- *
  * @param {HTMLImageElement} element
  */
 function mouseOver(element, isToggled) {
@@ -66,7 +63,6 @@ function mouseOver(element, isToggled) {
 
 /**
  * On mouseout ist this function called to change the source of the image in order to simulate and hover effect of the checkbox.
- *
  * @param {HTMLImageElement} element
  */
 function mouseBeside(element, isToggled) {
@@ -118,6 +114,13 @@ function getOptionForAssignedTo(contacts, task) {
   return html;
 }
 
+/**
+ * This function simulates imperfectly the click event as a workaround to avoid the closing on the drop box wenn the user selects a contact from it.
+ * @param {Event} e 
+ * @param {HTMLElement} element that triggered the event.
+ * @param {string} email of the selected item in the drop down.
+ * @param {string} checked flag to toggle the element with the right checkbox image.
+ */
 function simulateClick(e, element, email, checked) {
   e.preventDefault();
   element.onclick = () => { selectContact(element, email, checked)};
@@ -154,7 +157,14 @@ function toggleContactsList(imgElement, contactsElementId, inputId, isContactLis
   }
 }
 
-
+/**
+ * This function toggles the contact in the drop down select element, where the selected contact is added to the task.
+ * @param {HTMLElement} element is the selected item (contact)
+ * @param {string} email of the contact 
+ * @param {string} checked flag for the checkbox image 
+ * @param {JSON} task where to set the assigned to contact
+ * @returns the flag for the next select action
+ */
 function toggleSelectedContact(element, email, checked, task) {
   if (checked == "_checked") {
     toggleCheckbox(getElementWithId(`${email}Checkbox`), true, CHECKBOX_PATH);
@@ -173,6 +183,11 @@ function toggleSelectedContact(element, email, checked, task) {
   return checked;
 }
 
+/**
+ * This function generates the html code for each contact.
+ * @param {Array} contacts to generate the html for 
+ * @returns string html as code
+ */
 function getContactsLogoHTML(contacts) {
   let html = "";
   contacts.forEach((contact) => (html += getContactLogoForBigCardEditHTML(contact)));
