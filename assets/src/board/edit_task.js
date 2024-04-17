@@ -22,15 +22,15 @@ function initEvents() {
     this.value = "";
   };
   getElementWithId("bigCardEdiSearchContact").onblur = function () {
-    istContactListOpen = toggleContactsList(getElementWithId("bigCardEdiSearchIcon"), "bigCardEditContacts", 'bigCardEdiSearchContact', istContactListOpen);
+    istContactListOpen = toggleContactsList(getElementWithId("bigCardEdiSearchIcon"), "bigCardEditContacts", 'bigCardEdiSearchContact', true);
     this.value = "Select contacts to assign";
     this.setAttribute("readonly", "");
     getElementWithId("bigCardEditContacts").innerHTML = getOptionForAssignedTo(allContacts, editedTask);
   };
-  getElementWithId("bigCardEditSubtaskInput").onblur = function () {
+  getElementWithId("addSubtasks").onblur = function () {
     let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
     iconsContainer.innerHTML = /*html*/ `<img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/plus.svg" alt="" />`;
-    getElementWithId("bigCardEditSubtaskInput").value = "";
+    getElementWithId("addSubtasks").value = "";
   };
 }
 
@@ -82,7 +82,7 @@ function isTitelValid() {
 }
 
 function confirmSubtaskEditInput() {
-  let newText = getElementWithId("bigCardEditSubtaskInput").value;
+  let newText = getElementWithId("addSubtasks").value;
   if (!isWhiteSpaceOnly(newText)) {
     const subtask = { text: newText, checked: false };
     editedTask.subtasks.push(subtask);

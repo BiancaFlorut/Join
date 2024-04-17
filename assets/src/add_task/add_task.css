@@ -81,6 +81,21 @@ textarea {
 .button_priority {
   width: -webkit-fill-available;
 }
+
+.category_container {
+  background-color: white;
+  font-size: 20px;
+}
+
+.category {
+  padding: 12px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.category:hover {
+  background-color: #eeeeee;
+}
 /*
 |/////////////////////////////////////////////////////////////|
 |                                                             |

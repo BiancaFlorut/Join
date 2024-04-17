@@ -30,12 +30,13 @@ async function initAddTask() {
     this.value = "";
   };
   getElementWithId("bigCardEdiSearchContact").onblur = function () {
-    istContactListOpen = toggleContactsList(getElementWithId("bigCardEdiSearchIcon"), "addTaskAssignedContacts", 'bigCardEdiSearchContact', isContactListOpen);
+    istContactListOpen = toggleContactsList(getElementWithId("bigCardEdiSearchIcon"), "addTaskAssignedContacts", 'bigCardEdiSearchContact', true);
     this.value = "Select contacts to assign";
     this.setAttribute("readonly", "");
     getElementWithId("addTaskAssignedContacts").innerHTML = getOptionForAssignedTo(allContacts, addedTask);
   };
-
+  user.categories = [{name: "Technical Task", color: '#1FD7C1'}, {name: "User Story", color: "#0038FF"}]
+  showCategoryOptions();
 }
 
 function setToggleForTheContactList() {
@@ -67,7 +68,7 @@ function togglePriorityTo(priorityValue, buttonElement) {
 }
 
 function confirmSubtaskEditInput() {
-  let newText = getElementWithId("bigCardEditSubtaskInput").value;
+  let newText = getElementWithId("addSubtasks").value;
   if (!isWhiteSpaceOnly(newText)) {
     const subtask = { text: newText, checked: false };
     addedTask.subtasks.push(subtask);
@@ -104,3 +105,61 @@ function deleteEditTaskSubtask(id) {
   addedTask.subtasks.splice(i, 1);
   getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(addedTask.subtasks);
 }
+
+
+function showCategoryOptions() {
+  let container = getElementWithId('categoryContainer');
+  container.innerHTML = ``;
+  user.categories.forEach(category => {
+    container.innerHTML += /*html*/`
+      <div class="category" onclick="selectCategory('${category.name}')">${category.name}</div>
+    `
+  });
+}
+
+function selectCategory(name) {
+  addedTask.category = name;
+  getElementWithId("addCategory").value = name;
+  hideElement('categoryContainer');
+}
+
+function toggleCategoryOptions()  {
+  let container = getElementWithId('categoryContainer');
+  if (container.classList.contains('d_none')) {
+    showElement('categoryContainer');
+  } else {
+    hideElement('categoryContainer');
+  }
+}
+
+function addNewCategory(inputElement) {
+  inputElement.removeAttribute("readonly");
+  getElementWithId("addCategory").focus();
+  getElementWithId("addCategory").value = "";	
+  let iconsContainer = getElementWithId("addCategoryIcons");
+  iconsContainer.innerHTML = /*html*/ `
+        <img src="../../img/cancel.svg" alt="" onclick="cancelCategoryEditInput()">
+        <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
+        <img src="../../img/confirm.svg" alt="" onclick="confirmCategoryEditInput()">
+    `;
+}
+
+function cancelCategoryEditInput() {
+  let iconsContainer = getElementWithId("addCategoryIcons");
+  iconsContainer.innerHTML = /*html*/ `
+        <img src="../../img/arrow_drop_down_down.svg" alt="" onclick="toggleCategoryOptions()">
+    `;
+  getElementWithId("addCategory").value = "Select task category";
+}
+
+function confirmCategoryEditInput() {
+  const value = getElementWithId("addCategory").value;
+  if (!isWhiteSpaceOnly(value)) {
+    const newCategory = { name: value, color: selectRandomColor() };
+    user.categories.push(newCategory);
+    addedTask.category = newCategory;
+  }
+  showCategoryOptions();
+  cancelCategoryEditInput();
+}
+

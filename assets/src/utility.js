@@ -234,14 +234,14 @@ function getPriorityButtonsClasses(priority) {
 }
 
 /**
- * This function clears the blur event handler for the "bigCardEditSubtaskInput" element,
+ * This function clears the blur event handler for the "addSubtasks" element,
  * and replaces the icons in "bigCardEditSubtaskInputIcons" container with edit mode icons. 
  * The input is focused and the user can type the new subtask.
  * @returns {void}
  */
 function toggleEditTasksSubtasks() {
-  getElementWithId("bigCardEditSubtaskInput").onblur = "";
-  getElementWithId("bigCardEditSubtaskInput").focus();
+  getElementWithId("addSubtasks").onblur = "";
+  getElementWithId("addSubtasks").focus();
   let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
   iconsContainer.innerHTML = /*html*/ `
         <img src="../../img/cancel.svg" alt="" onclick="cancelSubtaskEditInput()">
@@ -281,15 +281,15 @@ function cancelSubtaskEditInput() {
   iconsContainer.innerHTML = /*html*/ `
         <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/plus.svg" alt="" onclick="toggleEditTasksSubtasks()"/>
     `;
-  getElementWithId("bigCardEditSubtaskInput").value = "";
-  getElementWithId("bigCardEditSubtaskInput").onblur = function () {
+  getElementWithId("addSubtasks").value = "";
+  getElementWithId("addSubtasks").onblur = function () {
     let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
     iconsContainer.innerHTML = /*html*/ `
         <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/plus.svg" alt="" />
     `;
-    getElementWithId("bigCardEditSubtaskInput").value = "";
+    getElementWithId("addSubtasks").value = "";
   };
-  getElementWithId("bigCardEditSubtaskInput").blur();
+  getElementWithId("addSubtasks").blur();
 }
 
 /**
@@ -344,4 +344,9 @@ function setOnBlurFunctionOnEditedSubtask(i) {
 
 function scrollToTheBottomOfTheContainer(element) {
   element.scrollTop = element.scrollHeight;
+}
+
+function selectRandomColor() {
+  const randomIndex = Math.floor(Math.random() * contactIconColors.length);
+  return contactIconColors[randomIndex];
 }

@@ -86,12 +86,18 @@
 
               <div class="content_right_div">
                 <label for="addCategory">Category<span class="required_red_star">*</span></label>
-                <input readonly class="add_content_input_text margin_10_20" id="addCategory" type="text" value="Select task category" />
+                <input id="addCategory" class="big_card_edit_title_input cursor_pointer" ondblclick="addNewCategory(this)" readonly placeholder="Select task category" type="text" />
+                <div class="visibility_area_container df_ac">
+                  <div id="addCategoryIcons" class="visibility_icon_container df_ac big_card_edit_subtask_input_icons">
+                    <img class="visibility_icon" src="../../img/arrow_drop_down_down.svg" alt="" onclick="toggleCategoryOptions()" />
+                  </div>
+                </div>
+                <div id="categoryContainer" class="category_container d_none"></div>
               </div>
 
               <div class="content_right_div">
                 <label for="addSubtasks">Subtasks</label>
-                <input id="bigCardEditSubtaskInput" class="big_card_edit_title_input cursor_pointer" onfocus="toggleEditTasksSubtasks()" placeholder="Add new subtask" type="text" />
+                <input id="addSubtasks" class="big_card_edit_title_input cursor_pointer" onfocus="toggleEditTasksSubtasks()" placeholder="Add new subtask" type="text" />
                 <div class="visibility_area_container df_ac">
                   <div id="bigCardEditSubtaskInputIcons" class="visibility_icon_container df_ac big_card_edit_subtask_input_icons">
                     <img class="visibility_icon" src="../../img/plus.svg" alt="" onclick="toggleEditTasksSubtasks()" />
