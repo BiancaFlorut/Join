@@ -38,6 +38,10 @@
   display: flex;
   gap: 16px;
 }
+.light_bold_20 {
+  font-size: 21px;
+  font-weight: 400;
+}
 .add_task label {
   font-size: 20px;
 }
@@ -72,6 +76,34 @@ textarea {
   margin: 10px 0 20px 0;
   justify-content: center;
 }
+/*
+|/////////////////////////////////////////////////////////////|
+|                                                             |
+|                                                             |
+|-------------------->add Task responsive<--------------------|
+|                                                             |
+|                                                             |
+|/////////////////////////////////////////////////////////////|
+*/
+@media (max-width: 1220px) {
+  .decoration_content {
+    display: none;
+  }
+  .main_content {
+    display: block;
+  }
+  .add_task {
+    width: 485px;
+  }
+  .content_left,
+  .content_right {
+    width: 100%;
+  }
+}
+
+
+
+
 
 /* style for the imported elements form edit task please let them under your styles otherwise they will be overwritten */
 
