@@ -16,7 +16,6 @@
   </head>
   <body onload="init(); initAddTask()">
     <div w3-include-html="../templates/nav_bar_left.html"></div>
-
     <section class="content-section">
       <div class="shadow" w3-include-html="../templates/header.html"></div>
       <div class="content">
@@ -34,7 +33,6 @@
               </div>
               <div>
                 <label for="bigCardEdiSearchContact">Assigned to</label>
-                
                 <div class="big_card_edit_assigned_to_custom_select">
                   <div class="big_card_edit_assigned_to_content">
                     <input
@@ -68,10 +66,19 @@
 
               <div class="content_right_div">
                 <label for="addPrio">Prio</label>
-                <div id="addPrio" class="prio_div">
-                  <button class="button_priority" id="buttonPriority2" onclick="togglePriorityTo(2, this)">Urgent <img src="../../img/priority_urgent.svg" alt="" /></button>
-                  <button class="button_priority" id="buttonPriority1" onclick="togglePriorityTo(1, this)">Medium <img src="../../img/priority_medium.svg" alt="" /></button>
-                  <button class="button_priority" id="buttonPriority0" onclick="togglePriorityTo(0, this)">Low <img src="../../img/priority_low.svg" alt="" /></button>
+                <div class="big_card_edit_priority_buttons df_ac">
+                  <button id="buttonPriority2" class="button_priority flex_1_1_0px df_ac jc" onclick="togglePriorityTo(2, this)">
+                    <span>Urgent</span>
+                    <img src="../../img/priority_urgent.svg" alt="" />
+                  </button>
+                  <button id="buttonPriority1" class="button_priority flex_1_1_0px df_ac jc" onclick="togglePriorityTo(1, this)">
+                    <span>Medium</span>
+                    <img src="../../img/priority_medium.svg" alt="" />
+                  </button>
+                  <button id="buttonPriority0" class="button_priority flex_1_1_0px df_ac jc" onclick="togglePriorityTo(0, this)">
+                    <span>Low</span>
+                    <img src="../../img/priority_low.svg" alt="" />
+                  </button>
                 </div>
               </div>
 
@@ -90,7 +97,7 @@
             <p><span>*</span> This Field is required</p>
 
             <div class="add_task_buttons">
-              <button class="button_line ">Clear x</button>
+              <button class="button_line">Clear x</button>
               <button>Create Task</button>
             </div>
           </div>

@@ -309,12 +309,6 @@
   border: 1px solid rgba(41, 171, 226, 1);
 }
 
-.big_card_edit_priority_buttons {
-  gap: 16px;
-  display: flex;
-  padding: 0 2px;
-}
-
 .big_card_edit_assigned_to_custom_select {
   position: relative;
   width: 100%;

@@ -118,19 +118,6 @@ function getSubTaskHTML(card) {
   return html;
 }
 
-function getTaskPriority(priority) {
-  switch (priority) {
-    case 0:
-      return "low";
-    case 1:
-      return "medium";
-    case 2:
-      return "urgent";
-    default:
-      break;
-  }
-}
-
 function allowDrop(ev) {
   ev.preventDefault();
 }
