@@ -246,7 +246,7 @@
 @media (max-width: 555px) {
   .big_card {
     width: 100%;
-    max-height: fit-content;
+    max-height: 100%;
     display: flex;
     justify-content: center;
   }
