@@ -1,5 +1,6 @@
 function generateEditedTaskHTML(valueDate, minDateValue, priorityClasses) {
-    return /*html*/ `
+  return (
+    /*html*/ `
       <div class="big_card_header" style="justify-content: flex-end">
         <div class="close_icon" onclick="closeBigCardView()">
           <img src="../../img/close_black.svg" alt="close">
@@ -47,10 +48,10 @@ function generateEditedTaskHTML(valueDate, minDateValue, priorityClasses) {
                 <span class="big_card_edit_title_header">Assigned to</span>
                 <div class='big_card_edit_assigned_to_custom_select'>
                     <div class="big_card_edit_assigned_to_content">
-                        <input id="bigCardEdiSearchContact" type="text" class='big_card_edit_title_input' value='Select contacts to assign' readonly="readonly" onkeyup="searchContact()"/>
+                        <input id="bigCardEdiSearchContact" type="text" class='big_card_edit_title_input' value='Select contacts to assign' readonly="readonly" onkeyup="searchContact()" onclick="setToggleForTheContactList()"/>
                         <div class="visibility_area_container df_ac">
                             <div class="visibility_icon_container">
-                                <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/arrow_drop_down_down.svg" onclick="setToggleForTheContactList(this, 'bigCardEditContacts')" alt="" />
+                                <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/arrow_drop_down_down.svg"  alt="" onclick="setToggleForTheContactList()"/>
                             </div>
                         </div>
                         <div id="bigCardEditContacts" class='big_card_edit_contacts df_ac d_none'> ` +
@@ -82,5 +83,6 @@ function generateEditedTaskHTML(valueDate, minDateValue, priorityClasses) {
         <div class="big_card_edit_ok_button">
             <button class="bold_21 df_ac" onclick="saveEditedTask()"><span>Ok</span><img src="../../img/confirm_white.svg" alt="confirm"></button>
         </div>
-    `;
+    `
+  );
 }

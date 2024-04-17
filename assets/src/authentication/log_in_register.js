@@ -1,4 +1,4 @@
-const CHECKBOX_PATH = "../../../img/checkbox";
+CHECKBOX_PATH = "../../../img/checkbox";
 
 /**
  * This function toggles the visibility of the password in the password input by clicking on the eyed.

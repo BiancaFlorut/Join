@@ -29,15 +29,16 @@ async function initAddTask() {
     this.value = "";
   };
   getElementWithId("bigCardEdiSearchContact").onblur = function () {
-    istContactListOpen = toggleContactsList(getElementWithId("bigCardEdiSearchIcon"), "addTaskAssignedContacts", isContactListOpen);
+    istContactListOpen = toggleContactsList(getElementWithId("bigCardEdiSearchIcon"), "addTaskAssignedContacts", 'bigCardEdiSearchContact', isContactListOpen);
     this.value = "Select contacts to assign";
     this.setAttribute("readonly", "");
     getElementWithId("addTaskAssignedContacts").innerHTML = getOptionForAssignedTo(allContacts, addedTask);
   };
 }
 
-function setToggleForTheContactList(imgElement, idList) {
-  isContactListOpen = toggleContactsList(imgElement, idList, isContactListOpen);
+function setToggleForTheContactList() {
+  const imgElement = getElementWithId('bigCardEdiSearchIcon');
+  isContactListOpen = toggleContactsList(imgElement, 'addTaskAssignedContacts', 'bigCardEdiSearchContact', isContactListOpen);
 }
 
 function selectContact(element, email, checked) {

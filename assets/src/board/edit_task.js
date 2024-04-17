@@ -33,7 +33,7 @@ function initEvents() {
     this.value = "";
   };
   getElementWithId("bigCardEdiSearchContact").onblur = function () {
-    istContactListOpen = toggleContactsList(getElementWithId("bigCardEdiSearchIcon"), "bigCardEditContacts", istContactListOpen);
+    istContactListOpen = toggleContactsList(getElementWithId("bigCardEdiSearchIcon"), "bigCardEditContacts", 'bigCardEdiSearchContact', istContactListOpen);
     this.value = "Select contacts to assign";
     this.setAttribute("readonly", "");
     getElementWithId("bigCardEditContacts").innerHTML = getOptionForAssignedTo(allContacts, editedTask);
@@ -241,8 +241,10 @@ function resetPriorityButtons() {
   }
 }
 
-function setToggleForTheContactList(imgElement, idList) {
-  istContactListOpen = toggleContactsList(imgElement, idList, istContactListOpen);
+function setToggleForTheContactList() {
+  const imgElement = getElementWithId('bigCardEdiSearchIcon');
+  
+  istContactListOpen = toggleContactsList(imgElement, 'bigCardEditContacts', 'bigCardEdiSearchContact', istContactListOpen);
 }
 
 /**

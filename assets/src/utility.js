@@ -1,4 +1,4 @@
-const CHECKBOX_PATH = '../../img/checkbox';
+let CHECKBOX_PATH = '../../img/checkbox';
 
 /**
  * Handy function to get element by id.
@@ -140,15 +140,17 @@ function getContactLogoForBigCardEditHTML(contact) {
  * @param {string} contactsElementId 
  * @returns boolean 
  */
-function toggleContactsList(imgElement, contactsElementId, isContactListOpened) {
+function toggleContactsList(imgElement, contactsElementId, inputId, isContactListOpened) {
   if (isContactListOpened) {
     changeSrc(imgElement, "../../img/arrow_drop_down_down.svg");
     getElementWithId(contactsElementId).classList.add("d_none");
+    getElementWithId(inputId).blur();
     return false;
   } else {
     changeSrc(imgElement, "../../img/arrow_drop_down_up.svg");
     getElementWithId(contactsElementId).classList.remove("d_none");
-    return  true;
+    getElementWithId(inputId).focus();
+    return true;
   }
 }
 

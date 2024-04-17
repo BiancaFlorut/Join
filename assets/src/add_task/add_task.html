@@ -38,10 +38,18 @@
                 <input readonly class="add_content_input_text" id="addAssingned" type="text" value="Select contacts to assign" />
                 <div class="big_card_edit_assigned_to_custom_select">
                   <div class="big_card_edit_assigned_to_content">
-                    <input id="bigCardEdiSearchContact" type="text" class="big_card_edit_title_input" value="Select contacts to assign" readonly="readonly" onkeyup="searchContact()" />
+                    <input
+                      id="bigCardEdiSearchContact"
+                      type="text"
+                      class="big_card_edit_title_input"
+                      value="Select contacts to assign"
+                      readonly="readonly"
+                      onkeyup="searchContact()"
+                      onclick="setToggleForTheContactList()"
+                    />
                     <div class="visibility_area_container df_ac">
                       <div class="visibility_icon_container">
-                        <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/arrow_drop_down_down.svg" onclick="setToggleForTheContactList(this, 'addTaskAssignedContacts')" alt="" />
+                        <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/arrow_drop_down_down.svg" alt="" />
                       </div>
                     </div>
                     <div id="addTaskAssignedContacts" class="big_card_edit_contacts df_ac d_none"></div>
