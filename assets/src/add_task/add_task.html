@@ -62,8 +62,8 @@
 
             <div class="content_right">
               <div class="content_right_div">
-                <label for="addDate">Due date<span class="required_red_star">*</span></label>
-                <input class="add_content_input_text margin_10_20" id="addDate" type="date" placeholder="dd/mm/yyyy" />
+                <label for="addDueDate">Due date<span class="required_red_star">*</span></label>
+                <input id="addDueDate" class="add_content_input_text margin_10_20" id="addDate" type="date" placeholder="dd/mm/yyyy" />
               </div>
 
               <div class="content_right_div">
@@ -86,7 +86,7 @@
 
               <div class="content_right_div">
                 <label for="addCategory">Category<span class="required_red_star">*</span></label>
-                <input id="addCategory" class="big_card_edit_title_input cursor_pointer" ondblclick="addNewCategory(this)" readonly placeholder="Select task category" type="text" />
+                <input id="addCategory" class="big_card_edit_title_input cursor_pointer" onclick="addNewCategory(this)" readonly placeholder="Select task category" type="text" />
                 <div class="visibility_area_container df_ac">
                   <div id="addCategoryIcons" class="visibility_icon_container df_ac big_card_edit_subtask_input_icons">
                     <img class="visibility_icon" src="../../img/arrow_drop_down_down.svg" alt="" onclick="toggleCategoryOptions()" />

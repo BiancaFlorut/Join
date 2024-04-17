@@ -23,25 +23,32 @@ async function initAddTask() {
   user = await getUserFromServer(emailParameter);
   const userContact = { name: user.name + " (You)", email: user.email, color: user.color };
   allContacts = [...user.contacts, userContact];
-  container.innerHTML = getOptionForAssignedTo(allContacts, addedTask);
+  addedTask.assign_to.push(userContact);
+  getElementWithId("editAssignToIconsList").innerHTML = getContactsLogoHTML(addedTask.assign_to);
+  container.innerHTML = getOptionForAssignedTo(user.contacts, addedTask, user.email);
+  const minDate = new Date().toISOString().split("T")[0];
+  getElementWithId("addDueDate").setAttribute("min", minDate);
   togglePriorityTo(1, getElementWithId("buttonPriority1"));
   getElementWithId("bigCardEdiSearchContact").ondblclick = function () {
     this.removeAttribute("readonly");
     this.value = "";
   };
   getElementWithId("bigCardEdiSearchContact").onblur = function () {
-    istContactListOpen = toggleContactsList(getElementWithId("bigCardEdiSearchIcon"), "addTaskAssignedContacts", 'bigCardEdiSearchContact', true);
+    istContactListOpen = toggleContactsList(getElementWithId("bigCardEdiSearchIcon"), "addTaskAssignedContacts", "bigCardEdiSearchContact", true);
     this.value = "Select contacts to assign";
     this.setAttribute("readonly", "");
-    getElementWithId("addTaskAssignedContacts").innerHTML = getOptionForAssignedTo(allContacts, addedTask);
+    getElementWithId("addTaskAssignedContacts").innerHTML = getOptionForAssignedTo(allContacts, addedTask, user.email);
   };
-  user.categories = [{name: "Technical Task", color: '#1FD7C1'}, {name: "User Story", color: "#0038FF"}]
+  user.categories = [
+    { name: "Technical Task", color: "#1FD7C1" },
+    { name: "User Story", color: "#0038FF" },
+  ];
   showCategoryOptions();
 }
 
 function setToggleForTheContactList() {
-  const imgElement = getElementWithId('bigCardEdiSearchIcon');
-  isContactListOpen = toggleContactsList(imgElement, 'addTaskAssignedContacts', 'bigCardEdiSearchContact', isContactListOpen);
+  const imgElement = getElementWithId("bigCardEdiSearchIcon");
+  isContactListOpen = toggleContactsList(imgElement, "addTaskAssignedContacts", "bigCardEdiSearchContact", isContactListOpen);
 }
 
 function selectContact(element, email, checked) {
@@ -59,7 +66,7 @@ function searchContact() {
   const searchToken = getElementWithId("bigCardEdiSearchContact").value;
   const foundContacts = allContacts.filter((contact) => contact.name.toLowerCase().includes(searchToken.toLowerCase()));
   let container = getElementWithId("addTaskAssignedContacts");
-  container.innerHTML = getOptionForAssignedTo(foundContacts, addedTask);
+  container.innerHTML = getOptionForAssignedTo(foundContacts, addedTask, user.email);
 }
 
 function togglePriorityTo(priorityValue, buttonElement) {
@@ -106,36 +113,35 @@ function deleteEditTaskSubtask(id) {
   getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(addedTask.subtasks);
 }
 
-
 function showCategoryOptions() {
-  let container = getElementWithId('categoryContainer');
+  let container = getElementWithId("categoryContainer");
   container.innerHTML = ``;
-  user.categories.forEach(category => {
-    container.innerHTML += /*html*/`
+  user.categories.forEach((category) => {
+    container.innerHTML += /*html*/ `
       <div class="category" onclick="selectCategory('${category.name}')">${category.name}</div>
-    `
+    `;
   });
 }
 
 function selectCategory(name) {
   addedTask.category = name;
   getElementWithId("addCategory").value = name;
-  hideElement('categoryContainer');
+  hideElement("categoryContainer");
 }
 
-function toggleCategoryOptions()  {
-  let container = getElementWithId('categoryContainer');
-  if (container.classList.contains('d_none')) {
-    showElement('categoryContainer');
+function toggleCategoryOptions() {
+  let container = getElementWithId("categoryContainer");
+  if (container.classList.contains("d_none")) {
+    showElement("categoryContainer");
   } else {
-    hideElement('categoryContainer');
+    hideElement("categoryContainer");
   }
 }
 
 function addNewCategory(inputElement) {
   inputElement.removeAttribute("readonly");
   getElementWithId("addCategory").focus();
-  getElementWithId("addCategory").value = "";	
+  getElementWithId("addCategory").value = "";
   let iconsContainer = getElementWithId("addCategoryIcons");
   iconsContainer.innerHTML = /*html*/ `
         <img src="../../img/cancel.svg" alt="" onclick="cancelCategoryEditInput()">
@@ -158,8 +164,8 @@ function confirmCategoryEditInput() {
     const newCategory = { name: value, color: selectRandomColor() };
     user.categories.push(newCategory);
     addedTask.category = newCategory;
-  }
-  showCategoryOptions();
-  cancelCategoryEditInput();
+    showCategoryOptions();
+    cancelCategoryEditInput();
+    getElementWithId("addCategory").value = value;
+  } else cancelCategoryEditInput();
 }
-

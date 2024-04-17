@@ -99,10 +99,11 @@ function isWhiteSpaceOnly(string) {
  * @param {} task for which the contacts are assigned to
  * @returns string as html code
  */
-function getOptionForAssignedTo(contacts, task) {
+function getOptionForAssignedTo(contacts, task, exceptUserEmail) {
   let html = "";
   contacts.forEach((contact) => {
-    let checked = "";
+    if (contact.email != exceptUserEmail){
+      let checked = "";
       if (task.assign_to.some((assignToContact) => assignToContact.email == contact.email)) {
         checked = "_checked";
       }
@@ -110,6 +111,7 @@ function getOptionForAssignedTo(contacts, task) {
     html += /*html*/ `
         <div class="df_ac big_card_edit_contacts_select" onmousedown="simulateClick(event, this, '${contact.email}', '${checked}')">${logoHTML}<span class="flex_1">${contact.name}</span><img id="${contact.email}Checkbox" src="${CHECKBOX_PATH}${checked}.svg" alt="checkbox"></div >
       `;
+    }
   });
   return html;
 }

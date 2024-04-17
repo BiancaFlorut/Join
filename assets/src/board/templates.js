@@ -55,7 +55,7 @@ function generateEditedTaskHTML(valueDate, minDateValue, priorityClasses) {
                             </div>
                         </div>
                         <div id="bigCardEditContacts" class='big_card_edit_contacts df_ac d_none'> ` +
-    getOptionForAssignedTo(allContacts, editedTask) +
+    getOptionForAssignedTo(user.contacts, editedTask, user.email) +
     /*html*/ `
                         </div>
                     </div>

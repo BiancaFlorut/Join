@@ -1,5 +1,4 @@
 let editedTask;
-let allContacts;
 let istContactListOpen = false;
 
 function editTask(taskId) {
@@ -25,7 +24,7 @@ function initEvents() {
     istContactListOpen = toggleContactsList(getElementWithId("bigCardEdiSearchIcon"), "bigCardEditContacts", 'bigCardEdiSearchContact', true);
     this.value = "Select contacts to assign";
     this.setAttribute("readonly", "");
-    getElementWithId("bigCardEditContacts").innerHTML = getOptionForAssignedTo(allContacts, editedTask);
+    getElementWithId("bigCardEditContacts").innerHTML = getOptionForAssignedTo(user.contacts, editedTask, user.email);
   };
   getElementWithId("addSubtasks").onblur = function () {
     let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
@@ -127,7 +126,7 @@ function searchContact() {
   const searchToken = getElementWithId("bigCardEdiSearchContact").value;
   const foundContacts = allContacts.filter((contact) => contact.name.toLowerCase().includes(searchToken.toLowerCase()));
   let container = getElementWithId("bigCardEditContacts");
-  container.innerHTML = getOptionForAssignedTo(foundContacts, editedTask);
+  container.innerHTML = getOptionForAssignedTo(foundContacts, editedTask, user.email);
 }
 
 function togglePriorityTo(priorityValue, buttonElement) {
