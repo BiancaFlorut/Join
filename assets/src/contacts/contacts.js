@@ -74,18 +74,21 @@ function addContact() {
     document.getElementById('overlyContact').style.display='flex';
     document.getElementById('overlayEditContact').style.display='none';
     document.getElementById('contactSucces').style.display='none';
+}
+
+async function addNewContact() {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const phone = document.getElementById('phone').value;
     const newContact = { name: name, email: email, phone: phone};
     contacts.push(newContact);
+    await updateUserContactsToRemoteServer(emailParameter, contacts);
     // newContact.value = '';
 
     console.log('Name:', name);
     console.log('Email:', email);
     console.log('Phone:', phone);
 
-    
     contactListHTML();
 }
 
