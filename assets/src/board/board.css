@@ -243,6 +243,13 @@
   }
 }
 
+@media (max-width: 1130px) {
+  .content-section {
+    flex: none;
+    height: calc(100vh - 80px);
+  }
+}
+
 @media (max-width: 555px) {
   .big_card {
     width: 100%;
