@@ -42,8 +42,9 @@
   font-size: 21px;
   font-weight: 400;
 }
-.add_task label {
+label {
   font-size: 20px;
+  margin: 20px 0 10px 0;
 }
 .add_task input,
 textarea {
@@ -74,9 +75,6 @@ textarea {
   min-width: 123px;
   margin: 10px 0 20px 0;
   justify-content: center;
-}
-.margin_10_20 {
-  margin: 10px 0 20px 0;
 }
 .button_priority {
   width: -webkit-fill-available;
