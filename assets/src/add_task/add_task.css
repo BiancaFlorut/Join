@@ -83,6 +83,7 @@ textarea {
 .category_container {
   background-color: white;
   font-size: 20px;
+  border-radius: 0 0 10px 10px;
 }
 
 .category {
@@ -166,6 +167,9 @@ textarea {
   }
   .visibility_icon_container {
     padding: 7px 0;
+  }
+  .category {
+    font-size: 16px;
   }
 }
 @media (max-width: 450px) {
