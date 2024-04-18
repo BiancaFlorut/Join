@@ -50,7 +50,7 @@
                   <img src="../../img/contacts_add_contact_person.svg" alt="icon_person" />
                 </div>
               </div>
-              <form class="create_contact" onsubmit="event.preventDefault(); addContact(document.getElementById('name').value, document.getElementById('email').value, document.getElementById('phone').value);">
+              <form class="create_contact" onsubmit="addContact(); return false">
                 <img onclick="addClose()" class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
                 <input id="name" class="input_area person" placeholder="Name" type="text" />
                 <input id="email" class="input_area mail" placeholder="Email" type="email"/>
@@ -58,10 +58,10 @@
               </form>
               <div class="add_contact_button_center">
                 <button onclick="addClose()" class="contacts_button_cancel button_line">Cancel<img style="padding-left: 4px" src="../../img/board_add_task_close.svg" alt="icon_close" /></button>
-                <button onclick="contactSuccesfully()"tybe="submit" class="bold">Create contact<img style="padding-left: 4px" src="../../img/contacts_add_contact_check.svg" alt="icon_check"/></button>
+                <button class="bold">Create contact<img style="padding-left: 4px" src="../../img/contacts_add_contact_check.svg" alt="icon_check"/></button>
               </div>
           </div>
-          <button class="d_none" id="contactSucces">Contact succesfully created</button>
+          <div class="d_none" id="contactSucces">Contact succesfully created</div>
           <div class="main_container_add_contact" id="overlayEditContact">
             <div class="left_container_edit_contacts">
               <img class="contacts_join_logo" src="../../img/contacts_join_logo.svg" alt="join_logo"/>
