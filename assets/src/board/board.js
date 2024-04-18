@@ -1,6 +1,6 @@
 let tasks = []; 
-let user;
 const SUBTASK_CHECKBOX_PATH = '../../img/checkbox_board';
+let cols =  ['toDo', 'inProgress', 'awaitFeedback', 'done'];
 
 
 let currentDraggedElement;
@@ -52,6 +52,19 @@ function updateHTML(array) {
 
 function startDragging(id) {
   currentDraggedElement = id;
+  getElementWithId(id + 'SmallCard').classList.add("drag_highlight");
+  const index = tasks.findIndex((task) => task.id == id);
+  const status = tasks[index].status;
+  const nextStatusIndex = cols.findIndex( col => col == status) + 1;
+  if (nextStatusIndex < tasks.length)
+    document.getElementById(`${cols[nextStatusIndex]}`).innerHTML += generateHighlightedCardGhostHTML();
+
+}
+
+function generateHighlightedCardGhostHTML() {
+  return /*html*/ `
+    <div class="card_small_ghost"></div>
+  `;
 }
 
 function generateSmallTaskHTML(task) {
@@ -62,7 +75,7 @@ function generateSmallTaskHTML(task) {
   const priorityString = getTaskPriority(task.priority);
   return (
     /*html*/ `
-    <div draggable="true" ondragstart="startDragging('${task["id"]}')" class="card_small" onclick="openTask('${task.id}')">
+    <div id="${task["id"]}SmallCard" draggable="true" ondragstart="startDragging('${task["id"]}')" class="card_small" onclick="openTask('${task.id}')">
       <div class="task_category ${colorClass}">${task.category}</div>
       <div class="task_text_area">
         <div class="task_header">${task["title"]}</div>
@@ -149,4 +162,9 @@ function searchTask() {
     });
     updateHTML(results);
   } else updateHTML(tasks);
+}
+
+function openCreateTask(){
+  getElementWithId("createTask").classList.remove("d_none");
+  initUserAndGenerateHTML();
 }

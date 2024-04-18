@@ -26,18 +26,38 @@ function initEvents() {
     this.setAttribute("readonly", "");
     getElementWithId("bigCardEditContacts").innerHTML = getOptionForAssignedTo(user.contacts, editedTask, user.email);
   };
-  getElementWithId("addSubtasks").onblur = function () {
+  getElementWithId("addSubtasksEditTask").onblur = function () {
     let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
     iconsContainer.innerHTML = /*html*/ `<img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/plus.svg" alt="" />`;
-    getElementWithId("addSubtasks").value = "";
+    getElementWithId("addSubtasksEditTask").value = "";
   };
 }
 
+/**
+ * This function generates the html code for the contacts that are assigned to the task given as parameter.
+ * @param {Array.<{name: string, email: string, phone: number, color: string}>} contacts
+ * @param {} task for which the contacts are assigned to
+ * @returns string as html code
+ */
+function getOptionForAssignedTo(contacts, task, exceptUserEmail) {
+  let html = "";
+  contacts.forEach((contact) => {
+    if (contact.email != exceptUserEmail){
+      let checked = "";
+      if (task.assign_to.some((assignToContact) => assignToContact.email == contact.email)) {
+        checked = "_checked";
+      }
+    let logoHTML = getContactLogoForBigCardEditHTML(contact);
+    html += /*html*/ `
+        <div class="df_ac big_card_edit_contacts_select cursor_pointer" onmousedown="simulateClick(event, this, '${contact.email}', '${checked}')">${logoHTML}<span class="flex_1">${contact.name}</span><img id="${contact.email}Checkbox" src="${CHECKBOX_PATH}${checked}.svg" alt="checkbox"></div >
+      `;
+    }
+  });
+  return html;
+}
+
 async function saveEditedTask() {
-  console.log("is title filled ", isTitelValid());
-  console.log("is description filled? ", isDescriptionValid());
-  console.log("is a date filled?", isDueDateValid());
-  console.log(editedTask);
+  console.log(editedTask, '.. is now saving on the server');
   await updateContactsAboutTask(editedTask);
   closeBigCardView();
   initBoard();
@@ -81,7 +101,7 @@ function isTitelValid() {
 }
 
 function confirmSubtaskEditInput() {
-  let newText = getElementWithId("addSubtasks").value;
+  let newText = getElementWithId("addSubtasksEditTask").value;
   if (!isWhiteSpaceOnly(newText)) {
     const subtask = { text: newText, checked: false };
     editedTask.subtasks.push(subtask);
@@ -92,13 +112,49 @@ function confirmSubtaskEditInput() {
   cancelSubtaskEditInput();
 }
 
+/**
+ * This function clears the blur event handler for the "addSubtasksEditTask" element,
+ * and replaces the icons in "bigCardEditSubtaskInputIcons" container with edit mode icons. 
+ * The input is focused and the user can type the new subtask.
+ * @returns {void}
+ */
+function toggleEditTasksSubtasks() {
+  getElementWithId("addSubtasksEditTask").onblur = "";
+  getElementWithId("addSubtasksEditTask").focus();
+  let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
+  iconsContainer.innerHTML = /*html*/ `
+        <img src="../../img/cancel.svg" alt="" onclick="cancelSubtaskEditInput()">
+        <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
+        <img src="../../img/confirm.svg" alt="" onclick="confirmSubtaskEditInput()">
+    `;
+}
+
+/**
+ * This function cancels the edit mode for the subtask input and sets blur function.
+ */
+function cancelSubtaskEditInput() {
+  let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
+  iconsContainer.innerHTML = /*html*/ `
+        <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/plus.svg" alt="" onclick="toggleEditTasksSubtasks()"/>
+    `;
+  getElementWithId("addSubtasksEditTask").value = "";
+  getElementWithId("addSubtasksEditTask").onblur = function () {
+    let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
+    iconsContainer.innerHTML = /*html*/ `
+        <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/plus.svg" alt="" />
+    `;
+    getElementWithId("addSubtasksEditTask").value = "";
+  };
+  getElementWithId("addSubtasksEditTask").blur();
+}
+
 function deleteEditTaskSubtask(id) {
   const i = getIndexFromId(id);
   editedTask.subtasks.splice(i, 1);
   getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(editedTask.subtasks);
 }
 
-function cancelSubtaskEdit(id) {
+function cancelSubtaskEditEditTask(id) {
   const i = getIndexFromId(id);
   cancelEditSubtask(id, i);
   const element = getElementWithId(id);
@@ -106,7 +162,7 @@ function cancelSubtaskEdit(id) {
   element.blur();
 }
 
-function saveEditedSubtask(id) {
+function saveEditedSubtaskEditTask(id) {
   const i = getIndexFromId(id);
   let element = getElementWithId(id);
   const text = element.innerHTML;
@@ -169,4 +225,22 @@ function getTaskPriority(priority) {
     default:
       break;
   }
+}
+
+/**
+ *
+ * @param {HTMLElement} element
+ */
+function editTasksSubtask(id) {
+  let element = getElementWithId(id);
+  const i = getIndexFromId(id);
+  element.parentElement.classList.add("big_card_edit_subtask_on_edit");
+  element.contentEditable = true;
+  element.focus();
+  getElementWithId("bigCardEditCardIcons_" + i).innerHTML = /*html*/ `
+        <img src="../../img/delete.svg" alt="" onclick="cancelSubtaskEditEditTask('${id}', ${i})">
+        <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
+        <img src="../../img/confirm.svg" alt="" onclick="saveEditedSubtaskEditTask('${element.id}')">
+    `;
+  getElementWithId(id).onmouseout = `showElement('bigCardEditCardIcons_${i}')`;
 }

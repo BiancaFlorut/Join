@@ -128,6 +128,11 @@
   /* to do */
 }
 
+.drag_highlight {
+  transform: rotate(5deg);
+  transition: transform 200ms ease-in-out;
+}
+
 .board_column {
   flex: 1 1 0px;
   width: 0;
@@ -177,6 +182,7 @@
     min-width: 252px;
     width: min-content;
   }
+
   .board_column {
     width: 100%;
   }
@@ -241,6 +247,10 @@
   .column_title {
     padding-bottom: 6px;
   }
+}
+
+.create_task_area {
+  background-color: white;
 }
 
 @media (max-width: 1130px) {
