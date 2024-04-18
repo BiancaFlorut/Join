@@ -173,9 +173,18 @@ textarea {
     padding: 8px 0;
   }
 }
-
-@media (max-width: 440px) {
+@media (max-width: 450px) {
   .big_card_edit_priority_buttons {
     flex-direction: column;
+  }
+  .add_task {
+    padding: 32px 16px 0 16px;
+  }
+  .add_task_bottom {
+    flex-direction: column;
+    margin: 0;
+  }
+  .add_task_bottom button {
+    width: 100%;
   }
 }
