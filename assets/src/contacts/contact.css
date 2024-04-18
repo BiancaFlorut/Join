@@ -78,6 +78,11 @@
     height: 600px;
 }
 
+.main_container_edit_contact {
+    display: flex;
+    height: 600px;
+}
+
 .left_container_add_contacts {
     background-color: #2a3647;
     width: 460px;
@@ -226,6 +231,12 @@
     background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
 }
 
+.contact_name_info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
 .light_blue {
     color: #007cee;
 }
@@ -249,7 +260,7 @@
     font-weight: 500;
     color: #ffffff;
     border-radius: 50%;
-    width: 120px;
+    min-width: 120px;
     height: 120px;
     border: 3px solid #ffffff;
 }

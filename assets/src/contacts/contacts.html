@@ -60,9 +60,10 @@
                 <button onclick="addClose()" class="contacts_button_cancel button_line">Cancel<img style="padding-left: 4px" src="../../img/board_add_task_close.svg" alt="icon_close" /></button>
                 <button type="submit" form="addContact" class="bold">Create contact<img class="icon_check" src="../../img/contacts_add_contact_check.svg" alt="icon_check"/></button>
               </div>
+            </div>  
           </div>
           <div class="d_none" id="contactSucces">Contact succesfully created</div>
-          <div class="main_container_add_contact" id="overlayEditContact">
+          <div class="main_container_edit_contact" id="overlayEditContact">
             <div class="left_container_edit_contacts">
               <img class="contacts_join_logo" src="../../img/contacts_join_logo.svg" alt="join_logo"/>
               <h1 class="h1_add_contacts">Edit contact</h1>
@@ -81,9 +82,10 @@
                 <input id="editPhone" class="input_area phone" required placeholder="Phone" type="tel" />
               </form>
               <div class="edit_contact_button">
-                <button class="contacts_button_cancel button_line">Delete</button>
+                <button onclick="deleteContact()" class="contacts_button_cancel button_line">Delete</button>
                 <button class="bold">Save<img class="icon_check" src="../../img/contacts_add_contact_check.svg" alt="icon_check"/></button>
               </div>
+          </div>
         </div>
       </div>
       </div>
