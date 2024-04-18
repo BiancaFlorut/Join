@@ -18,6 +18,7 @@
     <script src="./big_card.js"></script>
     <script src="./edit_task.js"></script>
     <script src="./templates.js"></script>
+    <script src="../DragDropTouch.js"></script>
   </head>
   <body onload="init(); initBoard();">
     <div w3-include-html="../templates/nav_bar_left.html"></div>
@@ -34,7 +35,7 @@
 
               <div class="input_button_header">
                 <div class="board_search_input_desktop">
-                  <input id="searchInput" class="input_board_find_task" type="text" placeholder="Find Task" onkeyup="searchTask()" />
+                  <input id="searchInput" class="input_board_find_task cursor_pointer" type="text" placeholder="Find Task" onkeyup="searchTask()" />
                   <div class="input_board_find_task_button_area">
                     <div class="input_board_find_task_button">
                       <img src="../../img/input_vertical_line.svg" alt="vertical line" />

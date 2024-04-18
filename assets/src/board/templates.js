@@ -15,7 +15,7 @@ function generateEditedTaskHTML(valueDate, minDateValue, priorityClasses) {
           </div>
           <div class="big_card_edit_title">
             <span class="big_card_edit_title_header">Description</span>
-            <textarea id="editedTaskDescriptionInput" class='big_card_edit_description_textarea' onchange="isDescriptionValid()">${editedTask.description}</textarea>
+            <textarea id="editedTaskDescriptionInput" class='big_card_edit_description_textarea cursor_pointer' onchange="isDescriptionValid()">${editedTask.description}</textarea>
             <span id="editedTaskDescriptionInputError" class="big_card_edit_error d_none">This field is required</span>
           </div>
           <div class="big_card_edit_title">

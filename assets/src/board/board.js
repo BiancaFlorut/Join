@@ -140,7 +140,7 @@ function removeHighlight(id) {
 
 function searchTask() {
   const search = getElementWithId("searchInput");
-  if (search.value) {
+  if (!isWhiteSpaceOnly(search.value)) {
     let results = [];
     tasks.forEach(task => {
       if (task.title.toLowerCase().includes(search.value.toLowerCase()) || task.description.toLowerCase().includes(search.value.toLowerCase())){

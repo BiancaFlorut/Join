@@ -38,6 +38,13 @@
   display: flex;
   gap: 16px;
 }
+.add_task_buttons button {
+  gap: 4px;
+}
+.add_task_buttons img {
+  width: 20px;
+  transform: translate(20%, 0%);
+}
 .light_bold_20 {
   font-size: 21px;
   font-weight: 400;
@@ -79,11 +86,23 @@ textarea {
 .button_priority {
   width: -webkit-fill-available;
 }
+.content_header_div {
+  font-size: 20px;
+  margin: 20px 0 10px 0;
+}
+
+.category_container_area {
+  position: relative;
+  width: 100%;
+}
 
 .category_container {
+  position: absolute;
+  width: 100%;
   background-color: white;
   font-size: 20px;
   border-radius: 0 0 10px 10px;
+  z-index: 10;
 }
 
 .category {
@@ -99,8 +118,6 @@ textarea {
 /* style for the imported elements form edit task please let them under your styles otherwise they will be overwritten */
 
 .big_card_edit_assigned_to_logos {
-  margin-bottom: 10px;
-  margin-top: 0;
   gap: 8px;
 }
 
@@ -169,6 +186,9 @@ textarea {
     padding: 7px 0;
   }
   .category {
+    font-size: 16px;
+  }
+  .content_header_div {
     font-size: 16px;
   }
 }

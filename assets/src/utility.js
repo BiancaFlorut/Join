@@ -109,7 +109,7 @@ function getOptionForAssignedTo(contacts, task, exceptUserEmail) {
       }
     let logoHTML = getContactLogoForBigCardEditHTML(contact);
     html += /*html*/ `
-        <div class="df_ac big_card_edit_contacts_select" onmousedown="simulateClick(event, this, '${contact.email}', '${checked}')">${logoHTML}<span class="flex_1">${contact.name}</span><img id="${contact.email}Checkbox" src="${CHECKBOX_PATH}${checked}.svg" alt="checkbox"></div >
+        <div class="df_ac big_card_edit_contacts_select cursor_pointer" onmousedown="simulateClick(event, this, '${contact.email}', '${checked}')">${logoHTML}<span class="flex_1">${contact.name}</span><img id="${contact.email}Checkbox" src="${CHECKBOX_PATH}${checked}.svg" alt="checkbox"></div >
       `;
     }
   });
