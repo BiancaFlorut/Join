@@ -33,14 +33,14 @@ function clearFields() {
  */
 function addNewTask() {
   // Elemente aus dem DOM abrufen
-  var titleInput = document.getElementById('addTitle');
-  var dueDateInput = document.getElementById('addDueDate');
-  var categoryInput = document.getElementById('addCategory');
+  let titleInput = document.getElementById('addTitle');
+  let dueDateInput = document.getElementById('addDueDate');
+  let categoryInput = document.getElementById('addCategory');
 
   // Funktion zum Anzeigen der Fehlermeldung
   function showError(input, message) {
       // Erstelle ein neues Element für die Fehlermeldung
-      var errorElement = document.createElement('span');
+      let errorElement = document.createElement('span');
       errorElement.textContent = message;
       errorElement.style.color = 'red';
       errorElement.id = input.id + 'Error'; // Setze eine eindeutige ID für das Fehlerelement
@@ -51,7 +51,7 @@ function addNewTask() {
 
   // Funktion zum Entfernen der Fehlermeldung
   function removeError(input) {
-      var existingError = document.getElementById(input.id + 'Error');
+      let existingError = document.getElementById(input.id + 'Error');
       if (existingError) existingError.remove();
   }
 
