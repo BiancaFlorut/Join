@@ -165,6 +165,12 @@ textarea {
   }
 }
 
+@media (max-width: 440px) {
+  .big_card_edit_priority_buttons {
+    flex-direction: column;
+  }
+}
+
 /* style for the imported elements form edit task please let them under your styles otherwise they will be overwritten */
 
 .big_card_edit_title_input {

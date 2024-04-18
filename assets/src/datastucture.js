@@ -1,7 +1,7 @@
 let contactMaria = {
     email: 'mail@bla.com',
     name: 'Maria',
-    phone: 14674564,
+    phone: '14674564',
     color: '#fc71ff'
 }
 
@@ -17,7 +17,7 @@ let userAndrei = {
 let contactAndrei = {
     email: 'Andrei@bla.com',
     name: 'Andrei Müller',
-    phone: 1234674564,
+    phone: '1234674564',
     color: '#ffc701'
 }
 
@@ -40,7 +40,7 @@ let contactMarian = {
 let contactBert = {
     email: 'Bertn@bla.com',
     name: 'Bert Loriot',
-    phone: 1234674564,
+    phone: '1234674564',
     color: '#c3ff2b'
 }
 
