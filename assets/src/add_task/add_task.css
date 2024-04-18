@@ -37,11 +37,13 @@
 .add_task_buttons {
   display: flex;
   gap: 16px;
-  align-items: center;
-  text-align: center;
+}
+.add_task_buttons button {
+  gap: 4px;
 }
 .add_task_buttons img {
-  height: 20px;
+  width: 20px;
+  transform: translate(20%, 0%);
 }
 .light_bold_20 {
   font-size: 21px;
