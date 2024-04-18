@@ -133,8 +133,10 @@ function toggleCategoryOptions() {
   let container = getElementWithId("categoryContainer");
   if (container.classList.contains("d_none")) {
     showElement("categoryContainer");
+    changeSrc(getElementWithId("addCategoryIcons").children[0], "../../img/arrow_drop_down_up.svg");
   } else {
     hideElement("categoryContainer");
+    changeSrc(getElementWithId("addCategoryIcons").children[0], "../../img/arrow_drop_down_down.svg");
   }
 }
 
