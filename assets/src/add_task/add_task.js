@@ -13,13 +13,11 @@ let allContacts;
 //   });
 // });
 
-// function clearFields() {
-//   location.reload();
-// }
-
 function clearFields() {
-
+  location.reload();
 }
+
+
 
 /**
  * Initializes the add task functionality.
