@@ -164,6 +164,14 @@ textarea {
     padding: 7px 0;
   }
 }
+@media (max-width: 450px) {
+  .big_card_edit_priority_buttons {
+    flex-direction: column;
+  }
+  .add_task {
+    padding: 32px 16px 0 16px;
+  }
+}
 
 /* style for the imported elements form edit task please let them under your styles otherwise they will be overwritten */
 
@@ -177,4 +185,7 @@ textarea {
 }
 .visibility_icon_container {
   transform: translate(0, -65%);
+}
+.big_card_edit_priority_buttons {
+  margin: 10px 0 20px;
 }
