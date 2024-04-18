@@ -306,6 +306,7 @@ h1 {
   margin: 0;
   padding-inline-start: 0;
   list-style: none;
+  padding-bottom: 10px;
 }
 
 #bigCardEditSubtasks li {
