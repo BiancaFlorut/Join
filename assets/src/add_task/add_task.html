@@ -24,15 +24,15 @@
           <div id="content" class="main_content">
             <div class="content_left">
               <div>
-                <label for="">Title<span class="required_red_star">*</span></label>
+                <div class="content_header_div">Title<span class="required_red_star">*</span></div>
                 <input class="add_content_input_text" id="addTitle" type="text" placeholder="Enter a title" />
               </div>
               <div>
-                <label for="addDescription">Description</label>
+                <div class="content_header_div">Description</div>
                 <textarea class="add_content_input_text" rows="3" id="addDescription" type="text" placeholder="Enter a Description"></textarea>
               </div>
               <div>
-                <label for="bigCardEdiSearchContact">Assigned to</label>
+                <div class="content_header_div">Assigned to</div>
                 <div class="big_card_edit_assigned_to_custom_select">
                   <div class="big_card_edit_assigned_to_content">
                     <input
@@ -62,12 +62,12 @@
 
             <div class="content_right">
               <div class="content_right_div">
-                <label for="addDueDate">Due date<span class="required_red_star">*</span></label>
+                <div class="content_header_div">Due date<span class="required_red_star">*</span></div>
                 <input id="addDueDate" class="add_content_input_text margin_10_20" id="addDate" type="date" placeholder="dd/mm/yyyy" />
               </div>
 
               <div class="content_right_div">
-                <label for="addPrio">Prio</label>
+                <div class="content_header_div">Prio</div>
                 <div class="big_card_edit_priority_buttons df_ac">
                   <button id="buttonPriority2" class="button_priority flex_1_1_0px df_ac jc" onclick="togglePriorityTo(2, this)">
                     <span>Urgent</span>
@@ -85,7 +85,7 @@
               </div>
 
               <div class="content_right_div">
-                <label for="addCategory">Category<span class="required_red_star">*</span></label>
+                <div class="content_header_div">Category<span class="required_red_star">*</span></div>
                 <input id="addCategory" class="big_card_edit_title_input cursor_pointer" onclick="addNewCategory(this)" readonly placeholder="Select task category" type="text" />
                 <div class="visibility_area_container df_ac">
                   <div id="addCategoryIcons" class="visibility_icon_container df_ac big_card_edit_subtask_input_icons">
@@ -96,7 +96,7 @@
               </div>
 
               <div class="content_right_div">
-                <label for="addSubtasks">Subtasks</label>
+                <div class="content_header_div">Subtasks</div>
                 <input id="addSubtasks" class="big_card_edit_title_input cursor_pointer" onfocus="toggleEditTasksSubtasks()" placeholder="Add new subtask" type="text" />
                 <div class="visibility_area_container df_ac">
                   <div id="bigCardEditSubtaskInputIcons" class="visibility_icon_container df_ac big_card_edit_subtask_input_icons">
