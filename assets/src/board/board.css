@@ -243,6 +243,13 @@
   }
 }
 
+@media (max-width: 1130px) {
+  .content-section {
+    flex: none;
+    height: calc(100vh - 80px);
+  }
+}
+
 @media (max-width: 555px) {
   .big_card {
     width: 100%;
@@ -282,6 +289,7 @@
   .button_priority {
     padding: 11px 7.5px;
     font-size: 16px;
+    width: 100%;
   }
   .button {
     padding: 18px 10px;
@@ -303,5 +311,6 @@
 @media (max-width: 380px) {
   .big_card_edit_priority_buttons {
     flex-direction: column;
+    width: 100%;
   }
 }
