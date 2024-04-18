@@ -175,3 +175,6 @@ textarea {
   margin-top: 0;
   gap: 8px;
 }
+.visibility_icon_container {
+  transform: translate(0, -65%);
+}
