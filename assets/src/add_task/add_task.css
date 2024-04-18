@@ -96,6 +96,15 @@ textarea {
 .category:hover {
   background-color: #eeeeee;
 }
+
+/* style for the imported elements form edit task please let them under your styles otherwise they will be overwritten */
+
+.big_card_edit_assigned_to_logos {
+  margin-bottom: 10px;
+  margin-top: 0;
+  gap: 8px;
+}
+
 /*
 |/////////////////////////////////////////////////////////////|
 |                                                             |
@@ -161,7 +170,7 @@ textarea {
     color: black;
   }
   .visibility_icon_container {
-    padding: 7px 0;
+    padding: 8px 0;
   }
 }
 
@@ -169,18 +178,4 @@ textarea {
   .big_card_edit_priority_buttons {
     flex-direction: column;
   }
-}
-
-/* style for the imported elements form edit task please let them under your styles otherwise they will be overwritten */
-
-.big_card_edit_title_input {
-  margin: 10px 0;
-}
-.big_card_edit_assigned_to_logos {
-  margin-bottom: 10px;
-  margin-top: 0;
-  gap: 8px;
-}
-.visibility_icon_container {
-  transform: translate(0, -65%);
 }
