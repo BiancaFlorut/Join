@@ -171,6 +171,13 @@ textarea {
   .add_task {
     padding: 32px 16px 0 16px;
   }
+  .add_task_bottom {
+    flex-direction: column;
+    margin: 0;
+  }
+  .add_task_bottom button {
+    width: 100%;
+  }
 }
 
 /* style for the imported elements form edit task please let them under your styles otherwise they will be overwritten */
@@ -184,7 +191,7 @@ textarea {
   gap: 8px;
 }
 .visibility_icon_container {
-  transform: translate(0, -65%);
+  transform: translate(0, -75%);
 }
 .big_card_edit_priority_buttons {
   margin: 10px 0 20px;
