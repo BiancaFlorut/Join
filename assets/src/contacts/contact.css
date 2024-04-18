@@ -281,3 +281,9 @@
     font-weight: 400;
 }
   
+@media (max-width: 1130px) {
+    .content-section {
+      flex: none;
+      height: calc(100vh - 80px);
+    }
+  }
