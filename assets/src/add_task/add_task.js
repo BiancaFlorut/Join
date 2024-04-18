@@ -13,11 +13,78 @@ let allContacts;
 //   });
 // });
 
+/**
+ * Reloads the current page, clearing all form fields.
+ *
+ * @return {void} This function does not return anything.
+ */
 function clearFields() {
   location.reload();
 }
 
 
+
+
+/**
+ * Adds a new task to the system by retrieving the input values from the DOM and validating them.
+ * If all input fields are not empty, it logs the new task and clears the input fields.
+ *
+ * @return {void} This function does not return a value.
+ */
+function addNewTask() {
+  // Elemente aus dem DOM abrufen
+  var titleInput = document.getElementById('addTitle');
+  var dueDateInput = document.getElementById('addDueDate');
+  var categoryInput = document.getElementById('addCategory');
+
+  // Funktion zum Anzeigen der Fehlermeldung
+  function showError(input, message) {
+      // Erstelle ein neues Element für die Fehlermeldung
+      var errorElement = document.createElement('span');
+      errorElement.textContent = message;
+      errorElement.style.color = 'red';
+      errorElement.id = input.id + 'Error'; // Setze eine eindeutige ID für das Fehlerelement
+
+      // Füge das Fehlerelement direkt nach dem Eingabeelement ein
+      input.parentNode.insertBefore(errorElement, input.nextSibling);
+  }
+
+  // Funktion zum Entfernen der Fehlermeldung
+  function removeError(input) {
+      var existingError = document.getElementById(input.id + 'Error');
+      if (existingError) existingError.remove();
+  }
+
+  // Überprüfe, ob die Eingabefelder nicht leer sind
+  if (titleInput.value === '') {
+      showError(titleInput, 'This field is required');
+  } else {
+      removeError(titleInput); // Entferne Fehlermeldung, wenn das Feld ausgefüllt ist
+  }
+
+  if (dueDateInput.value === '') {
+      showError(dueDateInput, 'This field is required');
+  } else {
+      removeError(dueDateInput); // Entferne Fehlermeldung, wenn das Feld ausgefüllt ist
+  }
+
+  if (categoryInput.value === '') {
+      showError(categoryInput, 'This field is required');
+  } else {
+      removeError(categoryInput); // Entferne Fehlermeldung, wenn das Feld ausgefüllt ist
+  }
+
+  // Überprüfe, ob alle Felder ausgefüllt sind, bevor du fortfährst
+  if (titleInput.value !== '' && dueDateInput.value !== '' && categoryInput.value !== '') {
+      // Hier können Sie den Code hinzufügen, um die neue Aufgabe zu speichern oder anzuzeigen
+      console.log('Neue Aufgabe hinzugefügt:', titleInput.value, dueDateInput.value, categoryInput.value);
+
+      // Beispiel: Leere die Eingabefelder nach dem Hinzufügen der Aufgabe
+      titleInput.value = '';
+      dueDateInput.value = '';
+      categoryInput.value = '';
+  }
+}
 
 /**
  * Initializes the add task functionality.
