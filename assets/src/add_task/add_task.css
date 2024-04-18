@@ -84,10 +84,18 @@ textarea {
   margin: 20px 0 10px 0;
 }
 
+.category_container_area {
+  position: relative;
+  width: 100%;
+}
+
 .category_container {
+  position: absolute;
+  width: 100%;
   background-color: white;
   font-size: 20px;
   border-radius: 0 0 10px 10px;
+  z-index: 10;
 }
 
 .category {
