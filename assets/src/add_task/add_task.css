@@ -37,6 +37,11 @@
 .add_task_buttons {
   display: flex;
   gap: 16px;
+  align-items: center;
+  text-align: center;
+}
+.add_task_buttons img {
+  height: 20px;
 }
 .light_bold_20 {
   font-size: 21px;
