@@ -1,5 +1,4 @@
 let tasks = []; 
-let user;
 const SUBTASK_CHECKBOX_PATH = '../../img/checkbox_board';
 let cols =  ['toDo', 'inProgress', 'awaitFeedback', 'done'];
 
@@ -163,4 +162,9 @@ function searchTask() {
     });
     updateHTML(results);
   } else updateHTML(tasks);
+}
+
+function openCreateTask(){
+  getElementWithId("createTask").classList.remove("d_none");
+  initUserAndGenerateHTML();
 }

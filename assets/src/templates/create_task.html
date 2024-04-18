@@ -1,198 +1,101 @@
-<div class="add_task">
-    <h1>Add Tasks</h1>
+<div id="createTask_content" class="add_task">
+  <h1>Add Tasks</h1>
 
-    <form id="createTask" class="main_content" onsubmit="addNewTask(); return false">
-      
-        <div class="content_left">
-          <div>
-            <div class="content_header_div">
-              Title<span class="required_red_star">*</span>
-            </div>
+  <form id="createTask" class="main_content" onsubmit="addNewTask(); return false">
+    <div class="content_left">
+      <div>
+        <div class="content_header_div">Title<span class="required_red_star">*</span></div>
+        <input required class="add_content_input_text" id="addTitle" type="text" placeholder="Enter a title" />
+      </div>
+      <div>
+        <div class="content_header_div">Description</div>
+        <textarea class="add_content_input_text" rows="3" id="addDescription" type="text" placeholder="Enter a Description"></textarea>
+      </div>
+      <div>
+        <div class="content_header_div">Assigned to</div>
+        <div class="big_card_edit_assigned_to_custom_select">
+          <div class="big_card_edit_assigned_to_content">
             <input
-              required
-              class="add_content_input_text"
-              id="addTitle"
+              id="bigCardEdiSearchContact"
               type="text"
-              placeholder="Enter a title"
-            />
-          </div>
-          <div>
-            <div class="content_header_div">Description</div>
-            <textarea
-              class="add_content_input_text"
-              rows="3"
-              id="addDescription"
-              type="text"
-              placeholder="Enter a Description"
-            ></textarea>
-          </div>
-          <div>
-            <div class="content_header_div">Assigned to</div>
-            <div class="big_card_edit_assigned_to_custom_select">
-              <div class="big_card_edit_assigned_to_content">
-                <input
-                  id="bigCardEdiSearchContact"
-                  type="text"
-                  placeholder="Select contacts to assign"
-                  class="big_card_edit_title_input"
-                  value="Select contacts to assign"
-                  readonly="readonly"
-                  onkeyup="searchContact()"
-                  onclick="setToggleForTheContactList()"
-                />
-                <div class="visibility_area_container df_ac">
-                  <div class="visibility_icon_container">
-                    <img
-                      id="bigCardEdiSearchIcon"
-                      class="visibility_icon"
-                      src="../../img/arrow_drop_down_down.svg"
-                      alt=""
-                      onclick="setToggleForTheContactList()"
-                    />
-                  </div>
-                </div>
-                <div class="big_card_edit_contacts_area">
-                  <div
-                    id="addTaskAssignedContacts"
-                    class="big_card_edit_contacts df_ac d_none"
-                  ></div>
-                </div>
-              </div>
-            </div>
-            <div
-              id="editAssignToIconsList"
-              class="big_card_edit_assigned_to_logos df_ac"
-            ></div>
-          </div>
-        </div>
-
-        <div class="decoration_content"></div>
-
-        <div class="content_right">
-          <div class="content_right_div">
-            <div class="content_header_div">
-              Due date<span class="required_red_star">*</span>
-            </div>
-            <input
-              required
-              id="addDueDate"
-              class="add_content_input_text margin_10_20"
-              id="addDate"
-              type="date"
-              placeholder="dd/mm/yyyy"
-            />
-          </div>
-
-          <div class="content_right_div">
-            <div class="content_header_div">Prio</div>
-            <div class="big_card_edit_priority_buttons df_ac">
-              <button
-                id="buttonPriority2"
-                class="button_priority flex_1_1_0px df_ac jc"
-                onclick="togglePriorityTo(2, this)"
-              >
-                <span>Urgent</span>
-                <img src="../../img/priority_urgent.svg" alt="" />
-              </button>
-              <button
-                id="buttonPriority1"
-                class="button_priority flex_1_1_0px df_ac jc"
-                onclick="togglePriorityTo(1, this)"
-              >
-                <span>Medium</span>
-                <img src="../../img/priority_medium.svg" alt="" />
-              </button>
-              <button
-                id="buttonPriority0"
-                class="button_priority flex_1_1_0px df_ac jc"
-                onclick="togglePriorityTo(0, this)"
-              >
-                <span>Low</span>
-                <img src="../../img/priority_low.svg" alt="" />
-              </button>
-            </div>
-          </div>
-
-          <div class="content_right_div">
-            <div class="content_header_div">
-              Category<span class="required_red_star">*</span>
-            </div>
-            <input
-              required
-              id="addCategory"
-              class="big_card_edit_title_input cursor_pointer"
-              onclick="addNewCategory(this)"
-              readonly
-              placeholder="Select task category"
-              type="text"
+              placeholder="Select contacts to assign"
+              class="big_card_edit_title_input"
+              value="Select contacts to assign"
+              readonly="readonly"
+              onkeyup="searchContact()"
+              onclick="setToggleForTheContactListCreateTask()"
             />
             <div class="visibility_area_container df_ac">
-              <div
-                id="addCategoryIcons"
-                class="visibility_icon_container df_ac big_card_edit_subtask_input_icons"
-              >
-                <img
-                  class="visibility_icon"
-                  src="../../img/arrow_drop_down_down.svg"
-                  alt=""
-                  onclick="toggleCategoryOptions()"
-                />
+              <div class="visibility_icon_container">
+                <img id="createTaskAddNewSubtaskIcon" class="visibility_icon" src="../../img/arrow_drop_down_down.svg" alt="" onclick="setToggleForTheContactListCreateTask()" />
               </div>
             </div>
-            <div class="category_container_area">
-              <div
-                id="categoryContainer"
-                class="category_container d_none"
-              ></div>
+            <div class="big_card_edit_contacts_area">
+              <div id="addTaskAssignedContacts" class="big_card_edit_contacts df_ac d_none"></div>
             </div>
-          </div>
-
-          <div class="content_right_div">
-            <div class="content_header_div">Subtasks</div>
-            <input
-              id="addSubtasks"
-              class="big_card_edit_title_input cursor_pointer"
-              onfocus="toggleEditTasksSubtasks()"
-              placeholder="Add new subtask"
-              type="text"
-            />
-            <div class="visibility_area_container df_ac">
-              <div
-                id="bigCardEditSubtaskInputIcons"
-                class="visibility_icon_container df_ac big_card_edit_subtask_input_icons"
-              >
-                <img
-                  class="visibility_icon"
-                  src="../../img/plus.svg"
-                  alt=""
-                  onclick="toggleEditTasksSubtasks()"
-                />
-              </div>
-            </div>
-            <ul
-              id="bigCardEditSubtasks"
-              class="big_card_edit_subtask_list"
-            ></ul>
           </div>
         </div>
-      
-    </form>
-    <div class="add_task_bottom">
-      <p>
-        <span class="required_red_star">*</span> This Field is required
-      </p>
-
-      <div class="add_task_buttons">
-        <button
-          class="button_line light_bold_20"
-          id="clearFields"
-          onclick="clearFields()"
-        >
-          Clear X
-        </button>
-        <button class="bold_21" form="createTask">
-          Create Task <img src="../../img/check.svg" alt="plus" />
-        </button>
+        <div id="createTaskAssignToIconsList" class="big_card_edit_assigned_to_logos df_ac"></div>
       </div>
     </div>
+
+    <div class="decoration_content"></div>
+
+    <div class="content_right">
+      <div class="content_right_div">
+        <div class="content_header_div">Due date<span class="required_red_star">*</span></div>
+        <input required id="addDueDate" class="add_content_input_text margin_10_20" id="addDate" type="date" placeholder="dd/mm/yyyy" />
+      </div>
+
+      <div class="content_right_div">
+        <div class="content_header_div">Prio</div>
+        <div class="big_card_edit_priority_buttons df_ac">
+          <button id="buttonPriority2" type="button" class="button_priority flex_1_1_0px df_ac jc" onclick="togglePriorityTo(2, this)">
+            <span>Urgent</span>
+            <img src="../../img/priority_urgent.svg" alt="" />
+          </button>
+          <button id="buttonPriority1" type="button" class="button_priority flex_1_1_0px df_ac jc" onclick="togglePriorityTo(1, this)">
+            <span>Medium</span>
+            <img src="../../img/priority_medium.svg" alt="" />
+          </button>
+          <button id="buttonPriority0" type="button" class="button_priority flex_1_1_0px df_ac jc" onclick="togglePriorityTo(0, this)">
+            <span>Low</span>
+            <img src="../../img/priority_low.svg" alt="" />
+          </button>
+        </div>
+      </div>
+
+      <div class="content_right_div">
+        <div class="content_header_div">Category<span class="required_red_star">*</span></div>
+        <input required id="addCategory" class="big_card_edit_title_input cursor_pointer" onclick="addNewCategory(this)" readonly placeholder="Select task category" type="text" />
+        <div class="visibility_area_container df_ac">
+          <div id="addCategoryIcons" class="visibility_icon_container df_ac big_card_edit_subtask_input_icons">
+            <img class="visibility_icon" src="../../img/arrow_drop_down_down.svg" alt="" onclick="toggleCategoryOptions()" />
+          </div>
+        </div>
+        <div class="category_container_area">
+          <div id="categoryContainer" class="category_container d_none"></div>
+        </div>
+      </div>
+
+      <div class="content_right_div">
+        <div class="content_header_div">Subtasks</div>
+        <input id="addSubtasksCreateTask" class="big_card_edit_title_input cursor_pointer" onfocus="toggleEditTasksSubtasks()" placeholder="Add new subtask" type="text" />
+        <div class="visibility_area_container df_ac">
+          <div id="createTaskSubtaskInputIcons" class="visibility_icon_container df_ac big_card_edit_subtask_input_icons">
+            <img class="visibility_icon" src="../../img/plus.svg" alt="" onclick="toggleEditTasksSubtasks()" />
+          </div>
+        </div>
+        <ul id="bigCardEditSubtasks" class="big_card_edit_subtask_list"></ul>
+      </div>
+    </div>
+  </form>
+  <div class="add_task_bottom">
+    <p><span class="required_red_star">*</span> This Field is required</p>
+
+    <div class="add_task_buttons">
+      <button class="button_line light_bold_20" id="clearFields" onclick="clearFields()">Clear X</button>
+      <button class="bold_21" form="createTask">Create Task <img src="../../img/check.svg" alt="plus" /></button>
+    </div>
   </div>
+</div>

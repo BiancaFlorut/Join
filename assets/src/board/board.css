@@ -249,6 +249,10 @@
   }
 }
 
+.create_task_area {
+  background-color: white;
+}
+
 @media (max-width: 1130px) {
   .content-section {
     flex: none;

@@ -103,8 +103,13 @@ function getContactLogoHTML(contact) {
 }
 
 function closeBigCardView() {
-  editedTask = [];
+  editedTask = {};
   hideElement("bigCardView");
+}
+
+function closeCreateTask() {
+  addedTask = {};
+  hideElement("createTask");
 }
 
 function changeIdImgTheSrc(id, src) {
@@ -121,3 +126,5 @@ function toggleSubtaskCheckbox(element, taskId, i) {
   updateContactsAboutTask(tasks[taskIndex]);
   updateHTML(tasks);
 }
+
+

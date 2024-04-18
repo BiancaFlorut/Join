@@ -18,6 +18,7 @@
     <script src="./big_card.js"></script>
     <script src="./edit_task.js"></script>
     <script src="./templates.js"></script>
+    <script src="../add_task/add_task.js"></script>
     <script src="../DragDropTouch.js"></script>
   </head>
   <body onload="init(); initBoard();">
@@ -30,7 +31,7 @@
             <div class="header_title_input">
               <div class="df_ac board_header_mobile">
                 <h1>Board</h1>
-                <button class="bold_21 button_board_add_task mobile"><span>Add Task</span><img src="../../img/board_add.svg" alt="add" /></button>
+                <button class="bold_21 button_board_add_task mobile" onclick="openCreateTask()"><span>Add Task</span><img src="../../img/board_add.svg" alt="add" /></button>
               </div>
 
               <div class="input_button_header">
@@ -54,7 +55,7 @@
                     </div>
                   </div>
                 </div>
-                <button class="bold_21 button_board_add_task desktop"><span>Add Task</span><img src="../../img/board_add.svg" alt="add" /></button>
+                <button class="bold_21 button_board_add_task desktop" onclick="openCreateTask()"><span>Add Task</span><img src="../../img/board_add.svg" alt="add" /></button>
               </div>
             </div>
           </div>
@@ -91,6 +92,9 @@
               <div class="big_card_content" id="bigCardContent"></div>
             </div>
           </div>
+        </div>
+        <div id="createTask" class="big_card_area d_none" onclick="closeCreateTask()">
+          <div class="create_task_area" w3-include-html="../templates/create_task.html"></div>
         </div>
       </div>
     </section>

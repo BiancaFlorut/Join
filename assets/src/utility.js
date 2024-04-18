@@ -94,29 +94,6 @@ function isWhiteSpaceOnly(string) {
 }
 
 /**
- * This function generates the html code for the contacts that are assigned to the task given as parameter.
- * @param {Array.<{name: string, email: string, phone: number, color: string}>} contacts
- * @param {} task for which the contacts are assigned to
- * @returns string as html code
- */
-function getOptionForAssignedTo(contacts, task, exceptUserEmail) {
-  let html = "";
-  contacts.forEach((contact) => {
-    if (contact.email != exceptUserEmail){
-      let checked = "";
-      if (task.assign_to.some((assignToContact) => assignToContact.email == contact.email)) {
-        checked = "_checked";
-      }
-    let logoHTML = getContactLogoForBigCardEditHTML(contact);
-    html += /*html*/ `
-        <div class="df_ac big_card_edit_contacts_select cursor_pointer" onmousedown="simulateClick(event, this, '${contact.email}', '${checked}')">${logoHTML}<span class="flex_1">${contact.name}</span><img id="${contact.email}Checkbox" src="${CHECKBOX_PATH}${checked}.svg" alt="checkbox"></div >
-      `;
-    }
-  });
-  return html;
-}
-
-/**
  * This function simulates imperfectly the click event as a workaround to avoid the closing on the drop box wenn the user selects a contact from it.
  * @param {Event} e 
  * @param {HTMLElement} element that triggered the event.
@@ -236,23 +213,6 @@ function getPriorityButtonsClasses(priority) {
 }
 
 /**
- * This function clears the blur event handler for the "addSubtasks" element,
- * and replaces the icons in "bigCardEditSubtaskInputIcons" container with edit mode icons. 
- * The input is focused and the user can type the new subtask.
- * @returns {void}
- */
-function toggleEditTasksSubtasks() {
-  getElementWithId("addSubtasks").onblur = "";
-  getElementWithId("addSubtasks").focus();
-  let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
-  iconsContainer.innerHTML = /*html*/ `
-        <img src="../../img/cancel.svg" alt="" onclick="cancelSubtaskEditInput()">
-        <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
-        <img src="../../img/confirm.svg" alt="" onclick="confirmSubtaskEditInput()">
-    `;
-}
-
-/**
  * This function generates the html code with the edit icons for each subtask.
  * @param {Array} subtasks 
  * @returns string html
@@ -273,43 +233,6 @@ function generateSubTaskListItems(subtasks) {
         `;
   });
   return html;
-}
-
-/**
- * This function cancels the edit mode for the subtask input and sets blur function.
- */
-function cancelSubtaskEditInput() {
-  let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
-  iconsContainer.innerHTML = /*html*/ `
-        <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/plus.svg" alt="" onclick="toggleEditTasksSubtasks()"/>
-    `;
-  getElementWithId("addSubtasks").value = "";
-  getElementWithId("addSubtasks").onblur = function () {
-    let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
-    iconsContainer.innerHTML = /*html*/ `
-        <img id="bigCardEdiSearchIcon" class="visibility_icon" src="../../img/plus.svg" alt="" />
-    `;
-    getElementWithId("addSubtasks").value = "";
-  };
-  getElementWithId("addSubtasks").blur();
-}
-
-/**
- *
- * @param {HTMLElement} element
- */
-function editTasksSubtask(id) {
-  let element = getElementWithId(id);
-  const i = getIndexFromId(id);
-  element.parentElement.classList.add("big_card_edit_subtask_on_edit");
-  element.contentEditable = true;
-  element.focus();
-  getElementWithId("bigCardEditCardIcons_" + i).innerHTML = /*html*/ `
-        <img src="../../img/delete.svg" alt="" onclick="cancelSubtaskEdit('${id}', ${i})">
-        <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
-        <img src="../../img/confirm.svg" alt="" onclick="saveEditedSubtask('${element.id}')">
-    `;
-  getElementWithId(id).onmouseout = `showElement('bigCardEditCardIcons_${i}')`;
 }
 
 function generateSubtaskHTML(i) {

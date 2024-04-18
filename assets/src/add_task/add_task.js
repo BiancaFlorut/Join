@@ -1,7 +1,6 @@
 let addedTask = { assign_to: [], subtasks: [] };
 let isContactListOpen = false;
-let user;
-let allContacts;
+let contacts;
 
 // document.addEventListener('DOMContentLoaded', function() {
 //   var clearButton = document.getElementById('clearFields');
@@ -59,7 +58,7 @@ function addNewTask() {
   if (titleInput.value === '') {
       showError(titleInput, 'This field is required');
   } else {
-      removeError(titleInput); // Entferne Fehlermeldung, wenn das Feld ausgefüllt ist
+      removeError(titleInput); // Entferne Fehlermeldung, wenn das Feld ausgefüllt 
   }
 
   if (dueDateInput.value === '') {
@@ -92,31 +91,56 @@ function addNewTask() {
  * @return {Promise<void>} A promise that resolves when the initialization is complete.
  */
 async function initAddTask() {
+  await init();
+  initUserAndGenerateHTML();
+}
+
+function initUserAndGenerateHTML() {
   let container = getElementWithId("addTaskAssignedContacts");
-  user = await getUserFromServer(emailParameter);
   const userContact = { name: user.name + " (You)", email: user.email, color: user.color };
-  allContacts = [...user.contacts, userContact];
+  contacts = user.contacts;
   addedTask.assign_to.push(userContact);
-  getElementWithId("editAssignToIconsList").innerHTML = getContactsLogoHTML(addedTask.assign_to);
-  container.innerHTML = getOptionForAssignedTo(user.contacts, addedTask, user.email);
+  user.categories = [
+    { name: "Technical Task", color: "#1FD7C1" },
+    { name: "User Story", color: "#0038FF" },
+  ];
+  getElementWithId("createTaskAssignToIconsList").innerHTML = getContactsLogoHTML(addedTask.assign_to);
+  container.innerHTML = getOptionForAssignedToCreateTask(contacts, addedTask, user.email);
   const minDate = new Date().toISOString().split("T")[0];
   getElementWithId("addDueDate").setAttribute("min", minDate);
   togglePriorityTo(1, getElementWithId("buttonPriority1"));
+  setAttributes();
+  showCategoryOptions();
+}
+
+function getOptionForAssignedToCreateTask(contacts, task, exceptUserEmail) {
+  let html = "";
+  contacts.forEach((contact) => {
+    if (contact.email != exceptUserEmail){
+      let checked = "";
+      if (task.assign_to.some((assignToContact) => assignToContact.email == contact.email)) {
+        checked = "_checked";
+      }
+    let logoHTML = getContactLogoForBigCardEditHTML(contact);
+    html += /*html*/ `
+        <div class="df_ac big_card_edit_contacts_select cursor_pointer" onmousedown="simulateClickCreateTask(event, this, '${contact.email}', '${checked}')">${logoHTML}<span class="flex_1">${contact.name}</span><img id="${contact.email}Checkbox" src="${CHECKBOX_PATH}${checked}.svg" alt="checkbox"></div >
+      `;
+    }
+  });
+  return html;
+}
+
+function setAttributes() {
   getElementWithId("bigCardEdiSearchContact").ondblclick = function () {
     this.removeAttribute("readonly");
     this.value = "";
   };
   getElementWithId("bigCardEdiSearchContact").onblur = function () {
-    istContactListOpen = toggleContactsList(getElementWithId("bigCardEdiSearchIcon"), "addTaskAssignedContacts", "bigCardEdiSearchContact", true);
+    isContactListOpen = toggleContactsList(getElementWithId("bigCardEdiSearchIcon"), "addTaskAssignedContacts", "bigCardEdiSearchContact", true);
     this.value = "Select contacts to assign";
     this.setAttribute("readonly", "");
-    getElementWithId("addTaskAssignedContacts").innerHTML = getOptionForAssignedTo(allContacts, addedTask, user.email);
+    getElementWithId("addTaskAssignedContacts").innerHTML = getOptionForAssignedToCreateTask(contacts, addedTask, user.email);
   };
-  user.categories = [
-    { name: "Technical Task", color: "#1FD7C1" },
-    { name: "User Story", color: "#0038FF" },
-  ];
-  showCategoryOptions();
 }
 
 /**
@@ -124,7 +148,7 @@ async function initAddTask() {
  *
  * @return {undefined} No return value.
  */
-function setToggleForTheContactList() {
+function setToggleForTheContactListCreateTask() {
   const imgElement = getElementWithId("bigCardEdiSearchIcon");
   isContactListOpen = toggleContactsList(imgElement, "addTaskAssignedContacts", "bigCardEdiSearchContact", isContactListOpen);
 }
@@ -137,12 +161,17 @@ function setToggleForTheContactList() {
  * @param {string} checked - The checked flag for the checkbox image.
  * @return {void} This function does not return a value.
  */
-function selectContact(element, email, checked) {
+function selectContactCreateTask(element, email, checked) {
   checked = toggleSelectedContact(element, email, checked, addedTask);
   const arg1 = "'" + email + "'";
   const arg2 = "'" + checked + "'";
   element.setAttribute("onmousedown", `simulateClick(event, this, ${arg1}, ${arg2})`);
-  getElementWithId("editAssignToIconsList").innerHTML = getContactsLogoHTML(addedTask.assign_to);
+  getElementWithId("createTaskAssignToIconsList").innerHTML = getContactsLogoHTML(addedTask.assign_to);
+}
+
+function simulateClickCreateTask(e, element, email, checked) {
+  e.preventDefault();
+  element.onclick = () => { selectContactCreateTask(element, email, checked)};
 }
 
 /**
@@ -155,9 +184,9 @@ function searchContact() {
   getElementWithId("addTaskAssignedContacts").classList.remove("d_none");
   isContactListOpen = true;
   const searchToken = getElementWithId("bigCardEdiSearchContact").value;
-  const foundContacts = allContacts.filter((contact) => contact.name.toLowerCase().includes(searchToken.toLowerCase()));
+  const foundContacts = contacts.filter((contact) => contact.name.toLowerCase().includes(searchToken.toLowerCase()));
   let container = getElementWithId("addTaskAssignedContacts");
-  container.innerHTML = getOptionForAssignedTo(foundContacts, addedTask, user.email);
+  container.innerHTML = getOptionForAssignedToCreateTask(foundContacts, addedTask, user.email);
 }
 
 /**
@@ -177,16 +206,35 @@ function togglePriorityTo(priorityValue, buttonElement) {
  *
  * @return {void} This function does not return a value.
  */
-function confirmSubtaskEditInput() {
-  let newText = getElementWithId("addSubtasks").value;
+function confirmSubtaskNewInput() {
+  let newText = getElementWithId("addSubtasksCreateTask").value;
   if (!isWhiteSpaceOnly(newText)) {
     const subtask = { text: newText, checked: false };
     addedTask.subtasks.push(subtask);
   }
   getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(addedTask.subtasks);
-  scrollToTheBottomOfTheContainer(getElementWithId("content"));
+  scrollToTheBottomOfTheContainer(getElementWithId("createTask_content"));
   // addedTask.subtasks.forEach((subtask, i) => setOnBlurFunctionOnEditedSubtask(i));
-  cancelSubtaskEditInput();
+  cancelSubtaskEditInputCreateTask();
+}
+
+/**
+ * This function cancels the edit mode for the subtask input and sets blur function.
+ */
+function cancelSubtaskEditInputCreateTask() {
+  let iconsContainer = getElementWithId("createTaskSubtaskInputIcons");
+  iconsContainer.innerHTML = /*html*/ `
+        <img id="createTaskAddNewSubtaskIcon" class="visibility_icon" src="../../img/plus.svg" alt="" onclick="toggleCreateTasksSubtasks()"/>
+    `;
+  getElementWithId("addSubtasksCreateTask").value = "";
+  getElementWithId("addSubtasksCreateTask").onblur = function () {
+    let iconsContainer = getElementWithId("createTaskSubtaskInputIcons");
+    iconsContainer.innerHTML = /*html*/ `
+        <img id="createTaskAddNewSubtaskIcon" class="visibility_icon" src="../../img/plus.svg" alt="" onclick="toggleCreateTasksSubtasks()"/>
+    `;
+    getElementWithId("addSubtasksCreateTask").value = "";
+  };
+  getElementWithId("addSubtasksCreateTask").blur();
 }
 
 /**
@@ -325,4 +373,21 @@ function confirmCategoryEditInput() {
     cancelCategoryEditInput();
     getElementWithId("addCategory").value = value;
   } else cancelCategoryEditInput();
+}
+
+/**
+ * This function clears the blur event handler for the "addSubtasksCreateTask" element,
+ * and replaces the icons in "bigCardEditSubtaskInputIcons" container with edit mode icons. 
+ * The input is focused and the user can type the new subtask.
+ * @returns {void}
+ */
+function toggleCreateTasksSubtasks() {
+  getElementWithId("addSubtasksCreateTask").onblur = "";
+  getElementWithId("addSubtasksCreateTask").focus();
+  let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
+  iconsContainer.innerHTML = /*html*/ `
+        <img src="../../img/cancel.svg" alt="" onclick="cancelSubtaskEditInputCreateTask()">
+        <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
+        <img src="../../img/confirm.svg" alt="" onclick="confirmSubtaskNewInput()">
+    `;
 }
