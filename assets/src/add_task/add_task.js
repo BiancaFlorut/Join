@@ -3,21 +3,29 @@ let isContactListOpen = false;
 let user;
 let allContacts;
 
-// function togglePriorityTo(priorityValue, buttonElement) {
-// addTask.priority = priorityValue;
-//     resetPriorityButtons();
-//     let classList = getPriorityButtonsClasses(priorityValue).split(" ");
-//     buttonElement.classList.add(...classList);
+// document.addEventListener('DOMContentLoaded', function() {
+//   var clearButton = document.getElementById('clearFields');
+//   clearButton.addEventListener('click', function() {
+//       var inputs = document.querySelectorAll('input, textarea');
+//       inputs.forEach(function(input) {
+//           input.value = '';
+//       });
+//   });
+// });
+
+// function clearFields() {
+//   location.reload();
 // }
 
-// function resetPriorityButtons() {
-//     for (let i = 0; i < 3; i++) {
-//       let classList = getElementWithId("buttonPriority" + i).classList;
-//       classList.remove("clicked");
-//       classList.remove(getTaskPriority(i));
-//     }
-//   }
+function clearFields() {
 
+}
+
+/**
+ * Initializes the add task functionality.
+ *
+ * @return {Promise<void>} A promise that resolves when the initialization is complete.
+ */
 async function initAddTask() {
   let container = getElementWithId("addTaskAssignedContacts");
   user = await getUserFromServer(emailParameter);
@@ -46,11 +54,24 @@ async function initAddTask() {
   showCategoryOptions();
 }
 
+/**
+ * Sets the toggle for the contact list.
+ *
+ * @return {undefined} No return value.
+ */
 function setToggleForTheContactList() {
   const imgElement = getElementWithId("bigCardEdiSearchIcon");
   isContactListOpen = toggleContactsList(imgElement, "addTaskAssignedContacts", "bigCardEdiSearchContact", isContactListOpen);
 }
 
+/**
+ * Selects a contact and updates the UI accordingly.
+ *
+ * @param {HTMLDivElement} element - The contact element to be selected.
+ * @param {string} email - The email of the contact.
+ * @param {string} checked - The checked flag for the checkbox image.
+ * @return {void} This function does not return a value.
+ */
 function selectContact(element, email, checked) {
   checked = toggleSelectedContact(element, email, checked, addedTask);
   const arg1 = "'" + email + "'";
@@ -59,6 +80,11 @@ function selectContact(element, email, checked) {
   getElementWithId("editAssignToIconsList").innerHTML = getContactsLogoHTML(addedTask.assign_to);
 }
 
+/**
+ * Searches for contacts based on the input in the "bigCardEdiSearchContact" element.
+ *
+ * @return {void} This function does not return a value.
+ */
 function searchContact() {
   changeSrc(getElementWithId("bigCardEdiSearchIcon"), "../../img/arrow_drop_down_up.svg");
   getElementWithId("addTaskAssignedContacts").classList.remove("d_none");
@@ -69,11 +95,23 @@ function searchContact() {
   container.innerHTML = getOptionForAssignedTo(foundContacts, addedTask, user.email);
 }
 
+/**
+ * Toggles the priority of a task and updates the button style accordingly.
+ *
+ * @param {number} priorityValue - The new priority value for the task (0 - low, 1 - medium, 2 - urgent).
+ * @param {HTMLButtonElement} buttonElement - The button element representing the priority.
+ * @return {void} This function does not return a value.
+ */
 function togglePriorityTo(priorityValue, buttonElement) {
   addedTask.priority = priorityValue;
   togglePriority(priorityValue, buttonElement);
 }
 
+/**
+ * Confirms the edited subtask input by adding it to the list of subtasks.
+ *
+ * @return {void} This function does not return a value.
+ */
 function confirmSubtaskEditInput() {
   let newText = getElementWithId("addSubtasks").value;
   if (!isWhiteSpaceOnly(newText)) {
@@ -86,6 +124,12 @@ function confirmSubtaskEditInput() {
   cancelSubtaskEditInput();
 }
 
+/**
+ * Cancels the subtask edit by restoring the original text and removing the edit mode.
+ *
+ * @param {string} id - The ID of the subtask to cancel the edit for.
+ * @return {void} This function does not return a value.
+ */
 function cancelSubtaskEdit(id) {
   const i = getIndexFromId(id);
   cancelEditSubtask(id, i);
@@ -94,6 +138,12 @@ function cancelSubtaskEdit(id) {
   element.blur();
 }
 
+/**
+ * Saves the edited subtask with the given ID.
+ *
+ * @param {string} id - The ID of the subtask to be saved.
+ * @return {void} This function does not return a value.
+ */
 function saveEditedSubtask(id) {
   const i = getIndexFromId(id);
   let element = getElementWithId(id);
@@ -107,12 +157,23 @@ function saveEditedSubtask(id) {
   } else deleteEditTaskSubtask(id);
 }
 
+/**
+ * Deletes a subtask from the "addedTask" object based on the provided ID.
+ *
+ * @param {string} id - The ID of the subtask to be deleted.
+ * @return {void} This function does not return a value.
+ */
 function deleteEditTaskSubtask(id) {
   const i = getIndexFromId(id);
   addedTask.subtasks.splice(i, 1);
   getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(addedTask.subtasks);
 }
 
+/**
+ * Generates the HTML code for displaying category options.
+ *
+ * @return {undefined} This function does not return a value.
+ */
 function showCategoryOptions() {
   let container = getElementWithId("categoryContainer");
   container.innerHTML = ``;
@@ -123,12 +184,23 @@ function showCategoryOptions() {
   });
 }
 
+/**
+ * Selects a category and updates the addedTask object accordingly.
+ *
+ * @param {string} name - The name of the category to select.
+ * @return {void} This function does not return anything.
+ */
 function selectCategory(name) {
   addedTask.category = name;
   getElementWithId("addCategory").value = name;
   hideElement("categoryContainer");
 }
 
+/**
+ * Toggles the visibility of the category options container and changes the source of the arrow icon.
+ *
+ * @return {void} 
+ */
 function toggleCategoryOptions() {
   let container = getElementWithId("categoryContainer");
   if (container.classList.contains("d_none")) {
@@ -140,6 +212,14 @@ function toggleCategoryOptions() {
   }
 }
 
+/**
+ * Enables editing of a category input element by removing the "readonly" attribute,
+ * setting focus on the input element, and updating the icons container with three
+ * images representing cancel, vertical line, and confirm actions.
+ *
+ * @param {HTMLInputElement} inputElement - The category input element to be edited.
+ * @return {void} This function does not return anything.
+ */
 function addNewCategory(inputElement) {
   inputElement.removeAttribute("readonly");
   getElementWithId("addCategory").focus();
@@ -152,6 +232,11 @@ function addNewCategory(inputElement) {
     `;
 }
 
+/**
+ * Cancels the category edit input and resets the icons container and the category input value.
+ *
+ * @return {undefined} No return value.
+ */
 function cancelCategoryEditInput() {
   let iconsContainer = getElementWithId("addCategoryIcons");
   iconsContainer.innerHTML = /*html*/ `
@@ -160,6 +245,11 @@ function cancelCategoryEditInput() {
   getElementWithId("addCategory").value = "Select task category";
 }
 
+/**
+ * Confirms the edit input for the category.
+ *
+ * @return {undefined} No return value.
+ */
 function confirmCategoryEditInput() {
   const value = getElementWithId("addCategory").value;
   if (!isWhiteSpaceOnly(value)) {
