@@ -1,7 +1,7 @@
 <div id="createTask_content" class="add_task">
   <h1>Add Tasks</h1>
 
-  <form id="createTask" class="main_content" onsubmit="addNewTask(); return false">
+  <form id="createTaskForm" class="main_content" onsubmit="addNewTask(); return false">
     <div class="content_left">
       <div>
         <div class="content_header_div">Title<span class="required_red_star">*</span></div>
@@ -107,7 +107,10 @@
 
     <div class="add_task_buttons">
       <button class="button_line light_bold_20" id="clearFields" onclick="clearFields()">Clear X</button>
-      <button id="createTaskSubmitButton" class="bold_21" form="createTask" disabled>Create Task <img src="../../img/check.svg" alt="plus" /></button>
+      <button id="createTaskSubmitButton" class="bold_21" form="createTaskForm" disabled>Create Task <img src="../../img/check.svg" alt="plus" /></button>
     </div>
   </div>
+</div>
+<div id="toastMessageCreatedTask" class="dialog_bg">
+  <div class="task_added"><span>Task added to board</span><img src="../../img/board_white.svg" alt="" /></div>
 </div>

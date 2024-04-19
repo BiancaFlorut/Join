@@ -43,7 +43,6 @@ async function register() {
       users.push(user);
       await setItemToRemoteStorage("users", JSON.stringify(users));
       getElementWithId('signUpSuccessfullyScreen').style.display = 'flex';
-
       setTimeout(function() { window.location.replace('../log_in/log_in.html')}, 1600);
     } 
     document.getElementById("signUpButton").disabled = false;

@@ -56,10 +56,8 @@ function startDragging(id) {
   const index = tasks.findIndex((task) => task.id == id);
   const status = tasks[index].status;
   const nextStatusIndex = cols.findIndex( col => col == status) + 1;
-  if (nextStatusIndex < tasks.length)
+  if (nextStatusIndex < cols.length)
     document.getElementById(`${cols[nextStatusIndex]}`).innerHTML += generateHighlightedCardGhostHTML();
-    console.log(cols[nextStatusIndex]);
-
 }
 
 function generateHighlightedCardGhostHTML() {

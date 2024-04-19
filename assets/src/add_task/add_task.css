@@ -125,6 +125,33 @@ textarea {
   padding-bottom: 16px;
 }
 
+.task_added {
+  padding: 25px 30.5px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  animation: fromBottomToCenter 800ms forwards;
+  background-color: rgba(42, 54, 71, 1);
+  position: relative;
+  bottom: -4000px;
+}
+
+.task_added span {
+  color: white;
+  padding-right: 20px;
+}
+
+@keyframes fromBottomToCenter {
+  0% {
+    bottom: -4000px;
+  }
+
+  100% {
+    bottom: 0;
+  }
+}
+
 /* style for the imported elements form edit task please let them under your styles otherwise they will be overwritten */
 
 .big_card_edit_assigned_to_logos {

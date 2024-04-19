@@ -17,6 +17,9 @@ async function addNewTask() {
   tasks.push(addedTask);
   await updateTasksFromUser(user.email, tasks);
   await updateContactsAboutTask(addedTask);
+  clearFields();
+  getElementWithId('toastMessageCreatedTask').style.display = 'flex';
+  setTimeout(function() { window.location.replace('../board/board.html?email=' + user.email) }, 2000);
 }
 
 function clearFields() {

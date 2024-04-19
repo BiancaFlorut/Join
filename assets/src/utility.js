@@ -171,7 +171,7 @@ function toggleSelectedContact(element, email, checked, task) {
   } else {
     toggleCheckbox(getElementWithId(`${email}Checkbox`), false, CHECKBOX_PATH + "_white");
     element.classList.add("big_card_edit_contact_clicked");
-    let contact = contacts.find( c => c.email == email);
+    let contact = user.contacts.find( c => c.email == email);
     task.assign_to.push(contact);
     checked = "_checked";
   }
