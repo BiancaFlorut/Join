@@ -33,7 +33,11 @@ async function register() {
     const password = document.getElementById("password").value;
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
-    const user = { name, email, password, color: selectRandomColor()};
+    const user = { name, email, password, color: selectRandomColor(), contacts: [], tasks: [] };
+    user.categories = [
+      { name: "Technical Task", color: "#1FD7C1" },
+      { name: "User Story", color: "#0038FF" },
+    ];
     if (!isEmailAlreadyRegistered(email)) {
       console.log("push user on remote storage");
       users.push(user);

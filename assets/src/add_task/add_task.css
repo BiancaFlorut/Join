@@ -115,6 +115,16 @@ textarea {
   background-color: #eeeeee;
 }
 
+.add_content_error {
+  padding-top: 10px;
+  font-family: "Poppins";
+  color: #ff8190;
+  font-size: 12px;
+  height: 14px;
+  width: 100%;
+  padding-bottom: 16px;
+}
+
 /* style for the imported elements form edit task please let them under your styles otherwise they will be overwritten */
 
 .big_card_edit_assigned_to_logos {

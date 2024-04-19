@@ -84,12 +84,12 @@
   width: 100%;
   height: 100%;
   z-index: 5;
-  animation: background_intro 500ms ease-in-out 100ms forwards;
+  animation: background_intro 1000ms ease-in-out forwards;
 }
 
 .big_logo svg {
   position: relative;
-  animation: logo_intro_desktop 500ms ease-in-out 100ms forwards;
+  animation: logo_intro_desktop 1000ms ease-in-out forwards;
 }
 
 .mobile {
@@ -107,11 +107,10 @@
 
 @keyframes logo_intro_desktop {
   0% {
-    top: 50%;
-    left: 50%;
-    width: 274px;
-    height: 335px;
-    transform: translate(-50%, -50%);
+    top: 33%;
+    left: 33%;
+    width: 33%;
+    height: 33%;
   }
   100% {
     top: 7.8%;
@@ -122,36 +121,33 @@
   }
 }
 
-@keyframes logo_intro_mobile {
-  0% {
-    top: 50%;
-    left: 50%;
-    width: 274px;
-    height: 335px;
-    transform: translate(-50%, -50%);
-  }
-  100% {
-    top: 4%;
-    left: 9%;
-    width: 101px;
-    height: 122px;
-    transform: translate(0%, 0%);
-  }
-}
-
 @media (max-width: 1060px) {
-  .big_logo svg {
-    animation: logo_intro_mobile 500ms ease-in-out 100ms forwards;
-  }
-
-  .big_logo {
-    background-color: rgba(42, 54, 71, 1);
+  @keyframes logo_intro_desktop {
+    0% {
+      top: 33%;
+      left: 33%;
+      width: 33%;
+      height: 33%;
+    }
+    100% {
+      top: 4%;
+      left: 9%;
+      width: 101px;
+      height: 122px;
+    }
   }
 }
 
 @media (max-width: 770px) {
+  .big_logo {
+    background-color: rgba(42, 54, 71, 1);
+  }
   .container {
     width: 90%;
+    flex: none;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    height: calc(100vh - 248px);
   }
   .desktop {
     display: none;
@@ -165,20 +161,24 @@
   .footer_log_in {
     flex-direction: column;
     align-items: center;
-    gap: 42px;
+    gap: 16px;
+    position: unset;
+    padding: 16px 0 16px 0;
   }
   .legal_notes {
     display: flex;
     gap: 16px;
   }
   .log_in_container {
-    padding: 32px 16px;
+    padding: 24px;
     justify-content: center;
     width: 100%;
+    transform: translate(0%, 0%);
   }
   .button_center {
     flex-direction: column;
     width: 180px;
+    gap: 16px;
   }
   .log_in_form {
     align-items: center;
@@ -190,5 +190,37 @@
   }
   .log_in_inputs {
     width: 100%;
+    gap: 0;
+  }
+  .logo img {
+    height: 78px;
+  }
+  @keyframes logo_intro_desktop {
+    0% {
+      top: 33%;
+      left: 33%;
+      width: 33%;
+      height: 33%;
+    }
+    100% {
+      top: 16px;
+      left: 5%;
+      width: 64.56px;
+      height: 78px;
+    }
+  }
+  .logo {
+    position: unset;
+  }
+  .logo_div_top {
+    height: 80px;
+    width: 90%;
+    padding: 16px 0;
+  }
+  body {
+    justify-content: unset;
+  }
+  .log_in_text_inputs {
+    gap: 8px;
   }
 }

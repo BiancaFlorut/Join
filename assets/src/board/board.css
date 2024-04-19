@@ -254,9 +254,23 @@
 }
 
 @media (max-width: 1130px) {
+  .content {
+    height: calc(100vh - 160px);
+  }
   .content-section {
     flex: none;
     height: calc(100vh - 80px);
+  }
+  .header_board {
+    padding: 24px 0 0 0; 
+  }
+  .board_distribution {
+    height: calc(100vh - 326px);
+    overflow-y: scroll;
+    scrollbar-width: none;
+  }
+  .board_header_mobile {
+    padding-bottom: 20px;
   }
 }
 

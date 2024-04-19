@@ -197,8 +197,12 @@
     }
 }
 @media (max-width: 725px) {
+    .summary-content {
+        overflow-y: scroll;
+        scrollbar-width: none;
+        height: calc(100vh - 318px);
+    }
     .summary-content-right {
-        /* display: none; */
         display: flex;
         align-items: center;
         position: fixed;
@@ -210,12 +214,14 @@
     }
     .summary-content-left {
         width: 100%;
+        height: 550px;
+        padding: 16px 0;
     }
     .summary-headline {
         flex-direction: column;
         align-items: unset;
         gap: 0;
-        height: auto;
+        height: 100px;
         width: auto;
     }
     .summary-headline h2 {
@@ -229,7 +235,9 @@
     }
     .summary-decoration-bottom {
         display: block;
-
+    }
+    .content-box {
+        min-height: 150px;
     }
 }
 @media (max-width: 450px) {
@@ -259,6 +267,10 @@
     }
     .summary-content-left-mid {
         gap: 5%;
+    }
+    .summary {
+        height: calc(100vh - 180px);
+        padding: 10px 30px;
     }
 }
 

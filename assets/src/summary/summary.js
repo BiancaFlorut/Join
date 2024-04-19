@@ -3,8 +3,6 @@ let url = window.location.href;
 let params = new URLSearchParams(new URL(url).search);
 let urlEmail = params.get('email');
 // variables for page
-let user = [];
-let userName = user.name;
 let tasks = [];
 
 async function summaryInit() {
@@ -42,9 +40,7 @@ window.addEventListener('resize', toggleVisibilityBasedOnWidth);
  * @return {Promise<void>} Resolves when the user is found and updated.
  */
 async function findUser() {
-    let userServer = await getUserFromServer(urlEmail);
-    user.push(userServer);
-    user = user[0];
+    user = await getUserFromServer(urlEmail);
 }
 
 /**
