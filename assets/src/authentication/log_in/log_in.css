@@ -167,6 +167,7 @@
     padding: 32px 16px;
     justify-content: center;
     width: 100%;
+    transform: translate(0%, -7%);
   }
   .button_center {
     flex-direction: column;
@@ -184,5 +185,22 @@
   .log_in_inputs {
     width: 100%;
     gap: 0;
+  }
+  .logo img {
+    height: 78px;
+  }
+  @keyframes logo_intro_desktop {
+    0% {
+      top: 33%;
+      left: 33%;
+      width: 33%;
+      height: 33%;
+    }
+    100% {
+      top: 4%;
+      left: 9%;
+      width: 64.56px;
+      height: 78px;
+    }
   }
 }
