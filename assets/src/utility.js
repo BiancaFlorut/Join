@@ -1,4 +1,21 @@
 let CHECKBOX_PATH = '../../img/checkbox';
+const contactIconColors = [
+  '#ff7a00',
+  '#ff5eb3',
+  '#6e52ff',
+  '#9327ff',
+  '#00bee8',
+  '#1fd7c1',
+  '#ff745e',
+  '#ffa35e',
+  '#fc71ff',
+  '#ffc701',
+  '#0038ff',
+  '#c3ff2b',
+  '#ffe62b',
+  '#ff4646',
+  '#ffbb2b',
+];
 
 /**
  * Handy function to get element by id.
@@ -154,7 +171,7 @@ function toggleSelectedContact(element, email, checked, task) {
   } else {
     toggleCheckbox(getElementWithId(`${email}Checkbox`), false, CHECKBOX_PATH + "_white");
     element.classList.add("big_card_edit_contact_clicked");
-    let contact = allContacts.find( c => c.email == email);
+    let contact = contacts.find( c => c.email == email);
     task.assign_to.push(contact);
     checked = "_checked";
   }
@@ -210,37 +227,6 @@ function getPriorityButtonsClasses(priority) {
     default:
       return "";
   }
-}
-
-/**
- * This function generates the html code with the edit icons for each subtask.
- * @param {Array} subtasks 
- * @returns string html
- */
-function generateSubTaskListItems(subtasks) {
-  let html = "";
-  subtasks.forEach((subtask, i) => {
-    html += /*html*/ `
-        <li>
-            <div class="df_ac big_card_edit_subtask" onmouseover='showElement("bigCardEditCardIcons_${i}")' onmouseout="hideElement('bigCardEditCardIcons_${i}')">
-            <span class="list_bullet">&bull;</span>    
-            <span id="bigCardEditCardSubtaskText_${i}" ondblclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}')" class="flex_1">${subtask.text}</span>
-                <div id="bigCardEditCardIcons_${i}" class="df_ac big_card_edit_subtask_icons d_none">`
-                   + generateSubtaskHTML(i) + /*html*/ `
-                </div>
-            </div>
-        </li>
-        `;
-  });
-  return html;
-}
-
-function generateSubtaskHTML(i) {
-  return /*html*/ `
-  <img src="../../img/edit.svg" alt="" onclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}')">
-  <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
-  <img src="../../img/delete.svg" alt="" onclick="deleteEditTaskSubtask('bigCardEditCardSubtaskText_${i}')">
-  `;
 }
 
 function getIndexFromId(id) {
