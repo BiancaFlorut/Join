@@ -166,7 +166,7 @@ function searchTask() {
 }
 
 function openCreateTask(){
-  getElementWithId("createTask").classList.remove("d_none");
   addedTask = { assign_to: [], subtasks: [], status: "toDo" };
+  getElementWithId("createTask").classList.remove("d_none");
   initUserAndGenerateHTML();
 }
