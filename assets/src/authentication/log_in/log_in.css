@@ -84,12 +84,12 @@
   width: 100%;
   height: 100%;
   z-index: 5;
-  animation: background_intro 500ms ease-in-out 100ms forwards;
+  animation: background_intro 2500ms ease-in-out forwards;
 }
 
 .big_logo svg {
   position: relative;
-  animation: logo_intro_desktop 500ms ease-in-out 100ms forwards;
+  animation: logo_intro_desktop 2500ms ease-in-out forwards;
 }
 
 .mobile {
@@ -107,11 +107,10 @@
 
 @keyframes logo_intro_desktop {
   0% {
-    top: 50%;
-    left: 50%;
-    width: 274px;
-    height: 335px;
-    transform: translate(-50%, -50%);
+    top: 33%;
+    left: 33%;
+    width: 33%;
+    height: 33%;
   }
   100% {
     top: 7.8%;
@@ -122,34 +121,27 @@
   }
 }
 
-@keyframes logo_intro_mobile {
-  0% {
-    top: 50%;
-    left: 50%;
-    width: 274px;
-    height: 335px;
-    transform: translate(-50%, -50%);
-  }
-  100% {
-    top: 4%;
-    left: 9%;
-    width: 101px;
-    height: 122px;
-    transform: translate(0%, 0%);
-  }
-}
-
 @media (max-width: 1060px) {
-  .big_logo svg {
-    animation: logo_intro_mobile 500ms ease-in-out 100ms forwards;
-  }
-
-  .big_logo {
-    background-color: rgba(42, 54, 71, 1);
+  @keyframes logo_intro_desktop {
+    0% {
+      top: 33%;
+      left: 33%;
+      width: 33%;
+      height: 33%;
+    }
+    100% {
+      top: 4%;
+      left: 9%;
+      width: 101px;
+      height: 122px;
+    }
   }
 }
 
 @media (max-width: 770px) {
+  .big_logo {
+    background-color: rgba(42, 54, 71, 1);
+  }
   .container {
     width: 90%;
   }
@@ -179,6 +171,7 @@
   .button_center {
     flex-direction: column;
     width: 180px;
+    gap: 16px;
   }
   .log_in_form {
     align-items: center;
@@ -190,5 +183,6 @@
   }
   .log_in_inputs {
     width: 100%;
+    gap: 0;
   }
 }
