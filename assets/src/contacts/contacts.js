@@ -54,8 +54,10 @@ function contactName(email) {
         <div class="contact_name_info">
             <div class="profile_contact" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
             <div class="contact_info_name">${contact.name}</div>
-            <img onclick="editContact()" class="edit_delet" src="../../img/edit.svg"><p>Edit</p>
-            <img onclick="deleteContact()" class="edit_delet" src="../../img/delete.svg"><p>Delete</p>
+            <div>
+                <img onclick="editContact('${contact.email}')" class="edit_delet" src="../../img/edit.svg"><p>Edit</p>
+                <img onclick="deleteContact('${contact.email}')" class="edit_delet" src="../../img/delete.svg"><p>Delete</p>
+            </div>
         </div>
         <span class="contact_info">Contact Information</span>
         <h3 class="email_header">Email</h3>
@@ -66,51 +68,45 @@ function contactName(email) {
     `;
 }
 
-function editContact() {
+async function editContact() {
     document.getElementById('overlyContact').style.display='flex';
     document.getElementById('overlayEditContact').style.display='flex';
     document.getElementById('overlayAddContact').style.display='none';
     document.getElementById('contactSucces').style.display='none';
+    await updateUserContactsToRemoteServer(emailParameter, contacts);
+    contactListHTML();
 }
 
 function addContact() {
     document.getElementById('overlyContact').style.display='flex';
     document.getElementById('overlayEditContact').style.display='none';
     document.getElementById('contactSucces').style.display='none';
+    contactListHTML();
 }
 
 async function addNewContact() {
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const phone = document.getElementById('phone').value;
-    const color = document.getElementById('color').value;
+    const color = selectRandomColor();
     const newContact = { name: name, email: email, phone: phone, color: color};
     contacts.push(newContact);
     await updateUserContactsToRemoteServer(emailParameter, contacts);
-    await getItemFromRemoteStorage(emailParameter, key);
     document.getElementById('name').value = '';
     document.getElementById('email').value = '';
     document.getElementById('phone').value = '';
-
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Phone:', phone);
-
     contactListHTML();
 }
 
-function deleteContact() {
-    const indexToDelete = contacts.findIndex(contact => contact.email === emailParameter);
+async function deleteContact(email) {
+    const indexToDelete = contacts.findIndex(contact => contact.email === email);
     if (indexToDelete !== -1) {
         contacts.splice(indexToDelete, 1);
-
-        for (let i = indexToDelete; i < contacts.length; i++) {
-            contacts[i] = contacts.length[i +1];
-        }
         console.log('Kontakt erfolgreich gelöscht und Kontakt verschoben:', contacts);
     } else {
-        console.error('Kontakt mit der E-Mail-Adresse ' + emailParameter + ' nicht gefunden.');
+        console.error('Kontakt mit der E-Mail-Adresse ' + email +' nicht gefunden.');
     }
+    await updateUserContactsToRemoteServer(emailParameter, contacts);
     contactListHTML();
 }
 

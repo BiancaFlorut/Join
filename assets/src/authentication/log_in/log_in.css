@@ -145,6 +145,9 @@
   .container {
     width: 90%;
     flex: none;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    height: calc(100vh - 248px);
   }
   .desktop {
     display: none;
@@ -160,20 +163,17 @@
     align-items: center;
     gap: 16px;
     position: unset;
-    padding: 32px 0;
+    padding: 16px 0 16px 0;
   }
   .legal_notes {
     display: flex;
     gap: 16px;
   }
   .log_in_container {
-    height: calc(100vh - 248px);
     padding: 24px;
     justify-content: center;
     width: 100%;
     transform: translate(0%, 0%);
-    overflow-y: scroll;
-    scrollbar-width: none;
   }
   .button_center {
     flex-direction: column;
