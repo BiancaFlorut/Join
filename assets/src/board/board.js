@@ -29,11 +29,11 @@ function getNoTasksToDoHTML() {
 }
 
 async function initBoard() {
-  tasks = await getTaskList(emailParameter);
+  user = await getUserFromServer(emailParameter);
+  tasks = user.tasks;
+  const userContact = {name: (user.name + ' (You)'), email: user.email, color: user.color};
   console.log(tasks);
   updateHTML(tasks);
-  user = await getUserFromServer(emailParameter);
-  const userContact = {name: (user.name + ' (You)'), email: user.email, color: user.color};
   allContacts = [...user.contacts, userContact];
 }
 
@@ -68,6 +68,9 @@ function generateHighlightedCardGhostHTML() {
 
 function generateSmallTaskHTML(task) {
   const category = task.category;
+  
+  const categoryColor = user.categories.find((c) => c.name == category);
+  console.log(categoryColor);
   const colorClass = getCategoryClassColor(category);
   let subtasksHTML = "";
   if (task.subtasks.length > 0) subtasksHTML = getSubTaskHTML(task);
@@ -75,7 +78,7 @@ function generateSmallTaskHTML(task) {
   return (
     /*html*/ `
     <div id="${task.id}" draggable="true" ondragstart="startDragging('${task.id}')" class="card_small" onclick="openTask('${task.id}')">
-      <div class="task_category ${colorClass}">${task.category}</div>
+      <div class="task_category ${colorClass}" style="background-color: ${categoryColor.color}">${task.category}</div>
       <div class="task_text_area">
         <div class="task_header">${task["title"]}</div>
         <div class="task_description">${task.description}</div>

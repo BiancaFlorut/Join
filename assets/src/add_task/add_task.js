@@ -244,10 +244,6 @@ function deleteSubtaskCreateTask(id) {
   getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(addedTask.subtasks);
 }
 
-/**
- *
- * @param {HTMLElement} element
- */
 function createSubtaskCreateTask(id) {
   let element = getElementWithId(id);
   const i = getIndexFromId(id);
@@ -262,11 +258,7 @@ function createSubtaskCreateTask(id) {
   getElementWithId(id).onmouseout = `showElement('bigCardEditCardIcons_${i}')`;
 }
 
-/**
- * Generates the HTML code for displaying category options.
- *
- * @return {undefined} This function does not return a value.
- */
+
 function showCategoryOptions() {
   let container = getElementWithId("categoryContainer");
   container.innerHTML = ``;
@@ -339,16 +331,13 @@ function cancelCategoryEditInput() {
   getElementWithId("addCategory").value = "Select task category";
 }
 
-/**
- * Confirms the edit input for the category.
- *
- * @return {undefined} No return value.
- */
-function confirmCategoryEditInput() {
+
+async function confirmCategoryEditInput() {
   const value = getElementWithId("addCategory").value;
   if (!isWhiteSpaceOnly(value)) {
     const newCategory = { name: value, color: selectRandomColor() };
     user.categories.push(newCategory);
+    await updateUserToRemoteServer(user);
     addedTask.category = newCategory;
     showCategoryOptions();
     cancelCategoryEditInput();
