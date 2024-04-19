@@ -124,6 +124,12 @@ form {
   }
 }
 
+@media (max-width: 1060px) {
+  .logo img {
+    height: 78px;
+  }
+}
+
 @media (max-width: 770px) {
   form {
     padding: 32px 16px;
