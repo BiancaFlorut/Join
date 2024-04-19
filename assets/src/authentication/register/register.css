@@ -133,6 +133,7 @@ form {
 @media (max-width: 770px) {
   .container {
     flex: none;
+    width: 90%;
   }
   body {
     justify-content: unset;
@@ -153,7 +154,7 @@ form {
     left: 40px;
   }
   .register_container {
-    width: 90%;
+    width: 100%;
     flex: none;
     height: calc(100vh - 248px);
     overflow-y: scroll;
