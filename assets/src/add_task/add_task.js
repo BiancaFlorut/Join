@@ -328,7 +328,7 @@ function cancelCategoryEditInput() {
   iconsContainer.innerHTML = /*html*/ `
         <img src="../../img/arrow_drop_down_down.svg" alt="" onclick="toggleCategoryOptions()">
     `;
-  getElementWithId("addCategory").value = "Select task category";
+  getElementWithId("addCategory").value = "";
 }
 
 
@@ -337,12 +337,13 @@ async function confirmCategoryEditInput() {
   if (!isWhiteSpaceOnly(value)) {
     const newCategory = { name: value, color: selectRandomColor() };
     user.categories.push(newCategory);
+    console.log(user);
     await updateUserToRemoteServer(user);
     addedTask.category = newCategory;
     showCategoryOptions();
-    cancelCategoryEditInput();
     getElementWithId("addCategory").value = value;
-  } else cancelCategoryEditInput();
+  }  
+  cancelCategoryEditInput();
 }
 
 /**

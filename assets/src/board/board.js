@@ -68,9 +68,7 @@ function generateHighlightedCardGhostHTML() {
 
 function generateSmallTaskHTML(task) {
   const category = task.category;
-  
   const categoryColor = user.categories.find((c) => c.name == category);
-  console.log(categoryColor);
   const colorClass = getCategoryClassColor(category);
   let subtasksHTML = "";
   if (task.subtasks.length > 0) subtasksHTML = getSubTaskHTML(task);
@@ -78,7 +76,7 @@ function generateSmallTaskHTML(task) {
   return (
     /*html*/ `
     <div id="${task.id}" draggable="true" ondragstart="startDragging('${task.id}')" class="card_small" onclick="openTask('${task.id}')">
-      <div class="task_category ${colorClass}" style="background-color: ${categoryColor.color}">${task.category}</div>
+      <div class="task_category" style="background-color: ${categoryColor.color}">${task.category}</div>
       <div class="task_text_area">
         <div class="task_header">${task["title"]}</div>
         <div class="task_description">${task.description}</div>
@@ -166,8 +164,11 @@ function searchTask() {
   } else updateHTML(tasks);
 }
 
-function openCreateTask(){
-  addedTask = { assign_to: [], subtasks: [], status: "toDo" };
+function openCreateTask(status){
+  addedTask = { assign_to: [], subtasks: [] };
+  if (status)
+   addedTask.status= status;
+  else addedTask.status = 'toDo';
   getElementWithId("createTask").classList.remove("d_none");
   initUserAndGenerateHTML();
 }
