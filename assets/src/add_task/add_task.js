@@ -2,14 +2,8 @@ let addedTask = { assign_to: [], subtasks: [], status: "toDo" };
 let isContactListOpen = false;
 let contacts;
 
-
-/**
- * Adds a new task to the system by retrieving the input values from the DOM and validating them.
- * If all input fields are not empty, it logs the new task and clears the input fields.
- *
- * @return {void} This function does not return a value.
- */
 async function addNewTask() {
+  console.log("Creating a task: ", addedTask);
   getElementWithId("createTaskSubmitButton").disabled = true;
   let tasks = await getTaskList(user.email);
   let titleInput = document.getElementById('addTitle');
@@ -22,10 +16,18 @@ async function addNewTask() {
   addedTask.id = user.email + Date.now();
   tasks.push(addedTask);
   await updateTasksFromUser(user.email, tasks);
-  console.log('Task ist saved: ', addedTask);
-  //inform others about the new task
   await updateContactsAboutTask(addedTask);
-  console.log('The members are informed about the neu task');
+}
+
+function clearFields() {
+  getElementWithId("createTaskSubmitButton").disabled = true;
+  addedTask = { assign_to: [], subtasks: [], status: "toDo" };
+  getElementWithId('addTitle').value = '';
+  getElementWithId('addDescription').value = '';
+  getElementWithId('addDueDate').value = '';
+  getElementWithId('addCategory').value = '';
+  getElementWithId("bigCardEditSubtasks").innerHTML = '';
+  initUserAndGenerateHTML();
 }
 
 function isRequiredFieldsEmpty() {
@@ -33,7 +35,6 @@ function isRequiredFieldsEmpty() {
   let titleInput = document.getElementById('addTitle');
   let dueDateInput = document.getElementById('addDueDate');
   const categoryInput = document.getElementById('addCategory');
-  console.log(categoryInput.value);
   if (isWhiteSpaceOnly(titleInput.value)){
     showElement("createTaskTitleError"); 
     isMissingInput = true;
@@ -47,6 +48,7 @@ function isRequiredFieldsEmpty() {
     isMissingInput = true;
   } else hideElement("createTaskCategoryError");
   if (!isMissingInput) getElementWithId("createTaskSubmitButton").disabled = false;
+  else getElementWithId("createTaskSubmitButton").disabled = true;
   return isMissingInput;
 }
 
@@ -63,10 +65,6 @@ function initUserAndGenerateHTML() {
   const userContact = { name: user.name + " (You)", email: user.email, color: user.color };
   contacts = user.contacts;
   addedTask.assign_to.push(userContact);
-  user.categories = [
-    { name: "Technical Task", color: "#1FD7C1" },
-    { name: "User Story", color: "#0038FF" },
-  ];
   getElementWithId("createTaskAssignToIconsList").innerHTML = getContactsLogoHTML(addedTask.assign_to);
   container.innerHTML = getOptionForAssignedToCreateTask(contacts, addedTask, user.email);
   const minDate = new Date().toISOString().split("T")[0];

@@ -53,12 +53,9 @@ function updateHTML(array) {
 function startDragging(id) {
   currentDraggedElement = id;
   getElementWithId(id).classList.add("drag_highlight");
-  console.log(id);
   const index = tasks.findIndex((task) => task.id == id);
   const status = tasks[index].status;
-  console.log(status);
   const nextStatusIndex = cols.findIndex( col => col == status) + 1;
-  console.log(nextStatusIndex);
   if (nextStatusIndex < tasks.length)
     document.getElementById(`${cols[nextStatusIndex]}`).innerHTML += generateHighlightedCardGhostHTML();
     console.log(cols[nextStatusIndex]);
@@ -169,6 +166,7 @@ function searchTask() {
 }
 
 function openCreateTask(){
+  addedTask = { assign_to: [], subtasks: [], status: "toDo" };
   getElementWithId("createTask").classList.remove("d_none");
   initUserAndGenerateHTML();
 }

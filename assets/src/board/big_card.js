@@ -108,8 +108,8 @@ function closeBigCardView() {
 }
 
 function closeCreateTask() {
-  addedTask = {};
   hideElement("createTask");
+  clearFields()
 }
 
 function changeIdImgTheSrc(id, src) {
