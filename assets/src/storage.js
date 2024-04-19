@@ -89,6 +89,19 @@ async function updateContactsAboutTask(newTask) {
   }
 }
 
+async function deleteTaskFromAssignedToUsers(contacts, id) {
+    let users = await loadUsersFromServer();
+    for (let indexContact = 0; indexContact < contacts.length; indexContact++) {
+        const contact = contacts[indexContact];
+            let user = users.find((u) => u.email == contact.email);
+            const taskIndex = user.tasks.findIndex((t) => t.id == id);
+            if (taskIndex >= 0) {
+                user.tasks.splice(taskIndex, 1);
+                await updateUserToRemoteServer(user);
+            }
+    }
+}
+
 async function updateUserToRemoteServer(user) {
   let users = await loadUsersFromServer();
   const userIndex = users.findIndex((u) => u.email == user.email);

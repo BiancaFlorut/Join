@@ -278,8 +278,9 @@ function generateSubtaskHTML(i) {
 
 async function deleteTask(id) {
   const index = tasks.findIndex(task => task.id == id);
-  tasks.splice(index, 1);
-  await updateTasksFromUser(user.email, tasks);
+  const task = tasks[index];
+  //tasks.splice(index, 1);
+  await deleteTaskFromAssignedToUsers(task.assign_to, id);
   closeBigCardView()
-  initBoard();
+  await initBoard();
 }
