@@ -260,6 +260,10 @@
     .summary-content-left-mid {
         gap: 5%;
     }
+    .summary {
+        height: calc(100vh - 180px);
+        padding: 10px 30px;
+    }
 }
 
 .d-none {
