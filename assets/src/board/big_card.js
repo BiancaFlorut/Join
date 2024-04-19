@@ -108,7 +108,6 @@ function closeBigCardView() {
 }
 
 function closeCreateTask() {
-  addedTask = {};
   hideElement("createTask");
 }
 
