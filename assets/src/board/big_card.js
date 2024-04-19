@@ -41,7 +41,7 @@ function openTask(id) {
         </div>
       </div>
       <div class='big_card_footer df_ac'>
-        <div class='big_card_change df_ac' onmouseover="changeIdImgTheSrc('deleteIcon', '../../img/delete_blue.svg')" onmouseout="changeIdImgTheSrc('deleteIcon', '../../img/delete.svg')">
+        <div class='big_card_change df_ac' onclick="deleteTask('${task.id}')" onmouseover="changeIdImgTheSrc('deleteIcon', '../../img/delete_blue.svg')" onmouseout="changeIdImgTheSrc('deleteIcon', '../../img/delete.svg')">
           <img id="deleteIcon" src="../../img/delete.svg" alt="delete">
           <span>Delete</span>
         </div>

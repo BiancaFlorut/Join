@@ -275,3 +275,11 @@ function generateSubtaskHTML(i) {
   <img src="../../img/delete.svg" alt="" onclick="deleteEditTaskSubtask('bigCardEditCardSubtaskText_${i}')">
   `;
 }
+
+async function deleteTask(id) {
+  const index = tasks.findIndex(task => task.id == id);
+  tasks.splice(index, 1);
+  await updateTasksFromUser(user.email, tasks);
+  closeBigCardView()
+  initBoard();
+}

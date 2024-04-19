@@ -1,4 +1,4 @@
-let addedTask = { assign_to: [], subtasks: [] };
+let addedTask = { assign_to: [], subtasks: [], status: "toDo" };
 let isContactListOpen = false;
 let contacts;
 
