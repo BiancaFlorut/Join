@@ -131,12 +131,33 @@ form {
 }
 
 @media (max-width: 770px) {
+  .container {
+    flex: none;
+  }
+  body {
+    justify-content: unset;
+  }
+  .logo {
+    position: unset;
+  }
+  .logo_div_top {
+    height: 80px;
+    width: 90%;
+    padding: 16px 0;
+  }
   form {
     padding: 32px 16px;
   }
   .back_link {
     top: 40px;
     left: 40px;
+  }
+  .register_container {
+    width: 90%;
+    flex: none;
+    height: calc(100vh - 248px);
+    overflow-y: scroll;
+    scrollbar-width: none;
   }
 }
 

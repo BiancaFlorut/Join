@@ -84,12 +84,12 @@
   width: 100%;
   height: 100%;
   z-index: 5;
-  animation: background_intro 2500ms ease-in-out forwards;
+  animation: background_intro 1000ms ease-in-out forwards;
 }
 
 .big_logo svg {
   position: relative;
-  animation: logo_intro_desktop 2500ms ease-in-out forwards;
+  animation: logo_intro_desktop 1000ms ease-in-out forwards;
 }
 
 .mobile {
@@ -144,6 +144,7 @@
   }
   .container {
     width: 90%;
+    flex: none;
   }
   .desktop {
     display: none;
@@ -157,17 +158,22 @@
   .footer_log_in {
     flex-direction: column;
     align-items: center;
-    gap: 42px;
+    gap: 16px;
+    position: unset;
+    padding: 32px 0;
   }
   .legal_notes {
     display: flex;
     gap: 16px;
   }
   .log_in_container {
-    padding: 32px 16px;
+    height: calc(100vh - 248px);
+    padding: 24px;
     justify-content: center;
     width: 100%;
-    transform: translate(0%, -7%);
+    transform: translate(0%, 0%);
+    overflow-y: scroll;
+    scrollbar-width: none;
   }
   .button_center {
     flex-direction: column;
@@ -197,10 +203,24 @@
       height: 33%;
     }
     100% {
-      top: 4%;
-      left: 9%;
+      top: 16px;
+      left: 5%;
       width: 64.56px;
       height: 78px;
     }
+  }
+  .logo {
+    position: unset;
+  }
+  .logo_div_top {
+    height: 80px;
+    width: 90%;
+    padding: 16px 0;
+  }
+  body {
+    justify-content: unset;
+  }
+  .log_in_text_inputs {
+    gap: 8px;
   }
 }
