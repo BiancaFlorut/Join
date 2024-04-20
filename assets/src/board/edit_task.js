@@ -193,6 +193,7 @@ function togglePriorityTo(priorityValue, buttonElement) {
 function setToggleForTheContactList() {
   const imgElement = getElementWithId('bigCardEdiSearchIcon');
   istContactListOpen = toggleContactsList(imgElement, 'bigCardEditContacts', 'bigCardEdiSearchContact', istContactListOpen);
+  if (istContactListOpen) scrollToTheBottomOfTheContainer(getElementWithId('editedTaskContainer'));
 }
 
 /**
