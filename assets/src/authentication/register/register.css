@@ -121,10 +121,11 @@ form {
     width: 90%;
   }
   body {
-    justify-content: unset;
+    justify-content: space-between;
   }
   .logo {
     position: unset;
+    padding-top: 30px;
   }
   .logo_div_top {
     height: 80px;
@@ -141,12 +142,19 @@ form {
   .register_container {
     width: 100%;
     flex: none;
-    height: calc(100vh - 248px);
     overflow-y: scroll;
     scrollbar-width: none;
   }
+  .footer_log_in {
+    position: unset;
+    padding: 32px;
+  }
 }
-
+@media (max-height: 670px) {
+  .register_container {
+    height: calc(100vh - 248px);
+  }
+}
 @media (max-width: 560px) {
   .container {
     width: 90%;
