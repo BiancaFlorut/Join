@@ -84,7 +84,7 @@ function generateSmallTaskHTML(task) {
     subtasksHTML +
     /*html*/ `
       <div class='small_card_footer'>
-        <div class="small_card_users_area">` +
+        <div class="small_card_users_area df_ac">` +
     getAssignedToIconsHTML(task.assign_to) +
     /*html*/ `
           <div class="small_task_priority"><img src="../../img/priority_${priorityString}.svg" alt=""></div>

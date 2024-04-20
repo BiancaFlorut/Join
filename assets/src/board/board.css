@@ -172,7 +172,7 @@
   }
   .drag-area {
     flex-direction: row;
-    max-width: 100vh;
+    max-width: 100%;
     overflow-x: auto;
     padding: 10px;
     box-sizing: border-box;
@@ -282,11 +282,11 @@
     display: flex;
     justify-content: center;
   }
-  h1 {
-    font-size: 36px;
-  }
   .big_card_scrollable_wrapper {
     padding: 32px 24px;
+  }
+  .big_card_scrollable_wrapper h1 {
+    font-size: 36px;
   }
   .big_card_category {
     padding: 4px 16px;
