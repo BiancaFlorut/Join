@@ -150,11 +150,13 @@ form {
     padding: 32px;
   }
 }
+
 @media (max-height: 670px) {
   .register_container {
     height: calc(100vh - 248px);
   }
 }
+
 @media (max-width: 560px) {
   .container {
     width: 90%;
