@@ -47,6 +47,9 @@
 .task_description {
   font-weight: 400;
   color: rgba(168, 168, 168, 1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .progress_bar {
@@ -127,6 +130,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding-right: 36px;
 }
 
 .big_card_content {
@@ -138,13 +142,15 @@
   overflow-y: auto;
   max-height: 100%;
   width: 100%;
-  padding: 32px 24px;
+  padding: 48px 36px;
+  padding-right: 4px;
 }
 
 .big_card_header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-right: 36px;
 }
 
 .big_card_category {
@@ -194,6 +200,11 @@
   gap: 4px;
 }
 
+.big_card_assigned_to_list .contacts_icon {
+  height: 42px;
+  width: 42px;
+}
+
 .big_card_subtask_area {
   padding: 6px 16px;
   width: fit-content;
@@ -225,6 +236,7 @@
   color: rgba(42, 54, 71, 1);
   font-size: 16px;
   justify-content: flex-end;
+  padding-right: 36px;
 }
 
 .big_card_edit_content_area {
