@@ -87,6 +87,7 @@
   justify-content: space-between;
   flex: 1;
   gap: 26px;
+  padding-bottom: 79.5px;
 }
 
 .input_button_header {
@@ -169,6 +170,7 @@
   .board_distribution {
     flex-direction: column;
     gap: 14px;
+    padding-bottom: 48px;
   }
   .drag-area {
     flex-direction: row;
@@ -263,9 +265,10 @@
     padding: 24px 0 0 0;
   }
   .board_distribution {
-    height: calc(100vh - 326px);
+    /* height: calc(100vh - 326px); */
     overflow-y: scroll;
     scrollbar-width: none;
+    padding-bottom: 24px;
   }
   .board_header_mobile {
     padding-bottom: 20px;
