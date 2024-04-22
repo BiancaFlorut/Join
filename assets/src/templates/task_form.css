@@ -94,7 +94,12 @@ textarea {
   font-size: 20px;
   border-radius: 0 0 10px 10px;
   z-index: 10;
+  box-shadow: 0 0 14px 3px rgba(0, 0, 0, 0.04);
+  max-height: 130px;
+  height: auto;
+  overflow-y: auto;
 }
+
 .category {
   padding: 12px 16px;
   border-radius: 10px;
@@ -103,6 +108,17 @@ textarea {
 .category:hover {
   background-color: #eeeeee;
 }
+
+.category_selected {
+  background-color: rgba(42, 54, 71, 1);
+  color: white;
+}
+
+.category_selected:hover {
+  background-color: rgba(9, 25, 49, 1);
+  color: white;
+}
+
 .add_content_error {
   padding-top: 10px;
   font-family: "Poppins";
@@ -136,6 +152,7 @@ textarea {
     height: calc(100% - 300px);
     overflow-y: scroll;
     scrollbar-width: none;
+    padding: 0 10px;
   }
   .add_task {
     padding: 32px;
