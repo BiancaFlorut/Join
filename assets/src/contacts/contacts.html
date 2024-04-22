@@ -57,7 +57,9 @@
                 </div>
               </div>
               <form id="addContact" class="create_contact" onsubmit="addNewContact(); return false">
-                <img onclick="addClose()" class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
+                <div>
+                  <img onclick="addClose()" class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
+                </div>
                 <input id="name" class="input_area person" required placeholder="Name" type="text" />
                 <input id="email" class="input_area mail" required placeholder="Email" type="email" />
                 <input id="phone" class="input_area phone" required placeholder="Phone" type="tel" />

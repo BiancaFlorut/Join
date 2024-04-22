@@ -369,9 +369,48 @@
     }
 }
 
-/* @media (max-width: 1260px) {
+@media (max-width: 1255px) {
+    .main_container_add_contact {
+        display: block;
+        height: 810px;
+    }
 
-} */
+    .left_container_add_contacts {
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: 0;
+    }
+
+    .contacts_join_logo {
+        display: none;
+    }
+
+    .right_container_add_contacts {
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 30px;
+        width: unset;
+        height: 550px;
+    }
+
+    .person_position {
+        top: -60px;
+        left: 185px;
+    }
+
+    .create_contact {
+        padding-right: 0;
+        align-items: center;
+    }
+
+    .add_contact_button_center {
+        justify-content: center;
+        padding-right: 0;
+    }
+
+    .contacts_button_cancel {
+        display: none; 
+    }
+}
 
 @media (max-width: 1215px) {
     .contacts_header {
