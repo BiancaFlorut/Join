@@ -57,8 +57,9 @@ function getOptionForAssignedTo(contacts, task, exceptUserEmail) {
 }
 
 async function saveEditedTask() {
-  console.log(editedTask, '.. is now saving on the server');
+  getElementWithId('bigCardEditOkButton').disabled = true;
   await updateContactsAboutTask(editedTask);
+  getElementWithId('bigCardEditOkButton').disabled = false;
   closeBigCardView();
   initBoard();
 }

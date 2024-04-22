@@ -135,12 +135,14 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
-function moveTo(status) {
+async function moveTo(status) {
+  showElement('pleaseWait');
   let task = tasks.find((t) => t.id == currentDraggedElement);
   task.status = status;
   // save on server
-  updateContactsAboutTask(task);
+  await updateContactsAboutTask(task);
   updateHTML(tasks);
+  hideElement('pleaseWait');
 }
 
 function highlight(id) {

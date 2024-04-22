@@ -81,7 +81,7 @@ function generateEditedTaskHTML(valueDate, minDateValue, priorityClasses) {
           </div>
         </div>
         <div class="big_card_edit_ok_button">
-            <button class="bold_21 df_ac" onclick="saveEditedTask()"><span>Ok</span><img src="../../img/confirm_white.svg" alt="confirm"></button>
+            <button id="bigCardEditOkButton" class="bold_21 df_ac" onclick="saveEditedTask()"><span>Ok</span><img src="../../img/confirm_white.svg" alt="confirm"></button>
         </div>
     `
   );
