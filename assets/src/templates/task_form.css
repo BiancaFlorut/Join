@@ -1,0 +1,204 @@
+.add_task {
+  padding: 80px;
+  max-width: 1000px;
+}
+
+.required_red_star {
+  color: red;
+}
+.main_content {
+  display: flex;
+  padding: 64px 0 64px 0;
+  justify-content: space-between;
+}
+.content_left {
+  width: 45%;
+}
+.content_right {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+.content_right_div {
+  width: 100%;
+}
+.add_task_bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.add_task_buttons {
+  display: flex;
+  gap: 16px;
+}
+.add_task_buttons button {
+  gap: 4px;
+}
+.add_task_buttons img {
+  width: 20px;
+  transform: translate(20%, 0%);
+}
+.light_bold_20 {
+  font-size: 21px;
+  font-weight: 400;
+}
+label {
+  font-size: 20px;
+  margin: 20px 0 10px 0;
+}
+.add_task input,
+textarea {
+  border-radius: 10px;
+  border: 1px solid #d1d1d1;
+  padding: 12px 21px;
+  font-size: 20px;
+  background-color: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Inter-Regular";
+  cursor: pointer;
+}
+.decoration_content {
+  width: 1px;
+  background-color: #d1d1d1;
+}
+.add_content_input_text:focus {
+  outline: none;
+  border: 1px solid #29abe2;
+}
+.prio_div {
+  display: flex;
+  justify-content: space-between;
+}
+.prio_div button {
+  width: 30%;
+  min-width: 123px;
+  margin: 10px 0 20px 0;
+  justify-content: center;
+}
+.button_priority {
+  width: -webkit-fill-available;
+}
+.content_header_div {
+  font-size: 20px;
+  margin: 20px 0 10px 0;
+}
+.category_container_area {
+  position: relative;
+  width: 100%;
+}
+.category_container {
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  font-size: 20px;
+  border-radius: 0 0 10px 10px;
+  z-index: 10;
+}
+.category {
+  padding: 12px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.category:hover {
+  background-color: #eeeeee;
+}
+.add_content_error {
+  padding-top: 10px;
+  font-family: "Poppins";
+  color: #ff8190;
+  font-size: 12px;
+  height: 14px;
+  width: 100%;
+  padding-bottom: 16px;
+}
+.task_added {
+  padding: 25px 30.5px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  animation: fromBottomToCenter 800ms forwards;
+  background-color: rgba(42, 54, 71, 1);
+  position: relative;
+  bottom: -4000px;
+}
+.task_added span {
+  color: white;
+  padding-right: 20px;
+}
+@media (max-width: 1220px) {
+  .decoration_content {
+    display: none;
+  }
+  .main_content {
+    display: block;
+    height: calc(100% - 300px);
+    overflow-y: scroll;
+    scrollbar-width: none;
+  }
+  .add_task {
+    padding: 32px;
+    height: calc(100vh - 164px);
+  }
+  .content_left,
+  .content_right {
+    width: 100%;
+  }
+  .add_task_bottom {
+    margin-top: 30px;
+  }
+}
+@media (max-width: 1130px) {
+  .content-section {
+    flex: none;
+    height: calc(100vh - 80px);
+  }
+  .add_task {
+    height: calc(100vh - 192px);
+    padding: 32px 32px 0 32px;
+  }
+}
+@media (max-width: 600px) {
+  .light_bold_20 {
+    display: none;
+  }
+  .add_task h1 {
+    font-size: 47px;
+  }
+  .add_task label {
+    font-size: 16px;
+  }
+  .add_task input,
+  textarea {
+    font-size: 16px;
+    padding: 8px 21px;
+  }
+  .button_priority {
+    font-size: 16px;
+    padding: 11px 21px;
+  }
+  .visibility_icon_container {
+    padding: 7px 0;
+  }
+  .category {
+    font-size: 16px;
+  }
+  .content_header_div {
+    font-size: 16px;
+  }
+}
+@media (max-width: 460px) {
+  .big_card_edit_priority_buttons {
+    flex-direction: column;
+  }
+  .add_task {
+    padding: 32px 16px 0 16px;
+  }
+  .add_task_bottom {
+    flex-direction: column;
+    margin: 0;
+  }
+  .add_task_bottom button {
+    width: 100%;
+  }
+}

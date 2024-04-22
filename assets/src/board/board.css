@@ -252,6 +252,7 @@
 
 .create_task_area {
   background-color: white;
+  border-radius: 30px;
 }
 
 @media (max-width: 1130px) {
