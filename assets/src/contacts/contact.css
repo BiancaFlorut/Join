@@ -346,7 +346,7 @@
 }
 
 
-@media (max-width: 1300px) {
+@media (max-width: 1315px) {
     .h1_contacts {
         font-size: 48px;
     }
@@ -368,6 +368,10 @@
         margin-left: 0;
     }
 }
+
+/* @media (max-width: 1260px) {
+
+} */
 
 @media (max-width: 1215px) {
     .contacts_header {
