@@ -125,10 +125,6 @@
   font-weight: 700;
 }
 
-.drag-area-highlight {
-  /* to do */
-}
-
 .drag_highlight {
   transform: rotate(5deg);
   transition: transform 200ms ease-in-out;
