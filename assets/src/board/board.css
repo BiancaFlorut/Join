@@ -259,11 +259,11 @@
   .content {
     height: calc(100vh - 160px);
   }
-  .content-section {
+  /* .content-section {
     flex: none;
     height: calc(100vh - 80px);
     width: 100%;
-  }
+  } */
   .header_board {
     padding: 24px 0 0 0;
   }

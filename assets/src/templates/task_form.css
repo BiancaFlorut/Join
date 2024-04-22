@@ -153,7 +153,8 @@ textarea {
 @media (max-width: 1130px) {
   .content-section {
     flex: none;
-    height: calc(100vh - 80px);
+    height: unset;
+    width: 100%;
   }
   .add_task {
     height: calc(100vh - 192px);
@@ -193,6 +194,9 @@ textarea {
   }
   .add_task_bottom {
       padding-bottom: 30px;
+  }
+  .board_distribution {
+      overflow-y: unset;
   }
 }
 @media (max-width: 460px) {
