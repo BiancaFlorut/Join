@@ -15,31 +15,51 @@ async function initContacts() {
 function contactListHTML() {
     let content = document.getElementById('content');
     content.innerHTML = '';
-
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        content.innerHTML += `
-        <div>
-        <div class="contact_letter">${firstLetter[i]}</div>
-        <div>
-            <img src="../../img/contacts_add-new-vector.svg" alt="partition_wall">
-        </div>    
-        <div onclick="contactName('${contact.email}')" class="contact_name">
-        <div class="profile_badge" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
+    firstLetter.forEach(letter => {
+        const contactsFirstLetter = contacts.filter(contact => contact.name.charAt(0) == letter);
+        content.innerHTML += /*html*/`
             <div>
-                <span><b>${contact.name}</b></span><br>
-                <span class="light_blue">${contact.email}</span>
-            </div>
-        </div>    
-        <div></div>
-        </div>
-        `;
-    }
+                <div class="contact_letter">${letter}</div>
+                <div>
+                    <img src="../../img/contacts_add-new-vector.svg" alt="partition_wall">
+                </div>   `;
+        contactsFirstLetter.forEach(contact => {
+            content.innerHTML += /*html*/`
+                <div onclick="contactName('${contact.email}')" class="contact_name">
+                    <div class="profile_badge" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
+                    <div>
+                        <span><b>${contact.name}</b></span><br>
+                        <span class="light_blue">${contact.email}</span>
+                    </div>
+                </div>    
+                <div></div>`;
+        });
+        content.innerHTML += `</div>`;
+    });
+    // for (let i = 0; i < contacts.length; i++) {
+    //     const contact = contacts[i];
+    //     content.innerHTML += `
+    //     <div>
+    //     <div class="contact_letter">${firstLetter[i]}</div>
+    //     <div>
+    //         <img src="../../img/contacts_add-new-vector.svg" alt="partition_wall">
+    //     </div>    
+    //     <div onclick="contactName('${contact.email}')" class="contact_name">
+    //     <div class="profile_badge" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
+    //         <div>
+    //             <span><b>${contact.name}</b></span><br>
+    //             <span class="light_blue">${contact.email}</span>
+    //         </div>
+    //     </div>    
+    //     <div></div>
+    //     </div>
+    //     `;
+    // }
 }
 
 function getFirstLetterArray(array) {
     for (let i = 0; i < array.length; i++) {
-        const letter = array[i].name.charAt(0);
+        const letter = array[i].name.charAt(0).toUpperCase();
 
         if (!firstLetter.includes(letter)) {
             firstLetter.push(letter);
