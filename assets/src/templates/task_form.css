@@ -1,6 +1,7 @@
 .add_task {
   padding: 80px;
   max-width: 1000px;
+  min-width: 850px;
 }
 
 .required_red_star {
@@ -126,7 +127,7 @@ textarea {
   color: white;
   padding-right: 20px;
 }
-@media (max-width: 1220px) {
+@media (max-width: 1250px) {
   .decoration_content {
     display: none;
   }
@@ -139,6 +140,7 @@ textarea {
   .add_task {
     padding: 32px;
     height: calc(100vh - 164px);
+    min-width: unset;
   }
   .content_left,
   .content_right {
