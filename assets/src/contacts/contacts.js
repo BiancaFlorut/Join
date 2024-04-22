@@ -4,6 +4,7 @@ let firstLetter = [];
 async function initContacts() {
     contacts = await getContactList(emailParameter);
     getFirstLetterArray(contacts);
+    firstLetter.sort();
     contactListHTML();
 }
 
@@ -113,6 +114,7 @@ function addContact() {
 }
 
 async function addNewContact() {
+    getElementWithId('createContactButton').disabled = true;
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const phone = document.getElementById('phone').value;
@@ -123,6 +125,7 @@ async function addNewContact() {
     document.getElementById('name').value = '';
     document.getElementById('email').value = '';
     document.getElementById('phone').value = '';
+    getElementWithId('createContactButton').disabled = false;
     initContacts();
 }
 
@@ -146,5 +149,8 @@ function contactSuccesfully() {
 
 
 function addClose() {
+    document.getElementById('name').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('phone').value = '';
     document.getElementById('overlyContact').style.display='none';
 }

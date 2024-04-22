@@ -25,7 +25,9 @@
         <div class="contact_card">
           <div>
             <div class="button_center">
-              <button onclick="addContact()" class="contact_button_add_new bold_21"><span class="add_new_contact_text">Add new contact</span><img src="../../img/contacts_person_add.svg" alt="person_add" /></button>
+              <button id="addContactButton" onclick="addContact()" class="contact_button_add_new bold_21">
+                <span class="add_new_contact_text">Add new contact</span><img src="../../img/contacts_person_add.svg" alt="person_add" />
+              </button>
             </div>
             <div id="content"></div>
           </div>
@@ -43,7 +45,7 @@
         <div class="view_contact" id="overlyContact">
           <div class="main_container_add_contact" id="overlayAddContact">
             <div class="left_container_add_contacts">
-              <img class="contacts_join_logo" src="../../img/contacts_join_logo.svg" alt="join_logo"/>
+              <img class="contacts_join_logo" src="../../img/contacts_join_logo.svg" alt="join_logo" />
               <h1 class="h1_add_contacts">Add contact</h1>
               <h2 class="h2_add_contacts">Tasks are better with a team!</h2>
               <img src="../../img/contacts_add_contact_vector_5.svg" alt="vector" />
@@ -57,19 +59,21 @@
               <form id="addContact" class="create_contact" onsubmit="addNewContact(); return false">
                 <img onclick="addClose()" class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
                 <input id="name" class="input_area person" required placeholder="Name" type="text" />
-                <input id="email" class="input_area mail" required placeholder="Email" type="email"/>
+                <input id="email" class="input_area mail" required placeholder="Email" type="email" />
                 <input id="phone" class="input_area phone" required placeholder="Phone" type="tel" />
               </form>
               <div class="add_contact_button_center">
                 <button onclick="addClose()" class="contacts_button_cancel button_line">Cancel<img style="padding-left: 4px" src="../../img/board_add_task_close.svg" alt="icon_close" /></button>
-                <button type="submit" form="addContact" class="bold">Create contact<img class="icon_check" src="../../img/contacts_add_contact_check.svg" alt="icon_check"/></button>
+                <button type="submit" id="createContactButton" form="addContact" class="bold">
+                  Create contact<img class="icon_check" src="../../img/contacts_add_contact_check.svg" alt="icon_check" />
+                </button>
               </div>
-            </div>  
+            </div>
           </div>
           <div class="contact_succes_message" id="contactSucces">Contact succesfully created</div>
           <div class="main_container_edit_contact" id="overlayEditContact">
             <div class="left_container_edit_contacts">
-              <img class="contacts_join_logo" src="../../img/contacts_join_logo.svg" alt="join_logo"/>
+              <img class="contacts_join_logo" src="../../img/contacts_join_logo.svg" alt="join_logo" />
               <h1 class="h1_add_contacts">Edit contact</h1>
               <img src="../../img/contacts_add_contact_vector_5.svg" alt="vector" />
             </div>
@@ -82,16 +86,16 @@
               <form class="create_contact">
                 <img onclick="addClose()" class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
                 <input id="editName" class="input_area person" required placeholder="Name" type="text" />
-                <input id="editEmail" class="input_area mail"  required placeholder="Email" type="email"/>
+                <input id="editEmail" class="input_area mail" required placeholder="Email" type="email" />
                 <input id="editPhone" class="input_area phone" required placeholder="Phone" type="tel" />
               </form>
               <div class="edit_contact_button">
                 <button onclick="deleteContact()" class="contacts_button_cancel button_line">Delete</button>
-                <button class="bold">Save<img class="icon_check" src="../../img/contacts_add_contact_check.svg" alt="icon_check"/></button>
+                <button class="bold">Save<img class="icon_check" src="../../img/contacts_add_contact_check.svg" alt="icon_check" /></button>
               </div>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </section>
   </body>
