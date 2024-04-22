@@ -347,6 +347,29 @@
 
 
 @media (max-width: 1300px) {
+    .h1_contacts {
+        font-size: 48px;
+    }
+
+    .h2_contacts {
+        font-size: 24px;
+    }
+
+    .contact_info_card {
+        margin-left: 30px;
+    }
+
+    .contact_info_name {
+        font-size: 40px;
+    }
+
+    .info_contact {
+        margin-top: 0;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 1215px) {
     .contacts_header {
         display: none;
     }
@@ -355,9 +378,8 @@
         display: none;
     }
 
-    .info_contact {
-        margin-top: 0;
-        margin-left: 0;
+    .contact_card {
+        width: -webkit-fill-available;
     }
 }
   
