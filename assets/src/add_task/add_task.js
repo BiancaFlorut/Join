@@ -124,9 +124,8 @@ function setToggleForTheContactListCreateTask() {
  * @return {void} This function does not return a value.
  */
 function selectContactCreateTask(element, email, checked) {
-  const arg1 = "'" + email + "CreateTask" + "'";
-  const arg2 = "'" + checked + "'";
   checked = toggleSelectedContact(element, email + "CreateTaskCheckbox", email, checked, addedTask);
+  const arg2 = "'" + checked + "'";
   element.setAttribute("onmousedown", `simulateClickCreateTask(event, this, ${email}, ${arg2})`);
   getElementWithId("createTaskAssignToIconsList").innerHTML = getContactsLogoHTML(addedTask.assign_to);
 }
@@ -264,7 +263,7 @@ function showCategoryOptions() {
   container.innerHTML = ``;
   user.categories.forEach((category) => {
     container.innerHTML += /*html*/ `
-      <div class="category" onclick="selectCategory('${category.name}')">${category.name}</div>
+      <div id="${category.name}" class="category" onclick="selectCategory('${category.name}')">${category.name}</div>
     `;
   });
 }
@@ -276,10 +275,12 @@ function showCategoryOptions() {
  * @return {void} This function does not return anything.
  */
 function selectCategory(name) {
+  showCategoryOptions();
+  getElementWithId(`${name}`).classList.add("category_selected");
   addedTask.category = name;
   getElementWithId("addCategory").value = name;
   getElementWithId("addCategory").onchange();
-  hideElement("categoryContainer");
+  setTimeout(() => {toggleCategoryOptions();}, 200);
 }
 
 /**
