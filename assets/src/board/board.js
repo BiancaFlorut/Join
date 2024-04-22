@@ -46,6 +46,7 @@ function updateHTML(array) {
     document.getElementById(`${column.name}`).innerHTML = "";
     if (column.cards.length > 0) {
       column.cards.forEach((card) => (document.getElementById(`${column.name}`).innerHTML += generateSmallTaskHTML(card)));
+      document.getElementById(`${column.name}`).innerHTML += generateHighlightedCardGhostHTML(column.name);
     } else document.getElementById(`${column.name}`).innerHTML = getNoTasksToDoHTML();
   });
 }
@@ -53,23 +54,17 @@ function updateHTML(array) {
 function startDragging(id) {
   currentDraggedElement = id;
   getElementWithId(id).classList.add("drag_highlight");
-  const index = tasks.findIndex((task) => task.id == id);
-  const status = tasks[index].status;
-  const nextStatusIndex = cols.findIndex( col => col == status) + 1;
-  if (nextStatusIndex < cols.length)
-    document.getElementById(`${cols[nextStatusIndex]}`).innerHTML += generateHighlightedCardGhostHTML();
 }
 
-function generateHighlightedCardGhostHTML() {
+function generateHighlightedCardGhostHTML(columnName) {
   return /*html*/ `
-    <div class="card_small_ghost"></div>
+    <div id="${columnName}Ghost" class="card_small_ghost d_none"></div>
   `;
 }
 
 function generateSmallTaskHTML(task) {
   const category = task.category;
   const categoryColor = user.categories.find((c) => c.name == category);
-  const colorClass = getCategoryClassColor(category);
   let subtasksHTML = "";
   if (task.subtasks.length > 0) subtasksHTML = getSubTaskHTML(task);
   const priorityString = getTaskPriority(task.priority);
@@ -145,12 +140,20 @@ async function moveTo(status) {
   hideElement('pleaseWait');
 }
 
-function highlight(id) {
-  document.getElementById(id).classList.add("drag-area-highlight");
+function highlight(event, id) {
+  let ghost = document.getElementById(id + 'Ghost');
+  // if (ghost.classList.contains("d_none")) {
+    if (event.target.className == "droptarget"){
+    ghost.classList.remove("d_none");
+   }
 }
 
-function removeHighlight(id) {
-  document.getElementById(id).classList.remove("drag-area-highlight");
+function removeHighlight( event,id) {
+  let ghost = document.getElementById(id + 'Ghost');
+  // if(!ghost.classList.contains("d_none")) {
+    if (event.target.className == "droptarget") {
+    ghost.classList.add("d_none");
+   }
 }
 
 function searchTask() {

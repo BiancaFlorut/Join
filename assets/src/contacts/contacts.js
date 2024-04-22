@@ -59,6 +59,7 @@ function contactListHTML() {
 }
 
 function getFirstLetterArray(array) {
+    firstLetter = [];
     for (let i = 0; i < array.length; i++) {
         const letter = array[i].name.charAt(0).toUpperCase();
         if (!firstLetter.includes(letter)) {
@@ -104,6 +105,7 @@ function editContact(email) {
 }
 
 async function updateContact(contactEmail) {
+    getElementWithId('editContactButton').disabled = true;
     let contactIndex = contacts.findIndex(c=>c.email==contactEmail);
     const name = document.getElementById('editName').value;
     const email = document.getElementById('editEmail').value;
@@ -113,6 +115,7 @@ async function updateContact(contactEmail) {
     await updateUserContactsToRemoteServer(emailParameter, contacts);
     initContacts();
     contactName(email);
+    getElementWithId('editContactButton').disabled = false;
 }
 
 function addContact() {
@@ -140,14 +143,13 @@ async function deleteContact(email) {
     const indexToDelete = contacts.findIndex(contact => contact.email === email);
     if (indexToDelete !== -1) {
         contacts.splice(indexToDelete, 1);
-        console.log('Kontakt erfolgreich gelöscht und Kontakt verschoben:', contacts);
         getElementWithId('infoContact').innerHTML = '';
+        await updateUserContactsToRemoteServer(emailParameter, contacts);
+        initContacts();
     } else {
         console.error('Kontakt mit der E-Mail-Adresse ' + email +' nicht gefunden.');
     }
-    await updateUserContactsToRemoteServer(emailParameter, contacts);
-
-    initContacts();
+    
 }
 
 function contactSuccesfully() {
