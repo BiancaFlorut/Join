@@ -124,9 +124,8 @@ function setToggleForTheContactListCreateTask() {
  * @return {void} This function does not return a value.
  */
 function selectContactCreateTask(element, email, checked) {
-  const arg1 = "'" + email + "CreateTask" + "'";
-  const arg2 = "'" + checked + "'";
   checked = toggleSelectedContact(element, email + "CreateTaskCheckbox", email, checked, addedTask);
+  const arg2 = "'" + checked + "'";
   element.setAttribute("onmousedown", `simulateClickCreateTask(event, this, ${email}, ${arg2})`);
   getElementWithId("createTaskAssignToIconsList").innerHTML = getContactsLogoHTML(addedTask.assign_to);
 }

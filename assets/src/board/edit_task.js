@@ -204,8 +204,8 @@ function setToggleForTheContactList() {
  * @param {string} checked
  */
 function selectContact(element, email, checked) {
-  checked = toggleSelectedContact(element, email, checked, editedTask);
   const arg1 = "'" + email + "'";
+  checked = toggleSelectedContact(element, email + "Checkbox",email, checked, editedTask);
   const arg2 = "'" + checked + "'";
   element.setAttribute("onmousedown", `simulateClick(event ,this, ${arg1}, ${arg2})`);
   getElementWithId("editAssignToIconsList").innerHTML = getContactsLogoHTML(editedTask.assign_to);
