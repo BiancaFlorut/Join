@@ -390,12 +390,6 @@
     }
   }
 
-@media (max-width: 470px) {
-    .contact_card {
-        padding: 0;
-    }
-}
-
 @media (max-width: 410px) {
       .button_center {
         position: absolute;
