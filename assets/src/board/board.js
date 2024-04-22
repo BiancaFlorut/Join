@@ -46,8 +46,8 @@ function updateHTML(array) {
     document.getElementById(`${column.name}`).innerHTML = "";
     if (column.cards.length > 0) {
       column.cards.forEach((card) => (document.getElementById(`${column.name}`).innerHTML += generateSmallTaskHTML(card)));
-      document.getElementById(`${column.name}`).innerHTML += generateHighlightedCardGhostHTML(column.name);
     } else document.getElementById(`${column.name}`).innerHTML = getNoTasksToDoHTML();
+    document.getElementById(`${column.name}`).innerHTML += generateHighlightedCardGhostHTML(column.name);
   });
 }
 
