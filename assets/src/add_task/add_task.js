@@ -79,6 +79,7 @@ function initUserAndGenerateHTML() {
 
 function getOptionForAssignedToCreateTask(contacts, task, exceptUserEmail) {
   let html = "";
+  contacts.sort((a, b) => a.name.localeCompare(b.name));
   contacts.forEach((contact) => {
     if (contact.email != exceptUserEmail){
       let checked = "";
