@@ -91,7 +91,7 @@ function contactName(email) {
     `;
 }
 
-async function editContact(email) {
+function editContact(email) {
     const contact = contacts.find(c=>c.email==email);
     document.getElementById('overlyContact').style.display='flex';
     document.getElementById('overlayEditContact').style.display='flex';
@@ -100,10 +100,19 @@ async function editContact(email) {
     document.getElementById('editName').value = `${contact.name}`;
     document.getElementById('editEmail').value = `${contact.email}`;
     document.getElementById('editPhone').value = `${contact.phone}`;
-    
-    console.log(contact);
+    getElementWithId('editContact').setAttribute('onsubmit', `updateContact('${contact.email}'); return false`);
+}
+
+async function updateContact(contactEmail) {
+    let contactIndex = contacts.findIndex(c=>c.email==contactEmail);
+    const name = document.getElementById('editName').value;
+    const email = document.getElementById('editEmail').value;
+    const phone = document.getElementById('editPhone').value;
+    const color = contacts[contactIndex].color;
+    contacts[contactIndex] = { name: name, email: email, phone: phone, color: color};
     await updateUserContactsToRemoteServer(emailParameter, contacts);
     initContacts();
+    contactName(email);
 }
 
 function addContact() {
@@ -122,9 +131,7 @@ async function addNewContact() {
     const newContact = { name: name, email: email, phone: phone, color: color};
     contacts.push(newContact);
     await updateUserContactsToRemoteServer(emailParameter, contacts);
-    document.getElementById('name').value = '';
-    document.getElementById('email').value = '';
-    document.getElementById('phone').value = '';
+    addClose();
     getElementWithId('createContactButton').disabled = false;
     initContacts();
 }
@@ -134,12 +141,13 @@ async function deleteContact(email) {
     if (indexToDelete !== -1) {
         contacts.splice(indexToDelete, 1);
         console.log('Kontakt erfolgreich gelöscht und Kontakt verschoben:', contacts);
+        getElementWithId('infoContact').innerHTML = '';
     } else {
         console.error('Kontakt mit der E-Mail-Adresse ' + email +' nicht gefunden.');
     }
     await updateUserContactsToRemoteServer(emailParameter, contacts);
+
     initContacts();
-    contactName();
 }
 
 function contactSuccesfully() {
