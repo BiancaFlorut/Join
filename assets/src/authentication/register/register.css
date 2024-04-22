@@ -150,6 +150,12 @@ form {
   }
 }
 
+@media (max-width: 600px) {
+  .create_task_area {
+    width: 100vw;
+    height: 100%;
+  }
+}
 
 @media (max-width: 560px) {
   .container {
