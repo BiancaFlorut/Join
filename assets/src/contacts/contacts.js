@@ -3,8 +3,8 @@ let firstLetter = [];
 
 async function initContacts() {
     contacts = await getContactList(emailParameter);
+    getFirstLetterArray(contacts);
     contactListHTML();
-    firstLetter = getFirstLetterArray(contacts);
 }
 
 /**
@@ -60,13 +60,10 @@ function contactListHTML() {
 function getFirstLetterArray(array) {
     for (let i = 0; i < array.length; i++) {
         const letter = array[i].name.charAt(0).toUpperCase();
-
         if (!firstLetter.includes(letter)) {
             firstLetter.push(letter);
         }
-        
     }
-    contactListHTML()
 }
 
 function contactName(email) {
@@ -105,7 +102,7 @@ async function editContact(email) {
     
     console.log(contact);
     await updateUserContactsToRemoteServer(emailParameter, contacts);
-    contactListHTML();
+    initContacts();
 }
 
 function addContact() {
@@ -126,7 +123,7 @@ async function addNewContact() {
     document.getElementById('name').value = '';
     document.getElementById('email').value = '';
     document.getElementById('phone').value = '';
-    contactListHTML();
+    initContacts();
 }
 
 async function deleteContact(email) {
@@ -138,7 +135,7 @@ async function deleteContact(email) {
         console.error('Kontakt mit der E-Mail-Adresse ' + email +' nicht gefunden.');
     }
     await updateUserContactsToRemoteServer(emailParameter, contacts);
-    contactListHTML();
+    initContacts();
     contactName();
 }
 
