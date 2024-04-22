@@ -194,17 +194,16 @@ textarea {
     padding: 0;
   }
   .add_task_bottom {
-      padding-bottom: 30px;
+    padding-bottom: 30px;
   }
   .board_distribution {
-      overflow-y: unset;
+    overflow-y: unset;
   }
   .create_task_area {
-      width: 100vw;
-      height: 100vh;
-      overflow-y: scroll;
-      scrollbar-width: none;
-    border-radius: unset;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
   }
 }
 @media (max-width: 460px) {
