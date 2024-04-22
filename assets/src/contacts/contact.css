@@ -231,8 +231,14 @@
     border: 2px solid #ffffff;
 }
 
+.contact_letter {
+    padding: 17px 36px 17px 66px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
 .contact_name {
-    padding: 15px 24px;
+    padding: 15px 54px;
     cursor: pointer;
     border-radius: 10px;
     display: flex;
@@ -307,6 +313,13 @@
 .phone_contact {
     font-size: 16px;
     font-weight: 400;
+}
+
+
+@media (max-width: 1300px) {
+    .contacts_header {
+        display: none;
+    }
 }
   
 @media (max-width: 1130px) {

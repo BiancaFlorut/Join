@@ -20,7 +20,7 @@ function contactListHTML() {
         const contact = contacts[i];
         content.innerHTML += `
         <div>
-        <div></div>
+        <div class="contact_letter">${firstLetter[i]}</div>
         <img src="../../img/contacts_add-new-vector.svg" alt="partition_wall">
         <div onclick="contactName('${contact.email}')" class="contact_name">
         <div class="profile_badge" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
@@ -44,6 +44,7 @@ function getFirstLetterArray(array) {
         }
         
     }
+    contactListHTML()
 }
 
 function contactName(email) {
@@ -68,11 +69,17 @@ function contactName(email) {
     `;
 }
 
-async function editContact() {
+async function editContact(email) {
+    const contact = contacts.find(c=>c.email==email);
     document.getElementById('overlyContact').style.display='flex';
     document.getElementById('overlayEditContact').style.display='flex';
     document.getElementById('overlayAddContact').style.display='none';
     document.getElementById('contactSucces').style.display='none';
+    document.getElementById('editName').value = `${contact.name}`;
+    document.getElementById('editEmail').value = `${contact.email}`;
+    document.getElementById('editPhone').value = `${contact.phone}`;
+    
+    console.log(contact);
     await updateUserContactsToRemoteServer(emailParameter, contacts);
     contactListHTML();
 }
@@ -108,6 +115,7 @@ async function deleteContact(email) {
     }
     await updateUserContactsToRemoteServer(emailParameter, contacts);
     contactListHTML();
+    contactName();
 }
 
 function contactSuccesfully() {

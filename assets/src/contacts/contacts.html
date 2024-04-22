@@ -52,9 +52,9 @@
               </div>
               <form id="addContact" class="create_contact" onsubmit="addNewContact(); return false">
                 <img onclick="addClose()" class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
-                <input id="name" class="input_area person" placeholder="Name" type="text" />
-                <input id="email" class="input_area mail" placeholder="Email" type="email"/>
-                <input id="phone" class="input_area phone" placeholder="Phone" type="tel" />
+                <input id="name" class="input_area person" required placeholder="Name" type="text" />
+                <input id="email" class="input_area mail" required placeholder="Email" type="email"/>
+                <input id="phone" class="input_area phone" required placeholder="Phone" type="tel" />
               </form>
               <div class="add_contact_button_center">
                 <button onclick="addClose()" class="contacts_button_cancel button_line">Cancel<img style="padding-left: 4px" src="../../img/board_add_task_close.svg" alt="icon_close" /></button>
