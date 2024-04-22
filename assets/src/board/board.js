@@ -58,18 +58,22 @@ function startDragging(id) {
 
 function generateHighlightedCardGhostHTML(columnName) {
   return /*html*/ `
-    <div id="${columnName}Ghost" class="card_small_ghost d_none"></div>
+    <div id="${columnName}Ghost" draggable="true" class="card_small_ghost card_small d_none"></div>
   `;
 }
 
 function generateSmallTaskHTML(task) {
   const category = task.category;
-  const categoryColor = user.categories.find((c) => c.name == category);
+  let categoryColor = user.categories.find((c) => c.name == category);
+  if (!categoryColor){
+    categoryColor = {name: category, color: selectRandomColor()};
+    user.categories.push(categoryColor);
+    updateUserToRemoteServer(user);
+  }
   let subtasksHTML = "";
   if (task.subtasks.length > 0) subtasksHTML = getSubTaskHTML(task);
   const priorityString = getTaskPriority(task.priority);
-  return (
-    /*html*/ `
+  return /*html*/ `
     <div id="${task.id}" draggable="true" ondragstart="startDragging('${task.id}')" class="card_small" onclick="openTask('${task.id}')">
       <div class="task_category" style="background-color: ${categoryColor.color}">${task.category}</div>
       <div class="task_text_area">
@@ -85,8 +89,7 @@ function generateSmallTaskHTML(task) {
           <div class="small_task_priority"><img src="../../img/priority_${priorityString}.svg" alt=""></div>
         </div>
       </div>
-    </div>`
-  );
+    </div>`;
 }
 
 function getCategoryClassColor(category) {
@@ -142,18 +145,14 @@ async function moveTo(status) {
 
 function highlight(event, id) {
   let ghost = document.getElementById(id + 'Ghost');
-  // if (ghost.classList.contains("d_none")) {
-    if (event.target.className == "droptarget"){
-    ghost.classList.remove("d_none");
-   }
+  console.log(id + ' entered the drag area');
+  ghost.style.display = 'block';
 }
 
-function removeHighlight( event,id) {
+function removeHighlight(event, id) {
+  console.log(id + 'leaving the drag area');
   let ghost = document.getElementById(id + 'Ghost');
-  // if(!ghost.classList.contains("d_none")) {
-    if (event.target.className == "droptarget") {
-    ghost.classList.add("d_none");
-   }
+ ghost.style.display = 'none';
 }
 
 function searchTask() {

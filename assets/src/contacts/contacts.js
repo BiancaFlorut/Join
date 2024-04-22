@@ -144,12 +144,24 @@ async function deleteContact(email) {
     if (indexToDelete !== -1) {
         contacts.splice(indexToDelete, 1);
         getElementWithId('infoContact').innerHTML = '';
+        await deleteAssignedToFromAllTasks(email);
         await updateUserContactsToRemoteServer(emailParameter, contacts);
         initContacts();
     } else {
         console.error('Kontakt mit der E-Mail-Adresse ' + email +' nicht gefunden.');
     }
-    
+}
+
+async function deleteAssignedToFromAllTasks(email) {
+    user = await getUserFromServer(emailParameter);
+    for (let task of user.tasks) {
+        for (let contact of task.assign_to) {
+            if (contact.email === email) {
+                task.assign_to.splice(task.assign_to.indexOf(contact), 1);
+                await updateContactsAboutTask(task);
+            }
+        }
+    }
 }
 
 function contactSuccesfully() {
