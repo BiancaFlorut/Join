@@ -138,6 +138,15 @@
   }
 }
 
+@media (max-height: 670px) {
+  .container {
+    height: calc(100vh - 248px);
+  }
+  .log_in_container {
+    height: calc(100vh - 248px);
+  }
+}
+
 @media (max-width: 770px) {
   .big_logo {
     background-color: rgba(42, 54, 71, 1);
@@ -147,7 +156,7 @@
     flex: none;
     overflow-y: scroll;
     scrollbar-width: none;
-    height: calc(100vh - 248px);
+    /* height: calc(100vh - 248px); */
   }
   .desktop {
     display: none;
@@ -218,7 +227,7 @@
     padding: 16px 0;
   }
   body {
-    justify-content: unset;
+    justify-content: space-between;
   }
   .log_in_text_inputs {
     gap: 8px;

@@ -57,8 +57,9 @@ function getOptionForAssignedTo(contacts, task, exceptUserEmail) {
 }
 
 async function saveEditedTask() {
-  console.log(editedTask, '.. is now saving on the server');
+  getElementWithId('bigCardEditOkButton').disabled = true;
   await updateContactsAboutTask(editedTask);
+  getElementWithId('bigCardEditOkButton').disabled = false;
   closeBigCardView();
   initBoard();
 }
@@ -193,6 +194,7 @@ function togglePriorityTo(priorityValue, buttonElement) {
 function setToggleForTheContactList() {
   const imgElement = getElementWithId('bigCardEdiSearchIcon');
   istContactListOpen = toggleContactsList(imgElement, 'bigCardEditContacts', 'bigCardEdiSearchContact', istContactListOpen);
+  if (istContactListOpen) scrollToTheBottomOfTheContainer(getElementWithId('editedTaskContainer'));
 }
 
 /**

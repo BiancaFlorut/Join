@@ -172,7 +172,7 @@
   }
   .drag-area {
     flex-direction: row;
-    max-width: 100vh;
+    max-width: 100%;
     overflow-x: auto;
     padding: 10px;
     box-sizing: border-box;
@@ -181,6 +181,7 @@
   .card_small {
     min-width: 252px;
     width: min-content;
+    flex: 0 1 0px;
   }
 
   .board_column {
@@ -251,6 +252,7 @@
 
 .create_task_area {
   background-color: white;
+  border-radius: 30px;
 }
 
 @media (max-width: 1130px) {
@@ -262,7 +264,7 @@
     height: calc(100vh - 80px);
   }
   .header_board {
-    padding: 24px 0 0 0; 
+    padding: 24px 0 0 0;
   }
   .board_distribution {
     height: calc(100vh - 326px);
@@ -281,11 +283,11 @@
     display: flex;
     justify-content: center;
   }
-  h1 {
-    font-size: 36px;
-  }
   .big_card_scrollable_wrapper {
     padding: 32px 24px;
+  }
+  .big_card_scrollable_wrapper h1 {
+    font-size: 36px;
   }
   .big_card_category {
     padding: 4px 16px;
@@ -294,6 +296,8 @@
   .big_card_content {
     font-size: 16px;
     gap: 16px;
+    padding: 32px 20px;
+    padding-right: 10px;
   }
   .big_card_edit_content_area,
   .big_card_edit_title_header_priority {

@@ -13,6 +13,7 @@ function openTask(id) {
           <img src="../../img/close_black.svg" alt="close">
         </div>
       </div>
+      <div class="big_card_scrollable_wrapper">
       <h1>${task.title}</h1>
       <span>${task.description}</span>
       <div>
@@ -40,6 +41,8 @@ function openTask(id) {
     /*html*/ `
         </div>
       </div>
+      </div>
+      
       <div class='big_card_footer df_ac'>
         <div class='big_card_change df_ac' onclick="deleteTask('${task.id}')" onmouseover="changeIdImgTheSrc('deleteIcon', '../../img/delete_blue.svg')" onmouseout="changeIdImgTheSrc('deleteIcon', '../../img/delete.svg')">
           <img id="deleteIcon" src="../../img/delete.svg" alt="delete">

@@ -17,6 +17,9 @@ async function addNewTask() {
   tasks.push(addedTask);
   await updateTasksFromUser(user.email, tasks);
   await updateContactsAboutTask(addedTask);
+  clearFields();
+  getElementWithId('toastMessageCreatedTask').style.display = 'flex';
+  setTimeout(function() { window.location.replace('../board/board.html?email=' + user.email) }, 2000);
 }
 
 function clearFields() {
@@ -84,7 +87,7 @@ function getOptionForAssignedToCreateTask(contacts, task, exceptUserEmail) {
       }
     let logoHTML = getContactLogoForBigCardEditHTML(contact);
     html += /*html*/ `
-        <div class="df_ac big_card_edit_contacts_select cursor_pointer" onmousedown="simulateClickCreateTask(event, this, '${contact.email}', '${checked}')">${logoHTML}<span class="flex_1">${contact.name}</span><img id="${contact.email}Checkbox" src="${CHECKBOX_PATH}${checked}.svg" alt="checkbox"></div >
+        <div class="df_ac big_card_edit_contacts_select cursor_pointer" onmousedown="simulateClickCreateTask(event, this, '${contact.email}CreateTask', '${checked}')">${logoHTML}<span class="flex_1">${contact.name}</span><img id="${contact.email}CreateTaskCheckbox" src="${CHECKBOX_PATH}${checked}.svg" alt="checkbox"></div >
       `;
     }
   });
@@ -122,7 +125,7 @@ function setToggleForTheContactListCreateTask() {
  */
 function selectContactCreateTask(element, email, checked) {
   checked = toggleSelectedContact(element, email, checked, addedTask);
-  const arg1 = "'" + email + "'";
+  const arg1 = "'" + email + "CreateTask" + "'";
   const arg2 = "'" + checked + "'";
   element.setAttribute("onmousedown", `simulateClick(event, this, ${arg1}, ${arg2})`);
   getElementWithId("createTaskAssignToIconsList").innerHTML = getContactsLogoHTML(addedTask.assign_to);
@@ -241,10 +244,6 @@ function deleteSubtaskCreateTask(id) {
   getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(addedTask.subtasks);
 }
 
-/**
- *
- * @param {HTMLElement} element
- */
 function createSubtaskCreateTask(id) {
   let element = getElementWithId(id);
   const i = getIndexFromId(id);
@@ -259,11 +258,7 @@ function createSubtaskCreateTask(id) {
   getElementWithId(id).onmouseout = `showElement('bigCardEditCardIcons_${i}')`;
 }
 
-/**
- * Generates the HTML code for displaying category options.
- *
- * @return {undefined} This function does not return a value.
- */
+
 function showCategoryOptions() {
   let container = getElementWithId("categoryContainer");
   container.innerHTML = ``;
@@ -333,24 +328,22 @@ function cancelCategoryEditInput() {
   iconsContainer.innerHTML = /*html*/ `
         <img src="../../img/arrow_drop_down_down.svg" alt="" onclick="toggleCategoryOptions()">
     `;
-  getElementWithId("addCategory").value = "Select task category";
+  getElementWithId("addCategory").value = "";
 }
 
-/**
- * Confirms the edit input for the category.
- *
- * @return {undefined} No return value.
- */
-function confirmCategoryEditInput() {
+
+async function confirmCategoryEditInput() {
   const value = getElementWithId("addCategory").value;
   if (!isWhiteSpaceOnly(value)) {
     const newCategory = { name: value, color: selectRandomColor() };
     user.categories.push(newCategory);
+    console.log(user);
+    await updateUserToRemoteServer(user);
     addedTask.category = newCategory;
     showCategoryOptions();
-    cancelCategoryEditInput();
     getElementWithId("addCategory").value = value;
-  } else cancelCategoryEditInput();
+  }  
+  cancelCategoryEditInput();
 }
 
 /**

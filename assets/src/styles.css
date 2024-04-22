@@ -27,7 +27,7 @@
 }
 
 ::-webkit-scrollbar {
-  width: 34px;
+  width: 30px;
 }
 
 /* Track */
@@ -37,9 +37,8 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgba(168, 168, 168, 1);
+  background: rgba(168, 168, 168, 0.973);
   border-radius: 30px;
-  border: 12px solid rgb(255, 255, 255);
 }
 
 ::-webkit-scrollbar-button:single-button {
@@ -219,7 +218,7 @@ h1 {
   border-bottom-right-radius: 10px;
   position: absolute;
   width: 100%;
-  z-index: 10;
+  z-index: 2;
 }
 
 .big_card_edit_contacts_select {
@@ -354,6 +353,21 @@ h1 {
 
 .list_bullet {
   padding-right: 8px;
+}
+
+.dialog_bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .df_ac {

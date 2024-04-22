@@ -29,11 +29,11 @@ function getNoTasksToDoHTML() {
 }
 
 async function initBoard() {
-  tasks = await getTaskList(emailParameter);
+  user = await getUserFromServer(emailParameter);
+  tasks = user.tasks;
+  const userContact = {name: (user.name + ' (You)'), email: user.email, color: user.color};
   console.log(tasks);
   updateHTML(tasks);
-  user = await getUserFromServer(emailParameter);
-  const userContact = {name: (user.name + ' (You)'), email: user.email, color: user.color};
   allContacts = [...user.contacts, userContact];
 }
 
@@ -56,10 +56,8 @@ function startDragging(id) {
   const index = tasks.findIndex((task) => task.id == id);
   const status = tasks[index].status;
   const nextStatusIndex = cols.findIndex( col => col == status) + 1;
-  if (nextStatusIndex < tasks.length)
+  if (nextStatusIndex < cols.length)
     document.getElementById(`${cols[nextStatusIndex]}`).innerHTML += generateHighlightedCardGhostHTML();
-    console.log(cols[nextStatusIndex]);
-
 }
 
 function generateHighlightedCardGhostHTML() {
@@ -70,6 +68,7 @@ function generateHighlightedCardGhostHTML() {
 
 function generateSmallTaskHTML(task) {
   const category = task.category;
+  const categoryColor = user.categories.find((c) => c.name == category);
   const colorClass = getCategoryClassColor(category);
   let subtasksHTML = "";
   if (task.subtasks.length > 0) subtasksHTML = getSubTaskHTML(task);
@@ -77,7 +76,7 @@ function generateSmallTaskHTML(task) {
   return (
     /*html*/ `
     <div id="${task.id}" draggable="true" ondragstart="startDragging('${task.id}')" class="card_small" onclick="openTask('${task.id}')">
-      <div class="task_category ${colorClass}">${task.category}</div>
+      <div class="task_category" style="background-color: ${categoryColor.color}">${task.category}</div>
       <div class="task_text_area">
         <div class="task_header">${task["title"]}</div>
         <div class="task_description">${task.description}</div>
@@ -85,7 +84,7 @@ function generateSmallTaskHTML(task) {
     subtasksHTML +
     /*html*/ `
       <div class='small_card_footer'>
-        <div class="small_card_users_area">` +
+        <div class="small_card_users_area df_ac">` +
     getAssignedToIconsHTML(task.assign_to) +
     /*html*/ `
           <div class="small_task_priority"><img src="../../img/priority_${priorityString}.svg" alt=""></div>
@@ -136,12 +135,14 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
-function moveTo(status) {
+async function moveTo(status) {
+  showElement('pleaseWait');
   let task = tasks.find((t) => t.id == currentDraggedElement);
   task.status = status;
   // save on server
-  updateContactsAboutTask(task);
+  await updateContactsAboutTask(task);
   updateHTML(tasks);
+  hideElement('pleaseWait');
 }
 
 function highlight(id) {
@@ -165,8 +166,11 @@ function searchTask() {
   } else updateHTML(tasks);
 }
 
-function openCreateTask(){
-  addedTask = { assign_to: [], subtasks: [], status: "toDo" };
+function openCreateTask(status){
+  addedTask = { assign_to: [], subtasks: [] };
+  if (status)
+   addedTask.status= status;
+  else addedTask.status = 'toDo';
   getElementWithId("createTask").classList.remove("d_none");
   initUserAndGenerateHTML();
 }

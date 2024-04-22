@@ -47,6 +47,9 @@
 .task_description {
   font-weight: 400;
   color: rgba(168, 168, 168, 1);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .progress_bar {
@@ -119,12 +122,15 @@
 }
 
 .big_card_scrollable_wrapper {
-  padding: 48px 40px;
-  padding-right: 6px;
   max-height: inherit;
-  overflow: hidden;
+  overflow: auto;
+  scrollbar-width: none;
   box-sizing: border-box;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-right: 36px;
 }
 
 .big_card_content {
@@ -135,13 +141,16 @@
   scrollbar-width: none;
   overflow-y: auto;
   max-height: 100%;
+  width: 100%;
+  padding: 48px 36px;
+  padding-right: 4px;
 }
 
 .big_card_header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 34px;
+  padding-right: 36px;
 }
 
 .big_card_category {
@@ -191,6 +200,11 @@
   gap: 4px;
 }
 
+.big_card_assigned_to_list .contacts_icon {
+  height: 42px;
+  width: 42px;
+}
+
 .big_card_subtask_area {
   padding: 6px 16px;
   width: fit-content;
@@ -222,7 +236,7 @@
   color: rgba(42, 54, 71, 1);
   font-size: 16px;
   justify-content: flex-end;
-  padding-right: 34px;
+  padding-right: 36px;
 }
 
 .big_card_edit_content_area {
@@ -230,6 +244,8 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  scroll-behavior: smooth;
+  padding: 10px;
 }
 
 ::-webkit-scrollbar {
