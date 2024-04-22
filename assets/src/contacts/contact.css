@@ -363,8 +363,10 @@
     .contact_card {
         padding: 0;
     }
-    
-    .button_center {
+}
+
+@media (max-width: 410px) {
+      .button_center {
         position: absolute;
         top: 850px;
         right: 25px;
