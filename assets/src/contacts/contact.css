@@ -262,9 +262,7 @@
 
 .info_contact {
     display: none;
-    position: relative;
-    right: 570px;
-    top: 200px;
+    margin-left: 30px;
 }
 
 .edit_delet {
