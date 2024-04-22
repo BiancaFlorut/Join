@@ -139,9 +139,6 @@
 }
 
 @media (max-height: 670px) {
-  .container {
-    height: calc(100vh - 248px);
-  }
   .log_in_container {
     height: calc(100vh - 248px);
   }
