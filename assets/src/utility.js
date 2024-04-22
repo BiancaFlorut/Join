@@ -161,15 +161,15 @@ function toggleContactsList(imgElement, contactsElementId, inputId, isContactLis
  * @param {JSON} task where to set the assigned to contact
  * @returns the flag for the next select action
  */
-function toggleSelectedContact(element, email, checked, task) {
+function toggleSelectedContact(element, idCheckbox, email, checked, task) {
   if (checked == "_checked") {
-    toggleCheckbox(getElementWithId(`${email}Checkbox`), true, CHECKBOX_PATH);
+    toggleCheckbox(getElementWithId(idCheckbox), true, CHECKBOX_PATH);
     checked = "";
     element.classList.remove("big_card_edit_contact_clicked");
     const index = task.assign_to.findIndex((c) => c.email == email);
     task.assign_to.splice(index, 1);
   } else {
-    toggleCheckbox(getElementWithId(`${email}Checkbox`), false, CHECKBOX_PATH + "_white");
+    toggleCheckbox(getElementWithId(idCheckbox), false, CHECKBOX_PATH + "_white");
     element.classList.add("big_card_edit_contact_clicked");
     let contact = user.contacts.find( c => c.email == email);
     task.assign_to.push(contact);
