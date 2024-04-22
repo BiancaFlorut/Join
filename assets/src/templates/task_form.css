@@ -188,6 +188,12 @@ textarea {
   .content_header_div {
     font-size: 16px;
   }
+  .main_content {
+    height: unset;
+  }
+  .add_task_bottom {
+      padding-bottom: 30px;
+  }
 }
 @media (max-width: 460px) {
   .big_card_edit_priority_buttons {
