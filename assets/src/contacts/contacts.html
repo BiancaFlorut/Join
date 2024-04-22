@@ -83,7 +83,7 @@
                   <img src="../../img/contacts_add_contact_person.svg" alt="icon_person" />
                 </div>
               </div>
-              <form class="create_contact">
+              <form id="editContact" onsubmit="updateContact(); return false" class="create_contact">
                 <img onclick="addClose()" class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
                 <input id="editName" class="input_area person" required placeholder="Name" type="text" />
                 <input id="editEmail" class="input_area mail" required placeholder="Email" type="email" />
@@ -91,7 +91,7 @@
               </form>
               <div class="edit_contact_button">
                 <button onclick="deleteContact()" class="contacts_button_cancel button_line">Delete</button>
-                <button class="bold">Save<img class="icon_check" src="../../img/contacts_add_contact_check.svg" alt="icon_check" /></button>
+                <button type="submit" id="createContactButton" form="editContact" class="bold">Save<img class="icon_check" src="../../img/contacts_add_contact_check.svg" alt="icon_check" /></button>
               </div>
             </div>
           </div>
