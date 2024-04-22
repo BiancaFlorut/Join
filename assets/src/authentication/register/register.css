@@ -128,7 +128,6 @@ form {
     padding-top: 30px;
   }
   .logo_div_top {
-    height: 80px;
     width: 90%;
     padding: 16px 0;
   }
@@ -151,9 +150,10 @@ form {
   }
 }
 
-@media (max-height: 670px) {
-  .register_container {
-    height: calc(100vh - 248px);
+@media (max-width: 600px) {
+  .create_task_area {
+    width: 100vw;
+    height: 100%;
   }
 }
 
