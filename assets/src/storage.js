@@ -79,11 +79,10 @@ async function updateContactsAboutTask(newTask) {
       const taskIndex = user.tasks.findIndex((t) => t.id == newTask.id);
       if (taskIndex >= 0) {
         user.tasks[taskIndex] = newTask;
-        await updateUserToRemoteServer(user);
       } else {
         user.tasks.push(newTask);
-        await updateUserToRemoteServer(user);
       }
+      await updateUserToRemoteServer(user);
     }
   }
 }

@@ -37,25 +37,6 @@ function contactListHTML() {
         });
         content.innerHTML += `</div>`;
     });
-    // for (let i = 0; i < contacts.length; i++) {
-    //     const contact = contacts[i];
-    //     content.innerHTML += `
-    //     <div>
-    //     <div class="contact_letter">${firstLetter[i]}</div>
-    //     <div>
-    //         <img src="../../img/contacts_add-new-vector.svg" alt="partition_wall">
-    //     </div>    
-    //     <div onclick="contactName('${contact.email}')" class="contact_name">
-    //     <div class="profile_badge" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
-    //         <div>
-    //             <span><b>${contact.name}</b></span><br>
-    //             <span class="light_blue">${contact.email}</span>
-    //         </div>
-    //     </div>    
-    //     <div></div>
-    //     </div>
-    //     `;
-    // }
 }
 
 function getFirstLetterArray(array) {
