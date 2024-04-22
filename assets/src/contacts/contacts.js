@@ -17,7 +17,7 @@ function contactListHTML() {
     let content = document.getElementById('content');
     content.innerHTML = '';
     firstLetter.forEach(letter => {
-        const contactsFirstLetter = contacts.filter(contact => contact.name.charAt(0) == letter);
+        const contactsFirstLetter = contacts.filter(contact => contact.name.charAt(0).toUpperCase() == letter);
         content.innerHTML += /*html*/`
             <div>
                 <div class="contact_letter">${letter}</div>
