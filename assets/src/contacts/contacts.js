@@ -21,7 +21,9 @@ function contactListHTML() {
         content.innerHTML += `
         <div>
         <div class="contact_letter">${firstLetter[i]}</div>
-        <img src="../../img/contacts_add-new-vector.svg" alt="partition_wall">
+        <div>
+            <img src="../../img/contacts_add-new-vector.svg" alt="partition_wall">
+        </div>    
         <div onclick="contactName('${contact.email}')" class="contact_name">
         <div class="profile_badge" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
             <div>
@@ -51,14 +53,16 @@ function contactName(email) {
     const contact = contacts.find(c=>c.email==email);
     document.getElementById('infoContact').style.display='flex';
     document.getElementById('infoContact').innerHTML = `
-    <div>
+    <div class="contact_info_card">
         <div class="contact_name_info">
             <div class="profile_contact" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
-            <div class="contact_info_name">${contact.name}</div>
-            <div>
-                <img onclick="editContact('${contact.email}')" class="edit_delet" src="../../img/edit.svg"><p>Edit</p>
-                <img onclick="deleteContact('${contact.email}')" class="edit_delet" src="../../img/delete.svg"><p>Delete</p>
-            </div>
+            <div class="contact_info_container">
+                <div class="contact_info_name">${contact.name}</div>
+                    <div class="icon_container">
+                    <img onclick="editContact('${contact.email}')" class="edit_delet" src="../../img/edit.svg"><p>Edit</p>
+                    <img onclick="deleteContact('${contact.email}')" class="edit_delet" src="../../img/delete.svg"><p>Delete</p>
+                </div>
+            </div>    
         </div>
         <span class="contact_info">Contact Information</span>
         <h3 class="email_header">Email</h3>
