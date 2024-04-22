@@ -36,6 +36,15 @@
     height: 70px;
 }
 
+.arrow_left_line {
+    display: none;
+}
+
+.more_vert {
+    display: none;
+    border-radius: 46px;
+}
+
 .contact_card {
     width: 410px;
     height: 100%;
