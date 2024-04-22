@@ -248,44 +248,6 @@
   padding: 10px;
 }
 
-::-webkit-scrollbar {
-  width: 34px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: none;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: rgba(168, 168, 168, 1);
-  border-radius: 30px;
-  border: 12px solid rgb(255, 255, 255);
-}
-
-::-webkit-scrollbar-button:single-button {
-  background-color: none;
-  display: block;
-  background-size: 10px;
-  background-repeat: no-repeat;
-}
-
-::-webkit-scrollbar-button:single-button:vertical:decrement {
-  height: 10px;
-  width: 10px;
-  padding: 2px;
-  background-position: center;
-  background-image: url("../../img/scrollbar_arrow_up.svg");
-}
-
-::-webkit-scrollbar-button:single-button:vertical:increment {
-  height: 10px;
-  width: 10px;
-  background-position: center;
-  background-image: url("../../img/scrollbar_arrow_down.svg");
-}
-
 .big_card_edit_title {
   display: flex;
   flex-direction: column;
