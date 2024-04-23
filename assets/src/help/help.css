@@ -32,3 +32,27 @@
 .last-headline-three {
     margin-block-end: 0;
 }
+.header-help-div {
+    display: flex;
+    justify-content: space-between;
+}
+/*
+|////////////////////////////////////////////////////|
+|                                                    |
+|                                                    |
+|-------------------->responsive<--------------------|
+|                                                    |
+|                                                    |
+|////////////////////////////////////////////////////|
+*/
+@media (max-width: 1130px) {
+    .help {
+        height: calc(100vh - 220px);
+        overflow-y: scroll;
+    }
+}
+@media (max-width: 600px) {
+    .help h1 {
+        font-size: 47px;
+    }
+}
