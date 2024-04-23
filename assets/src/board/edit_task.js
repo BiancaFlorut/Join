@@ -168,11 +168,12 @@ function saveEditedSubtaskEditTask(id) {
   const i = getIndexFromId(id);
   let element = getElementWithId(id);
   const text = element.innerHTML;
+  console.log(text);
   if (!isWhiteSpaceOnly(text)) {
     editedTask.subtasks[i].text = text;
     element.parentElement.classList.remove("big_card_edit_subtask_on_edit");
     element.contentEditable = false;
-    getElementWithId("bigCardEditCardIcons_" + i).innerHTML = generateSubtaskHTML(i);
+    getElementWithId("bigCardEditCardIcons_" + i).innerHTML = generateSubtaskEditIconsHTML(i);
     element.blur();
   } else deleteEditTaskSubtask(id);
 }
@@ -248,6 +249,25 @@ function editTasksSubtask(id) {
   getElementWithId(id).onmouseout = `showElement('bigCardEditCardIcons_${i}')`;
 }
 
+function cancelEditSubtask(id, i) {
+  let element = getElementWithId(id);
+  element.parentElement.classList.remove("big_card_edit_subtask_on_edit");
+  element.contentEditable = false;
+  getElementWithId("bigCardEditCardIcons_" + i).classList.add("d_none");
+  getElementWithId("bigCardEditCardIcons_" + i).innerHTML = generateSubtaskHTML(i);
+}
+
+function setOnBlurFunctionOnEditedSubtask(i) {
+  const subtaskELementId = `bigCardEditCardSubtaskText_${i}`;
+  let element = getElementWithId(subtaskELementId);
+  const iconsId = `bigCardEditCardIcons_${i}`;
+  element.onblur = function () {
+    element.onmouseout = hideElement(iconsId);
+    getElementWithId(iconsId).classList.add('d_none');
+    cancelSubtaskEdit(subtaskELementId);
+  };
+}
+
 /**
  * This function generates the html code with the edit icons for each subtask.
  * @param {Array} subtasks 
@@ -262,7 +282,7 @@ function generateSubTaskListItems(subtasks) {
             <span class="list_bullet">&bull;</span>    
             <span id="bigCardEditCardSubtaskText_${i}" ondblclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}')" class="flex_1">${subtask.text}</span>
                 <div id="bigCardEditCardIcons_${i}" class="df_ac big_card_edit_subtask_icons d_none">`
-                   + generateSubtaskHTML(i) + /*html*/ `
+                   + generateSubtaskEditIconsHTML(i) + /*html*/ `
                 </div>
             </div>
         </li>
@@ -271,7 +291,7 @@ function generateSubTaskListItems(subtasks) {
   return html;
 }
 
-function generateSubtaskHTML(i) {
+function generateSubtaskEditIconsHTML(i) {
   return /*html*/ `
   <img src="../../img/edit.svg" alt="" onclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}')">
   <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
