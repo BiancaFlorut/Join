@@ -45,6 +45,7 @@
         <div class="view_contact" id="overlyContact">
           <div class="main_container_add_contact" id="overlayAddContact">
             <div class="left_container_add_contacts">
+                <img onclick="addClose()" class="add_contact_close_left" src="../../img/close_white.svg" alt="icon_close" />
               <img class="contacts_join_logo" src="../../img/contacts_join_logo.svg" alt="join_logo" />
               <h1 class="h1_add_contacts">Add contact</h1>
               <h2 class="h2_add_contacts">Tasks are better with a team!</h2>
@@ -66,7 +67,7 @@
               </form>
               <div class="add_contact_button_center">
                 <button onclick="addClose()" class="contacts_button_cancel button_line">Cancel<img style="padding-left: 4px" src="../../img/board_add_task_close.svg" alt="icon_close" /></button>
-                <button type="submit" id="createContactButton" form="addContact" class="bold">
+                <button onclick="createContact()" type="submit" id="createContactButton" form="addContact" class="bold">
                   Create contact<img class="icon_check" src="../../img/contacts_add_contact_check.svg" alt="icon_check" />
                 </button>
               </div>

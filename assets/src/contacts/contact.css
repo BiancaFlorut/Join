@@ -228,6 +228,10 @@
   margin-top: 40px;
 }
 
+.add_contact_close_left {
+    display: none;
+}
+
 .profile_badge {
   border-radius: 50%;
   font-size: 12px;
@@ -246,6 +250,7 @@
   padding: 17px 36px 17px 66px;
   font-size: 20px;
   font-weight: 400;
+  border-bottom: 1px solid rgba(209, 209, 209, 1);
 }
 
 .contact_name {
@@ -259,6 +264,7 @@
   background-color: white;
   box-shadow: none;
   color: black;
+  margin-top: 8px;
 }
 
 .contact_name:hover {
@@ -396,10 +402,23 @@
         height: 810px;
     }
 
+    .add_contact_close_left {
+        cursor: pointer;
+        display: unset;
+        position: relative;
+        left: 400px;
+        bottom: 30px;
+    }
+
+    .add_contact_close{
+        display: none;
+    }
+
     .left_container_add_contacts {
         border-top-left-radius: 30px;
         border-top-right-radius: 30px;
         border-bottom-left-radius: 0;
+        padding: 66px 24px 66px 24px;
     }
 
     .left_container_edit_contacts {
@@ -409,15 +428,15 @@
         height: 155px;
     }
 
-  .contacts_join_logo {
-    display: none;
-  }
+    .contacts_join_logo {
+         display: none;
+    }
 
     .right_container_add_contacts {
         border-top-right-radius: 0;
         border-bottom-left-radius: 30px;
         width: unset;
-        height: 550px;
+        height: 530px;
     }
 
     .right_container_edit_contacts {
@@ -427,10 +446,10 @@
         height: 550px;
     }
 
-  .person_position {
-    top: -60px;
-    left: 185px;
-  }
+    .person_position {
+        top: -60px;
+        left: 185px;
+    }
 
     .create_contact {
         padding-right: 0;
@@ -442,54 +461,116 @@
         padding-right: 0;
     }
 
-  .add_contact_button_center {
-    justify-content: center;
-    padding-right: 0;
-  }
+    .add_contact_button_center {
+        justify-content: center;
+        padding-right: 0;
+    }
 
-  .contacts_button_cancel {
-    display: none;
-  }
+    .contacts_button_cancel {
+        display: none;
+    }
 }
 
 @media (max-width: 1215px) {
-  .contacts_header {
-    display: none;
-  }
+    .contacts_header {
+        display: none;
+    }
 
-  .contact_info_card {
-    display: none;
-  }
+    .contact_info_card {
+        display: none;
+    }
 
-  .contact_card {
-    width: -webkit-fill-available;
-  }
+    .contact_card {
+        width: -webkit-fill-available;
+    }
 }
 
 @media (max-width: 1130px) {
-  .content-section {
-    flex: none;
-    height: calc(100vh - 80px);
-  }
+    .content-section {
+        flex: none;
+        height: calc(100vh - 80px);
+    }
+}
+
+@media (max-width: 570px) {
+    .left_container_add_contacts {
+        width: 350px;
+    }
+    .add_contact_close_left {
+        left: 300px;
+    }
+    .right_container_add_contacts {
+        width: 398px;
+
+    }
+    .h1_add_contacts {
+        font-size: 47px;
+    }
+
+    .h2_add_contacts {
+        font-size: 20px;
+    }
+
+    .person_position {
+        left: 140px;
+    }
+
+    .input_area {
+        width: 260px;
+    }
 }
 
 @media (max-width: 410px) {
-  .button_center {
-    position: absolute;
-    top: 850px;
-    right: 25px;
-  }
+    .button_center {
+        position: absolute;
+        bottom: 100px;
+        right: 30px;
+    }
 
-  .contact_button_add_new {
-    border-radius: 46px;
-    padding: 12px;
-  }
+    .contact_button_add_new {
+        border-radius: 46px;
+        padding: 12px;
+    }
 
-  .contact_button_add_new img {
-    width: 32px;
-    height: 32px;
-  }
-  .add_new_contact_text {
-    display: none;
-  }
+    .contact_button_add_new img {
+        width: 32px;
+        height: 32px;
+    }
+    .add_new_contact_text {
+        display: none;
+    }
+    .person_position {
+        left: 110px;
+    }
+    .left_container_add_contacts {
+        width: 300px;
+    }
+    .right_container_add_contacts {
+        width: 348px;
+    }    
+}
+
+@media (max-width: 350px) {
+    .left_container_add_contacts {
+        width: 260px;
+    }
+    .add_contact_close_left {
+        left: 260px;
+    }
+    .h1_add_contacts {
+        font-size: 40px;
+    }
+    .h2_add_contacts {
+        font-size: 16px;
+    }
+    .person_position {
+        left: 90px;
+    }
+    .input_area {
+        width: 240px;
+    }
+    .right_container_add_contacts {
+        width: 308px;
+    }
+
 }
