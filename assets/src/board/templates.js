@@ -70,7 +70,7 @@ function generateEditedTaskHTML(valueDate, minDateValue, priorityClasses) {
             <span class="big_card_edit_title_header">Subtasks</span>
             <input id="addSubtasksEditTask" class='big_card_edit_title_input cursor_pointer' onfocus="toggleEditTasksSubtasks()" placeholder='Add new subtask' type="text">
             <div class="visibility_area_container df_ac">
-                <div id="bigCardEditSubtaskInputIcons" class="visibility_icon_container df_ac big_card_edit_subtask_input_icons">
+                <div id="bigCardEditSubtaskInputIcons" class="visibility_icon_container df_ac big_card_edit_subtask_input_icons" onclick="toggleEditTasksSubtasks()">
                     <img class="visibility_icon" src="../../img/plus.svg" alt="" />
                 </div>
             </div>

@@ -6,6 +6,20 @@ async function initContacts() {
     getFirstLetterArray(contacts);
     firstLetter.sort();
     contactListHTML();
+    initContactButtons();
+}
+
+function initContactButtons(){
+    let btns = document.getElementsByClassName("contact_name");
+    console.log(btns);
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+          let current = document.getElementsByClassName("active");
+          if (current.length > 0)
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
+        });
+    }
 }
 
 /**
@@ -17,7 +31,7 @@ function contactListHTML() {
     let content = document.getElementById('content');
     content.innerHTML = '';
     firstLetter.forEach(letter => {
-        const contactsFirstLetter = contacts.filter(contact => contact.name.charAt(0) == letter);
+        const contactsFirstLetter = contacts.filter(contact => contact.name.charAt(0).toUpperCase() == letter);
         content.innerHTML += /*html*/`
             <div>
                 <div class="contact_letter">${letter}</div>
@@ -26,39 +40,21 @@ function contactListHTML() {
                 </div>   `;
         contactsFirstLetter.forEach(contact => {
             content.innerHTML += /*html*/`
-                <div onclick="contactName('${contact.email}')" class="contact_name">
+                <button onclick="showContactDetails(this, '${contact.email}')" class="contact_name">
                     <div class="profile_badge" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
                     <div>
                         <span><b>${contact.name}</b></span><br>
                         <span class="light_blue">${contact.email}</span>
                     </div>
-                </div>    
+                </button>    
                 <div></div>`;
         });
         content.innerHTML += `</div>`;
     });
-    // for (let i = 0; i < contacts.length; i++) {
-    //     const contact = contacts[i];
-    //     content.innerHTML += `
-    //     <div>
-    //     <div class="contact_letter">${firstLetter[i]}</div>
-    //     <div>
-    //         <img src="../../img/contacts_add-new-vector.svg" alt="partition_wall">
-    //     </div>    
-    //     <div onclick="contactName('${contact.email}')" class="contact_name">
-    //     <div class="profile_badge" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
-    //         <div>
-    //             <span><b>${contact.name}</b></span><br>
-    //             <span class="light_blue">${contact.email}</span>
-    //         </div>
-    //     </div>    
-    //     <div></div>
-    //     </div>
-    //     `;
-    // }
 }
 
 function getFirstLetterArray(array) {
+    firstLetter = [];
     for (let i = 0; i < array.length; i++) {
         const letter = array[i].name.charAt(0).toUpperCase();
         if (!firstLetter.includes(letter)) {
@@ -67,10 +63,10 @@ function getFirstLetterArray(array) {
     }
 }
 
-function contactName(email) {
+function showContactDetails(element, email) {
     const contact = contacts.find(c=>c.email==email);
     document.getElementById('infoContact').style.display='flex';
-    document.getElementById('infoContact').innerHTML = `
+    document.getElementById('infoContact').innerHTML = /*html*/`
     <div class="contact_info_card">
         <div class="contact_name_info">
             <div class="profile_contact" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
@@ -104,6 +100,7 @@ function editContact(email) {
 }
 
 async function updateContact(contactEmail) {
+    getElementWithId('editContactButton').disabled = true;
     let contactIndex = contacts.findIndex(c=>c.email==contactEmail);
     const name = document.getElementById('editName').value;
     const email = document.getElementById('editEmail').value;
@@ -112,7 +109,8 @@ async function updateContact(contactEmail) {
     contacts[contactIndex] = { name: name, email: email, phone: phone, color: color};
     await updateUserContactsToRemoteServer(emailParameter, contacts);
     initContacts();
-    contactName(email);
+    showContactDetails(email);
+    getElementWithId('editContactButton').disabled = false;
 }
 
 function addContact() {
@@ -140,17 +138,28 @@ async function deleteContact(email) {
     const indexToDelete = contacts.findIndex(contact => contact.email === email);
     if (indexToDelete !== -1) {
         contacts.splice(indexToDelete, 1);
-        console.log('Kontakt erfolgreich gelöscht und Kontakt verschoben:', contacts);
         getElementWithId('infoContact').innerHTML = '';
+        await deleteAssignedToFromAllTasks(email);
+        await updateUserContactsToRemoteServer(emailParameter, contacts);
+        initContacts();
     } else {
         console.error('Kontakt mit der E-Mail-Adresse ' + email +' nicht gefunden.');
     }
-    await updateUserContactsToRemoteServer(emailParameter, contacts);
-
-    initContacts();
 }
 
-function contactSuccesfully() {
+async function deleteAssignedToFromAllTasks(email) {
+    user = await getUserFromServer(emailParameter);
+    for (let task of user.tasks) {
+        for (let contact of task.assign_to) {
+            if (contact.email === email) {
+                task.assign_to.splice(task.assign_to.indexOf(contact), 1);
+                await updateContactsAboutTask(task);
+            }
+        }
+    }
+}
+
+function contactSuccessfully() {
     document.getElementById('overlyContact').style.display='none';
     document.getElementById('contactSucces').style.display='flex';
 }

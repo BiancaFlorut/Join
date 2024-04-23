@@ -2,7 +2,7 @@
   <div class="add_task_header_card">
     <h1>Add Tasks</h1>
     <div class="close_div_add_task">
-      <span class="close_add_task" onclick="closeCreateTask()">x</span>
+      <img class="close_add_task" src="../../img/close_black.svg" onclick="closeCreateTask()" />
     </div>
   </div>
   <form id="createTaskForm" class="main_content" onsubmit="addNewTask(); return false">
@@ -102,7 +102,7 @@
             <img class="visibility_icon" src="../../img/plus.svg" alt="" onclick="toggleCreateTasksSubtasks()" />
           </div>
         </div>
-        <ul id="bigCardEditSubtasks" class="big_card_edit_subtask_list"></ul>
+        <ul id="createTaskEditSubtasks" class="big_card_edit_subtask_list"></ul>
       </div>
     </div>
   </form>

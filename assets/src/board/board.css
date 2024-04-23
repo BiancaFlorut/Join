@@ -125,10 +125,6 @@
   font-weight: 700;
 }
 
-.drag-area-highlight {
-  /* to do */
-}
-
 .drag_highlight {
   transform: rotate(5deg);
   transition: transform 200ms ease-in-out;
@@ -149,6 +145,20 @@
 .input_board_find_task_button svg:active #searchIcon {
   fill: #29abe2;
   transition: fill 200ms;
+}
+
+.wait_message {
+  padding: 25px 30.5px;
+  border-radius: 20px;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  background-color: rgba(42, 54, 71, 1);
+}
+
+.wait_message span {
+  color: white;
+  padding-right: 20px;
 }
 
 @media (max-width: 1170px) {

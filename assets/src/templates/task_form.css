@@ -1,9 +1,9 @@
+
 .add_task {
   padding: 80px;
   max-width: 1000px;
   min-width: 850px;
 }
-
 .required_red_star {
   color: red;
 }
@@ -131,12 +131,10 @@ textarea {
   background-color: rgba(42, 54, 71, 1);
   color: white;
 }
-
 .category_selected:hover {
   background-color: rgba(9, 25, 49, 1);
   color: white;
 }
-
 .add_content_error {
   padding-top: 10px;
   font-family: "Poppins";
@@ -170,6 +168,15 @@ textarea {
     bottom: 0;
   }
 }
+/*
+|////////////////////////////////////////////////////|
+|                                                    |
+|                                                    |
+|-------------------->responsive<--------------------|
+|                                                    |
+|                                                    |
+|////////////////////////////////////////////////////|
+*/
 @media (max-width: 1250px) {
   .decoration_content {
     display: none;

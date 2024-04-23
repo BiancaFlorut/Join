@@ -47,34 +47,33 @@ function updateHTML(array) {
     if (column.cards.length > 0) {
       column.cards.forEach((card) => (document.getElementById(`${column.name}`).innerHTML += generateSmallTaskHTML(card)));
     } else document.getElementById(`${column.name}`).innerHTML = getNoTasksToDoHTML();
+    document.getElementById(`${column.name}`).innerHTML += generateHighlightedCardGhostHTML(column.name);
   });
 }
 
 function startDragging(id) {
   currentDraggedElement = id;
   getElementWithId(id).classList.add("drag_highlight");
-  const index = tasks.findIndex((task) => task.id == id);
-  const status = tasks[index].status;
-  const nextStatusIndex = cols.findIndex( col => col == status) + 1;
-  if (nextStatusIndex < cols.length)
-    document.getElementById(`${cols[nextStatusIndex]}`).innerHTML += generateHighlightedCardGhostHTML();
 }
 
-function generateHighlightedCardGhostHTML() {
+function generateHighlightedCardGhostHTML(columnName) {
   return /*html*/ `
-    <div class="card_small_ghost"></div>
+    <div id="${columnName}Ghost" draggable="true" class="card_small_ghost card_small d_none"></div>
   `;
 }
 
 function generateSmallTaskHTML(task) {
   const category = task.category;
-  const categoryColor = user.categories.find((c) => c.name == category);
-  const colorClass = getCategoryClassColor(category);
+  let categoryColor = user.categories.find((c) => c.name == category);
+  if (!categoryColor){
+    categoryColor = {name: category, color: selectRandomColor()};
+    user.categories.push(categoryColor);
+    updateUserToRemoteServer(user);
+  }
   let subtasksHTML = "";
   if (task.subtasks.length > 0) subtasksHTML = getSubTaskHTML(task);
   const priorityString = getTaskPriority(task.priority);
-  return (
-    /*html*/ `
+  return /*html*/ `
     <div id="${task.id}" draggable="true" ondragstart="startDragging('${task.id}')" class="card_small" onclick="openTask('${task.id}')">
       <div class="task_category" style="background-color: ${categoryColor.color}">${task.category}</div>
       <div class="task_text_area">
@@ -90,8 +89,7 @@ function generateSmallTaskHTML(task) {
           <div class="small_task_priority"><img src="../../img/priority_${priorityString}.svg" alt=""></div>
         </div>
       </div>
-    </div>`
-  );
+    </div>`;
 }
 
 function getCategoryClassColor(category) {
@@ -145,12 +143,16 @@ async function moveTo(status) {
   hideElement('pleaseWait');
 }
 
-function highlight(id) {
-  document.getElementById(id).classList.add("drag-area-highlight");
+function highlight(event, id) {
+  let ghost = document.getElementById(id + 'Ghost');
+  console.log(id + ' entered the drag area');
+  ghost.style.display = 'block';
 }
 
-function removeHighlight(id) {
-  document.getElementById(id).classList.remove("drag-area-highlight");
+function removeHighlight(event, id) {
+  console.log(id + 'leaving the drag area');
+  let ghost = document.getElementById(id + 'Ghost');
+ ghost.style.display = 'none';
 }
 
 function searchTask() {

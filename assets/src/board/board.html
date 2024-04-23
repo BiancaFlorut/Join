@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../templates/templates.css" />
     <link rel="stylesheet" href="../styles.css" />
     <link rel="stylesheet" href="../board/board.css" />
-    <link rel="stylesheet" href="../templates/task_form.css">
+    <link rel="stylesheet" href="../templates/task_form.css" />
 
     <script src="../utility.js"></script>
     <script src="../storage.js"></script>
@@ -65,13 +65,20 @@
               <div class="column_title">
                 <h2 class="h2_board"><span>To do</span><img class="bold_21 board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" onclick="openCreateTask('toDo')" /></h2>
               </div>
-              <div class="drag-area" id="toDo" ondrop="moveTo('toDo')" ondragleave="removeHighlight('toDo')" ondragover="allowDrop(event); highlight('toDo')"></div>
+              <div class="drag-area" id="toDo" ondrop="moveTo('toDo')" ondragleave="removeHighlight(event,'toDo')" ondragover="allowDrop(event)" ondragenter="highlight(event,'toDo')"></div>
             </div>
             <div class="board_column">
               <div class="column_title">
                 <h2 class="h2_board"><span>In progress</span> <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" onclick="openCreateTask('inProgress')" /></h2>
               </div>
-              <div class="drag-area" id="inProgress" ondrop="moveTo('inProgress')" ondragleave="removeHighlight('inProgress')" ondragover="allowDrop(event); highlight('inProgress')"></div>
+              <div
+                class="drag-area"
+                id="inProgress"
+                ondrop="moveTo('inProgress')"
+                ondragleave="removeHighlight(event,'inProgress')"
+                ondragover="allowDrop(event)"
+                ondragenter="highlight(event,'inProgress')"
+              ></div>
             </div>
             <div class="board_column">
               <div class="column_title">
@@ -79,13 +86,20 @@
                   <span>Await feedback</span> <img class="board_plus_button" src="../../img/board_plus_button.svg" alt="plus_button" onclick="openCreateTask('awaitFeedback')" />
                 </h2>
               </div>
-              <div class="drag-area" id="awaitFeedback" ondrop="moveTo('awaitFeedback')" ondragleave="removeHighlight('awaitFeedback')" ondragover="allowDrop(event); highlight('awaitFeedback')"></div>
+              <div
+                class="drag-area"
+                id="awaitFeedback"
+                ondrop="moveTo('awaitFeedback')"
+                ondragleave="removeHighlight(event,'awaitFeedback')"
+                ondragover="allowDrop(event)"
+                ondragenter="highlight(event,'awaitFeedback')"
+              ></div>
             </div>
             <div class="board_column">
               <div class="column_title">
                 <h2 class="h2_board"><span>Done</span></h2>
               </div>
-              <div class="drag-area" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight('done')" ondragover="allowDrop(event); highlight('done')"></div>
+              <div class="drag-area" id="done" ondrop="moveTo('done')" ondragleave="removeHighlight(event,'done')" ondragover="allowDrop(event)" ondragenter="highlight(event, 'done')"></div>
             </div>
           </div>
         </div>
@@ -97,7 +111,9 @@
         <div id="createTask" class="big_card_area d_none" onclick="closeCreateTask()">
           <div class="create_task_area" w3-include-html="../templates/create_task.html" onclick="event.stopPropagation();"></div>
         </div>
-        <div id="pleaseWait" class="big_card_area d_none"></div>
+        <div id="pleaseWait" class="big_card_area d_none">
+          <div class="wait_message"><span>Please wait...</span></div>
+        </div>
       </div>
     </section>
   </body>
