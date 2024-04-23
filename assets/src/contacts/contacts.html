@@ -25,7 +25,7 @@
         <div class="contact_card">
           <div>
             <div class="button_center">
-              <button id="addContactButton" onclick="addContact()" class="contact_button_add_new bold_21">
+              <button id="addContactButton" onclick="showCreateContactForm()" class="contact_button_add_new bold_21">
                 <span class="add_new_contact_text">Add new contact</span><img src="../../img/contacts_person_add.svg" alt="person_add" />
               </button>
             </div>
@@ -80,7 +80,7 @@
               <img src="../../img/contacts_add_contact_vector_5.svg" alt="vector" />
             </div>
             <div class="right_container_add_contacts">
-              <div class="person_position">
+              <div id="editContactBigLogo" class="person_position">
                 <div class="border_radius">
                   <img src="../../img/contacts_add_contact_person.svg" alt="icon_person" />
                 </div>
@@ -92,8 +92,8 @@
                 <input id="editPhone" class="input_area phone" required placeholder="Phone" type="tel" />
               </form>
               <div class="edit_contact_button">
-                <button onclick="deleteContact()" class="contacts_button_delete button_line">Delete</button>
-                <button type="submit" id="createContactButton" form="editContact" class="bold">Save<img class="icon_check" src="../../img/contacts_add_contact_check.svg" alt="icon_check" /></button>
+                <button id="editContactDeleteButton" onclick="deleteContact()" class="contacts_button_delete button_line">Delete</button>
+                <button type="submit" id="editContactButton" form="editContact" class="bold">Save<img class="icon_check" src="../../img/contacts_add_contact_check.svg" alt="icon_check" /></button>
               </div>
             </div>
           </div>
