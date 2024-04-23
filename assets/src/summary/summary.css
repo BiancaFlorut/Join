@@ -108,6 +108,7 @@
 .description {
     font-size: 20px;
     font-weight: 400;
+    padding: 8px;
 }
 .counter {
     display: flex;
