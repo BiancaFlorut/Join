@@ -427,6 +427,7 @@
         border-top-right-radius: 30px;
         border-bottom-left-radius: 0;
         height: 155px;
+        width: 450px;
     }
 
     .contacts_join_logo {
@@ -494,6 +495,9 @@
 }
 
 @media (max-width: 570px) {
+    .left_container_edit_contacts {
+        width: 350px;
+    }
     .left_container_add_contacts {
         width: 350px;
     }
@@ -548,7 +552,10 @@
     }
     .right_container_add_contacts {
         width: 348px;
-    }    
+    }
+    .left_container_edit_contacts {
+        width: 300px;
+    }
 }
 
 @media (max-width: 350px) {
