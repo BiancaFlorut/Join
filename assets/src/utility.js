@@ -234,25 +234,6 @@ function getIndexFromId(id) {
   return subtaskIndex[1];
 }
 
-function cancelEditSubtask(id, i) {
-  let element = getElementWithId(id);
-  element.parentElement.classList.remove("big_card_edit_subtask_on_edit");
-  element.contentEditable = false;
-  getElementWithId("bigCardEditCardIcons_" + i).classList.add("d_none");
-  getElementWithId("bigCardEditCardIcons_" + i).innerHTML = generateSubtaskHTML(i);
-}
-
-function setOnBlurFunctionOnEditedSubtask(i) {
-  const subtaskELementId = `bigCardEditCardSubtaskText_${i}`;
-  let element = getElementWithId(subtaskELementId);
-  const iconsId = `bigCardEditCardIcons_${i}`;
-  element.onblur = function () {
-    element.onmouseout = hideElement(iconsId);
-    getElementWithId(iconsId).classList.add('d_none');
-    cancelSubtaskEdit(subtaskELementId);
-  };
-}
-
 function scrollToTheBottomOfTheContainer(element) {
   element.scrollTop = element.scrollHeight;
 }
