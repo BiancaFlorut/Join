@@ -34,9 +34,7 @@ function contactListHTML() {
         content.innerHTML += /*html*/`
             <div>
                 <div class="contact_letter">${letter}</div>
-                <div>
-                    <img src="../../img/contacts_add-new-vector.svg" alt="partition_wall">
-                </div>   `;
+                 `;
         contactsFirstLetter.forEach(contact => {
             content.innerHTML += /*html*/`
                 <button id="${contact.email}" onclick="showContactDetails('${contact.email}')" class="contact_name">
@@ -146,6 +144,12 @@ async function addNewContact() {
     getElementWithId('createContactButton').disabled = false;
     showToastMessage();
     initContacts();
+}
+
+function createContact() {
+    document.getElementById('overlyContact').style.display='flex';
+    document.getElementById('contactSucces').style.display='flex';
+    document.getElementById('overlayAddContact').style.display='none';
 }
 
 async function deleteContact(email) {

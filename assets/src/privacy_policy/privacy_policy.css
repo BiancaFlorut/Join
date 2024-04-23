@@ -13,6 +13,9 @@
 .privacy_policy span {
     color: #29abe2;
 }
+.user {
+    display:none;
+}
 /*
 |////////////////////////////////////////////////////|
 |                                                    |
