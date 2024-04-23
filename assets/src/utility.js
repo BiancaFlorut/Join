@@ -229,15 +229,32 @@ function getPriorityButtonsClasses(priority) {
   }
 }
 
+/**
+ * Retrieves the index from the given ID.
+ *
+ * @param {string} id - The ID to extract the index from.
+ * @return {string} The extracted index.
+ */
 function getIndexFromId(id) {
   const subtaskIndex = id.split("_");
   return subtaskIndex[1];
 }
 
+/**
+ * Scrolls the given element to the bottom of its container.
+ *
+ * @param {HTMLElement} element - The element to scroll.
+ * @return {void} This function does not return anything.
+ */
 function scrollToTheBottomOfTheContainer(element) {
   element.scrollTop = element.scrollHeight;
 }
 
+/**
+ * This function selects a random color from the contactIconColors array.
+ *
+ * @return {string} The randomly selected color.
+ */
 function selectRandomColor() {
   const randomIndex = Math.floor(Math.random() * contactIconColors.length);
   return contactIconColors[randomIndex];
