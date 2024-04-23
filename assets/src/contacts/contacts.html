@@ -61,8 +61,8 @@
                 <div>
                   <img onclick="addClose()" class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
                 </div>
-                <input id="name" class="input_area person" required placeholder="Name" type="text" />
-                <input id="email" class="input_area mail" required placeholder="Email" type="email" />
+                <input id="name" class="input_area person" required placeholder="Name" type="text" onchange="checkName(this)" />
+                <input id="email" class="input_area mail" required placeholder="Email" type="email" onchange="checkEmail(this)" />
                 <input id="phone" class="input_area phone" required placeholder="Phone" type="tel" />
               </form>
               <div class="add_contact_button_center">
@@ -102,8 +102,8 @@
               </div>
               <form id="editContact" onsubmit="updateContact(); return false" class="create_contact">
                 <img onclick="addClose()" class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
-                <input id="editName" class="input_area person" required placeholder="Name" type="text" />
-                <input id="editEmail" class="input_area mail" required placeholder="Email" type="email" />
+                <input id="editName" class="input_area person" required placeholder="Name" type="text" onchange="checkName(this)" />
+                <input id="editEmail" class="input_area mail" required placeholder="Email" type="email" onchange="checkEmail(this)" />
                 <input id="editPhone" class="input_area phone" required placeholder="Phone" type="tel" />
               </form>
               <div class="edit_contact_button">

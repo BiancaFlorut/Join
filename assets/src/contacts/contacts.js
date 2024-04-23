@@ -140,6 +140,23 @@ async function updateContact(contactEmail) {
     getElementWithId('createContactButton').disabled = false;
 }
 
+function checkEmail(inputElement) {
+    const email = inputElement.value;
+    contacts.forEach(contact => {
+        if (contact.email === email) {
+            inputElement.setCustomValidity('Email already exists');
+            inputElement.reportValidity();
+        }
+    })
+}
+
+function checkName(inputElement) {
+    const name = inputElement.value;
+    if (isWhiteSpaceOnly(name)) {
+        inputElement.setCustomValidity('Name cannot be empty');
+    }
+}
+
 function hideEditContact() {
     getElementWithId('overlayEditContact').style.display='none';
     document.getElementById('overlyContact').style.display='none';
