@@ -238,7 +238,7 @@
   font-size: 20px;
 }
 
-.contacts_button_cancel:hover #close_create_contact_svg {
+.contacts_button_cancel:hover path {
   fill: rgba(41, 171, 226, 1);
 }
 
