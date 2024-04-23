@@ -83,6 +83,7 @@
   background-color: rgba(0, 0, 0, 0.1);
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 .main_container_add_contact {
@@ -185,7 +186,7 @@
     right: 50%;
     transform: translate(50%, 50%);
   }
-  60% {
+  70% {
     right: 50%;
     transform: translate(50%, 50%);
   }

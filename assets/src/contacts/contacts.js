@@ -146,12 +146,6 @@ async function addNewContact() {
     initContacts();
 }
 
-function createContact() {
-    document.getElementById('overlyContact').style.display='flex';
-    document.getElementById('contactSucces').style.display='flex';
-    document.getElementById('overlayAddContact').style.display='none';
-}
-
 async function deleteContact(email) {
     getElementWithId('editContactDeleteButton').disabled = true;
     const indexToDelete = contacts.findIndex(contact => contact.email === email);
@@ -184,6 +178,7 @@ function showToastMessage() {
     document.getElementById('overlyContact').style.display='flex';
     document.getElementById('contactSucces').style.display='flex';
     getElementWithId('overlayAddContact').style.display='none';
+    setTimeout(function() { document.getElementById('overlyContact').style.display='none'; }, 2500);
 }
 
 
