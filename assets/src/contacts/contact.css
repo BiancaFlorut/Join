@@ -232,9 +232,14 @@
 }
 
 .contacts_button_cancel {
-  border: 1px solid #2a3647;
-  background-color: #ffffff;
-  color: #2a3647;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 20px;
+}
+
+.contacts_button_cancel:hover #close_create_contact_svg {
+  fill: rgba(41, 171, 226, 1);
 }
 
 .add_contact_button_center {
