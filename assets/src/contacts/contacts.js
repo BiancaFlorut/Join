@@ -93,11 +93,21 @@ function editContact(email) {
     document.getElementById('editName').value = `${contact.name}`;
     document.getElementById('editEmail').value = `${contact.email}`;
     document.getElementById('editPhone').value = `${contact.phone}`;
+    getElementWithId('editContactBigLogo').innerHTML = generateEditContactBigLogoHTML(contact);
     getElementWithId('editContact').setAttribute('onsubmit', `updateContact('${contact.email}'); return false`);
+    getElementWithId('editContactDeleteButton').setAttribute('onclick', `deleteContact('${contact.email}')`);
+}
+
+function generateEditContactBigLogoHTML(contact) {
+    return /*html*/`
+    <div class="edit_contact_big_logo">
+        <div class="profile_contact" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
+    </div>
+    `
 }
 
 async function updateContact(contactEmail) {
-    getElementWithId('createContactButton').disabled = true;
+    getElementWithId('editContactButton').disabled = true;
     let contactIndex = contacts.findIndex(c=>c.email==contactEmail);
     const name = document.getElementById('editName').value;
     const email = document.getElementById('editEmail').value;
@@ -105,16 +115,20 @@ async function updateContact(contactEmail) {
     const color = contacts[contactIndex].color;
     contacts[contactIndex] = { name: name, email: email, phone: phone, color: color};
     await updateUserContactsToRemoteServer(emailParameter, contacts);
+    hideEditContact();
     initContacts();
     showContactDetails(email);
     getElementWithId('createContactButton').disabled = false;
 }
 
-function addContact() {
+function hideEditContact() {
+    getElementWithId('overlayEditContact').style.display='none';
+    document.getElementById('overlyContact').style.display='none';
+}
+
+function showCreateContactForm() {
     document.getElementById('overlyContact').style.display='flex';
-    document.getElementById('overlayEditContact').style.display='none';
-    document.getElementById('contactSucces').style.display='none';
-    contactListHTML();
+    getElementWithId('overlayAddContact').style.display='flex';
 }
 
 async function addNewContact() {
@@ -128,26 +142,24 @@ async function addNewContact() {
     await updateUserContactsToRemoteServer(emailParameter, contacts);
     addClose();
     getElementWithId('createContactButton').disabled = false;
+    showToastMessage();
     initContacts();
 }
 
-function createContact() {
-    document.getElementById('overlyContact').style.display='flex';
-    document.getElementById('contactSucces').style.display='flex';
-    document.getElementById('overlayAddContact').style.display='none';
-}
-
 async function deleteContact(email) {
+    getElementWithId('editContactDeleteButton').disabled = true;
     const indexToDelete = contacts.findIndex(contact => contact.email === email);
     if (indexToDelete !== -1) {
         contacts.splice(indexToDelete, 1);
         getElementWithId('infoContact').innerHTML = '';
         await deleteAssignedToFromAllTasks(email);
         await updateUserContactsToRemoteServer(emailParameter, contacts);
+        hideEditContact();
         initContacts();
     } else {
         console.error('Kontakt mit der E-Mail-Adresse ' + email +' nicht gefunden.');
     }
+    getElementWithId('editContactDeleteButton').disabled = false;
 }
 
 async function deleteAssignedToFromAllTasks(email) {
@@ -162,9 +174,11 @@ async function deleteAssignedToFromAllTasks(email) {
     }
 }
 
-function contactSuccessfully() {
-    document.getElementById('overlyContact').style.display='none';
+function showToastMessage() {
+    document.getElementById('overlyContact').style.display='flex';
     document.getElementById('contactSucces').style.display='flex';
+    getElementWithId('overlayAddContact').style.display='none';
+    setTimeout(function() { document.getElementById('overlyContact').style.display='none'; }, 2500);
 }
 
 
