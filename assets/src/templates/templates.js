@@ -66,6 +66,9 @@ function setParameterQuery() {
     document.getElementById('Legal Notice').href = '../legal_notice/legal_notice.html?email=' + emailParameter;
     document.getElementById('Help').href = '../help/help.html?email=' + emailParameter;
     document.getElementById('Add Task').href = '../add_task/add_task.html?email=' + emailParameter;
+    document.getElementById('headerHelp').href = '../add_task/add_task.html?email=' + emailParameter;
+    document.getElementById('headerLegalNotice').href = '../add_task/add_task.html?email=' + emailParameter;
+    document.getElementById('headerPrivacyPolicy').href = '../add_task/add_task.html?email=' + emailParameter;
 }
 
 /**
