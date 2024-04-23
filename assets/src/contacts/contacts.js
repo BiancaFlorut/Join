@@ -128,6 +128,7 @@ function hideEditContact() {
 
 function showCreateContactForm() {
     document.getElementById('overlyContact').style.display='flex';
+    document.getElementById('overlayEditContact').style.display='none';
     getElementWithId('overlayAddContact').style.display='flex';
 }
 
@@ -188,3 +189,16 @@ function addClose() {
     document.getElementById('phone').value = '';
     document.getElementById('overlyContact').style.display='none';
 }
+
+function toggleContainerDisplay() {
+    let container = document.getElementById('overlayEditContact');
+    if (window.innerWidth <= 1255) {
+       container.style.display = 'block';
+    } else {
+       container.style.display = 'flex';
+    }
+   }
+   
+   // Führen Sie die Funktion beim Laden der Seite und beim Ändern der Fenstergröße aus
+   window.addEventListener('load', toggleContainerDisplay);
+   window.addEventListener('resize', toggleContainerDisplay);
