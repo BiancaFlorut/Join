@@ -46,15 +46,18 @@
 }
 
 .contact_card {
-  width: 410px;
   height: 100%;
   background-color: #ffffff;
   display: flex;
   justify-content: center;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  padding: 32px 24px 32px 24px;
+  padding: 32px 24px 32px 52px;
   overflow-y: scroll;
   box-sizing: border-box;
+}
+
+.contacts_area {
+  width: 352px;
 }
 
 .button_center {
@@ -229,9 +232,14 @@
 }
 
 .contacts_button_cancel {
-  border: 1px solid #2a3647;
-  background-color: #ffffff;
-  color: #2a3647;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 20px;
+}
+
+.contacts_button_cancel:hover #close_create_contact_svg {
+  fill: rgba(41, 171, 226, 1);
 }
 
 .add_contact_button_center {
@@ -269,18 +277,17 @@
 }
 
 .contact_letter {
-  padding: 17px 36px 17px 66px;
+  padding: 17px 36px 17px 40px;
   font-size: 20px;
   font-weight: 400;
   border-bottom: 1px solid rgba(209, 209, 209, 1);
 }
 
 .contact_name {
-  padding: 15px 54px;
-  cursor: pointer;
   border-radius: 10px;
   display: flex;
   align-items: center;
+  text-align: left;
   gap: 35px;
   width: 100%;
   background-color: white;
@@ -517,22 +524,21 @@
 }
 
 @media (max-width: 570px) {
-    .left_container_edit_contacts {
-        width: 350px;
-    }
-    .left_container_add_contacts {
-        width: 350px;
-    }
-    .add_contact_close_left {
-        left: 300px;
-    }
-    .right_container_add_contacts {
-        width: 398px;
-
-    }
-    .h1_add_contacts {
-        font-size: 47px;
-    }
+  .left_container_edit_contacts {
+    width: 350px;
+  }
+  .left_container_add_contacts {
+    width: 350px;
+  }
+  .add_contact_close_left {
+    left: 300px;
+  }
+  .right_container_add_contacts {
+    width: 398px;
+  }
+  .h1_add_contacts {
+    font-size: 47px;
+  }
 
   .h2_add_contacts {
     font-size: 20px;
@@ -559,25 +565,25 @@
     padding: 12px;
   }
 
-    .contact_button_add_new img {
-        width: 32px;
-        height: 32px;
-    }
-    .add_new_contact_text {
-        display: none;
-    }
-    .person_position {
-        left: 110px;
-    }
-    .left_container_add_contacts {
-        width: 300px;
-    }
-    .right_container_add_contacts {
-        width: 348px;
-    }
-    .left_container_edit_contacts {
-        width: 300px;
-    }
+  .contact_button_add_new img {
+    width: 32px;
+    height: 32px;
+  }
+  .add_new_contact_text {
+    display: none;
+  }
+  .person_position {
+    left: 110px;
+  }
+  .left_container_add_contacts {
+    width: 300px;
+  }
+  .right_container_add_contacts {
+    width: 348px;
+  }
+  .left_container_edit_contacts {
+    width: 300px;
+  }
 }
 
 @media (max-width: 350px) {

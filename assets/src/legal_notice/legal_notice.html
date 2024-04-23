@@ -13,14 +13,14 @@
     <script src="../templates/templates.js"></script>
     <script src="./legal_notice.js"></script>
 </head>
-<body onload="init()">
-    <div id="navBar" w3-include-html="../templates/nav_bar_left.html"></div>
+<body onload="initLegalNotice()">
+    <div w3-include-html="../templates/nav_bar_left.html"></div>
 
     <section class="content-section">
       <div class="shadow" w3-include-html="../templates/header.html"></div>
       <div class="content">
         <img class="back-button" src="../../img/arrow-left-line.svg" alt="" onclick="lastPage()">
-        <div class="legal-notice">
+        <div class="legal-notice" id="legalNoticeDiv">
             <h1>Legal Notice</h1>
             <h2 class="padding-top-one">Imprint</h2>
             <li>Ahmet Uysal</li>
