@@ -27,3 +27,4 @@ function checkQueryParametersAndHideDivs() {
 }
 
 
+window.addEventListener('resize', checkQueryParametersAndHideDivs);
