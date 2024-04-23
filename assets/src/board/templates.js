@@ -1,3 +1,11 @@
+/**
+ * Generates HTML for an edited task with specific elements and styling.
+ *
+ * @param {type} valueDate - Description of valueDate parameter
+ * @param {type} minDateValue - Description of minDateValue parameter
+ * @param {type} priorityClasses - Description of priorityClasses parameter
+ * @return {type} Description of the returned HTML content
+ */
 function generateEditedTaskHTML(valueDate, minDateValue, priorityClasses) {
   return (
     /*html*/ `
