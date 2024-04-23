@@ -11,7 +11,6 @@ async function initContacts() {
 
 function initContactButtons(){
     let btns = document.getElementsByClassName("contact_name");
-    console.log(btns);
     for (let i = 0; i < btns.length; i++) {
         btns[i].addEventListener("click", function() {
           let current = document.getElementsByClassName("active");
@@ -100,7 +99,7 @@ function editContact(email) {
 }
 
 async function updateContact(contactEmail) {
-    getElementWithId('editContactButton').disabled = true;
+    getElementWithId('createContactButton').disabled = true;
     let contactIndex = contacts.findIndex(c=>c.email==contactEmail);
     const name = document.getElementById('editName').value;
     const email = document.getElementById('editEmail').value;
@@ -110,7 +109,7 @@ async function updateContact(contactEmail) {
     await updateUserContactsToRemoteServer(emailParameter, contacts);
     initContacts();
     showContactDetails(email);
-    getElementWithId('editContactButton').disabled = false;
+    getElementWithId('createContactButton').disabled = false;
 }
 
 function addContact() {
