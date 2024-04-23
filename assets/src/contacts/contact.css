@@ -422,7 +422,7 @@
 
 @media (max-width: 1255px) {
   .main_container_add_contact {
-    display: block;
+    display: block !important;
     height: 810px;
   }
 
@@ -448,15 +448,16 @@
     border-top-right-radius: 30px;
     border-bottom-left-radius: 0;
     padding: 66px 24px 66px 24px;
+    height: 170px;
   }
 
-  .left_container_edit_contacts {
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border-bottom-left-radius: 0;
-    height: 155px;
-    width: 450px;
-  }
+    .left_container_edit_contacts {
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: 0;
+        height: 170px;
+        width: 450px;
+    }
 
   .contacts_join_logo {
     display: none;

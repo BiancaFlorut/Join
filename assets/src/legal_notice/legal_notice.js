@@ -1,13 +1,20 @@
 
 async function initLegalNotice() {
-    await init();
-    checkQueryParametersAndHideDivs();
+    if (isQueryParams()) {
+        await init();
+    } else {
+    await includeHTML();
+    hideUserMenu();
+    }
 }
 
-function checkQueryParametersAndHideDivs() {
+function isQueryParams() {
     const urlParams = new URLSearchParams(window.location.search);
     const hasQueryParams = urlParams.toString().length > 0;
-    if (!hasQueryParams) {
+    return hasQueryParams;
+}
+
+function hideUserMenu() {
         const screenWidth = window.innerWidth;
         const navContainerDiv = document.getElementById('navContainer');
         const navBarDiv = document.getElementById('navBar');
@@ -23,8 +30,8 @@ function checkQueryParametersAndHideDivs() {
                 navBarDiv.classList.remove('d_none');
             }
         }
-    }
+    
 }
 
 
-window.addEventListener('resize', checkQueryParametersAndHideDivs);
+window.addEventListener('resize', hideUserMenu);
