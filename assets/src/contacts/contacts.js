@@ -39,7 +39,7 @@ function contactListHTML() {
                 </div>   `;
         contactsFirstLetter.forEach(contact => {
             content.innerHTML += /*html*/`
-                <button onclick="showContactDetails(this, '${contact.email}')" class="contact_name">
+                <button id="${contact.email}" onclick="showContactDetails('${contact.email}')" class="contact_name">
                     <div class="profile_badge" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
                     <div>
                         <span><b>${contact.name}</b></span><br>
@@ -62,7 +62,7 @@ function getFirstLetterArray(array) {
     }
 }
 
-function showContactDetails(element, email) {
+function showContactDetails(email) {
     const contact = contacts.find(c=>c.email==email);
     document.getElementById('infoContact').style.display='flex';
     document.getElementById('infoContact').innerHTML = /*html*/`

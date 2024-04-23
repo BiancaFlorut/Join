@@ -58,7 +58,8 @@ function startDragging(id) {
 
 function generateHighlightedCardGhostHTML(columnName) {
   return /*html*/ `
-    <div id="${columnName}Ghost" draggable="true" class="card_small_ghost card_small d_none"></div>
+  <div id="${columnName}Ghost" ondrop="moveTo('${columnName}')"  ondragover="allowDrop(event, '${columnName}')" class="card_small_ghost d_none"></div>
+    
   `;
 }
 
@@ -129,8 +130,11 @@ function getSubTaskHTML(card) {
   return html;
 }
 
-function allowDrop(ev) {
+function allowDrop(ev, id) {
   ev.preventDefault();
+  let ghost = document.getElementById(id + 'Ghost');
+  console.log(id + ' entered the drag area');
+  ghost.style.display = 'block';
 }
 
 async function moveTo(status) {
@@ -143,13 +147,13 @@ async function moveTo(status) {
   hideElement('pleaseWait');
 }
 
-function highlight(event, id) {
-  let ghost = document.getElementById(id + 'Ghost');
-  console.log(id + ' entered the drag area');
-  ghost.style.display = 'block';
-}
+// function highlight(event, id) {
+//   let ghost = document.getElementById(id + 'Ghost');
+//   console.log(id + ' entered the drag area');
+//   ghost.style.display = 'block';
+// }
 
-function removeHighlight(event, id) {
+function removeHighlight(id) {
   console.log(id + 'leaving the drag area');
   let ghost = document.getElementById(id + 'Ghost');
  ghost.style.display = 'none';
