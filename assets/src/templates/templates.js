@@ -73,10 +73,20 @@ function setParameterQuery() {
     document.getElementById('Legal Notice').href = '../legal_notice/legal_notice.html?email=' + emailParameter;
     document.getElementById('Help').href = '../help/help.html?email=' + emailParameter;
     document.getElementById('Add Task').href = '../add_task/add_task.html?email=' + emailParameter;
+    setParameterQueryHeader(emailParameter);
+    setParameterQuerySummary(emailParameter);
+}
+
+/**
+ * Sets the parameter query for the header section of the page.
+ *
+ * @param {string} emailParameter - The email parameter to be included in the query string.
+ * @return {void} This function does not return a value.
+ */
+function setParameterQueryHeader(emailParameter) {
     document.getElementById('headerHelp').href = '../help/help.html?email=' + emailParameter;
     document.getElementById('headerLegalNotice').href = '../legal_notice/legal_notice.html?email=' + emailParameter;
-    document.getElementById('headerPrivacyPolicy').href = '../privacy_policy/privacy_policy.html?email=' + emailParameter;
-    setParameterQuerySummary(emailParameter);
+    document.getElementById('headerPrivacyPolicy').href = '../privacy_policy/privacy_policy.html?email=' + emailParameter;    
 }
 
 /**
