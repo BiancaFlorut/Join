@@ -6,6 +6,20 @@ async function initContacts() {
     getFirstLetterArray(contacts);
     firstLetter.sort();
     contactListHTML();
+    initContactButtons();
+}
+
+function initContactButtons(){
+    let btns = document.getElementsByClassName("contact_name");
+    console.log(btns);
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+          let current = document.getElementsByClassName("active");
+          if (current.length > 0)
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
+        });
+    }
 }
 
 /**
@@ -26,13 +40,13 @@ function contactListHTML() {
                 </div>   `;
         contactsFirstLetter.forEach(contact => {
             content.innerHTML += /*html*/`
-                <div onclick="contactName('${contact.email}')" class="contact_name">
+                <button onclick="showContactDetails(this, '${contact.email}')" class="contact_name">
                     <div class="profile_badge" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
                     <div>
                         <span><b>${contact.name}</b></span><br>
                         <span class="light_blue">${contact.email}</span>
                     </div>
-                </div>    
+                </button>    
                 <div></div>`;
         });
         content.innerHTML += `</div>`;
@@ -49,10 +63,10 @@ function getFirstLetterArray(array) {
     }
 }
 
-function contactName(email) {
+function showContactDetails(element, email) {
     const contact = contacts.find(c=>c.email==email);
     document.getElementById('infoContact').style.display='flex';
-    document.getElementById('infoContact').innerHTML = `
+    document.getElementById('infoContact').innerHTML = /*html*/`
     <div class="contact_info_card">
         <div class="contact_name_info">
             <div class="profile_contact" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
@@ -95,7 +109,7 @@ async function updateContact(contactEmail) {
     contacts[contactIndex] = { name: name, email: email, phone: phone, color: color};
     await updateUserContactsToRemoteServer(emailParameter, contacts);
     initContacts();
-    contactName(email);
+    showContactDetails(email);
     getElementWithId('editContactButton').disabled = false;
 }
 
@@ -145,7 +159,7 @@ async function deleteAssignedToFromAllTasks(email) {
     }
 }
 
-function contactSuccesfully() {
+function contactSuccessfully() {
     document.getElementById('overlyContact').style.display='none';
     document.getElementById('contactSucces').style.display='flex';
 }
