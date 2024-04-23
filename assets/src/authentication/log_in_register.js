@@ -23,6 +23,11 @@ function togglePassword(element, id, isToggled) {
 }
 
 
+/**
+ * Initializes the function by fetching users data from the remote storage.
+ *
+ * @return {Promise<void>} A promise that resolves when the initialization is complete.
+ */
 async function init() {
   let usersResponse = await getItemFromRemoteStorage("users");
   users = JSON.parse(usersResponse.data.value);
