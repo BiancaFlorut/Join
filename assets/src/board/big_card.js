@@ -1,3 +1,9 @@
+/**
+ * Opens a task and displays its details in the big card view.
+ *
+ * @param {string} id - The ID of the task to open.
+ * @return {void} This function does not return anything.
+ */
 function openTask(id) {
   showElement("bigCardView");
   let container = getElementWithId("bigCardContent");
@@ -57,6 +63,12 @@ function openTask(id) {
     `;
 }
 
+/**
+ * Formats a given date into a string representation of the format "dd/mm/yyyy".
+ *
+ * @param {Date} date - The date to be formatted.
+ * @return {string} The formatted date string.
+ */
 function formateDate(date) {
   const yyyy = date.getFullYear();
   let mm = date.getMonth() + 1; // Months start at 0!
@@ -66,6 +78,12 @@ function formateDate(date) {
   return dd + "/" + mm + "/" + yyyy;
 }
 
+/**
+ * Generates the HTML code for the subtasks of a big card.
+ *
+ * @param {Object} task - The task object containing subtasks.
+ * @return {string} The HTML code for the subtasks of the big card.
+ */
 function getSubTaskForBigCardHTML(task) {
   let subtasks = task.subtasks;
   let html = "";
@@ -80,12 +98,24 @@ function getSubTaskForBigCardHTML(task) {
   return html;
 }
 
+/**
+ * Generates the HTML code for the assigned contacts in a big card.
+ *
+ * @param {Array} array - An array of contact objects.
+ * @return {string} The HTML code for the assigned contacts.
+ */
 function getAssignedToHTML(array) {
   let html = "";
   array.forEach((contact) => (html += getContactForBigCardHTML(contact)));
   return html;
 }
 
+/**
+ * Generates the HTML code for the big card assigned to a contact including the contact logo and name.
+ *
+ * @param {Object} contact - The contact object.
+ * @return {string} The HTML code for the big card assigned to the contact.
+ */
 function getContactForBigCardHTML(contact) {
   let you = contact.name == user.name ? " (You)" : "";
   return (
@@ -99,26 +129,56 @@ function getContactForBigCardHTML(contact) {
   );
 }
 
+/**
+ * Generates the HTML code for the contact logo.
+ *
+ * @param {Object} contact - The contact object.
+ * @return {string} The HTML code for the contact logo.
+ */
 function getContactLogoHTML(contact) {
   return /*html*/ `
       <div class='contacts_icon' style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
     `;
 }
 
+/**
+ * Closes the big card view and resets the edited task.
+ *
+ * @return {void} This function does not return a value.
+ */
 function closeBigCardView() {
   editedTask = {};
   hideElement("bigCardView");
 }
 
+/**
+ * Closes the create task view and clears the input fields.
+ *
+ * @return {void} This function does not return a value.
+ */
 function closeCreateTask() {
   hideElement("createTask");
   clearFields()
 }
 
+/**
+ * Changes the source of an image element with the specified ID.
+ *
+ * @param {string} id - The ID of the image element to change the source.
+ * @param {string} src - The new source to set for the image element.
+ * @return {void} This function does not return a value.
+ */
 function changeIdImgTheSrc(id, src) {
   changeSrc(getElementWithId(id), src);
 }
 
+/**
+ * Toggles the checkbox of a subtask and updates the task and contacts accordingly.
+ *
+ * @param {HTMLElement} element - The checkbox element that was clicked.
+ * @param {string} taskId - The ID of the task containing the subtask.
+ * @param {number} i - The index of the subtask in the task's subtasks array.
+ */
 function toggleSubtaskCheckbox(element, taskId, i) {
   let taskIndex = tasks.findIndex((t) => t.id == taskId);
   let task = tasks.find((t, index) => t.id == taskId);
@@ -129,5 +189,3 @@ function toggleSubtaskCheckbox(element, taskId, i) {
   updateContactsAboutTask(tasks[taskIndex]);
   updateHTML(tasks);
 }
-
-
