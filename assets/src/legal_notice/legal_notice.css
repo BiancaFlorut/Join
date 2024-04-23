@@ -26,6 +26,9 @@
 .user {
     display:none;
 }
+.header-right {
+    display: none;
+}
 /*
 |////////////////////////////////////////////////////|
 |                                                    |
@@ -45,4 +48,8 @@
     .legal-notice h1 {
         font-size: 47px;
     }
+}
+
+.d_none {
+    display: none;
 }
