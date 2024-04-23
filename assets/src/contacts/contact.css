@@ -375,10 +375,22 @@
         height: 810px;
     }
 
+    .main_container_edit_contact {
+        display: block;
+        height: 810px;
+    }
+
     .left_container_add_contacts {
         border-top-left-radius: 30px;
         border-top-right-radius: 30px;
         border-bottom-left-radius: 0;
+    }
+
+    .left_container_edit_contacts {
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: 0;
+        height: 155px;
     }
 
     .contacts_join_logo {
@@ -386,6 +398,13 @@
     }
 
     .right_container_add_contacts {
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 30px;
+        width: unset;
+        height: 550px;
+    }
+
+    .right_container_edit_contacts {
         border-top-right-radius: 0;
         border-bottom-left-radius: 30px;
         width: unset;
@@ -400,6 +419,11 @@
     .create_contact {
         padding-right: 0;
         align-items: center;
+    } 
+
+    .edit_contact_button {
+        justify-content: center;
+        padding-right: 0;
     }
 
     .add_contact_button_center {
