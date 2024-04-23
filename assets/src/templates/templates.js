@@ -73,9 +73,27 @@ function setParameterQuery() {
     document.getElementById('Legal Notice').href = '../legal_notice/legal_notice.html?email=' + emailParameter;
     document.getElementById('Help').href = '../help/help.html?email=' + emailParameter;
     document.getElementById('Add Task').href = '../add_task/add_task.html?email=' + emailParameter;
-    document.getElementById('headerHelp').href = '../add_task/add_task.html?email=' + emailParameter;
-    document.getElementById('headerLegalNotice').href = '../add_task/add_task.html?email=' + emailParameter;
-    document.getElementById('headerPrivacyPolicy').href = '../add_task/add_task.html?email=' + emailParameter;
+    document.getElementById('headerHelp').href = '../help/help.html?email=' + emailParameter;
+    document.getElementById('headerLegalNotice').href = '../legal_notice/legal_notice.html?email=' + emailParameter;
+    document.getElementById('headerPrivacyPolicy').href = '../privacy_policy/privacy_policy.html?email=' + emailParameter;
+    setParameterQuerySummary(emailParameter);
+}
+
+/**
+ * Sets the parameter query for the summary section of the board.
+ *
+ * @param {string} emailParameter - The email parameter to be included in the query string.
+ * @return {void} This function does not return a value.
+ */
+function setParameterQuerySummary(emailParameter) {
+    const linkIds = ['todoLink', 'urgentLink', 'doneLink', 'taskLink', 'progressLink', 'feedbackLink'];
+    function setHref(id) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.href = `../board/board.html?email=${emailParameter}`;
+        }
+    }
+    linkIds.forEach(setHref);
 }
 
 /**
