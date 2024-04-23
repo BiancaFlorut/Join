@@ -2,6 +2,12 @@ const urlParams = new URLSearchParams(window.location.search);
 const emailParameter = urlParams.get('email');
 let initialLetters = [];
 
+/**
+ * Initializes the templates by extracting first letters and hiding the question mark.
+ *
+ * @param {void} - No parameters
+ * @return {void} - No return value
+ */
 function templatesInit() {
     extractFirstLetters();
     hiddenQuestionMark();
@@ -55,6 +61,7 @@ function selectedPage() {
     let element = document.getElementById(`${document.title}`);
     element.classList.add("selected-page");
 }
+
 /**
  * the function sets the parameter query for board in order to load information from server for the logged user.
  */
@@ -66,6 +73,9 @@ function setParameterQuery() {
     document.getElementById('Legal Notice').href = '../legal_notice/legal_notice.html?email=' + emailParameter;
     document.getElementById('Help').href = '../help/help.html?email=' + emailParameter;
     document.getElementById('Add Task').href = '../add_task/add_task.html?email=' + emailParameter;
+    document.getElementById('headerHelp').href = '../add_task/add_task.html?email=' + emailParameter;
+    document.getElementById('headerLegalNotice').href = '../add_task/add_task.html?email=' + emailParameter;
+    document.getElementById('headerPrivacyPolicy').href = '../add_task/add_task.html?email=' + emailParameter;
 }
 
 /**
@@ -98,6 +108,11 @@ function showInitials() {
     }
 }
 
+/**
+ * Hides the "Help" button if the document title is "Help".
+ *
+ * @return {void} This function does not return anything.
+ */
 function hiddenQuestionMark() {
     let title = document.title;
     if (title == "Help") {
@@ -106,6 +121,11 @@ function hiddenQuestionMark() {
     }
 }
 
+/**
+ * Navigates back to the previous page in the browser history.
+ *
+ * @return {void} This function does not return anything.
+ */
 function lastPage() {
     window.history.back();
 }
