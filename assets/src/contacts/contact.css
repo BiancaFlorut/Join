@@ -52,12 +52,18 @@
   justify-content: center;
   border: 1px solid rgba(0, 0, 0, 0.08);
   padding: 32px 24px 32px 52px;
-  overflow-y: scroll;
   box-sizing: border-box;
+}
+
+#content {
+  overflow-y: auto;
 }
 
 .contacts_area {
   width: 352px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .button_center {
@@ -87,6 +93,21 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
+}
+
+.edit_info_contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.edit_info_contact:hover {
+  cursor: pointer;
+  color: rgba(41, 171, 226, 1);
+  font-weight: 700;
+}
+
+.edit_info_contact:hover path {
+  fill: rgba(41, 171, 226, 1);
 }
 
 .main_container_add_contact {
@@ -336,7 +357,7 @@
 
 .icon_container {
   display: flex;
-  gap: 8px;
+  gap: 16px;
 }
 
 .info_contact {
@@ -451,13 +472,13 @@
     height: 170px;
   }
 
-    .left_container_edit_contacts {
-        border-top-left-radius: 30px;
-        border-top-right-radius: 30px;
-        border-bottom-left-radius: 0;
-        height: 170px;
-        width: 450px;
-    }
+  .left_container_edit_contacts {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 0;
+    height: 170px;
+    width: 450px;
+  }
 
   .contacts_join_logo {
     display: none;
