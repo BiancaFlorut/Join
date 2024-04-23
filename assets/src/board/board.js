@@ -46,7 +46,6 @@ async function initBoard() {
   user = await getUserFromServer(emailParameter);
   tasks = user.tasks;
   const userContact = { name: user.name + " (You)", email: user.email, color: user.color };
-  console.log(tasks);
   updateHTML(tasks);
   allContacts = [...user.contacts, userContact];
 }

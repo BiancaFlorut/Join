@@ -1,6 +1,12 @@
 let editedTask;
 let istContactListOpen = false;
 
+/**
+ * Edits a task with the given taskId.
+ *
+ * @param {number} taskId - The id of the task to edit.
+ * @return {undefined} This function does not return a value.
+ */
 function editTask(taskId) {
   let container = getElementWithId("bigCardContent");
   editedTask = structuredClone(tasks.find((t) => t.id == taskId));
@@ -14,6 +20,9 @@ function editTask(taskId) {
   initEvents();
 }
 
+/**
+ * Initializes events for interacting with the UI elements.
+ */
 function initEvents() {
   // editedTask.subtasks.forEach((subtask, i) => setOnBlurFunctionOnEditedSubtask(i));
   getElementWithId("bigCardEdiSearchContact").ondblclick = function () {
@@ -57,6 +66,12 @@ function getOptionForAssignedTo(contacts, task, exceptUserEmail) {
   return html;
 }
 
+/**
+ * Saves the edited task by disabling the "bigCardEditOkButton", updating the contacts about the task, 
+ * enabling the "bigCardEditOkButton" again, closing the big card view, and initializing the board.
+ *
+ * @return {Promise<void>} A promise that resolves when the task has been saved and the board has been initialized.
+ */
 async function saveEditedTask() {
   getElementWithId('bigCardEditOkButton').disabled = true;
   await updateContactsAboutTask(editedTask);
@@ -65,6 +80,11 @@ async function saveEditedTask() {
   initBoard();
 }
 
+/**
+ * Validates the due date input for the edited task.
+ *
+ * @return {boolean} Returns true if the due date is valid, false otherwise.
+ */
 function isDueDateValid() {
   let dueDate = getElementWithId("editedTaskDueDateInput").value;
   if (!dueDate) {
@@ -78,6 +98,11 @@ function isDueDateValid() {
   }
 }
 
+/**
+ * Validates the description input for the edited task.
+ *
+ * @return {boolean} Returns true if the description is valid (not whitespace only), false otherwise.
+ */
 function isDescriptionValid() {
   let description = getElementWithId("editedTaskDescriptionInput").value;
   if (!isWhiteSpaceOnly(description)) {
@@ -90,6 +115,11 @@ function isDescriptionValid() {
   }
 }
 
+/**
+ * Validates the title input for the edited task.
+ *
+ * @return {boolean} Returns true if the title is valid, false otherwise.
+ */
 function isTitelValid() {
   let title = getElementWithId("editedTaskTitleInput").value;
   if (!isWhiteSpaceOnly(title)) {
@@ -102,6 +132,11 @@ function isTitelValid() {
   }
 }
 
+/**
+ * Confirms the edited subtask input by adding it to the list of subtasks.
+ *
+ * @return {void} This function does not return a value.
+ */
 function confirmSubtaskEditInput() {
   let newText = getElementWithId("addSubtasksEditTask").value;
   if (!isWhiteSpaceOnly(newText)) {
@@ -131,8 +166,12 @@ function toggleEditTasksSubtasks() {
     `;
 }
 
+
 /**
- * This function cancels the edit mode for the subtask input and sets blur function.
+ * Cancels the edit mode for the subtask input and sets blur function.
+ *
+ * @param {type} paramName - description of parameter
+ * @return {type} description of return value
  */
 function cancelSubtaskEditInput() {
   let iconsContainer = getElementWithId("bigCardEditSubtaskInputIcons");
@@ -150,12 +189,24 @@ function cancelSubtaskEditInput() {
   getElementWithId("addSubtasksEditTask").blur();
 }
 
+/**
+ * Deletes an edited subtask from the editedTask object based on the provided ID.
+ *
+ * @param {string} id - The ID of the subtask to be deleted.
+ * @return {void} This function does not return a value.
+ */
 function deleteEditTaskSubtask(id) {
   const i = getIndexFromId(id);
   editedTask.subtasks.splice(i, 1);
   getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(editedTask.subtasks);
 }
 
+/**
+ * Cancels the edit mode for a subtask element and restores the original text.
+ *
+ * @param {string} id - The ID of the subtask element.
+ * @return {void} This function does not return a value.
+ */
 function cancelSubtaskEditEditTask(id) {
   const i = getIndexFromId(id);
   cancelEditSubtask(id, i);
@@ -164,6 +215,12 @@ function cancelSubtaskEditEditTask(id) {
   element.blur();
 }
 
+/**
+ * Saves the edited subtask with the given ID.
+ *
+ * @param {string} id - The ID of the subtask to be saved.
+ * @return {void} This function does not return a value.
+ */
 function saveEditedSubtaskEditTask(id) {
   const i = getIndexFromId(id);
   let element = getElementWithId(id);
@@ -178,6 +235,11 @@ function saveEditedSubtaskEditTask(id) {
   } else deleteEditTaskSubtask(id);
 }
 
+/**
+ * Searches for contacts based on the input in the "bigCardEdiSearchContact" element.
+ *
+ * @return {void} This function does not return a value.
+ */
 function searchContact() {
   changeSrc(getElementWithId("bigCardEdiSearchIcon"), "../../img/arrow_drop_down_up.svg");
   getElementWithId("bigCardEditContacts").classList.remove("d_none");
@@ -188,11 +250,23 @@ function searchContact() {
   container.innerHTML = getOptionForAssignedTo(foundContacts, editedTask, user.email);
 }
 
+/**
+ * Toggles the priority of a task and updates the button style accordingly.
+ *
+ * @param {number} priorityValue - The new priority value for the task (0 - low, 1 - medium, 2 - urgent).
+ * @param {HTMLButtonElement} buttonElement - The button element representing the priority.
+ * @return {void} This function does not return a value.
+ */
 function togglePriorityTo(priorityValue, buttonElement) {
   editedTask.priority = priorityValue;
   togglePriority(priorityValue, buttonElement);
 }
 
+/**
+ * Toggles the contact list visibility based on the state of istContactListOpen.
+ *
+ * @return {undefined} No return value.
+ */
 function setToggleForTheContactList() {
   const imgElement = getElementWithId('bigCardEdiSearchIcon');
   istContactListOpen = toggleContactsList(imgElement, 'bigCardEditContacts', 'bigCardEdiSearchContact', istContactListOpen);
@@ -231,9 +305,15 @@ function getTaskPriority(priority) {
   }
 }
 
+
 /**
+ * This function enables edit mode for a subtask by adding a class to its parent element,
+ * setting its contentEditable property to true, and focusing on it. It also replaces the icons
+ * in the subtask's icons container with cancel and confirm icons. The function also
+ * sets an onmouseout event listener to show the icons container.
  *
- * @param {HTMLElement} element
+ * @param {string} id - The id of the subtask element.
+ * @return {void} This function does not return anything.
  */
 function editTasksSubtask(id) {
   let element = getElementWithId(id);
@@ -249,6 +329,13 @@ function editTasksSubtask(id) {
   getElementWithId(id).onmouseout = `showElement('bigCardEditCardIcons_${i}')`;
 }
 
+/**
+ * Cancels the edit mode for a subtask element.
+ *
+ * @param {string} id - The ID of the subtask element.
+ * @param {number} i - The index of the subtask.
+ * @return {void} This function does not return a value.
+ */
 function cancelEditSubtask(id, i) {
   let element = getElementWithId(id);
   element.parentElement.classList.remove("big_card_edit_subtask_on_edit");
@@ -257,6 +344,11 @@ function cancelEditSubtask(id, i) {
   getElementWithId("bigCardEditCardIcons_" + i).innerHTML = generateSubtaskHTML(i);
 }
 
+/**
+ * Sets the onblur function for an edited subtask element.
+ *
+ * @param {number} i - The index of the subtask.
+ */
 function setOnBlurFunctionOnEditedSubtask(i) {
   const subtaskELementId = `bigCardEditCardSubtaskText_${i}`;
   let element = getElementWithId(subtaskELementId);
@@ -291,6 +383,12 @@ function generateSubTaskListItems(subtasks) {
   return html;
 }
 
+/**
+ * Generates the HTML code for the edit icons of a subtask.
+ *
+ * @param {number} i - The index of the subtask.
+ * @return {string} The HTML code for the edit icons.
+ */
 function generateSubtaskEditIconsHTML(i) {
   return /*html*/ `
   <img src="../../img/edit.svg" alt="" onclick="editTasksSubtask('bigCardEditCardSubtaskText_${i}')">
@@ -299,6 +397,12 @@ function generateSubtaskEditIconsHTML(i) {
   `;
 }
 
+/**
+ * Deletes a task from the tasks array and updates the board.
+ *
+ * @param {string} id - The ID of the task to be deleted.
+ * @return {Promise<void>} A promise that resolves when the task is deleted and the board is updated.
+ */
 async function deleteTask(id) {
   const index = tasks.findIndex(task => task.id == id);
   const task = tasks[index];
