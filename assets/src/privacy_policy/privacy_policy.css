@@ -8,8 +8,29 @@
 |////////////////////////////////////////////////////////////////|
 */
 .privacy_policy {
-    padding: 5%;
+    padding: 30px;
 }
 .privacy_policy span {
     color: #29abe2;
+}
+/*
+|////////////////////////////////////////////////////|
+|                                                    |
+|                                                    |
+|-------------------->responsive<--------------------|
+|                                                    |
+|                                                    |
+|////////////////////////////////////////////////////|
+*/
+@media (max-width: 1130px) {
+    .privacy_policy {
+        height: calc(100vh - 220px);
+        overflow-y: scroll;
+    }
+}
+@media (max-width: 600px) {
+    .privacy_policy h1 {
+        font-size: 47px;
+        padding-right: 100px;
+    }
 }

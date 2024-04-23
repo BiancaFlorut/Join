@@ -23,3 +23,23 @@
 .padding-top-one {
     padding: 1% 0 0;
 }
+/*
+|////////////////////////////////////////////////////|
+|                                                    |
+|                                                    |
+|-------------------->responsive<--------------------|
+|                                                    |
+|                                                    |
+|////////////////////////////////////////////////////|
+*/
+@media (max-width: 1130px) {
+    .legal-notice {
+        height: calc(100vh - 220px);
+        overflow-y: scroll;
+    }
+}
+@media (max-width: 600px) {
+    .legal-notice h1 {
+        font-size: 47px;
+    }
+}

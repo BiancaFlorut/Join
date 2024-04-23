@@ -97,19 +97,6 @@ header {
   height: 100px;
   box-shadow: 0 5px 5px #cdcdcd !important;
 }
-.back-button {
-  position: fixed;
-  top: 168px;
-  right: 64px;
-  cursor: pointer;
-  z-index: 1;
-}
-.back-button:hover {
-  border-radius: 50%;
-  background-color: #e2e6ec;
-  transition: all 125ms ease-in-out;
-  scale: 1.08;
-}
 .header-right {
   display: flex;
   align-items: center;
@@ -171,7 +158,6 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  z-index: 1000;
 }
 .user-popup-menu a {
   text-decoration: none;
@@ -191,6 +177,19 @@ header {
 }
 .d-none {
   display: none;
+}
+.back-button {
+  position: fixed;
+  top: 150px;
+  right: 64px;
+  cursor: pointer;
+  z-index: 1;
+}
+.back-button:hover {
+  border-radius: 50%;
+  background-color: #e2e6ec;
+  transition: all 125ms ease-in-out;
+  scale: 1.08;
 }
 .logo-mobile {
   height: 62px;
@@ -254,6 +253,10 @@ header {
     height: 40px;
     font-size: 16px;
   }
+  .back-button {
+    top: 140px;
+    right: 50px;
+  }
 }
 @media (max-width: 525px) {
   .nav-container {
@@ -261,6 +264,6 @@ header {
     padding: 5px 0;
   }
   .nav-bar-container {
-    width: 80px;
+    width: 66px;
   }
 }
