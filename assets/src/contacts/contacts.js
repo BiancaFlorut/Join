@@ -224,6 +224,7 @@ function addClose() {
     document.getElementById('email').value = '';
     document.getElementById('phone').value = '';
     document.getElementById('overlyContact').style.display='none';
+    document.getElementById('contactSucces').style.display='none';
 }
 
 function toggleContainerDisplay() {
