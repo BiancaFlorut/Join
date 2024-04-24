@@ -25,7 +25,7 @@
         <div class="contact_card">
           <div class="contacts_area">
             <div class="button_center">
-              <button id="addContactButton" onclick="showCreateContactForm()" class="contact_button_add_new bold_21">
+              <button id="addContactButton" onclick="showElement('overlayAddContact')" class="contact_button_add_new bold_21">
                 <span class="add_new_contact_text">Add new contact</span><img src="../../img/contacts_person_add.svg" alt="person_add" />
               </button>
             </div>
@@ -42,8 +42,8 @@
           <div class="info_contact" id="infoContact"></div>
           <button class="more_vert"><img src="../../img/more_vert.svg" alt="more_vert" /></button>
         </div>
-        <div class="view_contact" id="overlyContact">
-          <div class="main_container_add_contact" id="overlayAddContact">
+        <div class="view_contact d_none" id="overlayAddContact">
+          <div class="main_container_add_contact">
             <div class="left_container_add_contacts">
               <img onclick="addClose()" class="add_contact_close_left" src="../../img/close_white.svg" alt="icon_close" />
               <img class="contacts_join_logo" src="../../img/contacts_join_logo.svg" alt="join_logo" />
@@ -62,7 +62,7 @@
                   <img onclick="addClose()" class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
                 </div>
                 <input id="name" class="input_area person" required placeholder="Name" type="text" onchange="checkName(this)" />
-                <input id="email" class="input_area mail" required placeholder="Email" type="email" onchange="checkEmail(this)" />
+                <input id="email" class="input_area mail" required placeholder="Email" type="email" onkeyup="checkEmail(this)" />
                 <input id="phone" class="input_area phone" required placeholder="Phone" type="tel" />
               </form>
               <div class="add_contact_button_center">
@@ -86,8 +86,12 @@
               </div>
             </div>
           </div>
-          <div class="contact_succes_message" id="contactSucces">Contact successfully created</div>
-          <div class="main_container_edit_contact" id="overlayEditContact">
+        </div>
+        <div class="view_contact d_none" id="contactSucces">
+          <div class="contact_succes_message">Contact successfully created</div>
+        </div>
+        <div class="view_contact d_none" id="overlayEditContact">
+          <div class="main_container_edit_contact">
             <div class="left_container_edit_contacts">
               <img onclick="addClose()" class="add_contact_close_left" src="../../img/close_white.svg" alt="icon_close" />
               <img class="contacts_join_logo" src="../../img/contacts_join_logo.svg" alt="join_logo" />

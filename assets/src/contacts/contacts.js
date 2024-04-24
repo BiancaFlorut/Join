@@ -105,10 +105,7 @@ function showContactDetails(email) {
 
 function editContact(email) {
     const contact = contacts.find(c=>c.email==email);
-    document.getElementById('overlyContact').style.display='flex';
-    document.getElementById('overlayEditContact').style.display='flex';
-    document.getElementById('overlayAddContact').style.display='none';
-    document.getElementById('contactSucces').style.display='none';
+    showElement('overlayEditContact');
     document.getElementById('editName').value = `${contact.name}`;
     document.getElementById('editEmail').value = `${contact.email}`;
     document.getElementById('editPhone').value = `${contact.phone}`;
@@ -142,10 +139,13 @@ async function updateContact(contactEmail) {
 
 function checkEmail(inputElement) {
     const email = inputElement.value;
+    console.log(email);
     contacts.forEach(contact => {
-        if (contact.email === email) {
+        if (contact.email == email) {
             inputElement.setCustomValidity('Email already exists');
-            inputElement.reportValidity();
+        }
+        else {
+            inputElement.setCustomValidity('');
         }
     })
 }
@@ -158,14 +158,7 @@ function checkName(inputElement) {
 }
 
 function hideEditContact() {
-    getElementWithId('overlayEditContact').style.display='none';
-    document.getElementById('overlyContact').style.display='none';
-}
-
-function showCreateContactForm() {
-    document.getElementById('overlyContact').style.display='flex';
-    document.getElementById('overlayEditContact').style.display='none';
-    getElementWithId('overlayAddContact').style.display='flex';
+    hideElement('overlayEditContact');
 }
 
 async function addNewContact() {
@@ -177,10 +170,9 @@ async function addNewContact() {
     const newContact = { name: name, email: email, phone: phone, color: color};
     contacts.push(newContact);
     await updateUserContactsToRemoteServer(emailParameter, contacts);
-    addClose();
-    getElementWithId('createContactButton').disabled = false;
     showToastMessage();
     initContacts();
+    getElementWithId('createContactButton').disabled = false;
 }
 
 async function deleteContact(email) {
@@ -212,10 +204,8 @@ async function deleteAssignedToFromAllTasks(email) {
 }
 
 function showToastMessage() {
-    document.getElementById('overlyContact').style.display='flex';
-    document.getElementById('contactSucces').style.display='flex';
-    getElementWithId('overlayAddContact').style.display='none';
-    setTimeout(function() { document.getElementById('overlyContact').style.display='none'; }, 2500);
+    showElement('contactSucces');
+    setTimeout(function() { addClose(); hideElement('contactSucces');}, 2500);
 }
 
 
@@ -223,19 +213,18 @@ function addClose() {
     document.getElementById('name').value = '';
     document.getElementById('email').value = '';
     document.getElementById('phone').value = '';
-    document.getElementById('overlyContact').style.display='none';
-    document.getElementById('contactSucces').style.display='none';
+    hideElement('overlayAddContact');
 }
 
-function toggleContainerDisplay() {
-    let container = document.getElementById('overlayEditContact');
-    if (window.innerWidth <= 1255) {
-       container.style.display = 'block';
-    } else {
-       container.style.display = 'flex';
-    }
-   }
+// function toggleContainerDisplay() {
+//     let container = document.getElementById('overlayEditContact');
+//     if (window.innerWidth <= 1255) {
+//        container.style.display = 'block';
+//     } else {
+//        container.style.display = 'flex';
+//     }
+//    }
    
-   // Führen Sie die Funktion beim Laden der Seite und beim Ändern der Fenstergröße aus
-   window.addEventListener('load', toggleContainerDisplay);
-   window.addEventListener('resize', toggleContainerDisplay);
+//    // Führen Sie die Funktion beim Laden der Seite und beim Ändern der Fenstergröße aus
+//    window.addEventListener('load', toggleContainerDisplay);
+//    window.addEventListener('resize', toggleContainerDisplay);
