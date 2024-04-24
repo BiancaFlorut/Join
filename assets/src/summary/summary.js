@@ -76,8 +76,10 @@ function updateTaskCount(status, elementId) {
  */
 function awaitingUrgent() {
     let urgentElement = searchUrgentStatus(tasks, 2);
+    console.log(urgentElement);
     document.getElementById('numberOfUrgent').innerHTML = urgentElement.length;
-    let smallestDueDate = Math.min(...urgentElement.map(task => task.due_date));
+    let smallestDueDate = Math.min(urgentElement.map(task => Date.parse(task.due_date)));
+    console.log(smallestDueDate);
     let formattedDueDate = new Date(smallestDueDate).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
