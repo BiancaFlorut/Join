@@ -666,6 +666,7 @@
   .contact_button_add_new {
     border-radius: 46px;
     padding: 12px;
+    margin: 0;
   }
 
   .contact_button_add_new img {
@@ -679,7 +680,7 @@
     left: 90px;
   }
   .left_container_add_contacts {
-    width: 300px;
+    width: 260px;
   }
   .right_container_add_contacts {
     width: 308px;
