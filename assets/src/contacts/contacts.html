@@ -93,7 +93,7 @@
         <div class="view_contact d_none" id="overlayEditContact">
           <div class="main_container_edit_contact">
             <div class="left_container_edit_contacts">
-              <img onclick="addClose()" class="add_contact_close_left" src="../../img/close_white.svg" alt="icon_close" />
+              <img onclick="hideEditContact()" class="add_contact_close_left" src="../../img/close_white.svg" alt="icon_close" />
               <img class="contacts_join_logo" src="../../img/contacts_join_logo.svg" alt="join_logo" />
               <h1 class="h1_add_contacts">Edit contact</h1>
               <img src="../../img/contacts_add_contact_vector_5.svg" alt="vector" />
@@ -105,7 +105,7 @@
                 </div>
               </div>
               <form id="editContact" onsubmit="updateContact(); return false" class="create_contact">
-                <img onclick="addClose()" class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
+                <img onclick="hideEditContact()" class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
                 <input id="editName" class="input_area person" required placeholder="Name" type="text" onchange="checkName(this)" />
                 <input id="editEmail" class="input_area mail" required placeholder="Email" type="email" onchange="checkEmail(this)" />
                 <input id="editPhone" class="input_area phone" required placeholder="Phone" type="tel" />
