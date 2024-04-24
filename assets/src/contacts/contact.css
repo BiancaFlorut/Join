@@ -508,6 +508,7 @@
     border-bottom-left-radius: 0;
     padding: 66px 24px 66px 24px;
     height: 170px;
+    width: 450px;
   }
 
   .left_container_edit_contacts {
@@ -566,7 +567,7 @@
     display: block;
   }  
   .contact_card {
-    width: -webkit-fill-available;
+    width: 100%;
   }
   .contacts_vector{
     display: none;
