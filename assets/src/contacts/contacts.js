@@ -1,6 +1,5 @@
 let contacts = [];
 let firstLetter = [];
-
 /**
  * Initializes the contacts list.
  *
@@ -275,25 +274,40 @@ async function deleteAssignedToFromAllTasks(email) {
         }
     }
 }
-
+/**
+ * Displays a toast message by showing the 'contactSucces' element and hiding it after 2500 milliseconds.
+ *
+ * @return {void} This function does not return a value.
+ */
 function showToastMessage() {
     showElement('contactSucces');
     setTimeout(function() { addClose(); hideElement('contactSucces');}, 2500);
 }
-
-
+/**
+ * Clears the input fields and hides the overlay for adding a contact.
+ *
+ * @return {undefined} No return value.
+ */
 function addClose() {
     document.getElementById('name').value = '';
     document.getElementById('email').value = '';
     document.getElementById('phone').value = '';
     hideElement('overlayAddContact');
 }
-
+/**
+ * A function that navigates back to the contacts container and hides the view contact details.
+ *
+ * @return {void} No return value.
+ */
 function backToContacts() {
     showElement('contactsContainer');
     getElementWithId('viewContectDetails').style.display = 'none';
 }
-
+/**
+ * Shows the contact processing element for a short duration before hiding it.
+ *
+ * @return {void} No return value.
+ */
 function showContactProcessing() {
     let contactProcessingElement = document.getElementById('contactProcessing');
     contactProcessingElement.classList.remove('d_none');
@@ -302,15 +316,3 @@ function showContactProcessing() {
         contactProcessingElement.classList.add('d_none');
     }, 2000);
 }
-// function toggleContainerDisplay() {
-//     let container = document.getElementById('overlayEditContact');
-//     if (window.innerWidth <= 1255) {
-//        container.style.display = 'block';
-//     } else {
-//        container.style.display = 'flex';
-//     }
-//    }
-   
-//    // Führen Sie die Funktion beim Laden der Seite und beim Ändern der Fenstergröße aus
-//    window.addEventListener('load', toggleContainerDisplay);
-//    window.addEventListener('resize', toggleContainerDisplay);
