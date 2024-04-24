@@ -61,6 +61,10 @@ function getFirstLetterArray(array) {
 }
 
 function showContactDetails(email) {
+    if (window.innerWidth <= 1215) {
+        hideElement('contactsContainer');
+        getElementWithId('viewContectDetails').style.display = 'flex';
+    }
     const contact = contacts.find(c=>c.email==email);
     document.getElementById('infoContact').style.display='flex';
     document.getElementById('infoContact').innerHTML = /*html*/`
@@ -214,6 +218,11 @@ function addClose() {
     document.getElementById('email').value = '';
     document.getElementById('phone').value = '';
     hideElement('overlayAddContact');
+}
+
+function backToContacts() {
+    showElement('contactsContainer');
+    getElementWithId('viewContectDetails').style.display = 'none';
 }
 
 // function toggleContainerDisplay() {

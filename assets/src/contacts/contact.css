@@ -30,6 +30,7 @@
   gap: 30px;
   margin-left: 30px;
   margin-top: 100px;
+  align-items: center;
 }
 
 .contacts_vector {
@@ -38,6 +39,7 @@
 
 .arrow_left_line {
   display: none;
+  height: fit-content;
 }
 
 .more_vert {
@@ -539,7 +541,19 @@
 
   .arrow_left_line {
     display: flex;
-  }  
+  }
+  .view_contect_container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(246, 247, 248);
+    display: none;
+    flex-direction: column;
+  }
+}
+
+.d_none {
+  display: none;
 }
 
 @media (max-width: 1130px) {
