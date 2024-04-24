@@ -724,4 +724,8 @@
   .right_container_add_contacts {
     width: 308px;
   }
+  .contact_name {
+    gap: 6px;
+    overflow-wrap: anywhere;
+  }
 }

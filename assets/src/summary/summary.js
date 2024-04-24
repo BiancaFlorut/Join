@@ -77,13 +77,17 @@ function updateTaskCount(status, elementId) {
 function awaitingUrgent() {
     let urgentElement = searchUrgentStatus(tasks, 2);
     document.getElementById('numberOfUrgent').innerHTML = urgentElement.length;
-    let smallestDueDate = Math.min(...urgentElement.map(task => task.due_date));
+    if (urgentElement.length == 0) {
+        document.getElementById('deadline').innerHTML = 'No due date';
+    } else {
+    let smallestDueDate = Math.min(urgentElement.map(task => Date.parse(task.due_date)));
     let formattedDueDate = new Date(smallestDueDate).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
     });
     document.getElementById('deadline').innerHTML = formattedDueDate;
+    }
 }
 
 

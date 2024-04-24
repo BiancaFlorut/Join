@@ -150,7 +150,7 @@ async function deleteTaskFromAssignedToUsers(contacts, id) {
 async function updateUserToRemoteServer(user) {
   let users = await loadUsersFromServer();
   const userIndex = users.findIndex((u) => u.email == user.email);
-  if (userIndex > 0) {
+  if (userIndex >= 0) {
     users[userIndex] = user;
     await setUsersOnRemoteServer(users);
   }
