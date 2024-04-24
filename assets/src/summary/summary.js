@@ -5,6 +5,11 @@ let urlEmail = params.get('email');
 // variables for page
 let tasks = [];
 
+/**
+ * Asynchronously initializes the summary by finding the user, tasks, and performing various user-related actions.
+ *
+ * @return {Promise<void>} A Promise that resolves when the summary has been initialized.
+ */
 async function summaryInit() {
     await findUser();
     await findTasks();
@@ -54,6 +59,15 @@ async function findTasks() {
     tasks = tasks[0];
 }
 
+/**
+ * Initializes the search tasks by updating the task counts for each status and element ID.
+ *
+ * @param {string} awaitFeedback - The status for awaiting feedback.
+ * @param {string} tasksProgress - The status for in-progress tasks.
+ * @param {string} numberOfDone - The status for completed tasks.
+ * @param {string} numberOfTodo - The status for tasks to be done.
+ * @return {void} This function does not return a value.
+ */
 function searchTasksInit() {
     updateTaskCount("awaitFeedback", 'awaitingFeedback');
     updateTaskCount("inProgress", 'tasksProgress');
@@ -61,10 +75,25 @@ function searchTasksInit() {
     updateTaskCount("toDo", 'numberOfTodo');
 }
 
+/**
+ * Filters the given array of tasks based on the status and returns a new array
+ * containing only the tasks with the specified status.
+ *
+ * @param {Array} tasks - The array of tasks to filter.
+ * @param {string} status - The status to filter by.
+ * @return {Array} The filtered array of tasks.
+ */
 function searchTaskStatus(tasks, status) {
     return tasks.filter(task => task.status === status);
 }
 
+/**
+ * Updates the task count for a given status and element ID.
+ *
+ * @param {string} status - The status of the tasks to count.
+ * @param {string} elementId - The ID of the element to update with the count.
+ * @return {void} This function does not return a value.
+ */
 function updateTaskCount(status, elementId) {
     let elementStatus = searchTaskStatus(tasks, status);
     document.getElementById(elementId).innerHTML = elementStatus.length;
@@ -89,7 +118,14 @@ function awaitingUrgent() {
     }
 }
 
-
+/**
+ * Filters the given array of tasks based on the priority and returns a new array
+ * containing only the tasks with the specified priority.
+ *
+ * @param {Array} tasks - The array of tasks to filter.
+ * @param {number} priority - The priority to filter by.
+ * @return {Array} The filtered array of tasks.
+ */
 function searchUrgentStatus(tasks, priority) {
     return tasks.filter(task => task.priority === priority);
 }
