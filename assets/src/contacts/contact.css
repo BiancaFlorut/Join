@@ -513,7 +513,7 @@
   .right_container_add_contacts {
     border-top-right-radius: 0;
     border-bottom-left-radius: 30px;
-    width: 508px;
+    width: 498px;
     height: 530px;
   }
 
@@ -564,6 +564,12 @@
     background-color: rgb(246, 247, 248);
     display: none;
     flex-direction: column;
+  }
+  .more_vert_container {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    padding-top: 200px;
   }
   .more_vert {
     display: block;
@@ -631,16 +637,19 @@
     display: none;
   }
   .person_position {
-    left: 110px;
+    left: 90px;
   }
   .left_container_add_contacts {
     width: 300px;
   }
   .right_container_add_contacts {
-    width: 348px;
+    width: 308px;
   }
   .left_container_edit_contacts {
     width: 260px;
+  }
+  .add_contact_close_left {
+    left: 220px;
   }
 }
 

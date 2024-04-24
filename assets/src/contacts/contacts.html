@@ -40,7 +40,8 @@
             <img class="arrow_left_line" src="../../img/arrow-left-line.svg" alt="arrow_left_line" onclick="backToContacts()" />
           </div>
           <div class="info_contact" id="infoContact"></div>
-          <button class="more_vert"><img src="../../img/more_vert.svg" alt="more_vert" /></button>
+          <div class="more_vert_container">
+              <button class="more_vert"><img src="../../img/more_vert.svg" alt="more_vert" /></button>
 
           <div class="contact_processing ">
             <div class="edit_info_contact" onclick="editContact('${contact.email}')">
@@ -65,6 +66,7 @@
               <p>Delete</p>
           </div>
           
+          </div>
         </div>
         <div class="view_contact d_none" id="overlayAddContact">
           <div class="main_container_add_contact">
