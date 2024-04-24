@@ -1,5 +1,6 @@
 let contacts = [];
 let firstLetter = [];
+
 /**
  * Initializes the contacts list.
  *
@@ -13,6 +14,7 @@ async function initContacts() {
     contactListHTML();
     initContactButtons();
 }
+
 /**
  * Initializes the contact buttons by adding a click event listener to each button.
  * When a button is clicked, it removes the "active" class from the currently active button (if any),
@@ -60,6 +62,7 @@ function contactListHTML() {
         content.innerHTML += `</div>`;
     });
 }
+
 /**
  * Generates an array of unique first letters of names in the given array.
  *
@@ -75,6 +78,7 @@ function getFirstLetterArray(array) {
         }
     }
 }
+
 /**
  * Displays the details of a contact based on their email. If the screen width is less than or equal to 1215 pixels,
  * hides the contacts container and shows the view contact details container. Sets the onclick attributes of the edit
@@ -93,7 +97,11 @@ function showContactDetails(email) {
     getElementWithId('editInfoContactOption').setAttribute('onclick', `editContact('${contact.email}')`);
     getElementWithId('deleteInfoContactOption').setAttribute('onclick', `deleteContact('${contact.email}')`);
     document.getElementById('infoContact').style.display='flex';
-    document.getElementById('infoContact').innerHTML = /*html*/`
+    document.getElementById('infoContact').innerHTML = showContactDetailsHTML(contact);
+}
+
+function showContactDetailsHTML(contact) {
+    return /*html*/ `
     <div class="contact_info_card">
         <div class="contact_name_info">
             <div class="profile_contact" style="background-color: ${contact.color}">${getInitials(contact.name)}</div>
@@ -132,6 +140,7 @@ function showContactDetails(email) {
     </div>
     `;
 }
+
 /**
  * Function to edit contact details based on the provided email.
  *
@@ -148,6 +157,7 @@ function editContact(email) {
     getElementWithId('editContact').setAttribute('onsubmit', `updateContact('${contact.email}'); return false`);
     getElementWithId('editContactDeleteButton').setAttribute('onclick', `deleteContact('${contact.email}')`);
 }
+
 /**
  * Generates the HTML code for the big contact logo based on the contact object.
  *
@@ -161,6 +171,7 @@ function generateEditContactBigLogoHTML(contact) {
     </div>
     `
 }
+
 /**
  * Updates a contact with the provided email by modifying its details and syncing with the remote server.
  *
@@ -181,6 +192,7 @@ async function updateContact(contactEmail) {
     showContactDetails(email);
     getElementWithId('createContactButton').disabled = false;
 }
+
 /**
  * Checks if the provided email exists in the contacts list and sets the custom validity of the input element accordingly.
  *
@@ -198,6 +210,7 @@ function checkEmail(inputElement) {
         }
     })
 }
+
 /**
  * Checks if the provided name is empty and sets the custom validity of the input element accordingly.
  *
@@ -210,6 +223,7 @@ function checkName(inputElement) {
         inputElement.setCustomValidity('Name cannot be empty');
     }
 }
+
 /**
  * Hides the edit contact overlay.
  *
@@ -218,6 +232,7 @@ function checkName(inputElement) {
 function hideEditContact() {
     hideElement('overlayEditContact');
 }
+
 /**
  * Adds a new contact to the user's list of contacts.
  *
@@ -236,6 +251,7 @@ async function addNewContact() {
     initContacts();
     getElementWithId('createContactButton').disabled = false;
 }
+
 /**
  * Deletes a contact from the user's list of contacts.
  *
@@ -257,6 +273,7 @@ async function deleteContact(email) {
     }
     getElementWithId('editContactDeleteButton').disabled = false;
 }
+
 /**
  * Deletes a contact from all tasks assigned to a user.
  *
@@ -274,6 +291,7 @@ async function deleteAssignedToFromAllTasks(email) {
         }
     }
 }
+
 /**
  * Displays a toast message by showing the 'contactSucces' element and hiding it after 2500 milliseconds.
  *
@@ -283,6 +301,7 @@ function showToastMessage() {
     showElement('contactSucces');
     setTimeout(function() { addClose(); hideElement('contactSucces');}, 2500);
 }
+
 /**
  * Clears the input fields and hides the overlay for adding a contact.
  *
@@ -294,6 +313,7 @@ function addClose() {
     document.getElementById('phone').value = '';
     hideElement('overlayAddContact');
 }
+
 /**
  * A function that navigates back to the contacts container and hides the view contact details.
  *
@@ -303,6 +323,7 @@ function backToContacts() {
     showElement('contactsContainer');
     getElementWithId('viewContectDetails').style.display = 'none';
 }
+
 /**
  * Shows the contact processing element for a short duration before hiding it.
  *
