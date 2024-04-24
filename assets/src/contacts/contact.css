@@ -47,9 +47,9 @@
 }
 
 .more_vert {
-    display: none;
-    border-radius: 46px;
-  }
+  display: none;
+  border-radius: 46px;
+}
 
 .contact_card {
   height: 100%;
@@ -446,8 +446,8 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  bottom: 32px;
+  right: 16px;
   z-index: 10;
   background-color: white;
   box-shadow: 0 8px 5px rgba(0, 0, 0, 0.4);
@@ -565,11 +565,11 @@
 @media (max-width: 1215px) {
   .contacts_header {
     display: block;
-  }  
+  }
   .contact_card {
     width: 100%;
   }
-  .contacts_vector{
+  .contacts_vector {
     display: none;
   }
   .profile_contact {
@@ -622,7 +622,7 @@
     height: calc(100vh - 80px);
   }
   .contact_processing {
-    bottom: 120px;
+    bottom: 112px;
   }
 }
 
@@ -693,7 +693,6 @@
 }
 
 @media (max-width: 350px) {
-    
   .left_container_add_contacts {
     width: 260px;
   }
