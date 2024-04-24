@@ -101,6 +101,7 @@
   width: 100%;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -123,10 +124,13 @@
 
 .main_container_add_contact {
   display: flex;
+  justify-content: center;
   height: 600px;
 }
 
 .main_container_edit_contact {
+  display: flex;
+  justify-content: center;
   height: 600px;
 }
 
@@ -496,7 +500,7 @@
   .right_container_add_contacts {
     border-top-right-radius: 0;
     border-bottom-left-radius: 30px;
-    width: unset;
+    width: 508px;
     height: 530px;
   }
 
@@ -557,7 +561,7 @@
     width: 350px;
   }
   .add_contact_close_left {
-    left: 300px;
+    left: 270px;
   }
   .right_container_add_contacts {
     width: 398px;
@@ -608,16 +612,17 @@
     width: 348px;
   }
   .left_container_edit_contacts {
-    width: 300px;
+    width: 260px;
   }
 }
 
 @media (max-width: 350px) {
+    
   .left_container_add_contacts {
     width: 260px;
   }
   .add_contact_close_left {
-    left: 260px;
+    left: 220px;
   }
   .h1_add_contacts {
     font-size: 40px;
