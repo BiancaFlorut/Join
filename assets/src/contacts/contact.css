@@ -433,6 +433,17 @@
   font-weight: 400;
 }
 
+.contact_processing {
+  width: 116px;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 20px 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 1315px) {
   .h1_contacts {
     font-size: 48px;
