@@ -43,9 +43,9 @@
 }
 
 .more_vert {
-  display: none;
-  border-radius: 46px;
-}
+    display: none;
+    border-radius: 46px;
+  }
 
 .contact_card {
   height: 100%;
@@ -553,6 +553,9 @@
     background-color: rgb(246, 247, 248);
     display: none;
     flex-direction: column;
+  }
+  .more_vert {
+    display: block;
   }
 }
 
