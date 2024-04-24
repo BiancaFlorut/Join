@@ -47,9 +47,9 @@
 }
 
 .more_vert {
-    display: none;
-    border-radius: 46px;
-  }
+  display: none;
+  border-radius: 46px;
+}
 
 .contact_card {
   height: 100%;
@@ -564,11 +564,11 @@
 @media (max-width: 1215px) {
   .contacts_header {
     display: block;
-  }  
-  .contact_card {
-    width: -webkit-fill-available;
   }
-  .contacts_vector{
+  .contact_card {
+    width: 100%;
+  }
+  .contacts_vector {
     display: none;
   }
   .profile_contact {
@@ -692,7 +692,6 @@
 }
 
 @media (max-width: 350px) {
-    
   .left_container_add_contacts {
     width: 260px;
   }
