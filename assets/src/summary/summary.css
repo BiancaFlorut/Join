@@ -199,8 +199,6 @@
 }
 @media (max-width: 725px) {
     .summary-content {
-        overflow-y: scroll;
-        scrollbar-width: none;
         height: calc(100vh - 318px);
     }
     .summary-content-right {
