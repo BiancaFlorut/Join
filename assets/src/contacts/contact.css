@@ -664,6 +664,10 @@
     right: 30px;
   }
 
+  .contact_name {
+    gap: 16px;
+  }
+
   .contact_button_add_new {
     border-radius: 46px;
     padding: 12px;
@@ -715,5 +719,9 @@
   }
   .right_container_add_contacts {
     width: 308px;
+  }
+  .contact_name {
+    gap: 6px;
+    overflow-wrap: anywhere;
   }
 }
