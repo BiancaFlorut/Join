@@ -1,6 +1,12 @@
 let contacts = [];
 let firstLetter = [];
 
+/**
+ * Initializes the contacts list.
+ *
+ * @returns {Promise<void>} This function does not return a value, but it is marked as async
+ *                          in order to use the await keyword for the getContactList function.
+ */
 async function initContacts() {
     contacts = await getContactList(emailParameter);
     getFirstLetterArray(contacts);
@@ -8,7 +14,13 @@ async function initContacts() {
     contactListHTML();
     initContactButtons();
 }
-
+/**
+ * Initializes the contact buttons by adding a click event listener to each button.
+ * When a button is clicked, it removes the "active" class from the currently active button (if any),
+ * and adds the "active" class to the clicked button.
+ *
+ * @return {void} This function does not return a value.
+ */
 function initContactButtons(){
     let btns = document.getElementsByClassName("contact_name");
     for (let i = 0; i < btns.length; i++) {
@@ -49,7 +61,12 @@ function contactListHTML() {
         content.innerHTML += `</div>`;
     });
 }
-
+/**
+ * Generates an array of unique first letters of names in the given array.
+ *
+ * @param {Array} array - The array of objects with a 'name' property.
+ * @return {Array} An array of unique first letters of names.
+ */
 function getFirstLetterArray(array) {
     firstLetter = [];
     for (let i = 0; i < array.length; i++) {
@@ -59,7 +76,15 @@ function getFirstLetterArray(array) {
         }
     }
 }
-
+/**
+ * Displays the details of a contact based on their email. If the screen width is less than or equal to 1215 pixels,
+ * hides the contacts container and shows the view contact details container. Sets the onclick attributes of the edit
+ * and delete contact options to call the respective functions with the contact's email. Populates the info contact
+ * container with the contact's name, color, email, and phone number.
+ *
+ * @param {string} email - The email of the contact to display details for.
+ * @return {void} This function does not return anything.
+ */
 function showContactDetails(email) {
     if (window.innerWidth <= 1215) {
         hideElement('contactsContainer');
@@ -108,7 +133,12 @@ function showContactDetails(email) {
     </div>
     `;
 }
-
+/**
+ * Function to edit contact details based on the provided email.
+ *
+ * @param {string} email - The email of the contact to be edited
+ * @return {void} This function does not return anything
+ */
 function editContact(email) {
     const contact = contacts.find(c=>c.email==email);
     showElement('overlayEditContact');
@@ -119,7 +149,12 @@ function editContact(email) {
     getElementWithId('editContact').setAttribute('onsubmit', `updateContact('${contact.email}'); return false`);
     getElementWithId('editContactDeleteButton').setAttribute('onclick', `deleteContact('${contact.email}')`);
 }
-
+/**
+ * Generates the HTML code for the big contact logo based on the contact object.
+ *
+ * @param {Object} contact - The contact object containing information like name and color.
+ * @return {string} The HTML code for the big contact logo.
+ */
 function generateEditContactBigLogoHTML(contact) {
     return /*html*/`
     <div class="edit_contact_big_logo">
@@ -127,7 +162,12 @@ function generateEditContactBigLogoHTML(contact) {
     </div>
     `
 }
-
+/**
+ * Updates a contact with the provided email by modifying its details and syncing with the remote server.
+ *
+ * @param {string} contactEmail - The email of the contact to be updated.
+ * @return {Promise<void>} A promise that resolves when the contact is successfully updated.
+ */
 async function updateContact(contactEmail) {
     getElementWithId('editContactButton').disabled = true;
     let contactIndex = contacts.findIndex(c=>c.email==contactEmail);
@@ -142,7 +182,12 @@ async function updateContact(contactEmail) {
     showContactDetails(email);
     getElementWithId('createContactButton').disabled = false;
 }
-
+/**
+ * Checks if the provided email exists in the contacts list and sets the custom validity of the input element accordingly.
+ *
+ * @param {HTMLInputElement} inputElement - The input element to check the email validity for.
+ * @return {void} This function does not return anything.
+ */
 function checkEmail(inputElement) {
     const email = inputElement.value;
     console.log(email);
@@ -155,18 +200,31 @@ function checkEmail(inputElement) {
         }
     })
 }
-
+/**
+ * Checks if the provided name is empty and sets the custom validity of the input element accordingly.
+ *
+ * @param {HTMLInputElement} inputElement - The input element to check the name validity for.
+ * @return {void} This function does not return anything.
+ */
 function checkName(inputElement) {
     const name = inputElement.value;
     if (isWhiteSpaceOnly(name)) {
         inputElement.setCustomValidity('Name cannot be empty');
     }
 }
-
+/**
+ * Hides the edit contact overlay.
+ *
+ * @return {void} This function does not return anything.
+ */
 function hideEditContact() {
     hideElement('overlayEditContact');
 }
-
+/**
+ * Adds a new contact to the user's list of contacts.
+ *
+ * @return {Promise<void>} A promise that resolves when the contact has been added and the UI has been updated.
+ */
 async function addNewContact() {
     getElementWithId('createContactButton').disabled = true;
     const name = document.getElementById('name').value;
@@ -180,7 +238,12 @@ async function addNewContact() {
     initContacts();
     getElementWithId('createContactButton').disabled = false;
 }
-
+/**
+ * Deletes a contact from the user's list of contacts.
+ *
+ * @param {string} email - The email of the contact to be deleted.
+ * @return {Promise<void>} A promise that resolves when the contact has been deleted and the UI has been updated.
+ */
 async function deleteContact(email) {
     getElementWithId('editContactDeleteButton').disabled = true;
     const indexToDelete = contacts.findIndex(contact => contact.email === email);
@@ -196,7 +259,12 @@ async function deleteContact(email) {
     }
     getElementWithId('editContactDeleteButton').disabled = false;
 }
-
+/**
+ * Deletes a contact from all tasks assigned to a user.
+ *
+ * @param {string} email - The email of the contact to be deleted.
+ * @return {Promise<void>} A promise that resolves when the contact has been deleted from all tasks.
+ */
 async function deleteAssignedToFromAllTasks(email) {
     user = await getUserFromServer(emailParameter);
     for (let task of user.tasks) {
