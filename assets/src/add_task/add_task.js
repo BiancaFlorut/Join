@@ -2,18 +2,15 @@ let addedTask = { assign_to: [], subtasks: [], status: "toDo" };
 let isContactListOpen = false;
 let contacts;
 
+/**
+ * Adds a new task to the task list for the current user.
+ *
+ * @return {Promise<void>} A Promise that resolves when the task has been added and the UI has been updated.
+ */
 async function addNewTask() {
-  console.log("Creating a task: ", addedTask);
   getElementWithId("createTaskSubmitButton").disabled = true;
   let tasks = await getTaskList(user.email);
-  let titleInput = document.getElementById('addTitle');
-  addedTask.title = titleInput.value;
-  let dueDateInput = document.getElementById('addDueDate');
-  addedTask.due_date = dueDateInput.value;
-  let categoryInput = document.getElementById('addCategory');
-  addedTask.category = categoryInput.value;
-  addedTask.description = document.getElementById('addDescription').value;
-  addedTask.id = user.email + Date.now();
+  readTaskInfo();
   tasks.push(addedTask);
   await updateTasksFromUser(user.email, tasks);
   await updateContactsAboutTask(addedTask);
@@ -22,6 +19,28 @@ async function addNewTask() {
   setTimeout(function() { window.location.replace('../board/board.html?email=' + user.email) }, 2000);
 }
 
+/**
+ * Reads task information from input fields and assigns it to the addedTask object.
+ *
+ * @param None
+ * @return None
+ */
+function readTaskInfo() {
+  let titleInput = document.getElementById('addTitle');
+  addedTask.title = titleInput.value;
+  let dueDateInput = document.getElementById('addDueDate');
+  addedTask.due_date = dueDateInput.value;
+  let categoryInput = document.getElementById('addCategory');
+  addedTask.category = categoryInput.value;
+  addedTask.description = document.getElementById('addDescription').value;
+  addedTask.id = user.email + Date.now();
+}
+
+/**
+ * Clears the fields in the create task form and resets the addedTask object.
+ *
+ * @return {void} This function does not return a value.
+ */
 function clearFields() {
   getElementWithId("createTaskSubmitButton").disabled = true;
   addedTask = { assign_to: [], subtasks: [], status: "toDo" };
@@ -33,6 +52,11 @@ function clearFields() {
   initUserAndGenerateHTML();
 }
 
+/**
+ * Checks if the required fields in the form are empty and shows corresponding error messages.
+ *
+ * @return {boolean} Flag indicating if any required field is empty.
+ */
 function isRequiredFieldsEmpty() {
   let isMissingInput = false;
   let titleInput = document.getElementById('addTitle');
@@ -63,6 +87,11 @@ async function initAddTask() {
   initUserAndGenerateHTML();
 }
 
+/**
+ * Initializes the user and generates the HTML for the add task assigned contacts section.
+ *
+ * @return {undefined} No return value.
+ */
 function initUserAndGenerateHTML() {
   let container = getElementWithId("addTaskAssignedContacts");
   const userContact = { name: user.name + " (You)", email: user.email, color: user.color };
@@ -77,24 +106,11 @@ function initUserAndGenerateHTML() {
   showCategoryOptions();
 }
 
-function getOptionForAssignedToCreateTask(contacts, task, exceptUserEmail) {
-  let html = "";
-  contacts.sort((a, b) => a.name.localeCompare(b.name));
-  contacts.forEach((contact) => {
-    if (contact.email != exceptUserEmail){
-      let checked = "";
-      if (task.assign_to.some((assignToContact) => assignToContact.email == contact.email)) {
-        checked = "_checked";
-      }
-    let logoHTML = getContactLogoForBigCardEditHTML(contact);
-    html += /*html*/ `
-        <div class="df_ac big_card_edit_contacts_select cursor_pointer" onmousedown="simulateClickCreateTask(event, this, '${contact.email}', '${checked}')">${logoHTML}<span class="flex_1">${contact.name}</span><img id="${contact.email}CreateTaskCheckbox" src="${CHECKBOX_PATH}${checked}.svg" alt="checkbox"></div >
-      `;
-    }
-  });
-  return html;
-}
-
+/**
+ * Sets attributes for the create task search contact element on double click and blur events.
+ *
+ * @return {undefined} No return value.
+ */
 function setAttributes() {
   getElementWithId("createTaskSearchContact").ondblclick = function () {
     this.removeAttribute("readonly");
@@ -131,6 +147,15 @@ function selectContactCreateTask(element, email, checked) {
   getElementWithId("createTaskAssignToIconsList").innerHTML = getContactsLogoHTML(addedTask.assign_to);
 }
 
+/**
+ * Simulates a click event on a given element.
+ *
+ * @param {Event} e - The click event.
+ * @param {HTMLElement} element - The element to simulate the click on.
+ * @param {string} email - The email of the selected item in the drop down.
+ * @param {string} checked - The checked flag to toggle the element with the right checkbox image.
+ * @return {void} This function does not return a value.
+ */
 function simulateClickCreateTask(e, element, email, checked) {
   e.preventDefault();
   element.onclick = () => { selectContactCreateTask(element, email, checked)};
@@ -181,39 +206,6 @@ function confirmSubtaskNewInput() {
 }
 
 /**
- * This function cancels the edit mode for the subtask input and sets blur function.
- */
-function cancelSubtaskEditInputCreateTask() {
-  let iconsContainer = getElementWithId("createTaskSubtaskInputIcons");
-  iconsContainer.innerHTML = /*html*/ `
-        <img id="createTaskAddNewSubtaskIcon" class="visibility_icon" src="../../img/plus.svg" alt="" onclick="toggleCreateTasksSubtasks()"/>
-    `;
-  getElementWithId("addSubtasksCreateTask").value = "";
-  getElementWithId("addSubtasksCreateTask").onblur = function () {
-    let iconsContainer = getElementWithId("createTaskSubtaskInputIcons");
-    iconsContainer.innerHTML = /*html*/ `
-        <img id="createTaskAddNewSubtaskIcon" class="visibility_icon" src="../../img/plus.svg" alt="" onclick="toggleCreateTasksSubtasks()"/>
-    `;
-    getElementWithId("addSubtasksCreateTask").value = "";
-  };
-  getElementWithId("addSubtasksCreateTask").blur();
-}
-
-/**
- * Cancels the subtask edit by restoring the original text and removing the edit mode.
- *
- * @param {string} id - The ID of the subtask to cancel the edit for.
- * @return {void} This function does not return a value.
- */
-function cancelSubtaskEditCreateTask(id) {
-  const i = getIndexFromId(id);
-  cancelEditSubtaskCreateTask(id, i);
-  const element = getElementWithId(id);
-  element.innerHTML = addedTask.subtasks[i].text;
-  element.blur();
-}
-
-/**
  * Saves the edited subtask with the given ID.
  *
  * @param {string} id - The ID of the subtask to be saved.
@@ -232,6 +224,13 @@ function saveEditedSubtaskCreateTask(id) {
   } else deleteSubtaskCreateTask(id);
 }
 
+/**
+ * Cancels the edit mode for a subtask element in the create task section.
+ *
+ * @param {string} id - The ID of the subtask element.
+ * @param {number} i - The index of the subtask.
+ * @return {void} This function does not return a value.
+ */
 function cancelEditSubtaskCreateTask(id, i) {
   let element = getElementWithId(id);
   element.parentElement.classList.remove("big_card_edit_subtask_on_edit");
@@ -240,6 +239,12 @@ function cancelEditSubtaskCreateTask(id, i) {
   getElementWithId("subtasksIcons_" + i).innerHTML = generateSubtaskHTML(i);
 }
 
+/**
+ * Sets the onblur function for an edited subtask element.
+ *
+ * @param {number} i - The index of the subtask.
+ * @return {void} This function does not return a value.
+ */
 function setOnBlurFunctionOnEditedSubtask(i) {
   const subtaskELementId = `createTaskSubtaskText_${i}`;
   let element = getElementWithId(subtaskELementId);
@@ -261,31 +266,6 @@ function deleteSubtaskCreateTask(id) {
   const i = getIndexFromId(id);
   addedTask.subtasks.splice(i, 1);
   getElementWithId("createTaskEditSubtasks").innerHTML = generateCreateTaskSubTaskListItems(addedTask.subtasks);
-}
-
-function createSubtaskCreateTask(id) {
-  let element = getElementWithId(id);
-  const i = getIndexFromId(id);
-  element.parentElement.classList.add("big_card_edit_subtask_on_edit");
-  element.contentEditable = true;
-  element.focus();
-  getElementWithId("subtasksIcons_" + i).innerHTML = /*html*/ `
-        <img src="../../img/delete.svg" alt="" onclick="cancelSubtaskEditCreateTask('${id}', ${i})">
-        <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
-        <img src="../../img/confirm.svg" alt="" onclick="saveEditedSubtaskCreateTask('${element.id}')">
-    `;
-  getElementWithId(id).onmouseout = `showElement('subtasksIcons_${i}')`;
-}
-
-
-function showCategoryOptions() {
-  let container = getElementWithId("categoryContainer");
-  container.innerHTML = ``;
-  user.categories.forEach((category) => {
-    container.innerHTML += /*html*/ `
-      <div id="${category.name}" class="category" onclick="selectCategory('${category.name}')">${category.name}</div>
-    `;
-  });
 }
 
 /**
@@ -320,39 +300,10 @@ function toggleCategoryOptions() {
 }
 
 /**
- * Enables editing of a category input element by removing the "readonly" attribute,
- * setting focus on the input element, and updating the icons container with three
- * images representing cancel, vertical line, and confirm actions.
+ * Confirms the edited category input value and updates the user's categories.
  *
- * @param {HTMLInputElement} inputElement - The category input element to be edited.
- * @return {void} This function does not return anything.
+ * @return {Promise<void>} - A promise that resolves when the category is confirmed and updated.
  */
-function addNewCategory(inputElement) {
-  inputElement.removeAttribute("readonly");
-  getElementWithId("addCategory").focus();
-  getElementWithId("addCategory").value = "";
-  let iconsContainer = getElementWithId("addCategoryIcons");
-  iconsContainer.innerHTML = /*html*/ `
-        <img src="../../img/cancel.svg" alt="" onclick="cancelCategoryEditInput()">
-        <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
-        <img src="../../img/confirm.svg" alt="" onclick="confirmCategoryEditInput()">
-    `;
-}
-
-/**
- * Cancels the category edit input and resets the icons container and the category input value.
- *
- * @return {undefined} No return value.
- */
-function cancelCategoryEditInput() {
-  let iconsContainer = getElementWithId("addCategoryIcons");
-  iconsContainer.innerHTML = /*html*/ `
-        <img src="../../img/arrow_drop_down_down.svg" alt="" onclick="toggleCategoryOptions()">
-    `;
-  getElementWithId("addCategory").value = "";
-}
-
-
 async function confirmCategoryEditInput() {
   const value = getElementWithId("addCategory").value;
   if (!isWhiteSpaceOnly(value)) {
@@ -365,52 +316,4 @@ async function confirmCategoryEditInput() {
     getElementWithId("addCategory").value = value;
   }  
   cancelCategoryEditInput();
-}
-
-/**
- * This function clears the blur event handler for the "addSubtasksCreateTask" element,
- * and replaces the icons in "createTaskSubtaskInputIcons" container with edit mode icons. 
- * The input is focused and the user can type the new subtask.
- * @returns {void}
- */
-function toggleCreateTasksSubtasks() {
-  getElementWithId("addSubtasksCreateTask").onblur = "";
-  getElementWithId("addSubtasksCreateTask").focus();
-  let iconsContainer = getElementWithId("createTaskSubtaskInputIcons");
-  iconsContainer.innerHTML = /*html*/ `
-        <img src="../../img/cancel.svg" alt="" onclick="cancelSubtaskEditInputCreateTask()">
-        <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
-        <img src="../../img/confirm.svg" alt="" onclick="confirmSubtaskNewInput()">
-    `;
-}
-
-/**
- * This function generates the html code with the edit icons for each subtask.
- * @param {Array} subtasks 
- * @returns string html
- */
-function generateCreateTaskSubTaskListItems(subtasks) {
-  let html = "";
-  subtasks.forEach((subtask, i) => {
-    html += /*html*/ `
-        <li>
-            <div class="df_ac big_card_edit_subtask" onmouseover='showElement("subtasksIcons_${i}")' onmouseout="hideElement('subtasksIcons_${i}')">
-            <span class="list_bullet">&bull;</span>    
-            <span id="createTaskSubtaskText_${i}" ondblclick="createSubtaskCreateTask('createTaskSubtaskText_${i}')" class="flex_1">${subtask.text}</span>
-                <div id="subtasksIcons_${i}" class="df_ac big_card_edit_subtask_icons d_none">`
-                   + generateSubtaskHTML(i) + /*html*/ `
-                </div>
-            </div>
-        </li>
-        `;
-  });
-  return html;
-}
-
-function generateSubtaskHTML(i) {
-  return /*html*/ `
-  <img src="../../img/edit.svg" alt="" onclick="createSubtaskCreateTask('createTaskSubtaskText_${i}')">
-  <img src="../../img/vertical_line_subtask.svg" alt="" style="cursor: auto">
-  <img src="../../img/delete.svg" alt="" onclick="deleteSubtaskCreateTask('createTaskSubtaskText_${i}')">
-  `;
 }
