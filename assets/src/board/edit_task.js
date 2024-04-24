@@ -74,6 +74,11 @@ function getOptionForAssignedTo(contacts, task, exceptUserEmail) {
  */
 async function saveEditedTask() {
   getElementWithId('bigCardEditOkButton').disabled = true;
+  let oldTask = user.tasks.find((t) => t.id == editedTask.id);
+  const contactsOut = oldTask.assign_to.filter((contact) => !editedTask.assign_to.some((assignToContact) => assignToContact.email == contact.email));
+  console.log(contactsOut);
+  deleteTaskFromAssignedToUsers(contactsOut, editedTask.id);
+  console.log(editedTask);
   await updateContactsAboutTask(editedTask);
   getElementWithId('bigCardEditOkButton').disabled = false;
   closeBigCardView();
