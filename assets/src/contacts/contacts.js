@@ -100,6 +100,12 @@ function showContactDetails(email) {
     document.getElementById('infoContact').innerHTML = showContactDetailsHTML(contact);
 }
 
+/**
+ * Generates the HTML for displaying contact details.
+ *
+ * @param {Object} contact - The contact object containing name, email, and phone.
+ * @return {string} The HTML string representing the contact details.
+ */
 function showContactDetailsHTML(contact) {
     return /*html*/ `
     <div class="contact_info_card">
