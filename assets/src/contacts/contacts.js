@@ -227,6 +227,14 @@ function backToContacts() {
     getElementWithId('viewContectDetails').style.display = 'none';
 }
 
+function showContactProcessing() {
+    let contactProcessingElement = document.getElementById('contactProcessing');
+    contactProcessingElement.classList.remove('d_none');
+
+    setTimeout(function() {
+        contactProcessingElement.classList.add('d_none');
+    }, 2000);
+}
 // function toggleContainerDisplay() {
 //     let container = document.getElementById('overlayEditContact');
 //     if (window.innerWidth <= 1255) {
