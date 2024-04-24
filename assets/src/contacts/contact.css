@@ -442,10 +442,15 @@
   height: 100px;
   border: 1px solid black;
   border-radius: 20px 20px 0 20px;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 10;
+  background-color: white;
 }
 
 @media (max-width: 1315px) {
@@ -480,7 +485,6 @@
     display: block !important;
     height: 810px;
   }
-
   .main_container_edit_contact {
     display: block;
     height: 810px;
@@ -578,7 +582,9 @@
   .contacts_vector_responsive {
     display: block;
   }
-
+  .contact_processing {
+    display: flex;
+  }
   .arrow_left_line {
     display: flex;
     cursor: pointer;
@@ -600,6 +606,9 @@
   .more_vert {
     display: block;
   }
+  .icon_container {
+    display: none;
+  }
 }
 
 .d_none {
@@ -610,6 +619,9 @@
   .content-section {
     flex: none;
     height: calc(100vh - 80px);
+  }
+  .contact_processing {
+    bottom: 120px;
   }
 }
 
