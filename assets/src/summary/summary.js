@@ -52,7 +52,6 @@ async function findTasks() {
     let userTasks = await getTaskList(urlEmail);
     tasks.push(userTasks);
     tasks = tasks[0];
-    console.log(tasks);
 }
 
 function searchTasksInit() {
