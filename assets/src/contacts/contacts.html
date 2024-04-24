@@ -22,7 +22,7 @@
     <section class="content-section">
       <div class="shadow" w3-include-html="../templates/header.html"></div>
       <div class="content contacts_display_flex">
-        <div class="contact_card">
+        <div id="contactsContainer" class="contact_card">
           <div class="contacts_area">
             <div class="button_center">
               <button id="addContactButton" onclick="showElement('overlayAddContact')" class="contact_button_add_new bold_21">
@@ -37,7 +37,7 @@
             <h1 class="h1_contacts">Contacts</h1>
             <img class="contacts_vector" src="../../img/contact_vector.svg" />
             <h2 class="h2_contacts">Better with a team</h2>
-            <img class="arrow_left_line" src="../../img/arrow-left-line.svg" alt="arrow_left_line" />
+            <img class="arrow_left_line" src="../../img/arrow-left-line.svg" alt="arrow_left_line" onclick="backToContacts()" />
           </div>
           <div class="info_contact" id="infoContact"></div>
           <button class="more_vert"><img src="../../img/more_vert.svg" alt="more_vert" /></button>
