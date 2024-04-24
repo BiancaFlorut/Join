@@ -587,6 +587,7 @@
   }
   .arrow_left_line {
     display: flex;
+    padding-right: 16px;
     cursor: pointer;
   }
   .view_contect_container {
@@ -598,10 +599,9 @@
     flex-direction: column;
   }
   .more_vert_container {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 20px;
-    padding-top: 200px;
+    position: fixed;
+    right: 16px;
+    bottom: 112px;
   }
   .more_vert {
     display: block;
