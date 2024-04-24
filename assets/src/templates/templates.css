@@ -244,7 +244,7 @@ header {
   }
   .logo-mobile {
     display: block;
-    padding: 0 0 0 32px;
+    padding: 0 0 0 16px;
     height: 40px;
   }
   header {
@@ -261,6 +261,9 @@ header {
   .back-button {
     top: 140px;
     right: 50px;
+  }
+  .header-right {
+    padding-right: 16px;
   }
 }
 @media (max-width: 525px) {
