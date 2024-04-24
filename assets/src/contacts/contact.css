@@ -533,17 +533,13 @@
 }
 
 @media (max-width: 1215px) {
-  .contacts_header {
-    display: none;
-  }
-
-  .contact_info_card {
-    display: none;
-  }
-
   .contact_card {
     width: -webkit-fill-available;
   }
+
+  .arrow_left_line {
+    display: flex;
+  }  
 }
 
 @media (max-width: 1130px) {
