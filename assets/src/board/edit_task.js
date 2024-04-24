@@ -225,7 +225,6 @@ function saveEditedSubtaskEditTask(id) {
   const i = getIndexFromId(id);
   let element = getElementWithId(id);
   const text = element.innerHTML;
-  console.log(text);
   if (!isWhiteSpaceOnly(text)) {
     editedTask.subtasks[i].text = text;
     element.parentElement.classList.remove("big_card_edit_subtask_on_edit");
@@ -257,7 +256,7 @@ function searchContact() {
  * @param {HTMLButtonElement} buttonElement - The button element representing the priority.
  * @return {void} This function does not return a value.
  */
-function togglePriorityTo(priorityValue, buttonElement) {
+function togglePriorityToEditedTask(priorityValue, buttonElement) {
   editedTask.priority = priorityValue;
   togglePriority(priorityValue, buttonElement);
 }

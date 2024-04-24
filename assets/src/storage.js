@@ -87,7 +87,6 @@ async function updateTasksFromUser(userEmail, tasks) {
   let user = await getUserFromServer(userEmail);
   let users = await loadUsersFromServer();
   let index = users.findIndex((u) => u.email == userEmail);
-  console.log("the index of: ", userEmail, " is ", index);
   user.tasks = tasks;
   users[index] = user;
   setUsersOnRemoteServer(users);

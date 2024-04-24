@@ -36,15 +36,15 @@ function generateEditedTaskHTML(valueDate, minDateValue, priorityClasses) {
           <div class="big_card_edit_title">
             <span class="big_card_edit_title_header_priority">Priority</span>
             <div class="big_card_edit_priority_buttons df_ac">
-              <button id="buttonPriority2" class="button_priority flex_1_1_0px df_ac jc ${priorityClasses[2]}" onclick="togglePriorityTo(2, this)">
+              <button id="buttonPriority2" class="button_priority flex_1_1_0px df_ac jc ${priorityClasses[2]}" onclick="togglePriorityToEditedTask(2, this)">
                 <span>Urgent</span>
                 <img src="../../img/priority_urgent.svg" alt="">
               </button>
-              <button id="buttonPriority1" class="button_priority flex_1_1_0px df_ac jc ${priorityClasses[1]}" onclick="togglePriorityTo(1, this)">
+              <button id="buttonPriority1" class="button_priority flex_1_1_0px df_ac jc ${priorityClasses[1]}" onclick="togglePriorityToEditedTask(1, this)">
                 <span>Medium</span>
                 <img src="../../img/priority_medium.svg" alt="">
               </button>
-              <button id="buttonPriority0" class="button_priority flex_1_1_0px df_ac jc ${priorityClasses[0]}" onclick="togglePriorityTo(0, this)">
+              <button id="buttonPriority0" class="button_priority flex_1_1_0px df_ac jc ${priorityClasses[0]}" onclick="togglePriorityToEditedTask(0, this)">
                 <span>Low</span>
                 <img src="../../img/priority_low.svg" alt="">
               </button>
