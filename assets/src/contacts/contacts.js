@@ -66,6 +66,8 @@ function showContactDetails(email) {
         getElementWithId('viewContectDetails').style.display = 'flex';
     }
     const contact = contacts.find(c=>c.email==email);
+    getElementWithId('editInfoContactOption').setAttribute('onclick', `editContact('${contact.email}')`);
+    getElementWithId('deleteInfoContactOption').setAttribute('onclick', `deleteContact('${contact.email}')`);
     document.getElementById('infoContact').style.display='flex';
     document.getElementById('infoContact').innerHTML = /*html*/`
     <div class="contact_info_card">
