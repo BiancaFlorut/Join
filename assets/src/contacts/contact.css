@@ -208,6 +208,7 @@
 }
 
 .contact_succes_message {
+  display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;

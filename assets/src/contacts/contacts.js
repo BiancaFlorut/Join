@@ -135,7 +135,7 @@ async function updateContact(contactEmail) {
     const email = document.getElementById('editEmail').value;
     const phone = document.getElementById('editPhone').value;
     const color = contacts[contactIndex].color;
-    contacts[contactIndex] = { name: name, email: email, phone: phone, color: color};
+    contacts[contactIndex] = { name: name, email: email.toLowerCase(), phone: phone, color: color};
     await updateUserContactsToRemoteServer(emailParameter, contacts);
     hideEditContact();
     initContacts();
@@ -145,7 +145,6 @@ async function updateContact(contactEmail) {
 
 function checkEmail(inputElement) {
     const email = inputElement.value;
-    console.log(email);
     contacts.forEach(contact => {
         if (contact.email == email) {
             inputElement.setCustomValidity('Email already exists');
@@ -173,7 +172,7 @@ async function addNewContact() {
     const email = document.getElementById('email').value;
     const phone = document.getElementById('phone').value;
     const color = selectRandomColor();
-    const newContact = { name: name, email: email, phone: phone, color: color};
+    const newContact = { name: name, email: email.toLowerCase(), phone: phone, color: color};
     contacts.push(newContact);
     await updateUserContactsToRemoteServer(emailParameter, contacts);
     showToastMessage();
