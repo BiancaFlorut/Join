@@ -42,6 +42,10 @@
   height: fit-content;
 }
 
+.contacts_vector_responsive {
+  display: none;
+}
+
 .more_vert {
     display: none;
     border-radius: 46px;
@@ -446,11 +450,14 @@
 
 @media (max-width: 1315px) {
   .h1_contacts {
-    font-size: 48px;
+    font-size: 47px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .h2_contacts {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .contact_info_card {
@@ -458,7 +465,8 @@
   }
 
   .contact_info_name {
-    font-size: 40px;
+    font-size: 36px;
+    font-weight: 700;
   }
 
   .info_contact {
@@ -550,12 +558,30 @@
 }
 
 @media (max-width: 1215px) {
+  .contacts_header {
+    display: block;
+  }  
   .contact_card {
     width: -webkit-fill-available;
+  }
+  .contacts_vector{
+    display: none;
+  }
+  .profile_contact {
+    min-width: 80px;
+    height: 80px;
+  }
+  .icon_container {
+    display: none;
+  }
+
+  .contacts_vector_responsive {
+    display: block;
   }
 
   .arrow_left_line {
     display: flex;
+    cursor: pointer;
   }
   .view_contect_container {
     position: relative;
