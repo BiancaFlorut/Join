@@ -10,15 +10,16 @@
     <link rel="stylesheet" href="./privacy_policy.css" />
     <script src="../storage.js"></script>
     <script src="../script.js"></script>
+    <script src="../templates/noUser.js"></script>
     <script src="../templates/templates.js"></script>
   </head>
-  <body onload="init()">
+  <body onload="initLegalNoticePrivacyPolicy()">
     <div w3-include-html="../templates/nav_bar_left.html"></div>
 
     <section class="content-section">
       <div class="shadow" w3-include-html="../templates/header.html"></div>
       <div class="content">
-        <div class="privacy_policy">
+        <div class="privacy_policy" id="privacyPolicyDiv">
           <img class="back-button" src="../../img/arrow-left-line.svg" alt="" onclick="lastPage()">
           <h1>Privacy Policy</h1>
 
