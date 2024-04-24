@@ -51,9 +51,8 @@ function mouseBesideRememberMe(element) {
 async function logIn() {
   let email = document.getElementById("email");
   let password = document.getElementById("password");
-  let user = users.find((u) => u.email == email.value && u.password == password.value);
+  let user = users.find((u) => u.email.toLowerCase() == email.value.toLowerCase() && u.password == password.value);
   if (user) {
-    console.log(user);
     setItemToRemoteStorage('actualUser', JSON.stringify(user));
     await getItemFromRemoteStorage('actualUser');
     if (isRememberMeChecked) localStorage.setItem(email.value, password.value);

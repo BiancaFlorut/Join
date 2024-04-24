@@ -66,14 +66,12 @@ async function register() {
       { name: "Technical Task", color: "#1FD7C1" },
       { name: "User Story", color: "#0038FF" },
     ];
+    user.contacts = [{ name: name + " (You)", email: email, color: selectRandomColor() }];
     if (!isEmailAlreadyRegistered(email)) {
-      console.log("push user on remote storage");
       users.push(user);
       await setItemToRemoteStorage("users", JSON.stringify(users));
       getElementWithId("signUpSuccessfullyScreen").style.display = "flex";
-      setTimeout(function () {
-        window.location.replace("../log_in/log_in.html");
-      }, 1600);
+      setTimeout(function () { window.location.replace("../log_in/log_in.html");}, 1600);
     }
     document.getElementById("signUpButton").disabled = false;
   }
