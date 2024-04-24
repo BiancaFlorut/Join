@@ -446,8 +446,8 @@
   justify-content: center;
   align-items: center;
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  bottom: 32px;
+  right: 16px;
   z-index: 10;
   background-color: white;
   box-shadow: 0 8px 5px rgba(0, 0, 0, 0.4);
@@ -621,7 +621,7 @@
     height: calc(100vh - 80px);
   }
   .contact_processing {
-    bottom: 120px;
+    bottom: 112px;
   }
 }
 
