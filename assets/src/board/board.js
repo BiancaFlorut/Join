@@ -112,25 +112,27 @@ function generateSmallTaskHTML(task) {
   let subtasksHTML = "";
   if (task.subtasks.length > 0) subtasksHTML = getSubTaskHTML(task);
   const priorityString = getTaskPriority(task.priority);
-  return (
-    /*html*/ `
-    <div id="${task.id}" draggable="true" ondragstart="startDragging('${task.id}')" class="card_small" onclick="openTask('${task.id}')">
-      <div class="task_category" style="background-color: ${categoryColor.color}">${task.category}</div>
-      <div class="task_text_area">
-        <div class="task_header">${task["title"]}</div>
-        <div class="task_description">${task.description}</div>
-      </div>` +
-    subtasksHTML +
-    /*html*/ `
-      <div class='small_card_footer'>
-        <div class="small_card_users_area df_ac">` +
-    getAssignedToIconsHTML(task.assign_to) +
-    /*html*/ `
-          <div class="small_task_priority"><img src="../../img/priority_${priorityString}.svg" alt=""></div>
-        </div>
+  return getSubTaskSubHTML(task, categoryColor, subtasksHTML, priorityString);
+}
+
+function getSubTaskSubHTML(task, categoryColor, subtasksHTML, priorityString) {
+  return /*html*/ `
+  <div id="${task.id}" draggable="true" ondragstart="startDragging('${task.id}')" class="card_small" onclick="openTask('${task.id}')">
+    <div class="task_category" style="background-color: ${categoryColor.color}">${task.category}</div>
+    <div class="task_text_area">
+      <div class="task_header">${task["title"]}</div>
+      <div class="task_description">${task.description}</div>
+    </div>` +
+  subtasksHTML +
+  /*html*/ `
+    <div class='small_card_footer'>
+      <div class="small_card_users_area df_ac">` +
+  getAssignedToIconsHTML(task.assign_to) +
+  /*html*/ `
+        <div class="small_task_priority"><img src="../../img/priority_${priorityString}.svg" alt=""></div>
       </div>
-    </div>`
-  );
+    </div>
+  </div>`;
 }
 
 /**
