@@ -108,12 +108,13 @@ function awaitingUrgent() {
     if (urgentElement.length == 0) {
         document.getElementById('deadline').innerHTML = 'No due date';
     } else {
-    let smallestDueDate = Math.min(urgentElement.map(task => Date.parse(task.due_date)));
-    let formattedDueDate = new Date(smallestDueDate).toLocaleDateString('en-US', {
+    let smallestDueDate = Math.min(...urgentElement.map(task => Date.parse(task.due_date)));
+    let formattedDueDate = new Date(smallestDueDate).toLocaleDateString( {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
     });
+    console.log(smallestDueDate, urgentElement, Math.min(...urgentElement.map(task => Date.parse(task.due_date))));
     document.getElementById('deadline').innerHTML = formattedDueDate;
     }
 }
