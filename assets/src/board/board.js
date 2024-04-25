@@ -152,11 +152,20 @@ function getCategoryClassColor(category) {
 function getAssignedToIconsHTML(contacts) {
   let html = /*html*/ `<div class="overlapped_contact_icons">`;
   let shift = 0;
-  contacts.forEach((contact) => {
+  let rest = 0;
+  contacts.forEach((contact, i) => {
     let initials = getInitials(contact.name);
-    html += /*html*/ `<div class='contacts_icon' style="background-color: ${contact.color}; transform: translateX(${shift}px);">${initials}</div>`;
-    shift -= 10;
+    if (i <= 3) {
+      html += /*html*/ `<div class='contacts_icon' style="background-color: ${contact.color}; transform: translateX(${shift}px);">${initials}</div>`;
+      shift -= 10;
+    }
+    else {
+      rest++;
+    }
   });
+  if (rest > 0) {
+    html += /*html*/ `<div class='contacts_icon' style="background-color: ${contacts[4].color}; transform: translateX(${shift}px);">+${rest}</div>`;
+  }
   html += /*html*/ `</div>`;
   return html;
 }
