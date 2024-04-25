@@ -288,6 +288,7 @@ function setToggleForTheContactList() {
  * @param {string} checked
  */
 function selectContact(element, email, checked) {
+  if (checked == '_white_checked') checked ='_checked';
   const arg1 = "'" + email + "'";
   checked = toggleSelectedContact(element, email + "Checkbox",email, checked, editedTask);
   const arg2 = "'" + checked + "'";
