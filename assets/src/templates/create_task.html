@@ -1,4 +1,4 @@
-<div id="createTask_content" class="add_task">
+<div id="createTask_content" class="add_task" onclick="closeCategoryOptions()">
   <div class="add_task_header_card">
     <h1>Add Tasks</h1>
     <div class="close_div_add_task">
@@ -79,13 +79,14 @@
           class="big_card_edit_title_input cursor_pointer"
           ondblclick="addNewCategory(this)"
           onchange="isRequiredFieldsEmpty()"
+          onclick="event.stopPropagation(); toggleCategoryOptions()"
           readonly
           placeholder="Select task category"
           type="text"
         />
         <div class="visibility_area_container df_ac">
           <div id="addCategoryIcons" class="visibility_icon_container df_ac big_card_edit_subtask_input_icons">
-            <img class="visibility_icon" src="../../img/arrow_drop_down_down.svg" alt="" onclick="toggleCategoryOptions()" />
+            <img class="visibility_icon" src="../../img/arrow_drop_down_down.svg" alt="" onclick="event.stopPropagation(); toggleCategoryOptions()" />
           </div>
         </div>
         <span id="createTaskCategoryError" class="add_content_error d_none">This field is required</span>

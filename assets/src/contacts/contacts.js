@@ -13,6 +13,9 @@ async function initContacts() {
     firstLetter.sort();
     contactListHTML();
     initContactButtons();
+    if (window.innerWidth <= 1215) {
+        hideElement('viewContectDetails');  
+    }
 }
 
 /**
@@ -91,12 +94,17 @@ function getFirstLetterArray(array) {
 function showContactDetails(email) {
     if (window.innerWidth <= 1215) {
         hideElement('contactsContainer');
-        getElementWithId('viewContectDetails').style.display = 'flex';
+        // getElementWithId('viewContectDetails').style.display = 'flex';
+        showElement('viewContectDetails');
+    } else {
+        showElement('contactsContainer');
+
     }
     const contact = contacts.find(c=>c.email==email);
     getElementWithId('editInfoContactOption').setAttribute('onclick', `editContact('${contact.email}')`);
     getElementWithId('deleteInfoContactOption').setAttribute('onclick', `deleteContact('${contact.email}')`);
-    document.getElementById('infoContact').style.display='flex';
+    // document.getElementById('infoContact').style.display='flex';
+    showElement('infoContact');
     document.getElementById('infoContact').innerHTML = showContactDetailsHTML(contact);
 }
 
@@ -193,10 +201,11 @@ async function updateContact(contactEmail) {
     const color = contacts[contactIndex].color;
     contacts[contactIndex] = { name: name, email: email.toLowerCase(), phone: phone, color: color};
     await updateUserContactsToRemoteServer(emailParameter, contacts);
+    getElementWithId('editContactButton').disabled = false;
     hideEditContact();
     initContacts();
     showContactDetails(email);
-    getElementWithId('createContactButton').disabled = false;
+    backToContacts();
 }
 
 /**
@@ -296,9 +305,11 @@ async function deleteAssignedToFromAllTasks(email) {
             if (contact.email === email) {
                 task.assign_to.splice(task.assign_to.indexOf(contact), 1);
                 await updateContactsAboutTask(task);
+                
             }
         }
     }
+    backToContacts();
 }
 
 /**
@@ -330,7 +341,11 @@ function addClose() {
  */
 function backToContacts() {
     showElement('contactsContainer');
-    getElementWithId('viewContectDetails').style.display = 'none';
+    if (window.innerWidth <= 1215) {
+        //  getElementWithId('viewContectDetails').style.display = 'none';
+        hideElement('viewContectDetails');
+    }
+    
 }
 
 /**
@@ -350,7 +365,6 @@ function showContactProcessing() {
 function checkTel(element) {
     const phone = element.value;
     const regex = new RegExp('^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$');
-    console.log(regex.test(phone));
     if (regex.test(phone)) {
         element.setCustomValidity('');
     } else {

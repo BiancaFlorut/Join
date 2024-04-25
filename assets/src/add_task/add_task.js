@@ -299,6 +299,14 @@ function toggleCategoryOptions() {
   }
 }
 
+function closeCategoryOptions() {
+  let container = getElementWithId("categoryContainer");
+  if (!container.classList.contains("d_none")) {
+    hideElement("categoryContainer");
+    changeSrc(getElementWithId("addCategoryIcons").children[0], "../../img/arrow_drop_down_down.svg");
+  }
+}
+
 /**
  * Confirms the edited category input value and updates the user's categories.
  *
