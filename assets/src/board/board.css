@@ -196,6 +196,10 @@
     flex: 0 1 0px;
   }
 
+  .no_tasks_to_do {
+    min-width: 252px;
+  }
+
   .board_column {
     width: 100%;
   }

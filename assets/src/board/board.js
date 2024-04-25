@@ -62,7 +62,11 @@ function updateHTML(array) {
     document.getElementById(`${column.name}`).innerHTML = "";
     if (column.cards.length > 0) {
       column.cards.forEach((card) => (document.getElementById(`${column.name}`).innerHTML += generateSmallTaskHTML(card)));
-    } else document.getElementById(`${column.name}`).innerHTML = getNoTasksToDoHTML();
+      getElementWithId(`${column.name}`).classList.remove('flex_column');
+    } else {
+      document.getElementById(`${column.name}`).innerHTML = getNoTasksToDoHTML();
+      getElementWithId(`${column.name}`).classList.add('flex_column');
+    }
     document.getElementById(`${column.name}`).innerHTML += generateHighlightedCardGhostHTML(column.name);
   });
 }
