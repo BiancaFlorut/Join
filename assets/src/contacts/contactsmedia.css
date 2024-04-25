@@ -9,7 +9,7 @@
       font-size: 20px;
     }
     .contact_info_card {
-      margin-left: 30px;
+      padding-left: 16px;
     }
     .contact_info_name {
       font-size: 36px;
@@ -94,6 +94,7 @@
   @media (max-width: 1215px) {
     .contacts_header {
       display: block;
+      padding-left: 16px;
     }
     .contact_card {
       width: 100%;
@@ -102,7 +103,13 @@
       display: none;
     }
     .profile_contact {
-      width: 80px;
+      min-width: 80px;
+      height: 80px;
+      font-size: 27px;
+      font-weight: 400;
+    }
+    .contact_name_info {
+      gap: 20px;
     }
     .icon_container {
       display: none;
@@ -158,11 +165,12 @@
       width: 350px;
     }
     .add_contact_close_left {
-      left: 270px;
+      left: 310px;
+      bottom: 40px;
     }
     .right_container_add_contacts {
       width: 398px;
-      height: 400px;
+      height: 430px;
     }
     .h1_add_contacts {
       font-size: 47px;
@@ -198,7 +206,7 @@
     }
     .contact_button_add_new {
       border-radius: 46px;
-      padding: 12px;
+      padding-right: 16px;
       margin: 0;
     }
     .contact_button_add_new img {

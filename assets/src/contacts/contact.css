@@ -23,7 +23,7 @@
 .contacts_header {
   display: flex;
   gap: 30px;
-  margin-left: 30px;
+  padding-left: 30px;
   margin-top: 100px;
   align-items: center;
 }
