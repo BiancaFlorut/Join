@@ -96,8 +96,7 @@ function isDueDateValid() {
     return false;
   } else {
     hideElement("editedTaskDueDateInputError");
-    const date = Date.parse(new Date(dueDate));
-    editedTask.due_date = date;
+    editedTask.due_date = dueDate;
     return true;
   }
 }
