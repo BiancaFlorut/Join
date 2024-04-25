@@ -1,256 +1,255 @@
 @media (max-width: 1315px) {
-    .h1_contacts {
-      font-size: 47px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .h2_contacts {
-      font-size: 20px;
-    }
-    .contact_info_card {
-      padding-left: 16px;
-    }
-    .contact_info_name {
-      font-size: 36px;
-      font-weight: 700;
-    }
-    .info_contact {
-      margin-top: 0;
-      margin-left: 0;
-    }
+  .h1_contacts {
+    font-size: 47px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  @media (max-width: 1255px) {
-    .main_container_add_contact {
-      display: block !important;
-      height: 810px;
-    }
-    .main_container_edit_contact {
-      display: block;
-      height: 810px;
-    }
-    .add_contact_close_left {
-      cursor: pointer;
-      display: unset;
-      position: relative;
-      left: 400px;
-      bottom: 30px;
-    }
-    .add_contact_close {
-      display: none;
-    }
-    .left_container_add_contacts {
-      border-top-left-radius: 30px;
-      border-top-right-radius: 30px;
-      border-bottom-left-radius: 0;
-      padding: 66px 24px 66px 24px;
-      height: 170px;
-      width: 450px;
-    }
-    .left_container_edit_contacts {
-      border-top-left-radius: 30px;
-      border-top-right-radius: 30px;
-      border-bottom-left-radius: 0;
-      height: 170px;
-      width: 450px;
-    }
-    .contacts_join_logo {
-      display: none;
-    }
-    .right_container_add_contacts {
-      border-top-right-radius: 0;
-      border-bottom-left-radius: 30px;
-      width: 498px;
-      height: 530px;
-    }
-    .right_container_edit_contacts {
-      border-top-right-radius: 0;
-      border-bottom-left-radius: 30px;
-      width: unset;
-      height: 550px;
-    }
-    .person_position {
-      top: -60px;
-      left: 185px;
-    }
-    .create_contact {
-      padding-right: 0;
-      align-items: center;
-      gap: 15px;
-    }
-    .edit_contact_button {
-      justify-content: center;
-      padding-right: 0;
-    }
-    .add_contact_button_center {
-      justify-content: center;
-      padding-right: 0;
-      margin-top: 20px;
-    }
-    .contacts_button_cancel {
-      display: none;
-    }
+  .h2_contacts {
+    font-size: 20px;
   }
-  @media (max-width: 1215px) {
-    .contacts_header {
-      display: block;
-      padding-left: 16px;
-    }
-    .contact_card {
-      width: 100%;
-    }
-    .contacts_vector {
-      display: none;
-    }
-    .profile_contact {
-      min-width: 80px;
-      height: 80px;
-      font-size: 27px;
-      font-weight: 400;
-    }
-    .contact_name_info {
-      gap: 20px;
-    }
-    .icon_container {
-      display: none;
-    }
-    .contacts_vector_responsive {
-      display: block;
-    }
-    .contact_processing {
-      display: flex;
-    }
-    .arrow_left_line {
-      display: flex;
-      padding-right: 16px;
-      cursor: pointer;
-    }
-    .view_contect_container {
-      position: relative;
-      height: 100%;
-      width: 100%;
-      background-color: rgb(246, 247, 248);
-      display: none;
-      flex-direction: column;
-    }
-    .more_vert_container {
-      position: fixed;
-      right: 16px;
-      bottom: 112px;
-    }
-    .more_vert {
-      display: block;
-    }
-    .icon_container {
-      display: none;
-    }
+  .contact_info_card {
+    padding-left: 16px;
   }
-  .d_none {
+  .contact_info_name {
+    font-size: 36px;
+    font-weight: 700;
+  }
+  .info_contact {
+    margin-top: 0;
+    margin-left: 0;
+  }
+}
+@media (max-width: 1255px) {
+  .main_container_add_contact {
+    display: block !important;
+    height: 810px;
+  }
+  .main_container_edit_contact {
+    display: block;
+    height: 810px;
+  }
+  .add_contact_close_left {
+    cursor: pointer;
+    display: unset;
+    position: relative;
+    left: 400px;
+    bottom: 30px;
+  }
+  .add_contact_close {
     display: none;
   }
-  @media (max-width: 1130px) {
-    .content-section {
-      flex: none;
-      height: calc(100vh - 80px);
-    }
-    .contact_processing {
-      bottom: 112px;
-    }
+  .left_container_add_contacts {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 0;
+    padding: 66px 24px 66px 24px;
+    height: 170px;
+    width: 450px;
   }
-  @media (max-width: 570px) {
-    .left_container_edit_contacts {
-      width: 350px;
-    }
-    .left_container_add_contacts {
-      width: 350px;
-    }
-    .add_contact_close_left {
-      left: 310px;
-      bottom: 40px;
-    }
-    .right_container_add_contacts {
-      width: 398px;
-      height: 430px;
-    }
-    .h1_add_contacts {
-      font-size: 47px;
-    }
-    .h2_add_contacts {
-      font-size: 20px;
-    }
-    .person_position {
-      left: 140px;
-    }
-    .create_contact {
-      gap: 15px;
-    }
-    .add_contact_button_center {
-      margin-top: 20px;
-    }
-    .input_area {
-      width: 260px;
-    }
+  .left_container_edit_contacts {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 0;
+    height: 170px;
+    width: 450px;
   }
-  
-  @media (max-width: 410px) {
-    .button_center {
-      position: absolute;
-      bottom: 100px;
-      right: 30px;
-    }
-    .h1_add_contacts {
-      font-size: 40px;
-    }
-    .h2_add_contacts {
-      font-size: 16px;
-    }
-    .contact_button_add_new {
-      border-radius: 46px;
-      padding-right: 16px;
-      margin: 0;
-    }
-    .contact_button_add_new img {
-      width: 32px;
-      height: 32px;
-    }
-    .add_new_contact_text {
-      display: none;
-    }
-    .person_position {
-      left: 90px;
-    }
-    .left_container_add_contacts {
-      width: 260px;
-      margin-top: 50px;
-    }
-    .right_container_add_contacts {
-      width: 308px;
-    }
-    .left_container_edit_contacts {
-      width: 260px;
-    }
-    .add_contact_close_left {
-      left: 220px;
-    }
-    .input_area {
-      width: 240px;
-    }
+  .contacts_join_logo {
+    display: none;
   }
-  @media (max-width: 350px) {
-    .left_container_add_contacts {
-      width: 260px;
-    }
-    .add_contact_close_left {
-      left: 220px;
-    }
-    .person_position {
-      left: 90px;
-    }
-    .right_container_add_contacts {
-      width: 308px;
-    }
-    .contact_name {
-      gap: 6px;
-      overflow-wrap: anywhere;
-    }
+  .right_container_add_contacts {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 30px;
+    width: 498px;
+    height: 530px;
   }
+  .right_container_edit_contacts {
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 30px;
+    width: unset;
+    height: 550px;
+  }
+  .person_position {
+    top: -60px;
+    left: 185px;
+  }
+  .create_contact {
+    padding-right: 0;
+    align-items: center;
+    gap: 15px;
+  }
+  .edit_contact_button {
+    justify-content: center;
+    padding-right: 0;
+  }
+  .add_contact_button_center {
+    justify-content: center;
+    padding-right: 0;
+    margin-top: 20px;
+  }
+  .contacts_button_cancel {
+    display: none;
+  }
+}
+@media (max-width: 1215px) {
+  .contacts_header {
+    display: block;
+    padding-left: 16px;
+  }
+  .contact_card {
+    width: 100%;
+  }
+  .contacts_vector {
+    display: none;
+  }
+  .profile_contact {
+    min-width: 80px;
+    height: 80px;
+    font-size: 27px;
+    font-weight: 400;
+  }
+  .contact_name_info {
+    gap: 20px;
+  }
+  .icon_container {
+    display: none;
+  }
+  .contacts_vector_responsive {
+    display: block;
+  }
+  .contact_processing {
+    display: flex;
+  }
+  .arrow_left_line {
+    display: flex;
+    padding-right: 16px;
+    cursor: pointer;
+  }
+  .view_contect_container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(246, 247, 248);
+    flex-direction: column;
+  }
+  .more_vert_container {
+    position: fixed;
+    right: 16px;
+    bottom: 112px;
+  }
+  .more_vert {
+    display: block;
+  }
+  .icon_container {
+    display: none;
+  }
+}
+.d_none {
+  display: none;
+}
+@media (max-width: 1130px) {
+  .content-section {
+    flex: none;
+    height: calc(100vh - 80px);
+  }
+  .contact_processing {
+    bottom: 112px;
+  }
+}
+@media (max-width: 570px) {
+  .left_container_edit_contacts {
+    width: 350px;
+  }
+  .left_container_add_contacts {
+    width: 350px;
+  }
+  .add_contact_close_left {
+    left: 310px;
+    bottom: 40px;
+  }
+  .right_container_add_contacts {
+    width: 398px;
+    height: 430px;
+  }
+  .h1_add_contacts {
+    font-size: 47px;
+  }
+  .h2_add_contacts {
+    font-size: 20px;
+  }
+  .person_position {
+    left: 140px;
+  }
+  .create_contact {
+    gap: 15px;
+  }
+  .add_contact_button_center {
+    margin-top: 20px;
+  }
+  .input_area {
+    width: 260px;
+  }
+}
+
+@media (max-width: 410px) {
+  .button_center {
+    position: absolute;
+    bottom: 100px;
+    right: 30px;
+  }
+  .h1_add_contacts {
+    font-size: 40px;
+  }
+  .h2_add_contacts {
+    font-size: 16px;
+  }
+  .contact_button_add_new {
+    border-radius: 46px;
+    padding-right: 16px;
+    margin: 0;
+  }
+  .contact_button_add_new img {
+    width: 32px;
+    height: 32px;
+  }
+  .add_new_contact_text {
+    display: none;
+  }
+  .person_position {
+    left: 90px;
+  }
+  .left_container_add_contacts {
+    width: 260px;
+    margin-top: 50px;
+  }
+  .right_container_add_contacts {
+    width: 308px;
+  }
+  .left_container_edit_contacts {
+    width: 260px;
+  }
+  .add_contact_close_left {
+    left: 220px;
+  }
+  .input_area {
+    width: 240px;
+  }
+}
+@media (max-width: 350px) {
+  .left_container_add_contacts {
+    width: 260px;
+  }
+  .add_contact_close_left {
+    left: 220px;
+  }
+  .person_position {
+    left: 90px;
+  }
+  .right_container_add_contacts {
+    width: 308px;
+  }
+  .contact_name {
+    gap: 6px;
+    overflow-wrap: anywhere;
+  }
+}
