@@ -141,9 +141,10 @@ function setToggleForTheContactListCreateTask() {
  * @return {void} This function does not return a value.
  */
 function selectContactCreateTask(element, email, checked) {
+  if (checked == '_white_checked') checked ='_checked';
   checked = toggleSelectedContact(element, email + "CreateTaskCheckbox", email, checked, addedTask);
   const arg2 = "'" + checked + "'";
-  element.setAttribute("onmousedown", `simulateClickCreateTask(event, this, ${email}, ${arg2})`);
+  element.setAttribute("onmousedown", `simulateClickCreateTask(event, this, '${email}', ${arg2})`);
   getElementWithId("createTaskAssignToIconsList").innerHTML = getContactsLogoHTML(addedTask.assign_to);
 }
 
@@ -317,7 +318,6 @@ async function confirmCategoryEditInput() {
   if (!isWhiteSpaceOnly(value)) {
     const newCategory = { name: value, color: selectRandomColor() };
     user.categories.push(newCategory);
-    console.log(user);
     await updateUserToRemoteServer(user);
     addedTask.category = newCategory;
     showCategoryOptions();
