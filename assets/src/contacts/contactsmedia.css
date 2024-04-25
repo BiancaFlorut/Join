@@ -105,6 +105,7 @@
     .profile_contact {
       min-width: 80px;
       height: 80px;
+      width: 80px;
       font-size: 27px;
       font-weight: 400;
     }
@@ -170,7 +171,7 @@
     }
     .right_container_add_contacts {
       width: 398px;
-      height: 430px;
+      height: 400px;
     }
     .h1_add_contacts {
       font-size: 47px;
@@ -217,7 +218,9 @@
       display: none;
     }
     .person_position {
-      left: 90px;
+      left: 110px;
+      top: -40px;
+    }
     }
     .left_container_add_contacts {
       width: 260px;
