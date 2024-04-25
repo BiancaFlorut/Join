@@ -271,6 +271,10 @@
   border-radius: 30px;
 }
 
+.subtasks {
+  padding-right: 88px !important;
+}
+
 @media (max-width: 1130px) {
   .content {
     height: calc(100vh - 160px);
@@ -321,9 +325,7 @@
     font-size: 16px;
     padding: 8px 21px;
   }
-  .subtasks {
-    padding-right: 88px !important;
-  }
+
   .visibility_icon_container {
     padding: 7px;
   }

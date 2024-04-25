@@ -199,6 +199,9 @@ textarea {
   .add_task_bottom {
     margin-top: 30px;
   }
+  #clearFields {
+    display: none;
+  }
 }
 @media (max-width: 1130px) {
   .content-section {
