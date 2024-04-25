@@ -103,13 +103,13 @@ function updateTaskCount(status, elementId) {
  * function shows how many tasks have the priority Urgent and shows the next due date
  */
 function awaitingUrgent() {
-    let urgentElement = searchUrgentStatus(tasks, 2);
+    let urgentElement = searchUrgentStatus(tasks, 2); // 2 -> Urgent
     document.getElementById('numberOfUrgent').innerHTML = urgentElement.length;
     if (urgentElement.length == 0) {
         document.getElementById('deadline').innerHTML = 'No due date';
     } else {
-    let smallestDueDate = Math.min(urgentElement.map(task => Date.parse(task.due_date)));
-    let formattedDueDate = new Date(smallestDueDate).toLocaleDateString('en-US', {
+    let smallestDueDate = Math.min(...urgentElement.map(task => Date.parse(task.due_date)));
+    let formattedDueDate = new Date(smallestDueDate).toLocaleDateString( {
         year: 'numeric',
         month: 'long',
         day: 'numeric'

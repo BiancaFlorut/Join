@@ -196,6 +196,10 @@
     flex: 0 1 0px;
   }
 
+  .no_tasks_to_do {
+    min-width: 252px;
+  }
+
   .board_column {
     width: 100%;
   }
@@ -267,6 +271,10 @@
   border-radius: 30px;
 }
 
+.subtasks {
+  padding-right: 88px !important;
+}
+
 @media (max-width: 1130px) {
   .content {
     height: calc(100vh - 160px);
@@ -317,6 +325,7 @@
     font-size: 16px;
     padding: 8px 21px;
   }
+
   .visibility_icon_container {
     padding: 7px;
   }

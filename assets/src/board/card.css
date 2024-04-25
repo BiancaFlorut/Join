@@ -20,6 +20,7 @@
   background-color: rgba(255, 255, 255, 0);
   border-radius: 30px;
   opacity: 0;
+  cursor: auto;
 }
 
 .task_category {
@@ -308,4 +309,12 @@
   justify-content: flex-end;
   padding: 4px;
   padding-right: 38px;
+}
+
+.flex_column {
+  flex-direction: column !important;
+}
+
+.flex_row {
+  flex-direction: row;
 }

@@ -153,7 +153,7 @@
     flex: none;
     overflow-y: scroll;
     scrollbar-width: none;
-    /* height: calc(100vh - 248px); */
+    padding: 10px;
   }
   .desktop {
     display: none;

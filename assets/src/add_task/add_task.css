@@ -10,10 +10,3 @@
 .close_div_add_task {
   display: none !important;
 }
-
-
-/* style for the imported elements form edit task please let them under your styles otherwise they will be overwritten */
-
-.big_card_edit_assigned_to_logos {
-  gap: 8px;
-}

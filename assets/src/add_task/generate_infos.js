@@ -12,12 +12,18 @@ function getOptionForAssignedToCreateTask(contacts, task, exceptUserEmail) {
   contacts.forEach((contact) => {
     if (contact.email != exceptUserEmail) {
       let checked = "";
+      let selected = "";
       if (task.assign_to.some((assignToContact) => assignToContact.email == contact.email)) {
-        checked = "_checked";
+        checked = "_white_checked";
+        selected = "big_card_edit_contact_clicked";
       }
       let logoHTML = getContactLogoForBigCardEditHTML(contact);
       html += /*html*/ `
-          <div class="df_ac big_card_edit_contacts_select cursor_pointer" onmousedown="simulateClickCreateTask(event, this, '${contact.email}', '${checked}')">${logoHTML}<span class="flex_1">${contact.name}</span><img id="${contact.email}CreateTaskCheckbox" src="${CHECKBOX_PATH}${checked}.svg" alt="checkbox"></div >
+          <div class="df_ac big_card_edit_contacts_select cursor_pointer ${selected}" onmousedown="simulateClickCreateTask(event, this, '${contact.email}', '${checked}')">
+            ${logoHTML}
+            <span class="flex_1">${contact.name}</span>
+            <img id="${contact.email}CreateTaskCheckbox" src="${CHECKBOX_PATH}${checked}.svg" alt="checkbox">
+          </div>
         `;
     }
   });

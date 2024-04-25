@@ -228,6 +228,9 @@ function checkName(inputElement) {
     if (isWhiteSpaceOnly(name)) {
         inputElement.setCustomValidity('Name cannot be empty');
     }
+    else {
+        inputElement.setCustomValidity('');
+    }
 }
 
 /**
@@ -342,4 +345,15 @@ function showContactProcessing() {
     setTimeout(function() {
         contactProcessingElement.classList.add('d_none');
     }, 2000);
+}
+
+function checkTel(element) {
+    const phone = element.value;
+    const regex = new RegExp('^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$');
+    console.log(regex.test(phone));
+    if (regex.test(phone)) {
+        element.setCustomValidity('');
+    } else {
+        element.setCustomValidity('Invalid phone number');
+    }
 }

@@ -96,7 +96,7 @@
                 </div>
                 <input id="name" class="input_area person" required placeholder="Name" type="text" onchange="checkName(this)" />
                 <input id="email" class="input_area mail" required placeholder="Email" type="email" onkeyup="checkEmail(this)" />
-                <input id="phone" class="input_area phone" required placeholder="Phone" type="tel" />
+                <input id="phone" class="input_area phone" required placeholder="Phone" type="tel" onkeyup="checkTel(this)" />
               </form>
               <div class="add_contact_button_center">
                 <button onclick="addClose()" class="contacts_button_cancel button_line">
@@ -141,7 +141,7 @@
                 <img onclick="hideEditContact()" class="add_contact_close" src="../../img/board_add_task_close.svg" alt="icon_close" />
                 <input id="editName" class="input_area person" required placeholder="Name" type="text" onchange="checkName(this)" />
                 <input id="editEmail" class="input_area mail" required placeholder="Email" type="email" onchange="checkEmail(this)" />
-                <input id="editPhone" class="input_area phone" required placeholder="Phone" type="tel" />
+                <input id="editPhone" class="input_area phone" required placeholder="Phone" type="tel" onkeyup="checkTel(this)" />
               </form>
               <div class="edit_contact_button">
                 <button id="editContactDeleteButton" onclick="deleteContact()" class="contacts_button_delete button_line">Delete</button>

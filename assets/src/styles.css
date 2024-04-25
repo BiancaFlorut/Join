@@ -246,6 +246,7 @@ h1 {
 .big_card_edit_assigned_to_logos {
   margin-top: 8px;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .contacts_icon {
