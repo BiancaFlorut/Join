@@ -257,3 +257,7 @@ let userKlarkKent = {
 }
 
 users = [userAndrei, userAndu, userBert, userMaria, userMarian, userGuest, userKlarkKent, userBenediktZiegler, userEmmanuelMauer];
+users.forEach(u => {
+    u.categories = [];
+});
+setUsersOnRemoteServer(users);
