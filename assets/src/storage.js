@@ -1,5 +1,6 @@
-const STORAGE_TOKEN = "A4FWT6VNANE57F3YJWY8RKAO2BLJ7XU20BKY7G0X";
-const STORAGE_URL = " https://remote-storage.developerakademie.org/item";
+// const STORAGE_TOKEN = "A4FWT6VNANE57F3YJWY8RKAO2BLJ7XU20BKY7G0X";
+// const STORAGE_URL = " https://remote-storage.developerakademie.org/item";
+const REMOTE_SERVER_URL = "https://join-d8bed-default-rtdb.europe-west1.firebasedatabase.app/";
 
 /**
  * The function calls the remote saved data with the key parameter.
@@ -7,9 +8,13 @@ const STORAGE_URL = " https://remote-storage.developerakademie.org/item";
  * @param {string} key
  * @returns the value of the saved data with the key and token in json data structure {data, value, status}
  */
-async function getItemFromRemoteStorage(key) {
-  const URL = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-  return await fetch(URL).then((resp) => resp.json());
+// async function getItemFromRemoteStorage(key) {
+//   const URL = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+//   return await fetch(URL).then((resp) => resp.json());
+// }
+
+async function getUsersFromRemoteServer() {
+  return await fetch(REMOTE_SERVER_URL + '/users.json').then((resp) => resp.json());
 }
 
 /**
@@ -19,9 +24,16 @@ async function getItemFromRemoteStorage(key) {
  * @param {JSON} value
  * @returns {Promise}
  */
-async function setItemToRemoteStorage(key, value) {
-  const payload = { key: key, value: value, token: STORAGE_TOKEN };
-  return fetch(STORAGE_URL, { method: "POST", body: JSON.stringify(payload) });
+// async function setItemToRemoteStorage(key, value) {
+//   const payload = { key: key, value: value, token: STORAGE_TOKEN };
+//   return fetch(STORAGE_URL, { method: "POST", body: JSON.stringify(payload) });
+// }
+
+async function updateUsersToRemoteServer(users) {
+  return fetch(REMOTE_SERVER_URL + '/users.json', {
+    method: 'PUT',
+    body: JSON.stringify(users),
+  });
 }
 
 /**
@@ -29,8 +41,10 @@ async function setItemToRemoteStorage(key, value) {
  * @returns JSON array
  */
 async function loadUsersFromServer() {
-  const response = await getItemFromRemoteStorage("users");
-  let users = JSON.parse(response.data.value);
+  // const response = await getItemFromRemoteStorage("users");
+  const response = await getUsersFromRemoteServer();
+  // let users = JSON.parse(response.data.value);
+  let users = response;
   return users;
 }
 
@@ -73,7 +87,7 @@ async function getContactList(email) {
  * @param {JSON array} server response
  */
 async function setUsersOnRemoteServer(array) {
-  return await setItemToRemoteStorage("users", array);
+  return await updateUsersToRemoteServer(array);
 }
 
 /**

@@ -150,6 +150,7 @@ function confirmSubtaskEditInput() {
   let newText = getElementWithId("addSubtasksEditTask").value;
   if (!isWhiteSpaceOnly(newText)) {
     const subtask = { text: newText, checked: false };
+    if (!editedTask.subtasks) editedTask.subtasks = [];
     editedTask.subtasks.push(subtask);
   }
   getElementWithId("bigCardEditSubtasks").innerHTML = generateSubTaskListItems(editedTask.subtasks);
@@ -376,7 +377,7 @@ function setOnBlurFunctionOnEditedSubtask(i) {
  */
 function generateSubTaskListItems(subtasks) {
   let html = "";
-  subtasks.forEach((subtask, i) => {
+  subtasks?.forEach((subtask, i) => {
     html += /*html*/ `
         <li>
             <div class="df_ac big_card_edit_subtask" onmouseover='showElement("bigCardEditCardIcons_${i}")' onmouseout="hideElement('bigCardEditCardIcons_${i}')">

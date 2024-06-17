@@ -110,7 +110,7 @@ function generateSmallTaskHTML(task) {
     updateUserToRemoteServer(user);
   }
   let subtasksHTML = "";
-  if (task.subtasks.length > 0) subtasksHTML = getSubTaskHTML(task);
+  if (task.subtasks?.length > 0) subtasksHTML = getSubTaskHTML(task);
   const priorityString = getTaskPriority(task.priority);
   return getSubTaskSubHTML(task, categoryColor, subtasksHTML, priorityString);
 }

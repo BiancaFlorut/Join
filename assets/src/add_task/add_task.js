@@ -281,7 +281,7 @@ function selectCategory(name) {
   addedTask.category = name;
   getElementWithId("addCategory").value = name;
   getElementWithId("addCategory").onchange();
-  setTimeout(() => {toggleCategoryOptions();}, 200);
+  // setTimeout(() => {toggleCategoryOptions();}, 200);
 }
 
 /**

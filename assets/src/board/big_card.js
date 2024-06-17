@@ -87,7 +87,7 @@ function formateDate(date) {
 function getSubTaskForBigCardHTML(task) {
   let subtasks = task.subtasks;
   let html = "";
-  subtasks.forEach(function (subtask, index) {
+  subtasks?.forEach(function (subtask, index) {
     const checkbox = subtask.checked ? SUBTASK_CHECKBOX_PATH + "_checked.svg" : SUBTASK_CHECKBOX_PATH + ".svg";
     html += /*html*/ `
         <div class="big_card_subtask_area df_ac">
