@@ -53,8 +53,8 @@ async function logIn() {
   let password = document.getElementById("password");
   let user = users.find((u) => u.email.toLowerCase() == email.value.toLowerCase() && u.password == password.value);
   if (user) {
-    setItemToRemoteStorage('actualUser', JSON.stringify(user));
-    await getItemFromRemoteStorage('actualUser');
+    // setItemToRemoteStorage('actualUser', JSON.stringify(user));
+    // await getItemFromRemoteStorage('actualUser');
     if (isRememberMeChecked) localStorage.setItem(email.value, password.value);
     else localStorage.setItem(email.value, '');
     window.location.replace('../../summary/summary.html?email='+user.email);
